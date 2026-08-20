@@ -15,11 +15,64 @@ type ReadingResponse = {
 };
 
 type Stage = "ask" | "select" | "reveal" | "reading";
+type Language = "en" | "zh";
+
+const copy = {
+  en: {
+    brand: "Moonlit Tarot",
+    heading: "Moonlight guides, cards mirror.",
+    questionLabel: "Your question",
+    questionPlaceholder: "What does my next chapter ask of me?",
+    enter: "Enter",
+    chooseThree: "Choose three cards",
+    selected: "selected",
+    reveal: "Reveal the spread",
+    guidance: "Guidance",
+    askAnother: "Ask another question",
+    retry: "Try again",
+    chosenHint: "The chosen cards are listening: {count} lit.",
+    emptyQuestion: "Whisper a question before the deck can answer.",
+    incompleteSpread: "Choose three cards to complete the spread.",
+    genericError: "The veil flickered. Please try the reading again.",
+    languageSwitch: "中文",
+    languageLabel: "Switch to Chinese",
+    positions: {
+      Situation: "Situation",
+      "Hidden Influence": "Hidden Influence",
+      Guidance: "Guidance",
+    },
+  },
+  zh: {
+    brand: "月光塔罗",
+    heading: "月光为引，牌面为镜",
+    questionLabel: "你的问题",
+    questionPlaceholder: "人生的下一篇章想告诉我什么？",
+    enter: "开始",
+    chooseThree: "选择三张牌",
+    selected: "已选择",
+    reveal: "揭开牌阵",
+    guidance: "指引",
+    askAnother: "再问一个问题",
+    retry: "再试一次",
+    chosenHint: "被选中的牌正在聆听：已点亮 {count} 张。",
+    emptyQuestion: "请先轻声说出一个问题，让牌组回应你。",
+    incompleteSpread: "请选择三张牌，完成这个牌阵。",
+    genericError: "帷幕轻轻闪动了，请再试一次。",
+    languageSwitch: "EN",
+    languageLabel: "切换至英文",
+    positions: {
+      Situation: "当前状况",
+      "Hidden Influence": "隐藏影响",
+      Guidance: "行动指引",
+    },
+  },
+} as const;
 
 const selectableCards = Array.from({ length: 9 }, (_, index) => index);
 
 export default function Home() {
   const [stage, setStage] = useState<Stage>("ask");
+  const [language, setLanguage] = useState<Language>("en");
   const [question, setQuestion] = useState("");
   const [selectedIndexes, setSelectedIndexes] = useState<number[]>([]);
   const [cards, setCards] = useState<DrawnCard[]>([]);
@@ -28,6 +81,9 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
 
   const canReveal = selectedIndexes.length === 3;
+  const text = copy[language];
+  const formatPosition = (position: string) =>
+    text.positions[position as keyof typeof text.positions] ?? position;
 
   const selectedCards = useMemo(
     () => selectableCards.filter((cardIndex) => selectedIndexes.includes(cardIndex)),
@@ -39,7 +95,7 @@ export default function Home() {
     const trimmedQuestion = question.trim();
 
     if (!trimmedQuestion) {
-      setError("Whisper a question before the deck can answer.");
+      setError(text.emptyQuestion);
       return;
     }
 
@@ -65,7 +121,7 @@ export default function Home() {
 
   async function revealCards() {
     if (!canReveal) {
-      setError("Choose three cards to complete the spread.");
+      setError(text.incompleteSpread);
       return;
     }
 
@@ -90,7 +146,7 @@ export default function Home() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ question, cards: nextCards }),
+        body: JSON.stringify({ question, cards: nextCards, language }),
       });
 
       const payload = await response.json();
@@ -105,7 +161,7 @@ export default function Home() {
       setError(
         readingError instanceof Error
           ? readingError.message
-          : "The veil flickered. Please try the reading again.",
+          : text.genericError,
       );
     } finally {
       setIsLoading(false);
@@ -123,33 +179,41 @@ export default function Home() {
   }
 
   return (
-    <main className="shell">
+    <main className="shell" lang={language}>
       <section className="hero" aria-label="Moonlit tarot reading">
         <div className="stars" />
         <div className="aurora" />
-        <div className="content">
-          <p className="eyebrow">Moonlit Tarot</p>
-          <h1>Ask the question under the quiet sky.</h1>
+        <div className={`content ${stage === "ask" ? "landingContent" : ""}`}>
+          <button
+            className="languageToggle"
+            type="button"
+            onClick={() => setLanguage((current) => (current === "en" ? "zh" : "en"))}
+            aria-label={text.languageLabel}
+          >
+            {text.languageSwitch}
+          </button>
+          <p className="eyebrow">{text.brand}</p>
+          <h1>{text.heading}</h1>
 
           {stage === "ask" && (
             <form className="questionForm" onSubmit={submitQuestion}>
-              <label htmlFor="question">Your question</label>
+              <label htmlFor="question">{text.questionLabel}</label>
               <div className="inputRow">
                 <input
                   id="question"
                   value={question}
                   onChange={(event) => setQuestion(event.target.value)}
-                  placeholder="What does my next chapter ask of me?"
+                  placeholder={text.questionPlaceholder}
                   autoComplete="off"
                 />
-                <button type="submit">Enter</button>
+                <button type="submit">{text.enter}</button>
               </div>
             </form>
           )}
 
           {stage !== "ask" && (
             <div className="questionPanel">
-              <span>Your question</span>
+              <span>{text.questionLabel}</span>
               <p>{question}</p>
             </div>
           )}
@@ -157,8 +221,8 @@ export default function Home() {
           {stage === "select" && (
             <section className="deckArea" aria-label="Choose three tarot cards">
               <div className="deckHeader">
-                <p>Choose three cards</p>
-                <span>{selectedIndexes.length}/3 selected</span>
+                <p>{text.chooseThree}</p>
+                <span>{selectedIndexes.length}/3 {text.selected}</span>
               </div>
               <div className="cardFan">
                 {selectableCards.map((cardIndex) => {
@@ -180,7 +244,7 @@ export default function Home() {
                 })}
               </div>
               <button className="primaryAction" onClick={revealCards} type="button" disabled={!canReveal}>
-                Reveal the spread
+                {text.reveal}
               </button>
             </section>
           )}
@@ -193,7 +257,7 @@ export default function Home() {
                   key={card.id}
                   style={{ "--reveal-delay": `${index * 260}ms` } as CSSProperties}
                 >
-                  <span className="position">{card.position}</span>
+                  <span className="position">{formatPosition(card.position)}</span>
                   <div className="cardFace">
                     <div className="sigil">{card.symbol}</div>
                     <h2>{card.name}</h2>
@@ -219,19 +283,19 @@ export default function Home() {
               <div className="readingGrid">
                 {reading.cards.map((card) => (
                   <article key={card.position}>
-                    <span>{card.position}</span>
+                    <span>{formatPosition(card.position)}</span>
                     <h3>{card.title}</h3>
                     <p>{card.message}</p>
                   </article>
                 ))}
               </div>
               <div className="synthesis">
-                <h3>Guidance</h3>
+                <h3>{text.guidance}</h3>
                 <p>{reading.synthesis}</p>
                 <small>{reading.disclaimer}</small>
               </div>
               <button className="secondaryAction" onClick={resetReading} type="button">
-                Ask another question
+                {text.askAnother}
               </button>
             </section>
           )}
@@ -241,14 +305,16 @@ export default function Home() {
               <p>{error}</p>
               {cards.length > 0 && (
                 <button onClick={() => requestReading()} type="button">
-                  Try again
+                  {text.retry}
                 </button>
               )}
             </div>
           )}
 
           {selectedCards.length > 0 && stage === "select" && (
-            <p className="selectedHint">The chosen cards are listening: {selectedCards.length} lit.</p>
+            <p className="selectedHint">
+              {text.chosenHint.replace("{count}", String(selectedCards.length))}
+            </p>
           )}
         </div>
       </section>

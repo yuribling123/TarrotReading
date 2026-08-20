@@ -47,9 +47,8 @@ button:disabled {
 
 .hero {
   align-items: center;
-  background:
-    radial-gradient(circle at 50% 12%, rgba(215, 181, 109, 0.16), transparent 22rem),
-    linear-gradient(145deg, #130f1f 0%, #203a39 45%, #402438 100%);
+  background: #ffffff;
+  color: var(--night);
   display: flex;
   min-height: 100vh;
   padding: 44px 20px;
@@ -74,7 +73,7 @@ button:disabled {
     86px 86px,
     132px 132px;
   mask-image: linear-gradient(to bottom, black 0%, transparent 82%);
-  opacity: 0.34;
+  opacity: 0;
 }
 
 .aurora {
@@ -82,6 +81,7 @@ button:disabled {
     linear-gradient(115deg, transparent 15%, rgba(49, 88, 79, 0.36), transparent 44%),
     linear-gradient(245deg, transparent 30%, rgba(180, 106, 121, 0.24), transparent 66%);
   filter: blur(18px);
+  opacity: 0;
 }
 
 .content {
@@ -90,6 +90,52 @@ button:disabled {
   position: relative;
   width: 100%;
   z-index: 1;
+}
+
+.languageToggle {
+  background: #ffffff;
+  border: 1px solid rgba(19, 15, 31, 0.24);
+  border-radius: 999px;
+  color: var(--night);
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  padding: 10px 14px;
+  position: fixed;
+  right: 24px;
+  top: 24px;
+  transition:
+    background 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
+  z-index: 2;
+}
+
+.languageToggle:hover {
+  background: var(--night);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.landingContent {
+  text-align: center;
+}
+
+.landingContent h1 {
+  font-size: clamp(1rem, 5.7vw, 5.6rem);
+  margin-left: auto;
+  margin-right: auto;
+  white-space: nowrap;
+}
+
+.landingContent .eyebrow {
+  text-align: center;
+}
+
+.landingContent .questionForm {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
 }
 
 .eyebrow {
@@ -116,14 +162,14 @@ h1 {
 }
 
 .questionForm label {
-  color: var(--muted);
+  color: rgba(19, 15, 31, 0.68);
   display: block;
   margin-bottom: 10px;
 }
 
 .inputRow {
-  background: rgba(247, 239, 227, 0.1);
-  border: 1px solid rgba(247, 239, 227, 0.24);
+  background: #ffffff;
+  border: 1px solid rgba(19, 15, 31, 0.24);
   border-radius: 8px;
   display: grid;
   gap: 10px;
@@ -134,14 +180,14 @@ h1 {
 .inputRow input {
   background: transparent;
   border: 0;
-  color: var(--ink);
+  color: var(--night);
   min-width: 0;
   outline: 0;
   padding: 14px;
 }
 
 .inputRow input::placeholder {
-  color: rgba(247, 239, 227, 0.48);
+  color: rgba(19, 15, 31, 0.48);
 }
 
 .inputRow button,
@@ -505,8 +551,18 @@ h1 {
     padding: 28px 14px;
   }
 
+  .languageToggle {
+    right: 14px;
+    top: 14px;
+  }
+
   h1 {
     font-size: 2.6rem;
+    padding-top: 58px;
+  }
+
+  .landingContent h1 {
+    font-size: 1rem;
   }
 
   .deckHeader,

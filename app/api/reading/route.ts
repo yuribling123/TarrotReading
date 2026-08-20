@@ -5,10 +5,13 @@ import { type DrawnCard, spreadPositions } from "@/lib/tarot";
 type ReadingRequest = {
   question?: unknown;
   cards?: unknown;
+  language?: unknown;
 };
 
-const fallbackDisclaimer =
-  "Tarot is a reflective storytelling tool, not a guarantee of what will happen. Let this reading support your own discernment.";
+const fallbackDisclaimer = {
+  en: "Tarot is a reflective storytelling tool, not a guarantee of what will happen. Let this reading support your own discernment.",
+  zh: "塔罗是一种帮助思考的叙事工具，并非对未来的保证；请以自己的判断为准。",
+};
 
 function isDrawnCard(card: unknown): card is DrawnCard {
   if (!card || typeof card !== "object") {
@@ -27,7 +30,20 @@ function isDrawnCard(card: unknown): card is DrawnCard {
   );
 }
 
-function createFallbackReading(question: string, cards: DrawnCard[]) {
+function createFallbackReading(question: string, cards: DrawnCard[], language: "en" | "zh") {
+  if (language === "zh") {
+    return {
+      intro: `牌面围绕着你的问题展开：“${question}”。它们的讯息安静而富有象征意味，值得以你自己的智慧细细体会。`,
+      cards: cards.map((card) => ({
+        position: card.position,
+        title: `${card.name} · ${card.orientation === "Upright" ? "正位" : "逆位"}`,
+        message: `${card.name} 指向${card.meaning}。在“${card.position}”的位置上，它邀请你在迈出下一步之前，留意内心已经悄然发生的变化。`,
+      })),
+      synthesis: "整组牌指向一个先聆听、再行动的时刻。说出真实的感受，放下为了迎合他人而做的选择，并朝着让自己重新对齐的方向迈出下一步。",
+      disclaimer: fallbackDisclaimer.zh,
+    };
+  }
+
   return {
     intro: `The cards gather around your question: "${question}". Their message is quiet, symbolic, and meant to be held with your own wisdom.`,
     cards: cards.map((card) => ({
@@ -37,7 +53,7 @@ function createFallbackReading(question: string, cards: DrawnCard[]) {
     })),
     synthesis:
       "Together, the spread suggests a moment of listening before action. Name what feels true, release what feels performative, and choose the next step that restores your sense of inner alignment.",
-    disclaimer: fallbackDisclaimer,
+    disclaimer: fallbackDisclaimer.en,
   };
 }
 
@@ -52,6 +68,7 @@ export async function POST(request: Request) {
 
   const question = typeof body.question === "string" ? body.question.trim() : "";
   const cards = Array.isArray(body.cards) ? body.cards : [];
+  const language = body.language === "zh" ? "zh" : "en";
 
   if (!question) {
     return NextResponse.json({ error: "A question is required." }, { status: 400 });
@@ -62,7 +79,7 @@ export async function POST(request: Request) {
   }
 
   if (!process.env.OPENAI_API_KEY) {
-    return NextResponse.json(createFallbackReading(question, cards), { status: 200 });
+    return NextResponse.json(createFallbackReading(question, cards, language), { status: 200 });
   }
 
   const openai = new OpenAI({
@@ -76,7 +93,7 @@ export async function POST(request: Request) {
         {
           role: "system",
           content:
-            "You are a mystical but grounded tarot reader. You write in vivid, kind language without claiming certainty. Return only valid JSON.",
+            `You are a mystical but grounded tarot reader. You write in vivid, kind language without claiming certainty. Return only valid JSON. Write every user-facing string in ${language === "zh" ? "Simplified Chinese" : "English"}.`,
         },
         {
           role: "user",

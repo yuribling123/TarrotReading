@@ -1,36 +1,48 @@
 "use client";
 
 import { useEffect, useState } from "react";
+
 import { ReadingError } from "@/app/components/reading-error";
-import { TarotCard } from "@/app/components/tarot-card";
-import type { DrawnCard } from "@/lib/types";
+import { Card } from "@/app/components/card";
+import type { TarotCard } from "@/lib/types";
 
 type ReadingLoadingProps = {
-  cards: DrawnCard[];
+  cards: TarotCard[];
   complete: boolean;
-  error: string;
   onRetry: () => void;
   retryLabel: string;
   stages: readonly string[];
 };
 
-export function ReadingLoading({ cards, complete, error, onRetry, retryLabel, stages }: ReadingLoadingProps) {
+export function ReadingLoading({
+  cards,
+  complete,
+  onRetry,
+  retryLabel,
+  stages,
+}: ReadingLoadingProps) {
   const [stageIndex, setStageIndex] = useState(0);
 
+  // Cycle through loading messages until the reading is complete.
   useEffect(() => {
     if (complete || stages.length < 2) {
       return;
     }
 
     const timer = window.setInterval(() => {
-      setStageIndex((current) => (current + 1) % (stages.length - 1));
+      setStageIndex(
+        (current) => (current + 1) % (stages.length - 1)
+      );
     }, 3200);
 
     return () => window.clearInterval(timer);
   }, [complete, stages.length]);
 
   return (
-    <section className={`readingRitual ${complete ? "complete" : ""}`} aria-live="polite">
+    <section
+      className={`readingRitual ${complete ? "complete" : ""}`}
+      aria-live="polite"
+    >
       <div className="ritualSky" aria-hidden="true">
         <span className="ritualMoon" />
         <span className="ritualStar ritualStarOne">✦</span>
@@ -38,15 +50,19 @@ export function ReadingLoading({ cards, complete, error, onRetry, retryLabel, st
         <span className="ritualStar ritualStarThree">✦</span>
       </div>
 
-      <p className="ritualStatus">{complete ? stages[stages.length - 1] : stages[stageIndex]}</p>
+      <p className="ritualStatus">
+        {complete
+          ? stages[stages.length - 1]
+          : stages[stageIndex]}
+      </p>
 
-      <div className="ritualSpread">
-        {cards.map((card, index) => (
-          <TarotCard
-            key={card.id}
-            mode="revealed"
+      <div className="spread">
+        {cards.map((card) => (
+          <Card
+            key={card.name}
             card={card}
-            index={index}
+            isSelected
+            onSelect={() => {}}
           />
         ))}
       </div>
@@ -59,7 +75,6 @@ export function ReadingLoading({ cards, complete, error, onRetry, retryLabel, st
         <span />
       </div>
 
-      <ReadingError actionLabel={retryLabel} message={error} onAction={onRetry} />
     </section>
   );
 }

@@ -1,14 +1,12 @@
 type QuestionSummaryProps = {
-  label: string;
+
   question: string;
-  showLabel?: boolean;
-  minimal?: boolean;
+
 };
 
-export function QuestionSummary({ label, question, showLabel = true, minimal = false }: QuestionSummaryProps) {
+export function QuestionSummary({ question}: QuestionSummaryProps) {
   return (
-    <div className={`questionPanel${minimal ? " questionPanelMinimal" : ""}`}>
-      {showLabel ? <span>{label}</span> : null}
+    <div className="questionPanel">
       <p>{question}</p>
     </div>
   );

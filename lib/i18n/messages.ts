@@ -1,5 +1,5 @@
 export const messages = {
-  en: {
+  "en": {
     brand: "Moonlit Tarot",
     heading: "Moonlight guides and cards reflect.",
     questionLabel: "Moonlight guides and cards reflect",
@@ -31,7 +31,7 @@ export const messages = {
       Guidance: "Guidance",
     },
   },
-  zh: {
+  "zh": {
     brand: "月光塔罗",
     heading: "月光为引 牌面为镜",
     questionLabel: "月光为引 牌面为镜",

@@ -2,15 +2,21 @@
 
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { messages } from "@/lib/i18n";
 import { QuestionSummary } from "@/app/components/question-summary";
 import { ReadingResult } from "@/app/components/reading-result";
-import { TarotCard } from "@/app/components/tarot-card";
+import { Card } from "@/app/components/card";
 import { useReadingSession } from "@/app/components/reading-session-provider";
-import { messages } from "@/lib/i18n";
 
 export default function ReadingPage() {
   const router = useRouter();
-  const { cards, isHydrated, language, question, reading } = useReadingSession();
+  const {
+    language,
+    cards,
+    isHydrated,
+    question,
+    reading,
+  } = useReadingSession();
   const text = messages[language];
 
   useEffect(() => {
@@ -25,24 +31,27 @@ export default function ReadingPage() {
 
   return (
     <div className="content readingContent">
-      <QuestionSummary label={text.questionSummaryLabel} question={question} showLabel={false} minimal />
+      <QuestionSummary
+        question={question}
+      />
+
       <div className="spreadPanel">
-        <section className="spread" aria-label="Three card spread">
-          {cards.map((card, index) => (
-            <TarotCard
-              key={card.id}
-              mode="revealed"
+        <section
+          className="spread"
+          aria-label="Three card spread"
+        >
+          {cards.map((card) => (
+            <Card
+              key={card.name}
               card={card}
-              index={index}
-              position={reading.cards[index]?.position}
+              isSelected
+              onSelect={() => {}}
             />
           ))}
         </section>
       </div>
-      <ReadingResult
-        reading={reading}
-        summaryLabel={text.readingSummary}
-      />
+
+      <ReadingResult reading={reading} summaryLabel={text.readingSummary}/>
     </div>
   );
 }

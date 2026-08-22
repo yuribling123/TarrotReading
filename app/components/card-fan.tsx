@@ -1,25 +1,29 @@
 "use client";
-
-import { tarotDeck } from "@/lib/tarot";
-import { TarotCard } from "@/app/components/tarot-card";
+import { Card } from "@/app/components/card";
+import type { TarotCard } from "@/lib/types";
 
 type CardFanProps = {
-  selectedIndexes: number[];
-  onToggle: (cardIndex: number) => void;
+  deck: TarotCard[];
+  selectedCards: TarotCard[];
+  onSelect: (card: TarotCard) => void;
 };
 
-export function CardFan({ selectedIndexes, onToggle }: CardFanProps) {
+export function CardFan({
+  deck,
+  selectedCards,
+  onSelect,
+}: CardFanProps) {
   return (
     <div className="cardFanViewport">
       <div className="cardFan">
-        {tarotDeck.map((card, cardIndex) => (
-          <TarotCard
-            key={cardIndex}
-            mode="back"
-            cardIndex={cardIndex}
+        {deck.map((card) => (
+          <Card
+            key={card.name}
             card={card}
-            isSelected={selectedIndexes.includes(cardIndex)}
-            onSelect={onToggle}
+            isSelected={selectedCards.some(
+              (selectedCard) => selectedCard.name === card.name
+            )}
+            onSelect={onSelect}
           />
         ))}
       </div>

@@ -4,9 +4,12 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* ==================================================
+   THEME VARIABLES
+   ================================================== */
+
 :root {
   --ink: #f7efe3;
-  --muted: oklch(0.97 0 0);
   --gold: #d7b56d;
   --rose: #b46a79;
   --forest: #31584f;
@@ -14,6 +17,10 @@
   --violet: #342348;
   --panel: rgba(19, 15, 31, 0.68);
   --selection-primary-text: #3f2221;
+  --primary:rgb(155, 114, 42);
+
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
 
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
@@ -21,12 +28,12 @@
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
 
-  --primary: oklch(0.205 0 0);
   --primary-foreground: oklch(0.985 0 0);
 
-  --secondary: oklch(0.97 0 0);
+  --secondary:  #4B2020  ;
   --secondary-foreground: oklch(0.205 0 0);
 
+  --muted: oklch(0.97 0 0);
   --muted-foreground: oklch(0.556 0 0);
 
   --accent: oklch(0.97 0 0);
@@ -38,30 +45,12 @@
   --input: oklch(0.922 0 0);
   --ring: oklch(0.708 0 0);
 
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-
   --radius: 0.625rem;
-
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.556 0 0);
-
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
 }
 
-/* =========================
+/* ==================================================
    GLOBAL
-   ========================= */
+   ================================================== */
 
 * {
   box-sizing: border-box;
@@ -71,7 +60,10 @@ html,
 body {
   margin: 0;
   min-height: 100%;
-  scrollbar-width: none;
+  color: #9b722a;
+  cursor: pointer;
+  font-size: 0.82rem;
+  
 }
 
 html::-webkit-scrollbar,
@@ -108,9 +100,9 @@ button:disabled {
   opacity: 0.48;
 }
 
-/* =========================
+/* ==================================================
    APP SHELL
-   ========================= */
+   ================================================== */
 
 .shell {
   min-height: 100vh;
@@ -123,64 +115,7 @@ button:disabled {
   color: var(--night);
   display: flex;
   min-height: 100vh;
-  padding: 44px 20px;
   position: relative;
-}
-
-.stars,
-.aurora {
-  inset: 0;
-  pointer-events: none;
-  position: absolute;
-}
-
-.stars {
-  background-image:
-    radial-gradient(
-      circle,
-      rgba(247, 239, 227, 0.8) 0 1px,
-      transparent 1.5px
-    ),
-    radial-gradient(
-      circle,
-      rgba(215, 181, 109, 0.55) 0 1px,
-      transparent 1.5px
-    );
-
-  background-position:
-    0 0,
-    22px 34px;
-
-  background-size:
-    86px 86px,
-    132px 132px;
-
-  mask-image: linear-gradient(
-    to bottom,
-    black 0%,
-    transparent 82%
-  );
-
-  opacity: 0;
-}
-
-.aurora {
-  background:
-    linear-gradient(
-      115deg,
-      transparent 15%,
-      rgba(49, 88, 79, 0.36),
-      transparent 44%
-    ),
-    linear-gradient(
-      245deg,
-      transparent 30%,
-      rgba(180, 106, 121, 0.24),
-      transparent 66%
-    );
-
-  filter: blur(18px);
-  opacity: 0;
 }
 
 .content {
@@ -191,18 +126,16 @@ button:disabled {
   z-index: 1;
 }
 
-/* =========================
+/* ==================================================
    NAVIGATION
-   ========================= */
+   ================================================== */
 
 .topNavigation {
   align-items: center;
   background: #ffffff;
   border-bottom: 1px solid rgba(112, 82, 34, 0.16);
   box-shadow: 0 8px 22px rgba(70, 51, 22, 0.08);
-
   height: 76px;
-
   inset: 0 0 auto;
   overflow: hidden;
   position: fixed;
@@ -213,40 +146,51 @@ button:disabled {
   background: #d6b66f;
   border-radius: 50%;
   box-shadow: -9px 3px 0 #f7f0e3;
-
   content: "";
-
   height: 22px;
-  width: 22px;
-
   left: calc(50% - 158px);
   opacity: 0.82;
   position: absolute;
   top: 21px;
+  width: 22px;
+}
+
+.navBrand {
+  color: #9b722a;
+  cursor: pointer;
+  font-size: 0.82rem;
+  font-weight: 700;
+  left: 50%;
+  letter-spacing: 0.18em;
+  margin: 0;
+  position: absolute;
+  text-decoration: none;
+  text-transform: uppercase;
+  top: 26px;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+.navBrand:hover {
+  color: #63400b;
 }
 
 .languageToggle {
   background: rgba(255, 255, 255, 0.42);
   border: 0;
   border-radius: 999px;
-
   color: var(--night);
-
   font-size: 0.7rem;
   font-weight: 800;
   letter-spacing: 0.06em;
-
   padding: 10px 14px;
-
   position: absolute;
   right: 24px;
   top: 16px;
-
   transition:
     background 180ms ease,
     color 180ms ease,
     transform 180ms ease;
-
   z-index: 2;
 }
 
@@ -256,51 +200,21 @@ button:disabled {
   transform: translateY(-2px);
 }
 
-.navBrand {
-  color: #9b722a;
-  cursor: pointer;
-
-  font-size: 0.82rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-
-  left: 50%;
-  margin: 0;
-  position: absolute;
-  text-decoration: none;
-  text-transform: uppercase;
-  top: 26px;
-
-  transform: translateX(-50%);
-  z-index: 2;
-}
-
-.navBrand:hover {
-  color: #63400b;
-}
-
-/* =========================
+/* ==================================================
    LANDING PAGE
-   ========================= */
+   ================================================== */
 
 .landingContent {
   color: #f7f3e8;
   text-align: center;
-
-  /*
-   * Desktop visual positioning.
-   * Mobile breakpoints override this.
-   */
   transform: translateY(-190px);
 }
 
 .landingBackdrop {
   background: #ffffff;
   inset: 76px 0 0;
-
   overflow: hidden;
   pointer-events: none;
-
   position: fixed;
   z-index: 0;
 }
@@ -328,62 +242,219 @@ button:disabled {
 
   left: 50%;
 
-  mask-image: radial-gradient(
-    ellipse at center,
-    #000 52%,
-    rgba(0, 0, 0, 0.78) 68%,
-    transparent 100%
-  );
+  mask-image:
+    radial-gradient(
+      ellipse at center,
+      #000 52%,
+      rgba(0, 0, 0, 0.78) 68%,
+      transparent 100%
+    );
 
-  -webkit-mask-image: radial-gradient(
-    ellipse at center,
-    #000 52%,
-    rgba(0, 0, 0, 0.78) 68%,
-    transparent 100%
-  );
+  -webkit-mask-image:
+    radial-gradient(
+      ellipse at center,
+      #000 52%,
+      rgba(0, 0, 0, 0.78) 68%,
+      transparent 100%
+    );
 
   top: 24px;
-
   transform: translateX(-50%);
 
-  width: min(
-    72vw,
-    calc((100vh - 124px) * 0.5)
-  );
+  width:
+    min(
+      72vw,
+      calc((100vh - 124px) * 0.5)
+    );
 }
 
 .landingBackdrop::after {
-  background: radial-gradient(
-    ellipse 38% 82% at center,
-    transparent 54%,
-    rgba(255, 255, 255, 0.56) 78%,
-    #ffffff 100%
-  );
+  background:
+    radial-gradient(
+      ellipse 38% 82% at center,
+      transparent 54%,
+      rgba(255, 255, 255, 0.56) 78%,
+      #ffffff 100%
+    );
 }
 
 .landingContent .eyebrow {
   text-align: center;
 }
 
-/* =========================
+/* ==================================================
+   GENERAL CONTENT
+   ================================================== */
+
+
+.eyebrow {
+  color: var(--gold);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  margin: 0 0 18px;
+  text-transform: uppercase;
+}
+
+h1 {
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:
+    clamp(2.7rem, 7vw, 6.2rem);
+
+  font-weight: 500;
+  line-height: 0.95;
+  margin: 0;
+  max-width: 900px;
+}
+
+/* ==================================================
+   QUESTION FORM
+   ================================================== */
+
+.questionForm {
+  margin-top: 42px;
+  max-width: 820px;
+}
+
+.questionForm label {
+  color: rgba(19, 15, 31, 0.68);
+  display: block;
+  margin-bottom: 18px;
+  padding: 6px 0;
+}
+
+.inputRow {
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(19, 15, 31, 0.24);
+  border-radius: 8px;
+
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 1fr auto;
+
+  padding: 10px;
+  position: relative;
+
+  transition:
+    background 220ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.inputRow:focus-within {
+  background: #ffffff;
+  border-color: rgba(190, 145, 59, 0.64);
+  box-shadow: 0 0 0 3px rgba(215, 181, 109, 0.1);
+}
+
+.inputRow > * {
+  position: relative;
+  z-index: 1;
+}
+
+.inputRow input {
+  background: transparent;
+  border: 0;
+  caret-color: #a97924;
+  color: var(--night);
+  min-width: 0;
+  outline: 0;
+  padding: 14px;
+}
+
+.inputRow input::placeholder {
+  color: rgba(19, 15, 31, 0.48);
+}
+
+.inputRow button,
+.primaryAction,
+.secondaryAction,
+.error button {
+  background:
+    linear-gradient(
+      135deg,
+      #e8cb82 0%,
+      #d1a85b   100%
+    );
+
+  border: 0;
+  border-radius: 999px;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.45),
+    0 5px 12px rgba(117, 78, 21, 0.16);
+
+  color: #1d1508;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  min-width: 82px;
+  padding: 13px 20px;
+
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.inputRow button {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  color: #8c621f;
+}
+
+.inputRow button:hover {
+  background:
+    radial-gradient(
+      circle at 50% 35%,
+      rgba(242, 211, 135, 0.52),
+      rgba(215, 181, 109, 0.14) 70%
+    );
+
+  box-shadow:
+    0 8px 20px
+    rgba(185, 137, 56, 0.22);
+
+  color: #63400b;
+
+  transform:
+    translateY(-2px)
+    scale(1.04);
+}
+
+.inputRow button:focus-visible {
+  outline: 2px solid rgba(190, 145, 59, 0.72);
+  outline-offset: 2px;
+}
+
+.primaryAction:hover,
+.secondaryAction:hover,
+.error button:hover {
+  box-shadow:
+    0 14px 34px
+    rgba(215, 181, 109, 0.22);
+
+  transform: translateY(-2px);
+}
+
+/* ==================================================
    LANDING QUESTION FORM
-   ========================= */
+   ================================================== */
 
 .landingContent .questionForm {
   margin-left: auto;
   margin-right: auto;
-
   text-align: left;
-
   transform: translateY(20px);
 }
 
 .landingContent .questionForm label {
   color: #79591e;
-
   font-size: 0.78rem;
   font-weight: 500;
-
   position: relative;
   width: fit-content;
   z-index: 1;
@@ -396,42 +467,32 @@ button:disabled {
     0 0 48px rgba(255, 255, 255, 0.75);
 }
 
-/*
- * Soft white aura behind the label.
- */
 .landingContent .questionForm label::before {
-  background: radial-gradient(
-    ellipse at center,
-    rgba(255, 255, 255, 1) 0%,
-    rgba(255, 255, 255, 1) 28%,
-    rgba(255, 255, 255, 0.94) 44%,
-    rgba(255, 255, 255, 0.7) 62%,
-    rgba(255, 255, 255, 0.32) 78%,
-    rgba(255, 255, 255, 0.1) 90%,
-    transparent 100%
-  );
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(255, 255, 255, 1) 28%,
+      rgba(255, 255, 255, 0.94) 44%,
+      rgba(255, 255, 255, 0.7) 62%,
+      rgba(255, 255, 255, 0.32) 78%,
+      rgba(255, 255, 255, 0.1) 90%,
+      transparent 100%
+    );
 
   content: "";
-
   filter: blur(7px);
-
   inset: -22px -40px;
-
   pointer-events: none;
   position: absolute;
-
   z-index: -1;
 }
 
 .landingContent .inputRow {
   backdrop-filter: none;
-
   background: #ffffff;
-
   border-color: rgba(137, 104, 45, 0.44);
-
-  box-shadow:
-    0 16px 40px rgba(41, 28, 10, 0.12);
+  box-shadow: 0 16px 40px rgba(41, 28, 10, 0.12);
 }
 
 .landingContent .inputRow:focus-within {
@@ -459,199 +520,9 @@ button:disabled {
   color: #5f3f0c;
 }
 
-/* =========================
-   GENERAL CONTENT
-   ========================= */
-
-.selectionContent {
-  transform: translateY(-58px);
-}
-
-.eyebrow {
-  color: var(--gold);
-
-  font-size: 0.82rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-
-  margin: 0 0 18px;
-
-  text-transform: uppercase;
-}
-
-h1 {
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
-  font-size: clamp(2.7rem, 7vw, 6.2rem);
-  font-weight: 500;
-
-  line-height: 0.95;
-
-  margin: 0;
-  max-width: 900px;
-}
-
-/* =========================
-   QUESTION FORM
-   ========================= */
-
-.questionForm {
-  margin-top: 42px;
-  max-width: 820px;
-}
-
-.questionForm label {
-  color: rgba(19, 15, 31, 0.68);
-
-  display: block;
-
-  margin-bottom: 18px;
-  padding: 6px 0;
-}
-
-.inputRow {
-  background: rgba(255, 255, 255, 0.96);
-
-  border:
-    1px solid
-    rgba(19, 15, 31, 0.24);
-
-  border-radius: 8px;
-
-  display: grid;
-
-  gap: 10px;
-  grid-template-columns: 1fr auto;
-
-  padding: 10px;
-
-  position: relative;
-
-  transition:
-    background 220ms ease,
-    border-color 220ms ease,
-    box-shadow 220ms ease;
-}
-
-.inputRow:focus-within {
-  background: #ffffff;
-
-  border-color:
-    rgba(190, 145, 59, 0.64);
-
-  box-shadow:
-    0 0 0 3px
-    rgba(215, 181, 109, 0.1);
-}
-
-.inputRow > * {
-  position: relative;
-  z-index: 1;
-}
-
-.inputRow input {
-  background: transparent;
-  border: 0;
-
-  caret-color: #a97924;
-
-  color: var(--night);
-
-  min-width: 0;
-
-  outline: 0;
-
-  padding: 14px;
-}
-
-.inputRow input::placeholder {
-  color: rgba(19, 15, 31, 0.48);
-}
-
-.inputRow button,
-.primaryAction,
-.secondaryAction,
-.error button {
-  background:
-    linear-gradient(
-      135deg,
-      #e8cb82 0%,
-      #c59643 100%
-    );
-
-  border: 0;
-  border-radius: 999px;
-
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.45),
-    0 5px 12px rgba(117, 78, 21, 0.16);
-
-  color: #1d1508;
-
-  font-weight: 800;
-  letter-spacing: 0.04em;
-
-  min-width: 82px;
-
-  padding: 13px 20px;
-
-  transition:
-    transform 180ms ease,
-    box-shadow 180ms ease;
-}
-
-.inputRow button {
-  background: transparent;
-  border: 0;
-
-  box-shadow: none;
-
-  color: #8c621f;
-}
-
-.inputRow button:hover {
-  background: radial-gradient(
-    circle at 50% 35%,
-    rgba(242, 211, 135, 0.52),
-    rgba(215, 181, 109, 0.14) 70%
-  );
-
-  box-shadow:
-    0 8px 20px
-    rgba(185, 137, 56, 0.22);
-
-  color: #63400b;
-
-  transform:
-    translateY(-2px)
-    scale(1.04);
-}
-
-.inputRow button:focus-visible {
-  outline:
-    2px solid
-    rgba(190, 145, 59, 0.72);
-
-  outline-offset: 2px;
-}
-
-.inputRow button:hover,
-.primaryAction:hover,
-.secondaryAction:hover,
-.error button:hover {
-  box-shadow:
-    0 14px 34px
-    rgba(215, 181, 109, 0.22);
-
-  transform: translateY(-2px);
-}
-
-/* =========================
+/* ==================================================
    TOAST
-   ========================= */
+   ================================================== */
 
 [data-slot="toast-viewport"] {
   bottom: 28px;
@@ -659,20 +530,13 @@ h1 {
 
 [data-slot="toast"] {
   background: rgba(14, 19, 31, 0.96);
-
-  border-color:
-    rgba(215, 181, 109, 0.58);
-
-  box-shadow:
-    0 18px 46px
-    rgba(18, 14, 31, 0.25);
-
+  border-color: rgba(215, 181, 109, 0.58);
+  box-shadow: 0 18px 46px rgba(18, 14, 31, 0.25);
   color: #f7efe3;
 }
 
 [data-slot="toast-title"] {
   color: #f7efe3;
-
   font-size: 0.88rem;
   line-height: 1.5;
 }
@@ -689,64 +553,52 @@ h1 {
   color: #ffffff;
 }
 
-/* =========================
+/* ==================================================
    QUESTION PANEL
-   ========================= */
+   ================================================== */
 
 .questionPanel {
   background: transparent;
-
-  border:
-    1px solid
-    rgba(19, 15, 31, 0.12);
-
-  border-radius: 8px;
-
-  margin-top: 18px;
-  max-width: 360px;
-
-  padding: 18px 20px;
+  border: none;
+  margin-top: 60px;
+  color: #3f352c;
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  line-height: 1.7;
+  text-align: center;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  scrollbar-width: none;
+  text-shadow: 0 1px 3px rgba(63, 53, 44, 0.3);
 }
 
-.questionPanel span,
-.deckHeader span,
-.position,
-.reading article span {
-  color: var(--gold);
 
-  font-size: 0.78rem;
-  font-weight: 800;
 
-  text-transform: uppercase;
+
+/* ==================================================
+   CARD SELECTION / DECK
+   ================================================== */
+
+.selectionContent {
+
+  transform: translateY(-80px);
+
 }
-
-.questionPanel p {
-  font-size: 1.18rem;
-
-  margin: 8px 0 0;
-}
-
-/* =========================
-   DECK
-   ========================= */
-
 .deckArea {
-  margin-top: 26px;
+  padding-inline:20px
 }
 
 .deckHeader {
   align-items: center;
-
   display: flex;
-
+  flex-direction:column;
   justify-content: center;
-
   margin: auto;
-  max-width: 1040px;
-
-  padding: 40px;
-
   position: relative;
+  font-size:1.1rem;
+  color:#4B2020  ;
 }
 
 .selectionInstructions {
@@ -768,72 +620,46 @@ h1 {
     clamp(1.05rem, 1.65vw, 1.45rem);
 
   font-weight: 500;
-
   letter-spacing: 0.07em;
-
   margin: 0;
 }
 
 .selectionInstructions p + p {
   color: rgba(19, 15, 31, 0.48);
-
-  font-family: inherit;
-
   font-size: 0.9rem;
   font-weight: 400;
-
   letter-spacing: 0.035em;
-
   padding-top: 20px;
 }
 
-.deckHeader span {
-  position: absolute;
-  right: 0;
-}
 
-.cardFanViewport {
-  max-width: 100%;
-
-  overflow: hidden;
-
-  padding-left: 42px;
-  padding-right: 42px;
-}
 
 .cardFan {
   align-items: flex-end;
-
   display: flex;
-
   max-width: 100%;
-
   overflow-x: auto;
-
   overscroll-behavior-inline: contain;
-
   padding: 46px 0 42px;
-
   perspective: 1000px;
-
   scrollbar-width: none;
-
   scroll-snap-type: x proximity;
 }
 
+/* Shared card shell */
 .cardBack {
   animation:
-    dealIn 580ms ease both;
-
-  animation-delay:
-    var(--card-delay);
+    dealIn
+    580ms
+    ease
+    both;
 
   aspect-ratio: 701 / 1200;
 
   background: transparent;
 
   border: 0;
-  border-radius: 8px;
+  border-radius: 12px;
 
   box-shadow: none;
 
@@ -841,55 +667,39 @@ h1 {
 
   min-height: 206px;
 
+  padding: 0;
+
   perspective: 900px;
 
   position: relative;
 
   scroll-snap-align: center;
 
-  transform:
-    rotate(var(--card-tilt));
-
   transform-origin: bottom center;
 
   transition:
     transform 220ms ease,
-    box-shadow 220ms ease,
-    border-color 220ms ease;
-
-  z-index: var(--card-order);
+    filter 220ms ease;
 }
 
-.cardBack + .cardBack {
+/* Only selection cards overlap */
+.cardFan .cardBack + .cardBack {
   margin-left: -42px;
 }
 
-.cardBack::before {
-  display: none;
-}
-
-.cardInner,
-.cardBackFace,
-.cardFrontFace {
+.cardInner {
   inset: 0;
   position: absolute;
-}
-
-.cardInner {
   transform-style: preserve-3d;
-
-  transition:
-    transform 620ms ease;
-}
-
-.cardBack.selected .cardInner {
-  transform: rotateY(180deg);
+  transition: transform 620ms ease;
 }
 
 .cardBackFace,
 .cardFrontFace {
   backface-visibility: hidden;
-  border-radius: 8px;
+  inset: 0;
+  overflow: hidden;
+  position: absolute;
 }
 
 .cardBackFace {
@@ -900,74 +710,49 @@ h1 {
 }
 
 .cardFrontFace {
-  align-items: center;
-
   background: transparent;
+  transform: rotateY(180deg);
+}
 
-  color: #251c16;
-
-  display: flex;
-  flex-direction: column;
-
-  justify-content: center;
-
-  overflow: hidden;
-
-  padding: 0;
-
+.cardBack.selected .cardInner {
   transform: rotateY(180deg);
 }
 
 .cardArtwork {
-  display: block;
-
+  border-radius: 12px ;
   height: 100%;
-
-  object-fit: contain;
-
+  object-fit: fill;
   width: 100%;
 }
 
-.cardBack:hover,
-.cardBack.selected {
-  border-color: var(--gold);
+.cardArtwork.reversed {
+  transform: rotate(180deg);
+}
 
-  box-shadow: none;
-
+/* Selection interaction only */
+.cardFan .cardBack:hover,
+.cardFan .cardBack.selected {
   transform:
     translateY(-18px)
-    rotate(var(--card-tilt))
     rotateX(8deg);
 }
 
-.cardBack:hover {
+.cardFan .cardBack:hover {
   z-index: 90;
 }
 
-.cardBack.selected {
+.cardFan .cardBack.selected {
   filter: saturate(1.2);
-
-  z-index: var(--card-order);
+  z-index: 100;
 }
 
-.cardMoon,
-.cardStar {
-  display: none;
-}
 
-.primaryAction {
-  margin: auto;
-}
 
 .deckArea > .primaryAction {
   color: #ffffff;
-
   display: block;
-
   font-weight: 500;
-
-  margin-left: auto;
-  margin-right: auto;
+  margin-inline: auto;
 }
 
 .selectedHint {
@@ -984,141 +769,58 @@ h1 {
   margin-top: 18px;
 }
 
-/* =========================
-   SPREAD
-   ========================= */
-
-.spread {
-  display: grid;
-
-  gap: 22px;
-
-  grid-template-columns:
-    repeat(3, minmax(0, 1fr));
-
-  margin: 0 auto;
-
-  max-width: 660px;
-
-  width: 100%;
-}
+/* ==================================================
+   REVEALED CARD SPREAD
+   ================================================== */
 
 .readingContent {
   align-items: center;
-
   display: flex;
   flex-direction: column;
 }
 
-.questionPanelMinimal {
-  align-self: center;
 
-  border-color: transparent;
-
-  padding: 18px;
-}
-
-.questionPanelMinimal p {
-  color: #74624f;
-
-  font-family:
-    "Songti SC",
-    "STSong",
-    "Noto Serif SC",
-    "Iowan Old Style",
-    Baskerville,
-    serif;
-
-  font-size: 0.9rem;
-  font-weight: 400;
-
-  letter-spacing: 0.055em;
-
-  line-height: 1.6;
-
-  margin: 0;
-}
-
-.readingContent .questionPanelMinimal {
-  transform: translateY(34px);
-}
 
 .spreadPanel {
   background: #ffffff;
-
   border: 1px solid transparent;
   border-radius: 12px;
-
-  margin-top: 28px;
-
   max-width: 780px;
-
   padding: 28px 32px;
-
   width: 100%;
 }
 
-.tarotCard {
-  animation:
-    revealCard 760ms ease both;
-
-  animation-delay:
-    var(--reveal-delay);
-
-  background: transparent;
-
-  border-color: transparent;
-  border-radius: 8px;
-
-  box-shadow: none;
-
-  color: #251c16;
-
-  min-height: 270px;
-
-  padding: 12px;
-
-  transform-origin: center;
-}
-
-.tarotCard.reversed .cardFace {
-  transform: rotate(180deg);
-}
-
-.cardFace {
+.spread {
   align-items: center;
-
-  background: transparent;
-
-  border-color: transparent;
-  border-radius: 6px;
-
   display: flex;
-  flex-direction: column;
-
-  height: calc(100% - 12px);
-
+  gap: clamp(18px, 6vw, 100px);
   justify-content: center;
-
-  margin-top: 6px;
-
-  min-height: 220px;
-
-  padding: 8px;
-
-  text-align: center;
-
-  transition:
-    transform 500ms ease;
+  margin: 0 auto;
+  width: 100%;
 }
 
-.spreadPanel .position {
-  display: none;
+/* Reading cards do not overlap and may shrink */
+.spread .cardBack {
+  flex: 0 1 120px;
+  min-height: 0;
+  min-width: 0;
+  width: 120px;
 }
 
-/* =========================
+.spread .cardBack + .cardBack {
+  margin-left: 0;
+}
+
+/* No hover lift on final reading */
+.spread .cardBack,
+.spread .cardBack:hover,
+.spread .cardBack.selected {
+  transform: none;
+}
+
+/* ==================================================
    RITUAL / LOADING
-   ========================= */
+   ================================================== */
 
 .ritualContent {
   transform: translateY(4px);
@@ -1126,28 +828,19 @@ h1 {
 
 .readingRitual {
   align-items: center;
-
   display: flex;
   flex-direction: column;
-
   margin: 0 auto;
-
   max-width: 820px;
-
   min-height: 610px;
-
   padding: 16px 24px 30px;
-
   text-align: center;
-
   width: 100%;
 }
 
 .ritualSky {
   height: 82px;
-
   position: relative;
-
   width: 250px;
 }
 
@@ -1159,7 +852,6 @@ h1 {
     infinite;
 
   background: #e4c775;
-
   border-radius: 50%;
 
   box-shadow:
@@ -1167,17 +859,12 @@ h1 {
     0 0 60px rgba(215, 181, 109, 0.18);
 
   height: 52px;
-  width: 52px;
-
   left: 50%;
-
   overflow: hidden;
-
   position: absolute;
-
   top: 5px;
-
   transform: translateX(-50%);
+  width: 52px;
 }
 
 .ritualMoon::after {
@@ -1189,18 +876,13 @@ h1 {
     alternate;
 
   background: #ffffff;
-
   border-radius: 50%;
-
   content: "";
-
   height: 54px;
-  width: 54px;
-
   position: absolute;
-
   right: -33px;
   top: -6px;
+  width: 54px;
 }
 
 .ritualStar {
@@ -1211,9 +893,7 @@ h1 {
     infinite;
 
   color: #bd9142;
-
   font-size: 0.72rem;
-
   position: absolute;
 }
 
@@ -1224,14 +904,12 @@ h1 {
 
 .ritualStarTwo {
   animation-delay: 700ms;
-
   right: 30px;
   top: 13px;
 }
 
 .ritualStarThree {
   animation-delay: 1.2s;
-
   right: 4px;
   top: 58px;
 }
@@ -1248,15 +926,11 @@ h1 {
     serif;
 
   font-size: 1rem;
-
   letter-spacing: 0.08em;
-
   margin: 2px 0 28px;
-
   min-height: 1.6em;
 
-  transition:
-    opacity 240ms ease;
+  transition: opacity 240ms ease;
 }
 
 .ritualStatus::after {
@@ -1267,15 +941,10 @@ h1 {
     infinite;
 
   content: "";
-
   display: inline-block;
-
   overflow: hidden;
-
   text-align: left;
-
   vertical-align: bottom;
-
   width: 1.5em;
 }
 
@@ -1284,17 +953,11 @@ h1 {
 }
 
 .ritualSpread {
-  display: grid;
-
-  gap: 34px;
-
-  grid-template-columns:
-    repeat(3, minmax(0, 1fr));
-
+  display: flex;
+  gap: clamp(18px, 5vw, 34px);
+  justify-content: center;
   max-width: 610px;
-
   position: relative;
-
   width: 100%;
 }
 
@@ -1314,55 +977,44 @@ h1 {
     );
 
   content: "";
-
   filter: blur(8px);
-
   inset: -18px -30px;
-
   pointer-events: none;
-
   position: absolute;
 }
 
-.ritualSpread .tarotCard {
+.ritualSpread .cardBack {
+  flex: 0 1 150px;
+  min-height: 0;
+  min-width: 0;
+  width: 150px;
+
   filter:
     drop-shadow(
       0 16px 18px
       rgba(41, 30, 15, 0.14)
     );
 
-  min-height: 290px;
-
-  padding: 0;
-
   position: relative;
-
   z-index: 1;
 }
 
-.ritualSpread .position {
-  display: none;
+.ritualSpread .cardBack + .cardBack {
+  margin-left: 0;
 }
 
-.ritualSpread .cardFace {
-  height: 100%;
-
-  margin: 0;
-
-  padding: 0;
+.ritualSpread .cardBack,
+.ritualSpread .cardBack:hover,
+.ritualSpread .cardBack.selected {
+  transform: none;
 }
 
 .ritualThread {
   align-items: center;
-
   display: flex;
-
   justify-content: center;
-
   margin-top: 24px;
-
   max-width: 420px;
-
   width: 72%;
 }
 
@@ -1382,7 +1034,6 @@ h1 {
     );
 
   height: 1px;
-
   width: 44%;
 }
 
@@ -1394,7 +1045,6 @@ h1 {
     infinite;
 
   background: #c69645;
-
   border-radius: 50%;
 
   box-shadow:
@@ -1414,9 +1064,9 @@ h1 {
     both;
 }
 
-/* =========================
-   READING
-   ========================= */
+/* ==================================================
+   READING RESULT
+   ================================================== */
 
 .reading {
   background: #ffffff;
@@ -1437,21 +1087,9 @@ h1 {
 }
 
 .spreadLens {
-  color: var(--gold);
-
-  font-family:
-    Inter,
-    ui-sans-serif,
-    system-ui,
-    sans-serif;
-
-  font-size: 0.72rem;
-  font-weight: 800;
-
-  letter-spacing: 0.08em;
-
+  font-size: 1rem;
+  font-weight:600;
   margin: 0 0 16px;
-
   text-transform: uppercase;
 }
 
@@ -1459,23 +1097,18 @@ h1 {
   margin-right: 6px;
 }
 
-.synthesis,
-.reading article {
-  background: #ffffff;
-
-  border:
-    1px solid
-    rgba(19, 15, 31, 0.12);
-
-  border-radius: 8px;
-}
-
 .readingGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
   align-items: stretch;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(3, 1fr);
 }
+
+.readingGrid span{
+  color:var(--primary);
+  font-weight:600;
+}
+
 
 .readingGrid article {
   height: auto;
@@ -1485,41 +1118,32 @@ h1 {
 
 .reading article,
 .synthesis {
-  line-height: 1.65;
+  background: #ffffff;
 
+  border:
+    1px solid
+    rgba(19, 15, 31, 0.12);
+
+  border-radius: 8px;
+  line-height: 1.65;
   padding: 20px;
 }
 
 .reading h3 {
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
   font-size: 1rem;
-
-  margin: 8px 0 4px;
-
+  margin: 6px 0 ;
   overflow: hidden;
-
   text-overflow: ellipsis;
-
   white-space: nowrap;
 }
 
 .reading p {
-  color: rgba(19, 15, 31, 0.76);
 
-  font-size: 0.72rem;
-
-  line-height: 1.55;
 }
 
 .reading .cardOrientation {
-  color: rgba(19, 15, 31, 0.56);
-
+  color: grey;
   font-size: 0.72rem;
-
   margin: 0 0 10px;
 }
 
@@ -1529,17 +1153,13 @@ h1 {
 
 .synthesis p {
   font-size: 0.92rem;
-
   line-height: 1.7;
 }
 
 .synthesis small {
   color: rgba(19, 15, 31, 0.56);
-
   display: block;
-
   line-height: 1.55;
-
   margin-top: 14px;
 }
 
@@ -1547,32 +1167,20 @@ h1 {
   margin-top: 18px;
 }
 
-/* =========================
+/* ==================================================
    ERROR
-   ========================= */
+   ================================================== */
 
 .error {
   align-items: center;
-
-  background:
-    rgba(180, 106, 121, 0.16);
-
-  border:
-    1px solid
-    rgba(180, 106, 121, 0.45);
-
+  background: rgba(180, 106, 121, 0.16);
+  border: 1px solid rgba(180, 106, 121, 0.45);
   border-radius: 8px;
-
   display: flex;
-
   gap: 14px;
-
   justify-content: space-between;
-
   margin-top: 20px;
-
   max-width: 820px;
-
   padding: 14px;
 }
 
@@ -1581,53 +1189,19 @@ h1 {
   margin: 0;
 }
 
-/* =========================
+/* ==================================================
    ANIMATIONS
-   ========================= */
+   ================================================== */
 
 @keyframes dealIn {
   from {
     opacity: 0;
-
-    transform:
-      translateY(42px)
-      rotate(var(--card-tilt));
+    transform: translateY(42px);
   }
 
   to {
     opacity: 1;
-
-    transform:
-      translateY(0)
-      rotate(var(--card-tilt));
-  }
-}
-
-@keyframes revealCard {
-  0% {
-    opacity: 0;
-
-    transform:
-      rotateY(90deg)
-      translateY(18px);
-  }
-
-  100% {
-    opacity: 1;
-
-    transform:
-      rotateY(0deg)
-      translateY(0);
-  }
-}
-
-@keyframes shimmer {
-  from {
-    background-position: 200% 0;
-  }
-
-  to {
-    background-position: -200% 0;
+    transform: translateY(0);
   }
 }
 
@@ -1745,78 +1319,43 @@ h1 {
 @media (max-width: 860px) {
   .shell {
     min-height: 100dvh;
-
     overflow-x: hidden;
     overflow-y: auto;
   }
 
-  /*
-   * Default mobile/tablet page positioning.
-   *
-   * Reading and ritual pages are overridden later
-   * so they preserve desktop-like positioning.
-   */
   .hero {
-    align-items: flex-start;
-
+    align-items: center;
     min-height: 100dvh;
-
     padding:
       calc(76px + 28px)
       20px
-      max(36px, env(safe-area-inset-bottom));
+      max(
+        36px,
+        env(safe-area-inset-bottom)
+      );
   }
 
   .content {
     width: 100%;
   }
 
-  /* =========================
-     LANDING
-     ========================= */
+  /* Landing */
 
-  /*
-   * On <= 860px we stop using the desktop
-   * translateY(-190px).
-   *
-   * landingContent becomes the positioning area.
-   */
   .landingContent {
     display: block;
-
-    min-height:
-      calc(100dvh - 76px);
-
+    min-height: calc(100dvh - 76px);
     padding: 0;
-
     position: relative;
-
     transform: none;
   }
 
-  /*
-   * Input is independent from the background image.
-   * It stays around the upper-middle region.
-   *
-   * Change top if you want:
-   * 24% = higher
-   * 28% = current
-   * 32% = lower
-   */
   .landingContent .questionForm {
     left: 50%;
-
     margin: 0;
-
     position: absolute;
-
     top: 28%;
-
-    transform:
-      translateX(-50%);
-
-    width:
-      min(90%, 820px);
+    transform: translateX(-50%);
+    width: min(90%, 820px);
   }
 
   .inputRow {
@@ -1824,38 +1363,17 @@ h1 {
       minmax(0, 1fr) auto;
   }
 
-  /* =========================
-     SELECTION
-     ========================= */
+  /* Selection */
 
-  .selectionContent {
-    transform: none;
-  }
 
-  .cardFan {
-    padding-left: 0;
-    padding-right: 0;
-  }
 
-  .cardFanViewport {
-    padding-left: 30px;
-    padding-right: 30px;
-  }
 
-  .cardBack {
+  .cardFan .cardBack {
     flex-basis: 102px;
-
     min-height: 154px;
   }
 
-  /* =========================
-     READING RESULT
-     ========================= */
-
-  .spread,
-  .readingGrid {
-    grid-template-columns: 1fr;
-  }
+  /* Reading */
 
   .readingContent .spreadPanel {
     padding:
@@ -1863,66 +1381,30 @@ h1 {
       clamp(8px, 3vw, 20px);
   }
 
-  /*
-   * Keep the three revealed tarot cards
-   * next to each other.
-   */
-  .readingContent .spread {
-    gap:
-      clamp(6px, 2vw, 12px);
-
-    grid-template-columns:
-      repeat(3, minmax(0, 1fr));
+  .spread {
+    gap: clamp(12px, 3vw, 28px);
   }
 
-  .readingContent .spread .tarotCard {
-    min-height: 0;
-    min-width: 0;
-
-    padding: 0;
-
-    width: 100%;
-  }
-
-  .readingContent .spread .cardFace {
-    height: auto;
-
-    margin-top: 0;
-
-    min-height: 0;
-
-    padding: 0;
-  }
-
-  .readingContent .spread .cardArtwork {
-    height: auto;
-
-    max-width: 100%;
-
-    width: 100%;
+  .spread .cardBack {
+    flex-basis: 110px;
+    width: 110px;
   }
 
   .readingContent .readingGrid {
     gap: 10px;
-
     grid-template-columns: 1fr;
   }
 
   .readingContent .readingGrid article {
-    aspect-ratio: auto;
-
     height: auto;
-
     min-height: 0;
-
     padding: 14px 16px;
   }
 
   .readingContent .readingGrid h3 {
+    
     overflow-wrap: anywhere;
-
     text-overflow: clip;
-
     white-space: normal;
   }
 
@@ -1930,50 +1412,25 @@ h1 {
     overflow-wrap: anywhere;
   }
 
-  /*
-   * Keep desktop question-summary position.
-   */
-  .readingContent .questionPanelMinimal {
-    transform: translateY(34px);
-  }
 
-  .tarotCard {
-    min-height: 280px;
-  }
+  /* Ritual */
 
-  /* =========================
-     RITUAL / LOADING
-     ========================= */
-
-  /*
-   * Keep desktop ritual micro-position.
-   */
   .ritualContent {
     transform: translateY(4px);
   }
 
-  /*
-   * IMPORTANT:
-   * Do not collapse to min-height:auto.
-   *
-   * That was what made the loading page
-   * suddenly jump upward on mobile.
-   */
   .readingRitual {
     min-height: 560px;
-
-    padding:
-      16px
-      8px
-      30px;
+    padding: 16px 8px 30px;
   }
 
   .ritualSpread {
     gap: 14px;
   }
 
-  .ritualSpread .tarotCard {
-    min-height: 220px;
+  .ritualSpread .cardBack {
+    flex-basis: 120px;
+    width: 120px;
   }
 }
 
@@ -1990,14 +1447,11 @@ h1 {
 
   .shell {
     min-height: 100dvh;
-
     overflow-x: hidden;
     overflow-y: auto;
   }
 
-  /* =========================
-     NAVIGATION
-     ========================= */
+  /* Navigation */
 
   .topNavigation {
     height:
@@ -2012,16 +1466,15 @@ h1 {
 
   .topNavigation::after {
     height: 20px;
-    width: 20px;
-
-    left:
-      calc(50% - 126px);
+    left: calc(50% - 126px);
 
     top:
       calc(
         19px +
         env(safe-area-inset-top)
       );
+
+    width: 20px;
   }
 
   .languageToggle {
@@ -2035,8 +1488,6 @@ h1 {
   }
 
   .navBrand {
-    font-size: 0.76rem;
-
     top:
       calc(
         21px +
@@ -2044,13 +1495,9 @@ h1 {
       );
   }
 
-  /* =========================
-     GENERAL PAGE
-     ========================= */
+  /* General */
 
   .hero {
-    align-items: flex-start;
-
     min-height: 100dvh;
 
     padding:
@@ -2068,14 +1515,16 @@ h1 {
 
   h1 {
     font-size:
-      clamp(2rem, 10vw, 2.6rem);
+      clamp(
+        2rem,
+        10vw,
+        2.6rem
+      );
 
     padding-top: 0;
   }
 
-  /* =========================
-     LANDING BACKDROP
-     ========================= */
+  /* Landing */
 
   .landingBackdrop {
     inset:
@@ -2089,16 +1538,10 @@ h1 {
 
   .landingBackdrop::before {
     aspect-ratio: 701 / 1200;
-
-    background-position:
-      top center;
-
+    background-position: top center;
     background-size: contain;
-
     bottom: auto;
-
     height: auto;
-
     left: 50%;
 
     top:
@@ -2122,10 +1565,6 @@ h1 {
       );
   }
 
-  /* =========================
-     LANDING CONTENT
-     ========================= */
-
   .landingContent {
     display: block;
 
@@ -2137,46 +1576,41 @@ h1 {
       );
 
     padding: 0;
-
     position: relative;
-
     transform: none;
   }
 
-  /*
-   * Phone is slightly higher than tablet.
-   */
   .landingContent .questionForm {
     left: 50%;
-
     margin: 0;
-
-    position: absolute;
-
-    top: 25%;
-
-    transform:
-      translateX(-50%);
-
-    width: 90%;
     max-width: 820px;
+    position: absolute;
+    top: 25%;
+    transform: translateX(-50%);
+    width: 90%;
   }
 
   .landingContent .questionForm label {
     font-size:
-      clamp(0.7rem, 3vw, 0.78rem);
+      clamp(
+        0.7rem,
+        3vw,
+        0.78rem
+      );
 
     margin-bottom:
-      clamp(8px, 2dvh, 14px);
+      clamp(
+        8px,
+        2dvh,
+        14px
+      );
   }
 
   .questionForm {
     max-width: 100%;
   }
 
-  /* =========================
-     INPUT
-     ========================= */
+  /* Input */
 
   .inputRow {
     gap: 4px;
@@ -2185,29 +1619,20 @@ h1 {
       minmax(0, 1fr) auto;
 
     padding: 7px;
-
     width: 100%;
   }
 
   .inputRow input {
-    /*
-     * iOS Safari automatically zooms
-     * inputs smaller than ~16px.
-     */
     font-size: 16px;
-
     padding: 11px 9px;
   }
 
   .inputRow button {
     min-width: 44px;
-
     padding: 10px 11px;
   }
 
-  /* =========================
-     TOAST
-     ========================= */
+  /* Toast */
 
   [data-slot="toast-viewport"] {
     bottom:
@@ -2220,121 +1645,82 @@ h1 {
     right: 12px;
   }
 
-  /* =========================
-     SELECTION
-     ========================= */
+  /* Selection */
 
-  .selectionContent {
-    transform: none;
-  }
-
-  .deckHeader {
-    align-items: center;
-
-    flex-direction: column;
-
-    padding:
-      clamp(18px, 4dvh, 30px)
-      10px;
-  }
 
   .selectionInstructions p {
     font-size:
-      clamp(0.98rem, 4vw, 1.12rem);
+      clamp(
+        0.98rem,
+        4vw,
+        1.12rem
+      );
   }
 
   .selectionInstructions p + p {
     font-size:
-      clamp(0.76rem, 3vw, 0.88rem);
+      clamp(
+        0.76rem,
+        3vw,
+        0.88rem
+      );
 
     padding-top: 12px;
   }
 
-  .deckHeader span {
-    margin-top: 12px;
 
-    position: static;
-  }
 
-  .deckArea {
-    margin-top: 10px;
 
-    width: 100%;
-  }
-
-  .cardFanViewport {
-    margin-left: -14px;
-    margin-right: -14px;
-
-    max-width: none;
-
-    padding-left: 22px;
-    padding-right: 22px;
-
-    width:
-      calc(100% + 28px);
-  }
-
-  .cardFan {
-    padding-bottom: 30px;
-    padding-top: 30px;
-  }
-
-  .cardBack {
+  .cardFan .cardBack {
     flex-basis:
-      clamp(82px, 25vw, 102px);
+      clamp(
+        82px,
+        25vw,
+        102px
+      );
 
     min-height: 140px;
   }
 
-  .cardBack + .cardBack {
+  .cardFan .cardBack + .cardBack {
     margin-left: -34px;
   }
 
-  .cardBack:hover,
-  .cardBack.selected {
+  .cardFan .cardBack:hover,
+  .cardFan .cardBack.selected {
     transform:
       translateY(-10px)
-      rotate(var(--card-tilt))
       rotateX(5deg);
   }
 
-  /* =========================
-     READING RESULT
-     ========================= */
-
-  /*
-   * Do NOT override:
-   *
-   * .readingContent .questionPanelMinimal
-   *
-   * so the desktop translateY(34px)
-   * stays active.
-   */
+  /* Reading */
 
   .spreadPanel {
     margin-top: 16px;
+    padding-inline: 12px;
+  }
+
+  .spread {
+    gap: 10px;
+    padding-inline: 8px;
+  }
+
+  .spread .cardBack {
+    flex: 1 1 0;
+    max-width: 92px;
+    min-width: 0;
+    width: auto;
   }
 
   .reading {
     padding: 18px 14px;
   }
 
-  /* =========================
-     RITUAL / LOADING
-     ========================= */
+  /* Ritual */
 
-  /*
-   * Keep vertical structure.
-   * No min-height:auto here.
-   */
   .readingRitual {
     min-height: 560px;
-
-    padding:
-      16px
-      8px
-      30px;
+    padding: 16px 8px 30px;
   }
 
   .ritualSky {
@@ -2353,189 +1739,85 @@ h1 {
 
   .ritualStatus {
     font-size: 0.86rem;
-
     margin-bottom: 20px;
   }
 
   .ritualSpread {
-    gap: 8px;
+    gap: 10px;
+    padding-inline: 8px;
   }
 
-  .ritualSpread .tarotCard {
-    min-height: 166px;
+  .ritualSpread .cardBack {
+    flex: 1 1 0;
+    max-width: 92px;
+    min-width: 0;
+    width: auto;
   }
 
   .ritualThread {
     margin-top: 18px;
   }
 
-  /* =========================
-     ERROR
-     ========================= */
+  /* Error */
 
   .error {
     align-items: flex-start;
-
     flex-direction: column;
   }
 }
 
 /* ==================================================
    EXTRA SHORT PHONES
-   <= 520px wide AND <= 720px tall
    ================================================== */
 
-@media (max-width: 520px) and (max-height: 720px) {
-  /*
-   * This is NOT another general phone breakpoint.
-   *
-   * It only handles phones that are both
-   * narrow AND unusually short.
-   */
-
-  .hero {
-    padding-top:
-      calc(
-        68px +
-        env(safe-area-inset-top) +
-        12px
-      );
-  }
-
-  /* =========================
-     LANDING
-     ========================= */
-
-  .landingBackdrop::before {
-    top: 8px;
-
-    width:
-      min(80vw, 350px);
-  }
-
-  .landingContent .questionForm {
-    /*
-     * Short screens:
-     * keep the input even higher.
-     */
-    top: 20%;
-  }
-
-  .landingContent .questionForm label {
-    margin-bottom: 6px;
-  }
-
-  .inputRow {
-    padding: 6px;
-  }
-
-  .inputRow input {
-    padding-block: 9px;
-  }
-
-  /* =========================
-     RITUAL
-     ========================= */
-
-  /*
-   * Smaller, but still not auto.
-   */
-  .readingRitual {
-    min-height: 500px;
-  }
-}
 
 /* ==================================================
-   READING PAGE POSITIONING
+   READING / LOADING PAGE POSITION
    <= 860px
-   ==================================================
-   
-   IMPORTANT:
-   
-   This section comes AFTER the phone rules on purpose.
-   
-   General mobile pages use:
-       align-items: flex-start
-   
-   But Reading Result and Reading Loading should retain
-   the desktop-like vertical placement.
    ================================================== */
 
 @media (max-width: 860px) {
-  /*
-   * Reading result page.
-   */
-  .hero:has(.readingContent) {
-    align-items: center;
-
-    /*
-     * Match desktop hero spacing instead of
-     * the large mobile nav-offset padding.
-     */
-    padding-top: 44px;
-    padding-bottom: 44px;
-  }
-
-  /*
-   * Loading / ritual page.
-   */
+  .hero:has(.readingContent),
   .hero:has(.readingRitual) {
     align-items: center;
-
-    padding-top: 44px;
     padding-bottom: 44px;
+    padding-top: 44px;
   }
 }
 
 /* ==================================================
-   TAILWIND THEME
+   TAILWIND / SHADCN THEME
    ================================================== */
 
 @theme inline {
   --font-heading: var(--font-sans);
-  --font-sans: var(--font-sans);
 
-  --color-sidebar-ring: var(--sidebar-ring);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar: var(--sidebar);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
 
-  --color-chart-5: var(--chart-5);
-  --color-chart-4: var(--chart-4);
-  --color-chart-3: var(--chart-3);
-  --color-chart-2: var(--chart-2);
-  --color-chart-1: var(--chart-1);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
 
-  --color-ring: var(--ring);
-  --color-input: var(--input);
-  --color-border: var(--border);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
 
   --color-destructive: var(--destructive);
 
-  --color-accent-foreground: var(--accent-foreground);
-  --color-accent: var(--accent);
-
-  --color-muted-foreground: var(--muted-foreground);
-  --color-muted: var(--muted);
-
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-secondary: var(--secondary);
-
-  --color-primary-foreground: var(--primary-foreground);
-  --color-primary: var(--primary);
-
-  --color-popover-foreground: var(--popover-foreground);
-  --color-popover: var(--popover);
-
-  --color-card-foreground: var(--card-foreground);
-  --color-card: var(--card);
-
-  --color-foreground: var(--foreground);
-  --color-background: var(--background);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
 
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
@@ -2577,24 +1859,6 @@ h1 {
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 15%);
   --ring: oklch(0.556 0 0);
-
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
 }
 
 /* ==================================================

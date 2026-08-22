@@ -19,15 +19,15 @@ export function ReadingResult({
           return (
             <article key={card.position}>
               <span>{card.position}</span>
-              <h3>{card.title}</h3>
+              <p style={{ fontWeight: 600 }}>{card.title}</p>
               <p className="cardOrientation">{card.orientation}</p>
-              {card.message && <p>{card.message}</p>}
+              <p>{card.message}</p>
             </article>
           );
         })}
       </div>
       <div className="synthesis">
-        <h3>{summaryLabel}</h3>
+        <h3 style={{ fontWeight: 600 }}>{summaryLabel}</h3>
         {reading.answer && <p className="readingAnswer">{reading.answer}</p>}
         {reading.guidance && <p>{reading.guidance}</p>}
       </div>

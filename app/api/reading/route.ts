@@ -1,6 +1,5 @@
 import OpenAI from "openai";
 import { NextResponse } from "next/server";
-import { createFallbackReading } from "@/lib/ai/fallback";
 import { tarotReadingPrompt } from "@/lib/ai/prompt";
 import { tarotReadingSchema } from "@/lib/ai/schema";
 import type { GeneratedTarotReading, ReadingRequest } from "@/lib/types";
@@ -45,6 +44,5 @@ export async function POST(request: Request) {
     return NextResponse.json(generatedReading);
   } catch (error) {
     console.error("Reading generation failed", error);
-    return NextResponse.json(createFallbackReading(cards, language));
   }
 }

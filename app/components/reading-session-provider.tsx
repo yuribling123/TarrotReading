@@ -10,8 +10,8 @@ import {
   useMemo,
   useState,
 } from "react";
-import type { DrawnCard } from "@/lib/types";
-import type { Language, ReadingResponse, ReadingSessionData } from "@/lib/types";
+
+import type { Language, ReadingResponse, ReadingSessionData, TarotCard } from "@/lib/types";
 
 const storageKey = "moonlit-tarot-reading";
 
@@ -19,7 +19,7 @@ type ReadingSessionContextValue = ReadingSessionData & {
   error: string;
   isHydrated: boolean;
   isLoading: boolean;
-  setCards: Dispatch<SetStateAction<DrawnCard[]>>;
+  setCards: Dispatch<SetStateAction<TarotCard[]>>;
   setError: Dispatch<SetStateAction<string>>;
   setIsLoading: Dispatch<SetStateAction<boolean>>;
   setLanguage: Dispatch<SetStateAction<Language>>;

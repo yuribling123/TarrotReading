@@ -1470,19 +1470,17 @@ h1 {
   border-radius: 8px;
 }
 
-.readingGrid article {
-  aspect-ratio: 1;
-
-  overflow: hidden;
-}
-
 .readingGrid {
   display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  align-items: stretch;
+}
 
-  gap: 16px;
-
-  grid-template-columns:
-    repeat(3, minmax(0, 1fr));
+.readingGrid article {
+  height: auto;
+  min-height: 0;
+  overflow: visible;
 }
 
 .reading article,
@@ -1916,8 +1914,6 @@ h1 {
     height: auto;
 
     min-height: 0;
-
-    overflow: hidden;
 
     padding: 14px 16px;
   }

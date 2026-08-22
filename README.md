@@ -2,6 +2,10 @@
 
 A polished Next.js tarot reading website with a mystical three-card flow and a server-side OpenAI reading API.
 
+Completed using AI Agent Codex
+
+Deployed on https://tarrot-reading-three.vercel.app
+
 ## Run Locally
 
 ```bash
@@ -28,3 +32,14 @@ The app keeps the API key server-side in `app/api/reading/route.ts`. If no key i
 - Choose exactly three animated cards.
 - Reveal the `Situation`, `Hidden Influence`, and `Guidance` spread.
 - Generate a mystical, grounded reading from the selected cards.
+
+
+## Display
+
+![alt text](image.png)
+
+![alt text](image-2.png)
+
+![alt text](image-3.png)
+
+![alt text](image-4.png)

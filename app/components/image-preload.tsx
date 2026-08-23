@@ -11,18 +11,25 @@ export function TarotPreloader({
 }: TarotPreloaderProps) {
 
     useEffect(() => {
-        // preload card back
-        const cardBack = new window.Image();
-        cardBack.src = "/images/cards/card-back.webp";
-        deck.forEach((cardName) => {
-            const imageName = cardName.replaceAll(" ", "_");
-            const imageSrc =
-                `/images/cards/rider-waite/${imageName}.webp`;
+        // wait for website to load first
+        const timer = setTimeout(() => {
+            // card back
+            const cardBack = new window.Image();
+            cardBack.src = "/images/cards/card-back.webp";
 
-            const img = new window.Image();
-            img.src = imageSrc;
-        });
+            // front
+            deck.forEach((cardName) => {
+                const imageName = cardName.replaceAll(" ", "_");
+                const img = new window.Image();
+
+                img.src =
+                    `/images/cards/rider-waite/${imageName}.webp`;
+            });
+        }, 1000);
+
+        return () => clearTimeout(timer);
     }, [deck]);
+
 
 
     return null;

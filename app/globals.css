@@ -385,8 +385,8 @@ h1 {
 background:
   linear-gradient(
     135deg,
-    #edd69a 75%,
-    #d7b05c 100%
+
+    #c99a45 90%
   );
   border: 0;
   border-radius: 999px;
@@ -667,6 +667,7 @@ background:
    ================================================== */
 
 .cardFanViewport {
+  transform: translateY(10px);
   max-width: 100%;
 
   overflow-x: auto;
@@ -755,28 +756,18 @@ background:
    DEALING / SPREAD OUT
    ================================================== */
 
-/* 发牌过程中 */
+
 .cardFan.dealing .cardBack {
-  transform: translateX(0);
-
   pointer-events: none;
-
-  transition:
-    transform 1200ms linear;
-
-  transition-delay:
-    calc(var(--card-index) * 10ms);
 }
-
 
 /* 发牌完成以后 */
 .cardFan.spreadOut:not(.dealing) .cardBack {
   transform: translateX(0);
 
   transition:
-    transform 180ms ease,
+    transform 2600ms ease,
     filter 180ms ease;
-
   transition-delay: 0ms;
 }
 
@@ -1823,6 +1814,8 @@ background:
   .cardFan.spreadOut .cardBack.selected {
     transform: translateY(-10px);
   }
+
+  
 
   /* reading */
 

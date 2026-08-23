@@ -1,4 +1,3 @@
-import Image from "next/image";
 import type { TarotCard } from "@/lib/types";
 
 type CardFrontProps = {
@@ -15,15 +14,13 @@ export function CardFront({ card }: CardFrontProps) {
 
   return (
     <span className="cardFrontFace">
-      <Image
+      <img
         src={imageSrc}
         alt={card.name}
-        fill
-        sizes="160px"
         className={`cardArtwork ${card.orientation === "Reversed" ? "reversed" : ""
-
           }`}
       />
+
     </span>
   );
 }

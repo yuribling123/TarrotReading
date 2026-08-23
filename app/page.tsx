@@ -4,11 +4,14 @@ import { useRouter } from "next/navigation";
 import { QuestionForm } from "@/app/components/question-form";
 import { useReadingSession } from "@/app/components/reading-session-provider";
 import { messages } from "@/lib/i18n";
+import { tarotDeck } from "@/lib/tarot/constants";
+import { TarotPreloader } from "./components/image-preload";
 
 export default function LandingPage() {
   const router = useRouter();
   const { language, setError, setQuestion } = useReadingSession();
   const text = messages[language];
+  const deck = tarotDeck
 
   function handleQuestion(question: string) {
     setQuestion(question);
@@ -18,6 +21,7 @@ export default function LandingPage() {
 
   return (
     <>
+      <TarotPreloader deck={deck} />
       <div className="landingBackdrop" aria-hidden="true" />
       <div className="content landingContent">
 

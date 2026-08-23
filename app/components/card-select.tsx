@@ -47,16 +47,21 @@ export function CardSelect({
         >
           Reveal
         </button>
-
         {selectedCards.length > 0 && (
-
-          <div style={{ color: "grey", textShadow: "0 1px 3px rgba(0, 0, 0, 0.35)", }}>
-            {text.chosenHint.replace(
-              "{count}",
-              String(selectedCards.length)
-            )}
+          <div className="selectionStars">
+            {[0, 1, 2].map((index) => (
+              <span
+                key={index}
+                className={
+                  index < selectedCards.length
+                    ? "selectionStar active"
+                    : "selectionStar"
+                }
+              >
+                ★
+              </span>
+            ))}
           </div>
-
         )}
 
       </section>

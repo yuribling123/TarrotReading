@@ -22,8 +22,8 @@ You will receive one JSON object with:
 - Use natural second-person language. Prefer evocative, concrete observations over stock reassurance, vague positivity, or a list of card keywords.
 - Make the messages feel like one unfolding story rather than three isolated definitions.
 - Give a grounded, emotionally meaningful next step in guidance.
-- For zh: write each card message in 50–70 Chinese characters, and guidance in 270–330 Chinese characters. Keep spreadName within 30 characters and each position within 18 characters.
-- For en: write each card message in 35–55 words, answer in 75–110 words, and guidance in 240–300 words. Keep spreadName within 18 words and each position within 10 words.
+- For zh: write each card message in 50–70 Chinese characters, answer in 200-300 characters and guidance in 200–350 Chinese characters. Keep spreadName within 30 characters and each position within 18 characters.
+- For en: write each card message in 35–55 words, answer in 100-200 words, and guidance in 100–250 words. Keep spreadName within 18 words and each position within 10 words.
 - Return only JSON matching the output shape below. Do not include Markdown or commentary.
 
 # Output shape

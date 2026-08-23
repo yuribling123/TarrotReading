@@ -59,7 +59,7 @@ export default function SelectPage() {
     setIsReadingReady(false);
 
     try {
-      const response = await fetch("/api/reading/deepseek", {
+      const response = await fetch("/api/reading/openai", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -7,10 +7,10 @@ import { CardFront } from "@/app/components/card-front";
 
 type CardProps = {
   card: TarotCard;
-  index: number;
+  index?: number;
   isSelected: boolean;
   onSelect: (card: TarotCard) => void;
-};
+}
 
 export function Card({
   card,

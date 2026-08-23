@@ -59,7 +59,7 @@ export default function SelectPage() {
     setIsReadingReady(false);
 
     try {
-      const response = await fetch("/api/reading", {
+      const response = await fetch("/api/reading/openai", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -70,36 +70,14 @@ export default function SelectPage() {
           language,
         }),
       });
-
-      const reading = (await response.json()) as ReadingResponse & {
-        error?: string;
-      };
-
-      if (!response.ok) {
-        toast.add({ type: "error",title: "The reading could not be completed"});
-        throw new Error(
-          reading.error ?? "The reading could not be completed."
-        );
-      }
-
-      if (!reading.answer?.trim() || !reading.guidance?.trim()) {
-        toast.add({ type: "error",title: "Error"});
-        throw new Error(text.genericError);
-      }
-
+      const reading = (await response.json()) as ReadingResponse 
       setReading(reading);
       setIsReadingReady(true);
-
       // Let the completion animation finish.
       await new Promise((resolve) => setTimeout(resolve, 650));
-
       router.push("/reading");
     } catch (error) {
-      setError(
-        error instanceof Error
-          ? error.message
-          : text.genericError
-      );
+      router.push("/error");
     }
   }
 
@@ -126,9 +104,8 @@ export default function SelectPage() {
 
   return (
     <div
-      className={`content selectionContent ${
-        isRevealing ? "ritualContent" : ""
-      }`}
+      className={`content selectionContent ${isRevealing ? "ritualContent" : ""
+        }`}
     >
       {isRevealing ? (
         <ReadingLoading
@@ -143,7 +120,7 @@ export default function SelectPage() {
           language={language}
           deck={deck}
           selectedCards={selectedCards}
-          question={question} 
+          question={question}
           onSelect={selectCard}
           onReveal={revealCards}
         />

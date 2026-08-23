@@ -9,6 +9,7 @@ export async function POST(request: Request) {
   const { question, cards, language } = (await request.json()) as ReadingRequest;
 
   const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+ 
 
   try {
     const response = await openai.responses.create({
@@ -44,5 +45,13 @@ export async function POST(request: Request) {
     return NextResponse.json(generatedReading);
   } catch (error) {
     console.error("Reading generation failed", error);
+     return NextResponse.json(
+    {
+      success: false,
+      error: "Failed to generate tarot reading",
+    },
+    { status: 500 }
+  );
+
   }
 }

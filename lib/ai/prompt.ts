@@ -37,4 +37,38 @@ You will receive one JSON object with:
   "answer": "direct, nuanced answer to the user's question",
   "guidance": "deeper reflection followed by a grounded next step"
 }
+
+# Important
+
+Return ONLY valid JSON.
+
+Do not include markdown, code fences, explanations, or any text outside the JSON.
+
+The JSON must follow exactly this structure:
+
+{
+
+  "title": "string",
+
+  "summary": "string",
+
+  "cards": [
+
+    {
+
+      "name": "string",
+
+      "orientation": "upright or reversed",
+
+      "interpretation": "string"
+
+    }
+
+  ],
+
+  "overallReading": "string",
+
+  "advice": "string"
+
+}
 `.trim();

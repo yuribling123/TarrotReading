@@ -702,12 +702,6 @@ h1 {
   position: absolute;
 }
 
-.cardBackFace {
-  background:
-    url("/images/cards/card-back.jpg")
-    center / 100% 100%
-    no-repeat;
-}
 
 .cardFrontFace {
   background: transparent;

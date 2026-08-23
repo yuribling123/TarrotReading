@@ -11,7 +11,7 @@ export function CardFront({ card }: CardFrontProps) {
   }
 
   const imageName = card.name.replaceAll(" ", "_");
-  const imageSrc = `/images/cards/rider-waite/${imageName}.jpg`;
+  const imageSrc = `/images/cards/rider-waite/${imageName}.webp`;
 
   return (
     <span className="cardFrontFace">

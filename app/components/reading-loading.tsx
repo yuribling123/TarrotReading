@@ -40,7 +40,7 @@ export function ReadingLoading({
 
   return (
     <section
-      className={`readingRitual ${complete ? "complete" : ""}`}
+      className={`readingRitual translate-y-10 ${complete ? "complete" : ""}`}
       aria-live="polite"
     >
       <div className="ritualSky" aria-hidden="true">

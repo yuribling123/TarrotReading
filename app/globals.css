@@ -624,7 +624,7 @@ background:
 
   position: relative;
 
-  transform: translateY(-50px);
+  transform: translateY(-10px);
 }
 
 .selectionInstructions {
@@ -681,7 +681,7 @@ background:
 }
 
 .cardFan {
-  --card-width: 120px;
+  --card-width: 60px;
   --card-overlap: 42px;
 
   align-items: flex-end;
@@ -751,27 +751,26 @@ background:
 }
 
 /* ==================================================
-   SPREAD OUT
+   DEALING / SPREAD OUT
    ================================================== */
 
-.cardFan.spreadOut .cardBack {
+/* 发牌过程中 */
+.cardFan.dealing .cardBack {
   transform: translateX(0);
 
- transition:
-  transform 1200ms linear;
+  pointer-events: none;
 
- transition-delay:
-  calc(var(--card-index) * 10ms);
+  transition:
+    transform 1200ms linear;
 
+  transition-delay:
+    calc(var(--card-index) * 10ms);
 }
 
-/* ==================================================
-   HOVER / SELECTED
-   ================================================== */
 
-.cardFan.spreadOut .cardBack:hover,
-.cardFan.spreadOut .cardBack.selected {
-  transform: translateY(-18px);
+/* 发牌完成以后 */
+.cardFan.spreadOut:not(.dealing) .cardBack {
+  transform: translateX(0);
 
   transition:
     transform 180ms ease,
@@ -780,11 +779,21 @@ background:
   transition-delay: 0ms;
 }
 
-.cardFan.spreadOut .cardBack:hover {
+
+/* ==================================================
+   HOVER / SELECTED
+   ================================================== */
+
+.cardFan.spreadOut:not(.dealing) .cardBack:hover,
+.cardFan.spreadOut:not(.dealing) .cardBack.selected {
+  transform: translateY(-18px);
+}
+
+.cardFan.spreadOut:not(.dealing) .cardBack:hover {
   z-index: 200;
 }
 
-.cardFan.spreadOut .cardBack.selected {
+.cardFan.spreadOut:not(.dealing) .cardBack.selected {
   filter: saturate(1.2);
   z-index: 300;
 }

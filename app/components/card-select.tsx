@@ -47,7 +47,7 @@ export function CardSelect({
         >
           Reveal
         </button>
-        {selectedCards.length > 0 && (
+   
           <div className="selectionStars">
             {[0, 1, 2].map((index) => (
               <span
@@ -62,7 +62,7 @@ export function CardSelect({
               </span>
             ))}
           </div>
-        )}
+   
 
       </section>
 

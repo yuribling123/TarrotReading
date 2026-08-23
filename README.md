@@ -36,7 +36,7 @@ The app keeps the API key server-side in `app/api/reading/route.ts`. If no key i
 
 ## Display
 
-![alt text](/readme/image-1.png)
+
 
 ![alt text](/readme/image-2.png)
 

@@ -759,6 +759,7 @@ background:
 
 .cardFan.dealing .cardBack {
   pointer-events: none;
+
 }
 
 /* 发牌完成以后 */
@@ -1540,10 +1541,6 @@ transition-delay: 300ms, 0ms;
     --card-width: 102px;
   }
 
-  .cardBack {
-    min-height: 154px;
-  }
-
   /* reading */
 
   .readingContent .spreadPanel {
@@ -1582,7 +1579,6 @@ transition-delay: 300ms, 0ms;
   }
 
   .readingRitual {
-    min-height: 560px;
     padding: 16px 8px 30px;
   }
 
@@ -1803,14 +1799,14 @@ transition-delay: 300ms, 0ms;
         62px
       );
   }
-
   .cardBack {
-    min-height: 140px;
+
+    min-height: 0;
+
   }
 
-
-
   
+
 
   /* reading */
 
@@ -1838,7 +1834,6 @@ transition-delay: 300ms, 0ms;
   }
 
   .readingRitual {
-    min-height: 560px;
     padding: 16px 8px 30px;
   }
 

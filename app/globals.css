@@ -768,7 +768,7 @@ background:
   transition:
     transform 2600ms ease,
     filter 180ms ease;
-  transition-delay: 0ms;
+transition-delay: 300ms, 0ms;
 }
 
 
@@ -865,9 +865,9 @@ background:
 
   gap: 20px;
 
-  margin-top: 40px;
 
-  transform: translateY(20px);
+
+  transform: translateY(-20px);
   
 }
 

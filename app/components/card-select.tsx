@@ -28,6 +28,20 @@ export function CardSelect({
   return (
     <div >
       <section className="deckArea">
+           <div className="selectionStars">
+            {[0, 1, 2].map((index) => (
+              <span
+                key={index}
+                className={
+                  index < selectedCards.length
+                    ? "selectionStar active"
+                    : "selectionStar"
+                }
+              >
+                ★
+              </span>
+            ))}
+          </div>
 
         <div className="deckHeader">
           <p>{text.selectionInstructionFirstLine}</p>
@@ -48,20 +62,7 @@ export function CardSelect({
           Reveal
         </button>
    
-          <div className="selectionStars">
-            {[0, 1, 2].map((index) => (
-              <span
-                key={index}
-                className={
-                  index < selectedCards.length
-                    ? "selectionStar active"
-                    : "selectionStar"
-                }
-              >
-                ★
-              </span>
-            ))}
-          </div>
+       
    
 
       </section>

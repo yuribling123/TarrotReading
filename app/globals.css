@@ -1805,7 +1805,15 @@ transition-delay: 300ms, 0ms;
   }
 
   .cardBack {
-    min-height: 0px;
+
+    width: var(--card-width);
+
+    height: auto;
+
+    aspect-ratio: 701 / 1200;
+
+    min-height: unset;
+
   }
 
 

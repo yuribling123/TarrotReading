@@ -16,7 +16,7 @@ export function MoonPhase({ language }: Props) {
       : Math.ceil(29.53 - age + 14.8);
 return (
   <div className="">
-  <div className="inline-flex items-center gap-1 rounded-full border border-[#b89552]/30 bg-white/70 px-2 py-1.5 backdrop-blur-sm">
+  <div className="inline-flex items-center gap-1 rounded-full border border-[#b89552]/30 bg-white/70 px-1.5 py-1.5 backdrop-blur-sm">
     <span className="text-xs tracking-[0.08em] text-[#8a8174]">
       {text.moonPhases[phase]}
     </span>

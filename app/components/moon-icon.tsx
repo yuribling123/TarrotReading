@@ -16,7 +16,7 @@ export function MoonIcon({ language }: Props) {
 
   return (
 
-    <div className="moon flex items-center gap-2">
+    <div className="moon flex items-center gap-1">
       <button
         type="button"
         className="moonPhaseHeader"

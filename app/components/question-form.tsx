@@ -3,6 +3,7 @@
 import { type FormEvent, useState } from "react";
 import { toast } from "@/components/ui/toast";
 import type { Language } from "@/lib/types";
+import { MoonPhase } from "./moon-phase";
 
 const maxQuestionLength = 180;
 
@@ -49,7 +50,10 @@ export function QuestionForm({
   }
 
   return (
+    <div>
+          
     <form className="questionForm" onSubmit={submitQuestion}>
+  
       <label htmlFor="question" >{label}</label>
       <div className="inputRow">
         <input
@@ -62,6 +66,10 @@ export function QuestionForm({
         />
         <button type="submit">{submitLabel}</button>
       </div>
+
+      
     </form>
+     
+    </div>
   );
 }

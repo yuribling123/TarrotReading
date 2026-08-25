@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { messages } from "@/lib/i18n";
 import { useReadingSession } from "@/app/components/reading-session-provider";
+import { MoonIcon } from "./moon-icon";
 
 export function Navigation() {
   const { language, resetReading, setLanguage } = useReadingSession();
@@ -10,9 +11,14 @@ export function Navigation() {
 
   return (
     <nav className="topNavigation" aria-label="Site navigation">
+
+      <MoonIcon language={language}></MoonIcon>
+
       <Link className="navBrand" href="/" onClick={resetReading}>
         {text.brand}
       </Link>
+    
+      
       <button
         className="languageToggle"
         type="button"
@@ -21,6 +27,7 @@ export function Navigation() {
       >
         {text.languageSwitch}
       </button>
+
     </nav>
   );
 }

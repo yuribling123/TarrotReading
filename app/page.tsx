@@ -6,12 +6,16 @@ import { useReadingSession } from "@/app/components/reading-session-provider";
 import { messages } from "@/lib/i18n";
 import { tarotDeck } from "@/lib/tarot/constants";
 import { TarotPreloader } from "./components/image-preload";
+import { MoonPhase } from "./components/moon-phase";
+import { useState } from "react";
+import { MoonMessage } from "./components/moon-message";
 
 export default function LandingPage() {
   const router = useRouter();
   const { language, setError, setQuestion } = useReadingSession();
   const text = messages[language];
   const deck = tarotDeck
+
 
   function handleQuestion(question: string) {
     setQuestion(question);
@@ -23,8 +27,8 @@ export default function LandingPage() {
     <>
       <TarotPreloader deck={deck} />
       <div className="landingBackdrop" aria-hidden="true" />
-      <div className="content landingContent">
-
+      <div className="content landingContent"> 
+       
         <QuestionForm
           language={language}
           label={text.questionLabel}
@@ -34,7 +38,9 @@ export default function LandingPage() {
           questionTooLongMessage={text.questionTooLong}
           onSubmit={handleQuestion}
         />
-      </div>
+        </div>
+        
+      <MoonMessage/>
     </>
   );
 }

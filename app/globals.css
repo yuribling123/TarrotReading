@@ -138,7 +138,7 @@ button:disabled {
   z-index: 3;
 }
 
-.topNavigation::after {
+/* .topNavigation::after {
   background: #d6b66f;
   border-radius: 50%;
   box-shadow: -9px 3px 0 #f7f0e3;
@@ -153,7 +153,7 @@ button:disabled {
 
   opacity: 0.82;
   position: absolute;
-}
+} */
 
 .navBrand {
   color: #9b722a;
@@ -193,8 +193,8 @@ button:disabled {
   padding: 10px 14px;
 
   position: absolute;
-  right: 24px;
-  top: 16px;
+  right: 20px;
+  top: 14px;
 
   transition:
     background 180ms ease,
@@ -1632,15 +1632,7 @@ transition-delay: 300ms, 0ms;
       );
   }
 
-  .languageToggle {
-    right: 14px;
 
-    top:
-      calc(
-        12px +
-        env(safe-area-inset-top)
-      );
-  }
 
   .navBrand {
     top:
@@ -1799,8 +1791,8 @@ transition-delay: 300ms, 0ms;
     --card-width:
       clamp(
         48px,
-        14vw,
-        62px
+        16vw,
+        82px
       );
   }
 
@@ -1892,6 +1884,193 @@ transition-delay: 300ms, 0ms;
     flex-direction: column;
   }
 }
+
+/* ==================================================
+
+   MOON
+
+   ================================================== */
+
+.moon {
+
+  padding: 18px 28px;
+
+}
+
+
+
+/* ------------------------------
+
+   MOON BASE
+
+   ------------------------------ */
+
+.moonIcon {
+
+  width: 25px;
+
+  height: 25px;
+
+  flex-shrink: 0;
+
+  overflow: hidden;
+
+  border-radius: 50%;
+
+  background: #e3c36d;
+
+  box-shadow:
+
+    0 0 8px
+
+    rgba(215, 181, 109, 0.4),
+
+    0 0 18px
+
+    rgba(215, 181, 109, 0.16);
+
+  animation:
+
+    moonGlow
+
+    6s
+
+    ease-in-out
+
+    infinite;
+
+}
+
+/* dark part of moon */
+
+.moonIcon::after {
+
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  border-radius: 50%;
+
+  background: #ffffff;
+
+}
+
+
+/* ------------------------------
+   NEW MOON
+   ------------------------------ */
+
+.moon-newMoon {
+  background: #171526;
+
+  border:
+    1px solid
+    rgba(215, 181, 109, 0.45);
+}
+
+.moon-newMoon::after {
+  display: none;
+}
+
+
+/* ------------------------------
+   WAXING CRESCENT
+   ------------------------------ */
+
+.moon-waxingCrescent::after {
+  transform: translateX(-8px);
+}
+
+
+/* ------------------------------
+   FIRST QUARTER
+   ------------------------------ */
+
+.moon-firstQuarter::after {
+  left: -50%;
+  right: 50%;
+}
+
+
+/* ------------------------------
+   WAXING GIBBOUS
+   ------------------------------ */
+
+.moon-waxingGibbous::after {
+  transform: translateX(-20px);
+}
+
+
+/* ------------------------------
+   FULL MOON
+   ------------------------------ */
+
+.moon-fullMoon::after {
+  display: none;
+}
+
+
+/* ------------------------------
+   WANING GIBBOUS
+   ------------------------------ */
+
+.moon-waningGibbous::after {
+  transform: translateX(20px);
+}
+
+
+/* ------------------------------
+   LAST QUARTER
+   ------------------------------ */
+
+.moon-lastQuarter::after {
+  left: 50%;
+  right: -50%;
+}
+
+
+/* ------------------------------
+   WANING CRESCENT
+   ------------------------------ */
+
+.moon-waningCrescent::after {
+  transform: translateX(8px);
+}
+
+
+
+
+/* ------------------------------
+
+   ANIMATIONS
+
+   ------------------------------ */
+
+@keyframes moonGlow {
+  0%,
+  100% {
+    filter: brightness(0.95);
+
+    box-shadow:
+      0 0 4px rgba(215, 181, 109, 0.25),
+      0 0 8px rgba(215, 181, 109, 0.12);
+
+    transform: scale(0.98);
+  }
+
+  50% {
+    filter: brightness(1.05);
+
+    box-shadow:
+      0 0 6px rgba(215, 181, 109, 0.4),
+      0 0 12px rgba(215, 181, 109, 0.18);
+
+    transform: scale(1);
+  }
+}
+
 
 /* ==================================================
    TAILWIND / SHADCN

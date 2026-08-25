@@ -30,6 +30,21 @@ export const messages = {
       "Hidden Influence": "Hidden Influence",
       Guidance: "Guidance",
     },
+
+    moonPhases: {
+      newMoon: "New Moon",
+      waxingCrescent: "Waxing Crescent",
+      firstQuarter: "First Quarter",
+      waxingGibbous: "Waxing Gibbous",
+      fullMoon: "Full Moon",
+      waningGibbous: "Waning Gibbous",
+      lastQuarter: "Last Quarter",
+      waningCrescent: "Waning Crescent",
+    },
+    fullMoonDays: {
+      fullMoonIn: (days: number) =>
+        `Full moon in ${days} days`,
+    },
   },
   "zh": {
     brand: "月光塔罗",
@@ -62,5 +77,18 @@ export const messages = {
       "Hidden Influence": "隐藏影响",
       Guidance: "行动指引",
     },
+    moonPhases: {
+      newMoon: "新月",
+      waxingCrescent: "娥眉月 · 渐盈",
+      firstQuarter: "上弦月",
+      waxingGibbous: "盈凸月",
+      fullMoon: "满月",
+      waningGibbous: "亏凸月",
+      lastQuarter: "下弦月",
+      waningCrescent: "残月",
+    },
+    fullMoonDays:{
+      fullMoonIn: (days: number) => `距离满月还有 ${days} 天`,
+    }
   },
 } as const;

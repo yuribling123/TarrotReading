@@ -27,7 +27,7 @@ export function MoonIcon({ language }: Props) {
           aria-hidden="true"
         />
       </button>
-    {showDetails && (<MoonPhase language={language}/>)}
+    {(showDetails || phase=="fullMoon") && (<MoonPhase language={language}/>)}
     </div>
 
     

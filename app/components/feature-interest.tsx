@@ -65,17 +65,17 @@ export function FeatureInterest({ language }: Props) {
 
 return (
     <section className="fixed bottom-6 right-6 mx-auto max-w-md ">
-        <div className="rounded-2xl border border-[#d7b56d]/20 bg-white/4 px-5 py-4 backdrop-blur-lg transition hover:border-[#d7b56d]/35">
+        <div className="rounded-2xl border border-[#d7b56d]/20 bg-white/45 px-4 py-4 backdrop-blur-lg transition hover:border-[#d7b56d]/35">
 
-            <div className="mb-2 text-[10px] tracking-[0.22em] text-[#d7b56d]/60">
+            <div className="mb-2 text-[10px] tracking-[0.22em] text-[#b1975e]">
                 ✦ {text.eyebrow}
             </div>
 
-            <h2 className="text-lg font-medium text-[#80623d]/55">
+            <h2 className="text-lg font-medium text-[#6e5536]/90">
                 {text.title}
             </h2>
 
-            <p className="mt-1.5 text-sm leading-6 text-[#80623d]/40">
+            <p className="mt-1.5 text-sm leading-6 text-[#725b3e]/90">
                 {text.description}
             </p>
 
@@ -90,7 +90,7 @@ return (
                         // 根据 liked 切换按钮样式
                         liked
                             ? "border-[#d7b56d]/50 bg-[#d7b56d]/15 text-[#e8cf98]"
-                            : "border-[#a77d3f]/30 text-[#a77d3f]/55 hover:bg-[#d7b56d]/10 "
+                            : "border-[#a77d3f]/30 text-[#b1975e] hover:bg-[#d7b56d]/10 "
                         }
             `}
                 >
@@ -98,7 +98,7 @@ return (
                     {liked ? "✓" : "♡"} {liked ? text.wanted : text.want}
                 </button>
 
-                <span className="px-5 py-2 text-xs text-[#a77d3f]/50">
+                <span className="px-8 text-xs text-[#b1975e]">
                     {count} {text.people}
                 </span>
             </div>

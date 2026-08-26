@@ -65,7 +65,7 @@ export function FeatureInterest({ language }: Props) {
 
 return (
     <section className="fixed bottom-6 right-6 mx-auto max-w-md ">
-        <div className="rounded-2xl border border-[#d7b56d]/20 bg-white/4 px-5 py-4 backdrop-blur-sm transition hover:border-[#d7b56d]/35">
+        <div className="rounded-2xl border border-[#d7b56d]/20 bg-white/4 px-5 py-4 backdrop-blur-lg transition hover:border-[#d7b56d]/35">
 
             <div className="mb-2 text-[10px] tracking-[0.22em] text-[#d7b56d]/60">
                 ✦ {text.eyebrow}

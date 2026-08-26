@@ -9,6 +9,7 @@ import { TarotPreloader } from "./components/image-preload";
 import { MoonPhase } from "./components/moon-phase";
 import { useState } from "react";
 import { MoonMessage } from "./components/moon-message";
+import { FeatureInterest } from "./components/feature-interest";
 
 export default function LandingPage() {
   const router = useRouter();
@@ -40,7 +41,7 @@ export default function LandingPage() {
         />
         </div>
         
-      <MoonMessage/>
+      <FeatureInterest language={language} />
     </>
   );
 }

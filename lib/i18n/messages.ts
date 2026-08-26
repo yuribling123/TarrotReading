@@ -45,6 +45,7 @@ export const messages = {
       fullMoonIn: (days: number) =>
         `Full moon in ${days} days`,
     },
+    moonAge: (days: number) =>`Moon age: ${days} days`,
   },
   "zh": {
     brand: "月光塔罗",
@@ -89,6 +90,6 @@ export const messages = {
     },
     fullMoonDays:{
       fullMoonIn: (days: number) => `距离满月还有 ${days} 天`,
-    }
-  },
+    },
+    moonAge: (days: number) =>`月龄 ${days} 天`, },
 } as const;

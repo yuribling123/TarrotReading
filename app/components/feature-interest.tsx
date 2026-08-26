@@ -89,7 +89,7 @@ return (
               ${
                         // 根据 liked 切换按钮样式
                         liked
-                            ? "border-[#d7b56d]/50 bg-[#d7b56d]/15 text-[#e8cf98]"
+                            ? "border-[#a77d3f]/30 bg-white text-[#b1975e]"
                             : "border-[#a77d3f]/30 text-[#b1975e] hover:bg-[#d7b56d]/10 "
                         }
             `}

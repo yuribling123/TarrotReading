@@ -88,15 +88,16 @@ export function FeatureInterest({ language }: Props) {
                         rounded-full border px-1.5 py-1.5 transition 
                         ${liked
                                 ? "border-[#6e5536]/30 bg-white text-[#6e5536]"
-                                : "border-[#6e5536]/30 text-[#6e5536] hover:bg-[#6e5536]/10"
+                                : "border-[#6e5536]/30 text-[#9b783e]/85 hover:bg-[#6e5536]/10"
                             }
                     `}
                     >
                         {liked ? "✓" : "♥"} {liked ? text.wanted : text.want}
                     </button>
 
-                    <span className="px-2 py-1.5 text-[#6e5536]">
-                        {count} {text.people}
+                    <span className="px-2 py-1.5 text-[#6e5536]/80">
+                         <span className="font-serif">{count}</span> 
+                         {text.people}
                     </span>
                 </div>
             </div>

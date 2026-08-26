@@ -36,7 +36,7 @@ export function FeatureInterest({ language }: Props) {
             ? {
                 eyebrow: "COMING SOON",
                 title: "塔罗 × 星座",
-                description: "如果星象也能加入你的塔罗解读呢？",
+                description: "如果星象也能加入你的解读呢？",
                 want: "我想要",
                 wanted: "已期待",
                 people: "人期待",
@@ -45,7 +45,7 @@ export function FeatureInterest({ language }: Props) {
                 eyebrow: "COMING SOON",
                 title: "Tarot × Astrology",
                 description:
-                    "What if your astrology could become part of your tarot reading?",
+                    "What if your astrology could become part of your reading?",
                 want: "I want this",
                 wanted: "Added",
                 people: "interested",
@@ -61,48 +61,45 @@ export function FeatureInterest({ language }: Props) {
         // 这里只记录“这个浏览器投过了”
         localStorage.setItem(STORAGE_KEY, "true");
     }
-   
 
-return (
-    <section className="fixed bottom-6 right-6 mx-auto max-w-md ">
-        <div className="rounded-2xl border border-[#d7b56d]/20 bg-white/45 px-4 py-4 backdrop-blur-lg transition hover:border-[#d7b56d]/35">
 
-            <div className="mb-2 text-[10px] tracking-[0.22em] text-[#b1975e]">
-                ✦ {text.eyebrow}
+    return (
+        <section className="fixed bottom-6 right-6 mx-auto z-[999]">
+            <div className="rounded-xl border border-[#6e5536]/20 bg-white/45 px-4 py-4 backdrop-blur-lg transition hover:border-[#6e5536]/35">
+
+                <div className="mb-2 text-[10px] tracking-[0.22em] text-[#6e5536]/70">
+                    ✦ {text.eyebrow}
+                </div>
+
+                <h2 className="text-base font-medium text-[#6e5536]">
+                    {text.title}
+                </h2>
+
+                <p className="mt-1 text-xs leading-6 text-[#6e5536]/80">
+                    {text.description}
+                </p>
+
+                <div className=" mt-1 flex items-center justify-between text-xs" >
+                    <button
+                        disabled={liked}
+                        type="button"
+                        onClick={handleClick}
+                        className={`
+                        rounded-full border px-1.5 py-1.5 transition 
+                        ${liked
+                                ? "border-[#6e5536]/30 bg-white text-[#6e5536]"
+                                : "border-[#6e5536]/30 text-[#6e5536] hover:bg-[#6e5536]/10"
+                            }
+                    `}
+                    >
+                        {liked ? "✓" : "♥"} {liked ? text.wanted : text.want}
+                    </button>
+
+                    <span className="px-2 py-1.5 text-[#6e5536]">
+                        {count} {text.people}
+                    </span>
+                </div>
             </div>
-
-            <h2 className="text-lg font-medium text-[#6e5536]/90">
-                {text.title}
-            </h2>
-
-            <p className="mt-1.5 text-sm leading-6 text-[#725b3e]/90">
-                {text.description}
-            </p>
-
-            <div className="mt-4 flex  items-center justify-between">
-                <button
-                    disabled={liked}
-                    type="button"
-                    onClick={handleClick}
-                    className={`
-              rounded-full border px-2.5 py-2 text-sm transition
-              ${
-                        // 根据 liked 切换按钮样式
-                        liked
-                            ? "border-[#a77d3f]/30 bg-white text-[#b1975e]"
-                            : "border-[#a77d3f]/30 text-[#b1975e] hover:bg-[#d7b56d]/10 "
-                        }
-            `}
-                >
-                    {/* 根据 liked 切换按钮内容 */}
-                    {liked ? "✓" : "♡"} {liked ? text.wanted : text.want}
-                </button>
-
-                <span className="px-8 text-xs text-[#b1975e]">
-                    {count} {text.people}
-                </span>
-            </div>
-        </div>
-    </section>
-);
+        </section>
+    );
 }

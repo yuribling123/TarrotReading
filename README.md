@@ -1,10 +1,10 @@
 # Moonlit Tarot
 
-A polished Next.js tarot reading website with a mystical three-card flow and a server-side OpenAI/DeepSeek reading API.
+A polished **Next.js tarot reading website** powered by server-side **OpenAI/DeepSeek LLM API**.
 
-Completed using AI Agent Codex
+Built with the assistance of  **AI Agent Codex**
 
-Deployed on https://moonlight.website
+Deployed on **https://moonlight.website**
 
 ## Run Locally
 

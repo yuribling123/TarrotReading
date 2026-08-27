@@ -50,7 +50,7 @@ export const messages = {
   "zh": {
     brand: "月光塔罗",
     heading: "月光为引 牌面为镜",
-    questionLabel: "月光为引 牌面为镜",
+    questionLabel: "让月亮回答你",
     questionSummaryLabel: "问题",
     questionPlaceholder: "写下此刻的心事",
     enter: "开始",

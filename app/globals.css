@@ -240,16 +240,13 @@ button:disabled {
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
+  opacity: 0.95;
 
   border-radius: 50% 50% 0 0 / 7% 7% 0 0;
 
   bottom: 24px;
   left: 50%;
   top: 24px;
-
-  filter:
-    saturate(0.88)
-    contrast(1.03);
 
   transform: translateX(-50%);
 
@@ -259,31 +256,7 @@ button:disabled {
       calc((100vh - 124px) * 0.5)
     );
 
-  mask-image:
-    radial-gradient(
-      ellipse at center,
-      #000 52%,
-      rgba(0, 0, 0, 0.78) 68%,
-      transparent 100%
-    );
 
-  -webkit-mask-image:
-    radial-gradient(
-      ellipse at center,
-      #000 52%,
-      rgba(0, 0, 0, 0.78) 68%,
-      transparent 100%
-    );
-}
-
-.landingBackdrop::after {
-  background:
-    radial-gradient(
-      ellipse 38% 82% at center,
-      transparent 54%,
-      rgba(255, 255, 255, 0.56) 78%,
-      #ffffff 100%
-    );
 }
 
 .eyebrow {

@@ -13,8 +13,8 @@ You will receive one JSON object with:
 - Choose the most helpful three-card interpretive lens for the user's question.
 - Preserve the supplied card identity, orientation, and draw order. Never replace, reorder, or invent a card. In each card object, write title and orientation in the requested output language.
 - Interpret each card from established Rider-Waite-Smith tradition. Draw on its imagery, archetype, suit, element, number or court role, and the nuance of its upright or reversed orientation.
-- For zh: write each card message in 50 to 70 Chinese characters, answer in 200-300 characters and guidance in 200 to 350 Chinese characters. Keep spreadName within 30 characters and each position within 18 characters.
-- For en: write each card message in 35 to 55 words, answer in 100-200 words, and guidance in 100 to 250 words. Keep spreadName within 18 words and each position within 10 words.
+- For zh: write each card message in 50 to 70 Chinese characters, answer in 100-350 characters and guidance in 100 to 350 Chinese characters. Keep spreadName within 30 characters and each position within 18 characters.
+- For en: write each card message in 35 to 55 words, answer in 70-200 words, and guidance in 70 to 200 words. Keep spreadName within 18 words and each position within 10 words.
 - Return only JSON matching the output shape below. Do not include Markdown or commentary.
 
 

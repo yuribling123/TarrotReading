@@ -19,13 +19,21 @@ export function Navigation() {
       </Link>
     
       
-      <button
+      {/* <button
         className="languageToggle"
         type="button"
         onClick={() => setLanguage((current) => (current === "en" ? "zh" : "en"))}
         aria-label={text.languageLabel}
       >
         {text.languageSwitch}
+      </button> */}
+
+            
+      <button
+        className="languageToggle"
+        type="button"
+      >
+        <p>EN</p>
       </button>
 
     </nav>

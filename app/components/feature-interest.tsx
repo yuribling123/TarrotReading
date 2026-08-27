@@ -64,10 +64,10 @@ export function FeatureInterest({ language }: Props) {
 
 
     return (
-        <section className="fixed bottom-6 right-6 mx-auto z-[999]">
-            <div className="rounded-xl border border-[#6e5536]/20 bg-white/45 px-4 py-4 backdrop-blur-lg transition hover:border-[#6e5536]/35">
+        <section className="fixed bottom-6 right-6 mx-auto z-200">
+            <div className="rounded-xl border border-[#6e5536]/20 bg-white/45 px-4 py-2 backdrop-blur-lg transition hover:border-[#6e5536]/35">
 
-                <div className="mb-2 text-[10px] tracking-[0.22em] text-[#6e5536]/70">
+                <div className="m-1.5 text-[10px] tracking-[0.22em] text-[#9b783e]/85">
                     ✦ {text.eyebrow}
                 </div>
 
@@ -75,7 +75,7 @@ export function FeatureInterest({ language }: Props) {
                     {text.title}
                 </h2>
 
-                <p className="mt-1 text-xs leading-6 text-[#6e5536]/80">
+                <p className="mt-1 text-xs leading-6 text-[#6e5536]/75">
                     {text.description}
                 </p>
 
@@ -87,16 +87,16 @@ export function FeatureInterest({ language }: Props) {
                         className={`
                         rounded-full border px-1.5 py-1.5 transition 
                         ${liked
-                                ? "border-[#6e5536]/30 bg-white text-[#6e5536]"
-                                : "border-[#6e5536]/30 text-[#9b783e]/85 hover:bg-[#6e5536]/10"
+                                ? "border-[#6e5536]/30 bg-white text-[#171526]/55"
+                                : "border-[#6e5536]/30 text-[#171526]/55 hover:bg-[#6e5536]/10"
                             }
                     `}
                     >
-                        {liked ? "✓" : "♥"} {liked ? text.wanted : text.want}
+                        {liked ? "✓" : "♡"} {liked ? text.wanted : text.want}
                     </button>
 
-                    <span className="px-2 py-1.5 text-[#6e5536]/80">
-                         <span className="font-serif">{count}</span> 
+                    <span className="px-2 py-1.5 text-[#171526]/55">
+                         <span className="font-serif">{count}</span> {" "}
                          {text.people}
                     </span>
                 </div>

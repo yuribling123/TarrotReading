@@ -21,15 +21,15 @@ export function ReadingResult({
               <span>{card.position}</span>
               <p style={{ fontWeight: 600 }}>{card.title}</p>
               <p className="cardOrientation">{card.orientation}</p>
-              <p>{card.message}</p>
+              <p className="text-[0.82rem]">{card.message}</p>
             </article>
           );
         })}
       </div>
       <div className="synthesis">
         <h3 style={{ fontWeight: 600 }}>{summaryLabel}</h3>
-        {reading.answer && <p className="readingAnswer">{reading.answer}</p>}
-        {reading.guidance && <p>{reading.guidance}</p>}
+        <p className="text-[0.82rem]">{reading.answer}</p>
+        <p className="text-[0.82rem] pt-2">{reading.guidance}</p>
       </div>
     </section>
   );

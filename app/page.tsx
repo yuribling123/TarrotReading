@@ -6,9 +6,6 @@ import { useReadingSession } from "@/app/components/reading-session-provider";
 import { messages } from "@/lib/i18n";
 import { tarotDeck } from "@/lib/tarot/constants";
 import { TarotPreloader } from "./components/image-preload";
-import { MoonPhase } from "./components/moon-phase";
-import { useState } from "react";
-import { MoonMessage } from "./components/moon-message";
 import { FeatureInterest } from "./components/feature-interest";
 
 export default function LandingPage() {
@@ -21,7 +18,6 @@ export default function LandingPage() {
   function handleQuestion(question: string) {
     setQuestion(question);
     setError("");
-    router.push("/select");
   }
 
   return (

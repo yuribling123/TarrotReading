@@ -510,6 +510,7 @@ background:
    ================================================== */
 
 [data-slot="toast-viewport"] {
+  z-index:400;
   bottom: 28px;
 }
 
@@ -1772,7 +1773,9 @@ transition-delay: 300ms, 0ms;
 
   }
 
-
+  .landingBackdrop::before {
+    opacity: 0.95;
+  }
 
   
 

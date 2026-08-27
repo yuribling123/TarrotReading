@@ -128,6 +128,7 @@ button:disabled {
   background: #ffffff;
   border-bottom: 1px solid rgba(112, 82, 34, 0.16);
   box-shadow: 0 8px 22px rgba(70, 51, 22, 0.08);
+  position: fixed;
 
   height: 76px;
   inset: 0 0 auto;
@@ -196,18 +197,12 @@ button:disabled {
   right: 20px;
   top: 14px;
 
-  transition:
-    background 180ms ease,
-    color 180ms ease,
-    transform 180ms ease;
+
 
   z-index: 2;
 }
 
-.languageToggle:hover {
-  background: rgba(215, 181, 109, 0.26);
-  transform: translateY(-2px);
-}
+
 
 /* ==================================================
    LANDING
@@ -1583,6 +1578,7 @@ transition-delay: 300ms, 0ms;
 
 @media (max-width: 520px) {
   .topNavigation {
+    position: fixed;
     height:
       calc(
         68px +

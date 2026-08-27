@@ -1667,15 +1667,6 @@ transition-delay: 300ms, 0ms;
     width: min(91vw, 430px);
   }
 
-  .landingBackdrop::after {
-    background:
-      radial-gradient(
-        ellipse 50% 82% at center,
-        transparent 55%,
-        rgba(255, 255, 255, 0.4) 79%,
-        #ffffff 100%
-      );
-  }
 
   .landingContent {
     min-height:

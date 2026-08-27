@@ -2,7 +2,7 @@ export const messages = {
   "en": {
     brand: "Moonlit Tarot",
     heading: "Moonlight guides and cards reflect.",
-    questionLabel: "Moonlight guides and cards reflect",
+    questionLabel: "Let the moon answers you",
     questionSummaryLabel: "Question",
     questionPlaceholder: "Write what's on your heart",
     enter: "Enter",

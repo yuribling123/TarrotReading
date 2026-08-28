@@ -54,7 +54,7 @@ export function QuestionForm({
     <form className="questionForm " onSubmit={submitQuestion}>
       {/* <label htmlFor="question"  >{label}</label> */}
       <div className="relative w-full">
-      <Input id="question" value={question} onBlur={() => window.scrollTo(0, 0)} onFocus={() => window.scrollTo(0, 0)} onChange={(event) => setQuestion(event.target.value)} placeholder={placeholder} autoComplete="off" lang={language} className="pr-21 h-17 text-[16px]! placeholder:text-[0.86rem] bg-white border-primary/70 text-[#51485C]/70 focus-visible:ring-0 focus-visible:border-primary caret-[#c98f9f]" />
+      <Input id="question" value={question} onBlur={() => window.scrollTo(0, 0)}  onChange={(event) => setQuestion(event.target.value)} placeholder={placeholder} autoComplete="off" lang={language} className="pr-21 h-17 text-[16px]!  bg-white border-primary/70 text-[#51485C]/70 focus-visible:ring-0 focus-visible:border-primary caret-[#c98f9f]" />
      
         {/* 强制16字体：输入时才不会自动放大 */}
         {/* <input

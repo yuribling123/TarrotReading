@@ -412,6 +412,7 @@ background:
 }
 
 .primaryAction:hover,
+.primaryAction:active,
 .secondaryAction:hover,
 .error button:hover {
   box-shadow:

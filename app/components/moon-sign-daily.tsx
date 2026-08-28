@@ -1,9 +1,9 @@
 export function DailyZodiac() {
   return (
-    <button className="group mx-auto mt-5 flex w-fit items-center gap-2.5 rounded-full border border-[#d7b56d]/25 bg-white/75 px-4 py-2.5 shadow-[0_5px_20px_rgba(50,38,60,0.07)]  transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/90 hover:shadow-[0_8px_26px_rgba(50,38,60,0.11)]">
+    <button className="group mx-auto -translate-y-60 flex w-fit items-center gap-2.5 rounded-full border border-[#d7b56d]/25 bg-white/75  py-2.5 shadow-[0_5px_20px_rgba(50,38,60,0.07)]  transition-all duration-300 hover:-translate-y-0.5 ">
       <span className="text-[10px] text-[#c39a47]">✦</span>
 
-      <span className="text-[11px] tracking-[0.12em] text-[#5C4B68]/65">
+      <span className="text-[11px] tracking-[0.12em] text-[#493B55]">
         今夜幸运星座
       </span>
 

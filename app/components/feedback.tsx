@@ -38,7 +38,7 @@ export function FeedBack() {
             <Button size="lg" onClick={handleOnClick} variant="secondary" disabled={feedback || isPending}>
                 {feedback ? <p>已回应</p> : <p> 有共鸣 </p>}
             </Button>
-            <p className="mt-5 text-[#51485c]/30 "> {count} 次留下共鸣</p>
+            <p className="mt-5 text-[#51485c]/30 ">月光下已有 {count} 份共鸣</p>
 
         </div>
 

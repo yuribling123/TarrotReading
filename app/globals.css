@@ -1541,65 +1541,6 @@ transition-delay: 300ms, 0ms;
    ================================================== */
 
 @media (max-width: 520px) {
-  .topNavigation {
-    position: fixed;
-    height:
-      calc(
-        68px +
-        env(safe-area-inset-top)
-      );
-
-    padding-top:
-      env(safe-area-inset-top);
-  }
-
-  .topNavigation::after {
-    height: 20px;
-    width: 20px;
-
-    left: calc(50% - 126px);
-
-    top:
-      calc(
-        19px +
-        env(safe-area-inset-top)
-      );
-  }
-
-
-
-  .navBrand {
-    top:
-      calc(
-        21px +
-        env(safe-area-inset-top)
-      );
-  }
-
-  .hero {
-    padding:
-      calc(
-        68px +
-        env(safe-area-inset-top) +
-        18px
-      )
-      14px
-      max(
-        28px,
-        env(safe-area-inset-bottom)
-      );
-  }
-
-  h1 {
-    font-size:
-      clamp(
-        2rem,
-        10vw,
-        2.6rem
-      );
-  }
-
-
 
   .landingBackdrop::before {
     
@@ -1621,46 +1562,6 @@ transition-delay: 300ms, 0ms;
     width: min(91vw, 430px);
   }
 
-
- 
-
-
-
-  .landingContent .questionForm label {
-    font-size:
-      clamp(
-        0.7rem,
-        3vw,
-        0.78rem
-      );
-
-    margin-bottom:
-      clamp(
-        8px,
-        2dvh,
-        14px
-      );
-  }
-
-  .inputRow {
-    gap: 4px;
-
-    grid-template-columns:
-      minmax(0, 1fr)
-      auto;
-
-    padding: 7px;
-  }
-
-  .inputRow input {
-    font-size: 16px;
-    padding: 11px 9px;
-  }
-
-  .inputRow button {
-    min-width: 44px;
-    padding: 10px 11px;
-  }
 
   [data-slot="toast-viewport"] {
     bottom:

@@ -16,7 +16,7 @@ export function FeedBack() {
         try{
             if (response.ok){ //succeed
                 setFeedback(true)
-                toast.add({title:"月光记住了这份共鸣",timeout: 1200})
+                toast.add({title:"月光记住了这份共鸣",timeout: 900})
             }
         } finally {setIsPending(false);}
     }

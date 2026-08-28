@@ -1463,6 +1463,20 @@ transition-delay: 300ms, 0ms;
    ================================================== */
 
 @media (max-width: 860px) {
+  .inputRow {
+    padding: 5px 1px;
+  }
+  .inputRow input {
+
+    padding: 8px 15px; /* 这里也会影响整体高度 */
+
+  }
+  .inputRow button {
+
+    padding: 8px 15px;
+  }
+
+
   .questionForm {
   margin-top: 0;
   padding-inline: 10vw;

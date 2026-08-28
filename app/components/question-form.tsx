@@ -52,8 +52,9 @@ export function QuestionForm({
     <form className="questionForm overflow-hidden " onSubmit={submitQuestion}>
       <label htmlFor="question"  >{label}</label>
       <div className="inputRow ">
+        {/* 强制16字体：输入时才不会自动放大 */}
         <input
-          className="text-[16px]!"
+          className="text-[16px]! placeholder:text-[0.86rem]!"
           id="question"
           value={question}
           onChange={(event) => setQuestion(event.target.value)}

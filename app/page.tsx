@@ -26,7 +26,7 @@ export default function LandingPage() {
       <TarotPreloader deck={deck} />
       <div className="landingBackdrop" aria-hidden="true" />
       <div className="content landingContent -translate-y-30"> 
-        {/* <DailyZodiac/> */}
+        <DailyZodiac/>
         <QuestionForm 
           language={language}
           label={text.questionLabel}

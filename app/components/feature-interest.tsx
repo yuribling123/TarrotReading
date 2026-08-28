@@ -64,7 +64,7 @@ export function FeatureInterest({ language }: Props) {
 
 
     return (
-        <section className="fixed bottom-6 right-6 mx-auto z-200">
+        <section className="absolute bottom-6 right-6 mx-auto z-200">
             <div className="rounded-xl border border-[#6e5536]/20 bg-white/45 px-4 py-2 backdrop-blur-lg transition hover:border-[#6e5536]/35">
 
                 <div className="m-1.5 text-[10px] tracking-[0.22em] text-[#9b783e]/85">

@@ -8,10 +8,10 @@ export function DailyMoonSign() {
 
 
 return (
-  <div className="mx-auto flex flex-col items-center text-center">
+  <div className="mx-auto flex flex-col items-center text-center -translate-y-80">
 
     {/* 吊线 */}
-    <div className="h-8 w-px bg-gradient-to-b from-transparent via-[#d7b56d]/60 to-[#d7b56d]/90" />
+    <div className="h-8 w-px bg-linear-to--b from-transparent via-[#d7b56d]/60 to-[#d7b56d]/90" />
 
     {/* 月亮圆 */}
     <div className="flex h-9 w-9 items-center justify-center rounded-full border border-[#d7b56d]/50 bg-[#f2dfb3]/90 shadow-[0_0_18px_rgba(215,181,109,0.28)]">
@@ -35,7 +35,7 @@ return (
     </p>
 
     {/* Message */}
-    <p className="mt-2 max-w-[250px] text-[11px] leading-5 text-[#f7e2ba]/90 drop-shadow-[0_2px_8px_rgba(0,0,0,0.95)]">
+    <p className="mt-2  text-[11px] leading-5 text-[#f7e2ba]/90 drop-shadow-[0_2px_8px_rgba(0,0,0,0.95)]">
       有些答案 更适合先感受 而不是急着追问
     </p>
 

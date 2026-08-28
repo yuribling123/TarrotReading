@@ -24,9 +24,9 @@ export default function LandingPage() {
     <>
       <TarotPreloader deck={deck} />
       <div className="landingBackdrop" aria-hidden="true" />
-      <div className="content landingContent"> 
+      <div className="content landingContent -translate-y-10"> 
         {/* <DailyMoonSign/> */}
-        <QuestionForm
+        <QuestionForm 
           language={language}
           label={text.questionLabel}
           placeholder={text.questionPlaceholder}

@@ -219,7 +219,7 @@ button:disabled {
   inset: 76px 0 0;
   overflow: hidden;
   pointer-events: none;
-  position: fixed;
+  position: absolute;
   z-index: 0;
 }
 
@@ -1546,6 +1546,10 @@ transition-delay: 300ms, 0ms;
    ================================================== */
 
 @media (max-width: 520px) {
+  .shell {
+  min-height: 100svh;
+  overflow-x: hidden;
+  }
 
   .landingBackdrop::before {
     

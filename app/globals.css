@@ -1547,8 +1547,13 @@ transition-delay: 300ms, 0ms;
 
 @media (max-width: 520px) {
   .shell {
-  min-height: 100svh;
-  overflow-x: hidden;
+    min-height: 100svh;
+    overflow-x: hidden;
+  }
+  .hero:has(.landingContent) {
+   height: 100svh;
+   min-height: 0;
+   overflow: hidden;
   }
 
   .landingBackdrop::before {

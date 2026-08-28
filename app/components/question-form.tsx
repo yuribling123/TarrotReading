@@ -51,9 +51,9 @@ export function QuestionForm({
     <div>
           
     <form className="questionForm  -translate-y-30" onSubmit={submitQuestion}>
-      <label htmlFor="question"  >{label}</label>
+      {/* <label htmlFor="question"  >{label}</label> */}
       <div className="relative w-full">
-      <Input id="question" value={question} onChange={(event) => setQuestion(event.target.value)} placeholder={placeholder} autoComplete="off" lang={language} className=" h-15 text-[15px]! placeholder:text-[0.86rem] bg-white border-primary/70 text-[#4f463d] focus-visible:ring-0 focus-visible:border-primary caret-[#c98f9f]" />
+      <Input id="question" value={question} onChange={(event) => setQuestion(event.target.value)} placeholder={placeholder} autoComplete="off" lang={language} className=" h-15 text-[16px]! placeholder:text-[0.86rem] bg-white border-primary/70 text-[#4f463d] focus-visible:ring-0 focus-visible:border-primary caret-[#c98f9f]" />
      
         {/* 强制16字体：输入时才不会自动放大 */}
         {/* <input

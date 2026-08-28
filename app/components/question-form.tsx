@@ -50,7 +50,7 @@ export function QuestionForm({
     <div>
           
     <form className="questionForm overflow-hidden " onSubmit={submitQuestion}>
-      <label htmlFor="question" >{label}</label>
+      <label htmlFor="question"  >{label}</label>
       <div className="inputRow">
         <input
           id="question"

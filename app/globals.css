@@ -444,12 +444,6 @@ background:
 
   z-index: 1;
 
-  text-shadow:
-    0 0 4px #ffffff,
-    0 0 10px #ffffff,
-    0 0 20px #ffffff,
-    0 0 34px rgba(255, 255, 255, 0.95),
-    0 0 48px rgba(255, 255, 255, 0.75);
 }
 
 .landingContent .questionForm label::before {
@@ -466,7 +460,7 @@ background:
 
   content: "";
 
-  filter: blur(7px);
+  filter: blur(10px);
   inset: -22px -40px;
 
   pointer-events: none;
@@ -1468,47 +1462,11 @@ transition-delay: 300ms, 0ms;
    ================================================== */
 
 @media (max-width: 860px) {
-  .shell {
-    min-height: 100dvh;
-    overflow-x: hidden;
-    overflow-y: auto;
-  }
-
-  .hero {
-    min-height: 100dvh;
-
-    padding:
-      calc(76px + 28px)
-      20px
-      max(
-        36px,
-        env(safe-area-inset-bottom)
-      );
-  }
-
-  .landingContent {
-    min-height:
-      calc(
-        100dvh - 76px
-      );
-
-    position: relative;
-
-    transform: none;
-  }
-
-  .landingContent .questionForm {
-    left: 50%;
-    margin: 0;
-    position: absolute;
-
-    top: 28%;
-
-    transform: translateX(-50%);
-
-    width: min(90%, 820px);
-  }
-
+  .questionForm {
+  margin-top: 0;
+  padding-inline: 10vw;
+ }
+ 
   /* card sizing */
 
   .cardFan {
@@ -1641,17 +1599,10 @@ transition-delay: 300ms, 0ms;
       );
   }
 
-  .landingBackdrop {
-    inset:
-      calc(
-        68px +
-        env(safe-area-inset-top)
-      )
-      0
-      0;
-  }
+
 
   .landingBackdrop::before {
+    
     aspect-ratio: 701 / 1200;
 
     background-position: top center;
@@ -1671,19 +1622,9 @@ transition-delay: 300ms, 0ms;
   }
 
 
-  .landingContent {
-    min-height:
-      calc(
-        100dvh -
-        68px -
-        env(safe-area-inset-top)
-      );
-  }
+ 
 
-  .landingContent .questionForm {
-    top: 25%;
-    width: 90%;
-  }
+
 
   .landingContent .questionForm label {
     font-size:

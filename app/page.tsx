@@ -7,7 +7,8 @@ import { messages } from "@/lib/i18n";
 import { tarotDeck } from "@/lib/tarot/constants";
 import { TarotPreloader } from "./components/image-preload";
 import { FeatureInterest } from "./components/feature-interest";
-import { DailyMoonSign } from "./components/moon-sign-daily";
+import { DailyZodiac } from "./components/moon-sign-daily";
+
 
 export default function LandingPage() {
   const { language, setError, setQuestion } = useReadingSession();
@@ -25,7 +26,7 @@ export default function LandingPage() {
       <TarotPreloader deck={deck} />
       <div className="landingBackdrop" aria-hidden="true" />
       <div className="content landingContent -translate-y-30"> 
-        {/* <DailyMoonSign/> */}
+        {/* <DailyZodiac/> */}
         <QuestionForm 
           language={language}
           label={text.questionLabel}

@@ -235,7 +235,7 @@ button:disabled {
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
-  opacity: 0.95;
+ 
 
   border-radius: 50% 50% 0 0 / 7% 7% 0 0;
 
@@ -1632,7 +1632,7 @@ transition-delay: 300ms, 0ms;
   }
 
   .landingBackdrop::before {
-    opacity: 0.95;
+   
   }
 
   

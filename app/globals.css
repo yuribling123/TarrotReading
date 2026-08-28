@@ -1554,6 +1554,7 @@ transition-delay: 300ms, 0ms;
    height: 100svh;
    min-height: 0;
    overflow: hidden;
+   
   }
 
   .landingBackdrop::before {
@@ -1566,8 +1567,8 @@ transition-delay: 300ms, 0ms;
 
     height: auto;
 
-
     width: min(91vw, 430px);
+   
   }
 
 

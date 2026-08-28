@@ -28,7 +28,7 @@ export function FeedBack() {
                 const data = await response.json();
                 setFeedback(true)
                 setCount(data.count);
-                toast.add({ title: "月光记住了这份共鸣", timeout: 900 })
+                toast.add({ title: "月光记住了这份共鸣", timeout: 1200 })
             }
         } finally { setIsPending(false); }
     }

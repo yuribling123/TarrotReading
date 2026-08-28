@@ -51,8 +51,9 @@ export function QuestionForm({
           
     <form className="questionForm overflow-hidden " onSubmit={submitQuestion}>
       <label htmlFor="question"  >{label}</label>
-      <div className="inputRow">
+      <div className="inputRow ">
         <input
+          className="text-[16px]!"
           id="question"
           value={question}
           onChange={(event) => setQuestion(event.target.value)}

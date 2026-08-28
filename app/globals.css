@@ -434,40 +434,36 @@ background:
 }
 
 .landingContent .questionForm label {
+  margin-bottom:25px;
   color: #79591e;
-
-  font-size: 0.78rem;
+  font-size: 0.86rem;
   font-weight: 500;
-
   position: relative;
   width: fit-content;
-
   z-index: 1;
 
 }
-
 .landingContent .questionForm label::before {
-  background:
-    radial-gradient(
-      ellipse at center,
-      #ffffff 0%,
-      #ffffff 28%,
-      rgba(255, 255, 255, 0.94) 44%,
-      rgba(255, 255, 255, 0.7) 62%,
-      rgba(255, 255, 255, 0.32) 78%,
-      transparent 100%
-    );
-
   content: "";
-
-  filter: blur(10px);
-  inset: -22px -40px;
-
-  pointer-events: none;
   position: absolute;
-
   z-index: -1;
+  pointer-events: none;
+
+  inset: -10px -22px;
+  border-radius: 999px;
+
+  background: radial-gradient(
+   
+    rgba(255, 250, 240, 0.98) 0%,
+    rgba(255, 250, 240, 0.95) 45%,
+    rgba(255, 250, 240, 0.75) 65%,
+    rgba(255, 250, 240, 0.35) 82%,
+    transparent 10%
+  );
+
+  filter: blur(5px);
 }
+
 
 .landingContent .inputRow {
   background: #ffffff;
@@ -1566,12 +1562,6 @@ transition-delay: 300ms, 0ms;
 
     height: auto;
 
-    top:
-      clamp(
-        12px,
-        2.5dvh,
-        28px
-      );
 
     width: min(91vw, 430px);
   }

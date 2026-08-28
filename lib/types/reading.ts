@@ -10,6 +10,7 @@ export type ReadingSessionData = {
   selectedIndexes: number[];
   cards:  TarotCard [];
   reading: ReadingResponse | null;
+  feedback: boolean;
 };
 
 export type ReadingRequest = {

@@ -9,7 +9,6 @@ import { TarotPreloader } from "./components/image-preload";
 import { FeatureInterest } from "./components/feature-interest";
 
 export default function LandingPage() {
-  const router = useRouter();
   const { language, setError, setQuestion } = useReadingSession();
   const text = messages[language];
   const deck = tarotDeck

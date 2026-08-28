@@ -9,7 +9,7 @@ import { useReadingSession } from "@/app/components/reading-session-provider";
 import { messages } from "@/lib/i18n";
 import { shuffleDeck } from "@/lib/tarot/deck";
 import type { ReadingResponse, TarotCard } from "@/lib/types";
-import { toast } from "@/components/ui/toast";
+
 
 export default function SelectPage() {
   const router = useRouter();

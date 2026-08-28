@@ -14,8 +14,8 @@
   --night: #130f1f;
 
   --selection-primary-text: #3f2221;
-  --primary: rgb(155, 114, 42);
-  --secondary: #4b2020;
+  --primary: rgb(155, 114, 42);/* 月光金 */
+  --secondary: --secondary: #292438;  /* 月夜紫 */
 
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
@@ -506,13 +506,18 @@ background:
 
 [data-slot="toast-viewport"] {
   z-index:400;
-  bottom: 28px;
+
+  top: 150px;
+  bottom: auto;
+
 }
 
 [data-slot="toast"] {
+  width: fit-content;
+
+  min-width: 0px;
   background: rgba(14, 19, 31, 0.96);
   border-color: rgba(215, 181, 109, 0.58);
-
   box-shadow:
     0 18px 46px
     rgba(18, 14, 31, 0.25);
@@ -521,6 +526,8 @@ background:
 }
 
 [data-slot="toast-title"] {
+  white-space: nowrap;
+  text-align: center;
   color: #f7efe3;
   font-size: 0.88rem;
   line-height: 1.5;

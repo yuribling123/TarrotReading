@@ -7,6 +7,7 @@ import { QuestionSummary } from "@/app/components/question-summary";
 import { ReadingResult } from "@/app/components/reading-result";
 import { Card } from "@/app/components/card";
 import { useReadingSession } from "@/app/components/reading-session-provider";
+import { FeedBack } from "../components/feedback";
 
 export default function ReadingPage() {
   const router = useRouter();
@@ -52,6 +53,8 @@ export default function ReadingPage() {
       </div>
 
       <ReadingResult reading={reading} summaryLabel={text.readingSummary}/>
+
+      <FeedBack/>
     </div>
   );
 }

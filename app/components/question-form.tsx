@@ -34,7 +34,7 @@ export function QuestionForm({
     const submittedQuestion = question.trim();
 
     if (!submittedQuestion) {
-      toast.add({ title: "Empty Question"});
+      toast.add({id: "empty-question", title: "Empty Question"});
       console.log("Empty Question");
       return;
     }

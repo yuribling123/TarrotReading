@@ -68,7 +68,7 @@ export function QuestionForm({
         />
         <button type="submit">{submitLabel}</button>
        */}
-       <Button type="submit" className="absolute right-3 top-1/2 -translate-y-1/2 h-10 px-5 rounded-full border border-[#d8bc78]/60 bg-[#e6cb7e]/20 text-[#9b722a] shadow-none transition-all duration-300 hover:bg-[#e6cb7e]/35 hover:text-[#7d5b20] hover:border-[#d8bc78] active:scale-[0.97]"> <p className="font-medium">{submitLabel}</p>  </Button>
+       <Button type="submit" className="absolute right-3 top-1/2 -translate-y-1/2 h-10 px-5 rounded-full border border-[#d8bc78]/60 bg-[#e6cb7e]/10 text-[#9b722a] shadow-none transition-all duration-300 hover:bg-[#e6cb7e]/35 hover:text-[#7d5b20] hover:border-[#d8bc78] active:scale-[0.97]"> <p className="font-medium">{submitLabel}</p>  </Button>
         </div>
         
       

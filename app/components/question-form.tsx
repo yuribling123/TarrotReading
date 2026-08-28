@@ -34,12 +34,12 @@ export function QuestionForm({
     const submittedQuestion = question.trim();
 
     if (!submittedQuestion) {
-      toast.add({id: "empty-question", title: "Empty Question"});
+      toast.add({id: "empty-question", title: "Empty Question",timeout: 900});
       console.log("Empty Question");
       return;
     }
     if (submittedQuestion.length > maxQuestionLength) {
-      toast.add({ title: "Question is too long" });
+      toast.add({ title: "Question is too long" ,timeout: 1200});
       return;
     }
     router.push("/select");

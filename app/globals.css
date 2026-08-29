@@ -735,17 +735,15 @@ transition-delay: 300ms, 0ms;
 
 
 .cardFan.spreadOut:not(.dealing) .cardBack.selected {
+  --card-index: 9999;
   transform: translateY(-18px);
+  filter: saturate(1.2);
 }
 
 .cardFan.spreadOut:not(.dealing) .cardBack:hover {
   z-index: 200;
 }
 
-.cardFan.spreadOut:not(.dealing) .cardBack.selected {
-  filter: saturate(1.2);
-  z-index: 300;
-}
 
 /* ==================================================
    CARD FLIP

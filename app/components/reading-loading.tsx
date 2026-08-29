@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { ReadingError } from "@/app/components/reading-error";
 import { Card } from "@/app/components/card";
 import type { TarotCard } from "@/lib/types";
+import { Constellation } from "./constellation";
 
 type ReadingLoadingProps = {
   cards: TarotCard[];
@@ -74,6 +75,10 @@ export function ReadingLoading({
         <i />
         <span />
       </div>
+      
+     
+      <Constellation/>
+  
 
     </section>
   );

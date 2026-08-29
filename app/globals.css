@@ -1551,11 +1551,12 @@ transition-delay: 300ms, 0ms;
     min-height: 100svh;
     overflow-x: hidden;
   }
-  .hero:has(.landingContent) {
+  .hero:has(.landingContent) 
+  .hero:has(.selectionContent)
+  {
    height: 100svh;
    min-height: 0;
    overflow: hidden;
-   
   }
 
   .landingBackdrop::before {

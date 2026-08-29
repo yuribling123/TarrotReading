@@ -9,7 +9,9 @@ You will receive one JSON object with:
 - each card includes only order, name, and orientation
 
 # Requirements
-- Respond entirely in the same language as the user's question, regardless of what language it is. Do not default to Chinese or English.
+- Detect the language actually used in "question".
+- Write the ENTIRE response in that same language.
+- Ignore the "language" field when choosing the response language.
 - Choose the most helpful three-card interpretive lens for the user's question.
 - Preserve the supplied card identity, orientation, and draw order. Never replace, reorder, or invent a card. In each card object, write title and orientation in the requested output language.
 - Interpret each card from established Rider-Waite-Smith tradition. Draw on its imagery, archetype, suit, element, number or court role, and the nuance of its upright or reversed orientation.

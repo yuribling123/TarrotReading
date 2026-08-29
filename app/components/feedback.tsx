@@ -34,7 +34,7 @@ export function FeedBack() {
     }
 
     return (
-        <div className="mt-8 flex flex-col items-center pb-8">
+        <div className="mt-8 flex flex-col items-center ">
             <Button size="lg" onClick={handleOnClick} variant="secondary" disabled={feedback || isPending} className="w-20 self-center">
                 {feedback ? <p>已回应</p> : <p>留下共鸣</p>}
             </Button>

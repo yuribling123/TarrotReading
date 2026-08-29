@@ -21,14 +21,14 @@ export function FeedBack() {
 
     async function handleOnClick() {
         setIsPending(true);
-        setFeedback(true);
         const response = await fetch("/api/reading-feedback", { method: "POST", });
         try {
             if (response.ok) { //succeed
                 const data = await response.json();
-                setFeedback(true)
+                toast.add({ title: "月光记住了这份共鸣", timeout: 1300 })
+                setFeedback(true);
+                setIsPending(false);
                 setCount(data.count);
-                toast.add({ title: "月光记住了这份共鸣", timeout: 1200 })
             }
         } finally { setIsPending(false); }
     }

@@ -535,6 +535,9 @@ box-shadow:
   border: 0;
 
   color: #3f352c;
+  width: 100%;
+  max-width: 80%;
+  min-width: 0;
 
   font-size: 1rem;
   font-weight: 400;

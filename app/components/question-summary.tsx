@@ -6,7 +6,7 @@ type QuestionSummaryProps = {
 
 export function QuestionSummary({ question}: QuestionSummaryProps) {
   return (
-    <div className="questionPanel">
+    <div className="questionPanel pt-3">
       <p>{question}</p>
     </div>
   );

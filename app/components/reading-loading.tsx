@@ -56,7 +56,7 @@ export function ReadingLoading({
           : stages[stageIndex]}
       </p>
 
-      <div className="spread">
+      <div className="spread pt-10">
         {cards.map((card) => (
           <Card
             key={card.name}

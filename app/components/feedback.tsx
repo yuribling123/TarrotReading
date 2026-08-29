@@ -34,13 +34,13 @@ export function FeedBack() {
     }
 
     return (
-        <div className="mt-8 flex flex-col items-center ">
-            <p className="mt-3.5 text-[10px] text-[#595858]/80 self-center"> 听说留下共鸣的人，牌意更容易被宇宙收到 ✦ </p>
-            <Button size="lg" onClick={handleOnClick} variant="secondary" disabled={feedback || isPending} className="w-20 self-center">
+        <div className="mt-4 flex flex-col items-center ">
+            <p className="mt-2 text-[10px] text-[#595858]/80 self-center"> 听说留下共鸣的人，牌意更容易被宇宙收到 ✦ </p>
+            <Button size="lg" onClick={handleOnClick} variant="secondary" disabled={feedback || isPending} className="mt-2 w-20 self-center">
                 {feedback ? <p>☾ 月光收下了</p> : <p>♡ 留下共鸣</p>}
             </Button>
             
-            <p className="mt-8  text-[9px] font-medium text-[#383140]/90 self-center">今夜已有 {count} 份共鸣</p>
+            <p className="mt-5  text-[9px] font-medium text-[#383140]/90 self-center">今夜已有 {count} 份共鸣</p>
 
         </div>
 

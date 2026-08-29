@@ -34,12 +34,12 @@ export function FeedBack() {
     }
 
     return (
-        <div className="translate-y-8  flex flex-col">
+        <div className="mt-8 flex flex-col items-center pb-8">
             <Button size="lg" onClick={handleOnClick} variant="secondary" disabled={feedback || isPending} className="w-20 self-center">
                 {feedback ? <p>已回应</p> : <p>留下共鸣</p>}
             </Button>
             <p className="mt-3.5 text-[10px] text-[#595858]/80 self-center">听说，共鸣过的牌会更灵一点 ···</p>
-            <p className="mt-8 text-[9px] font-medium text-[#b89552]/90 self-center">月光下已有 {count} 份共鸣</p>
+            <p className="mt-8  text-[9px] font-medium text-[#b89552]/90 self-center">月光下已有 {count} 份共鸣</p>
 
         </div>
 

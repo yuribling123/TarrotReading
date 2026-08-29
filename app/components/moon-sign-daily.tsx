@@ -10,7 +10,7 @@ export function DailyZodiac() {
   {/* 第一行 */}
   <div className="flex items-center gap-1.5 text-white/70">
     <span className="text-[11px] tracking-[0.12em] ">
-      今夜幸运星座
+      月亮正落在
     </span>
     <span className="text-[#E6CB7E]">✦</span>
     <span className="text-[11px] tracking-[0.12em]">
@@ -19,9 +19,9 @@ export function DailyZodiac() {
   </div>
 
   {/* 第二行 */}
-  <div className="flex items-center text-[#F4F0E8]/90 pt-0.5">
+  <div className="flex items-center text-[#F4F0E8]/80 pt-0.5">
   <span className="text-[10px] tracking-[0.12em] ">
-    今夜宜：
+    今夜提示：
   </span>
   <span className="text-[10px] tracking-[0.12em]">
    {moonSignMessage}

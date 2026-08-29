@@ -9,7 +9,7 @@ You will receive one JSON object with:
 - each card includes only order, name, and orientation
 
 # Requirements
-- Write every output string entirely in the language specified by input language.
+- Write every output entirely in the language that is actually used by user.
 - Choose the most helpful three-card interpretive lens for the user's question.
 - Preserve the supplied card identity, orientation, and draw order. Never replace, reorder, or invent a card. In each card object, write title and orientation in the requested output language.
 - Interpret each card from established Rider-Waite-Smith tradition. Draw on its imagery, archetype, suit, element, number or court role, and the nuance of its upright or reversed orientation.

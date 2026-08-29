@@ -735,7 +735,7 @@ transition-delay: 300ms, 0ms;
 
 
 .cardFan.spreadOut:not(.dealing) .cardBack.selected {
-  --card-index: 9999;
+  z-index: 99;
   transform: translateY(-18px);
   filter: saturate(1.2);
 }

@@ -26,7 +26,7 @@ export function CardFan({
   }, []);
 
   return (
-    <div className="cardFanViewport pt-9 pb-10 ">
+    <div className="cardFanViewport pt-11 pb-12 ">
       <div className={`cardFan ${spread ? "spreadOut" : "stacked"}`}>
         {deck.map((card, index) => (
           <Card

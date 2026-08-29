@@ -96,7 +96,7 @@ export function FeatureInterest({ language }: Props) {
                     </button>
 
                     <span className="px-2 py-1.5 text-[#171526]/55">
-                         <span className="font-serif">{count}</span> {" "}
+                         <span >{count}</span> {" "}
                          {text.people}
                     </span>
                 </div>

@@ -9,13 +9,9 @@ export function DailyZodiac() {
 
   {/* 第一行 */}
   <div className="flex items-center gap-1.5 text-[#F4F0E8]/65">
-    <span className="text-[11px] tracking-[0.12em] ">
-      月亮正落在
-    </span>
+    <span className="text-[11px] tracking-[0.12em] ">月亮正落在</span>
     <span className="text-[#E6CB7E]">✦</span>
-    <span className="text-[11px] tracking-[0.12em]">
-      {moonSign}
-    </span>
+    <span className="text-[11px] tracking-[0.12em]">{moonSign}</span>
   </div>
 
   {/* 第二行 */}

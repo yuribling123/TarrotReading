@@ -21,7 +21,6 @@ export default function SelectPage() {
   const [isReadingReady, setIsReadingReady] = useState(false);
 
   const {
-    error,
     isHydrated,
     language,
     question,
@@ -41,7 +40,6 @@ export default function SelectPage() {
 
   function selectCard(card: TarotCard) {
     setError("");
-
     setSelectedCards((selected) => {
       if (
         selected.length >= 3 ||
@@ -49,7 +47,6 @@ export default function SelectPage() {
       ) {
         return selected;
       }
-
       return [...selected, card];
     });
   }

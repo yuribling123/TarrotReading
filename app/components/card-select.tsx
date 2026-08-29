@@ -62,9 +62,6 @@ export function CardSelect({
           Reveal
         </button>
    
-       
-   
-
       </section>
 
 

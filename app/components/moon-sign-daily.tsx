@@ -19,7 +19,7 @@ export function DailyZodiac() {
   </div>
 
   {/* 第二行 */}
-  <div className="flex items-center text-[#F4F0E8]/90 pt-1">
+  <div className="flex items-center text-[#F4F0E8]/90 pt-0.5">
   <span className="text-[10px] tracking-[0.12em] ">
     今夜宜：
   </span>

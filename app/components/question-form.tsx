@@ -6,6 +6,7 @@ import type { Language } from "@/lib/types";
 import { useRouter } from "next/navigation";
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button";
+import { Loading } from "./loading";
 
 const maxQuestionLength = 180;
 
@@ -18,9 +19,11 @@ type QuestionFormProps = {
   questionTooLongMessage: string;
   initialQuestion?: string;
   onSubmit: (question: string) => Promise<boolean>;
+  isPending: boolean;
 };
 
 export function QuestionForm({
+  isPending,
   language,
   label,
   placeholder,
@@ -44,7 +47,7 @@ export function QuestionForm({
       toast.add({ title: "Question is too long", timeout: 1200 });
       return;
     }
-    //redis
+    // wait for redis to check limit
     const allowed = await onSubmit(submittedQuestion);
     if (!allowed) { return; }
     router.push("/select");
@@ -70,7 +73,7 @@ export function QuestionForm({
         />
         <button type="submit">{submitLabel}</button>
        */}
-          <Button type="submit" className="absolute right-3 top-1/2 -translate-y-1/2 h-10 px-5 rounded-full border border-[#d8bc78]/60 bg-[#e6cb7e]/10 text-[#9b722a] shadow-none transition-all duration-300 hover:bg-[#e6cb7e]/35 hover:text-[#7d5b20] hover:border-[#d8bc78] active:bg-[#e6cb7e]/35 active:text-[#7d5b20] active:border-[#d8bc78] active:scale-[0.76] active:shadow-[0_0_0_5px_rgba(230,203,126,0.10),0_0_22px_rgba(201,154,69,0.32)]"><p className="font-medium">{submitLabel}</p></Button>
+          <Button disabled={isPending} type="submit" className="absolute w-16 right-3 top-1/2 -translate-y-1/2 h-10 px-5 rounded-full border border-[#d8bc78]/60 bg-[#e6cb7e]/10 text-[#9b722a] shadow-none transition-all duration-300 hover:bg-[#e6cb7e]/35 hover:text-[#7d5b20] hover:border-[#d8bc78] active:bg-[#e6cb7e]/35 active:text-[#7d5b20] active:border-[#d8bc78] active:scale-[0.76] active:shadow-[0_0_0_5px_rgba(230,203,126,0.10),0_0_22px_rgba(201,154,69,0.32)]"><p className="font-medium">{isPending ? <Loading /> :submitLabel}</p></Button>
         </div>
 
 

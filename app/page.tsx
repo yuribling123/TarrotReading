@@ -15,52 +15,78 @@ import { toast } from "@/components/ui/toast";
 
 
 export default function LandingPage() {
+  const [isPending, setIsPending] = useState(false);
   const [open, setDialogOpen] = useState(false);
   const { language, setError, setQuestion } = useReadingSession();
   const text = messages[language];
   const deck = tarotDeck
 
-  async function handleResponse() {
-    try {
-      // 留下共鸣 +1
-      const feedbackResponse = await fetch("/api/reading-feedback", {method: "POST",});
-      if (!feedbackResponse.ok) {throw new Error("Failed to add feedback");}
-      //redis 限制清0
-      const visitorId = getVisitorId();
-      const response = await fetch(`/api/reading-limit/${visitorId}`, { method: "DELETE", });
-      if (!response.ok) {throw new Error("Failed to reset reading limit");}
-      // 清零成功后再关闭弹窗
-      toast.add({ title: "月光记住了这份共鸣", timeout: 2600 })
-      setDialogOpen(false);
-    } catch (error) {
-      console.error("Failed to reset reading limit:", error);
+async function handleResponse() {
+  setIsPending(true);
+  try {
+    const visitorId = getVisitorId();
+    // 全站共鸣总数 +1
+    const feedbackResponse = await fetch(
+      "/api/reading-feedback",
+      { method: "POST" }
+    );
+    if (!feedbackResponse.ok) {
+      throw new Error("Failed to add feedback");
     }
+    // 当前 visitor 的 resonance +1
+    const resonanceResponse = await fetch(
+      `/api/reading-limit/${visitorId}/resonance`,
+      { method: "POST" }
+    );
+    if (!resonanceResponse.ok) {
+      throw new Error("Failed to add resonance");
+    }
+
+    toast.add({
+      title: "月光记住了这份共鸣",
+      timeout: 2600,
+    });
+    setDialogOpen(false);
+  } catch (error) {
+    console.error("Failed to add resonance:", error);
+  } finally {
+    setIsPending(false);
   }
+}
 
-  async function handleQuestion(question: string) {
-    try {
-      // 查redis次数
-      const visitorId = getVisitorId();
-      const response = await fetch(
-        `/api/reading-limit/${visitorId}`
-      );
+async function handleQuestion(question: string) {
+  setIsPending(true);
+  try {
+    // 查 Redis 次数
+    const visitorId = getVisitorId();
 
-      if (!response.ok) {
-        throw new Error("Failed to check reading limit");
-      }
-      const data = await response.json();
-
-      if (!data.allowed) {
-        setDialogOpen(true);
-        return false;
-      }
-    } catch (error) {
-      console.error("Failed to check reading limit:", error);
+    const response = await fetch(
+      `/api/reading-limit/${visitorId}`
+    );
+    if (!response.ok) {
+      throw new Error("Failed to check reading limit");
+    }
+    const data = await response.json();
+    if (!data.allowed) {
+      setDialogOpen(true);
+      return false;
     }
     setQuestion(question);
     setError("");
     return true;
+
+  } catch (error) {
+    // Redis 出错时 fail-open，不影响正常占卜
+    console.error("Failed to check reading limit:", error);
+
+    setQuestion(question);
+    setError("");
+    return true;
+
+  } finally {
+    setIsPending(false);
   }
+}
 
   return (
     <>
@@ -76,13 +102,13 @@ export default function LandingPage() {
           emptyQuestionMessage={text.emptyQuestion}
           questionTooLongMessage={text.questionTooLong}
           onSubmit={handleQuestion}
+          isPending={isPending}
         />
         </div>
 
 
-
       <ReadingLimitDialog
-
+        isPending={isPending}
         open={open}
 
         onOpenChange={setDialogOpen}

@@ -22,7 +22,6 @@ export default function SelectPage() {
   const [isReadingReady, setIsReadingReady] = useState(false);
 
   const {
-    error,
     isHydrated,
     language,
     question,
@@ -72,15 +71,14 @@ export default function SelectPage() {
         }),
       });
       const reading = (await response.json()) as ReadingResponse 
+      // 成功生成 reading 后，Redis 次数 +1
+      const visitorId = getVisitorId();
+      await fetch(`/api/reading-limit/${visitorId}`, {method: "POST",});
       setReading(reading);
       setIsReadingReady(true);
       // Let the completion animation finish.
       await new Promise((resolve) => setTimeout(resolve, 650));
 
-
-    // 成功生成 reading 后，Redis 次数 +1
-    const visitorId = getVisitorId();
-    await fetch(`/api/reading-limit/${visitorId}`, {method: "POST",});
       router.push("/reading");
     } catch (error) {
       router.push("/error");

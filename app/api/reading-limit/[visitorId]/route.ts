@@ -1,80 +1,66 @@
 import { NextResponse } from "next/server";
 import { redis } from "@/lib/redis/redis";
 
-const LIMIT = 3;
+const KEY = "reading_limit";
+const LIMIT = 1;
 
-
-// 一个用户一个 Redis Hash
-function getKey(visitorId: string) {
-  return `reading_limit:${visitorId}`;
-}
-
-
-// 获取今天日期
 function getToday() {
   return new Date().toISOString().slice(0, 10);
 }
 
+function getFields(visitorId: string) {
+  const today = getToday();
 
-// GET：查今天已经占卜几次
+  return {
+    countField: `${visitorId}:${today}:count`,
+    resonanceField: `${visitorId}:${today}:resonance`,
+  };
+}
+
+
+// GET: 检查当前还能不能继续占卜
 export async function GET(
   request: Request,
   { params }: { params: Promise<{ visitorId: string }> }
 ) {
   const { visitorId } = await params;
+  const { countField, resonanceField } = getFields(visitorId);
 
-  const key = getKey(visitorId);
-  const today = getToday();
+  const [count, resonance] = await Promise.all([
+    redis.hget<number>(KEY, countField),
+    redis.hget<number>(KEY, resonanceField),
+  ]);
 
-  const count =
-    (await redis.hget<number>(key, today)) ?? 0;
+  const readingCount = count ?? 0;
+  const resonanceCount = resonance ?? 0;
+
+  const allowed =
+    readingCount < (resonanceCount + 1) * LIMIT;
 
   return NextResponse.json({
-    count,
-    allowed: count < LIMIT,
+    count: readingCount,
+    resonance: resonanceCount,
+    allowed,
   });
 }
 
 
-// POST：成功完成一次占卜，今天次数 +1
+// POST: 成功完成一次占卜
 export async function POST(
   request: Request,
   { params }: { params: Promise<{ visitorId: string }> }
 ) {
   const { visitorId } = await params;
-
-  const key = getKey(visitorId);
-  const today = getToday();
+  const { countField } = getFields(visitorId);
 
   const count = await redis.hincrby(
-    key,
-    today,
+    KEY,
+    countField,
     1
   );
 
   return NextResponse.json({
     count,
-    allowed: count < LIMIT,
   });
 }
 
-
-// DELETE：留下共鸣后，今天次数清 0
-export async function DELETE(
-  request: Request,
-  { params }: { params: Promise<{ visitorId: string }> }
-) {
-  const { visitorId } = await params;
-
-  const key = getKey(visitorId);
-  const today = getToday();
-
-  await redis.hset(key, {
-    [today]: 0,
-  });
-
-  return NextResponse.json({
-    count: 0,
-    allowed: true,
-  });
-}

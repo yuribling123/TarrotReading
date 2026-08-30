@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button"
 import { useEffect, useState } from "react";
 import { toast } from "@/components/ui/toast";
 import { useReadingSession } from "./reading-session-provider";
+import { getVisitorId } from "@/lib/visitor/visitor-id";
 
 export function FeedBack() {
     const { feedback, setFeedback } = useReadingSession();
@@ -17,20 +18,34 @@ export function FeedBack() {
             loadFeedback()
         }, []
     )
-
-
     async function handleOnClick() {
         setIsPending(true);
-        const response = await fetch("/api/reading-feedback", { method: "POST", });
         try {
-            if (response.ok) { //succeed
-                const data = await response.json();
-                toast.add({ title: "月光记住了这份共鸣", timeout: 2600 })
+            const visitorId = getVisitorId();
+
+            const [feedbackResponse, resonanceResponse] = await Promise.all([
+                fetch("/api/reading-feedback", {
+                    method: "POST",
+                }),
+                fetch(`/api/reading-limit/${visitorId}/resonance`, {
+                    method: "POST",
+                }),
+            ]);
+
+            if (feedbackResponse.ok && resonanceResponse.ok) {
+                const data = await feedbackResponse.json();
+
+                toast.add({
+                    title: "月光记住了这份共鸣",
+                    timeout: 2600,
+                });
+
                 setFeedback(true);
-                setIsPending(false);
                 setCount(data.count);
             }
-        } finally { setIsPending(false); }
+        } finally {
+            setIsPending(false);
+        }
     }
 
     return (
@@ -39,7 +54,7 @@ export function FeedBack() {
             <Button size="lg" onClick={handleOnClick} variant="secondary" disabled={feedback || isPending} className="mt-4 w-22 self-center">
                 {feedback ? <p>☾ 月光收下了</p> : <p>♡ 留下共鸣</p>}
             </Button>
-            
+
             <p className="mt-4  text-[9px] font-medium text-[#383140]/90 self-center">今夜已有 {count} 份共鸣</p>
 
         </div>

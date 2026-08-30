@@ -32,13 +32,14 @@ export function ReadingLimitDialog({
 
             <DialogContent
                 className="
-    w-65
+    w-66
     max-w-[85vw]
     rounded-[28px]
     border
     border-[#c9ad73]/25
-    bg-[#fffdf9]/95
-    pt-6
+    bg-[#fffdf9]/70
+    pt-8
+    pb-5
     text-center
     shadow-[0_18px_50px_rgba(45,38,55,0.16)]
     backdrop-blur-xl
@@ -49,7 +50,7 @@ export function ReadingLimitDialog({
                     <DialogTitle
                         className="
         text-center
-        text-[12px]
+        text-[13px]
         font-medium
         tracking-[0.02em]
         text-[#4f4659]/90
@@ -62,7 +63,7 @@ export function ReadingLimitDialog({
                     <DialogDescription
                         className="
         text-center
-        text-[10px]
+        text-[11px]
         text-[#756d67]
       "
                     >
@@ -73,29 +74,21 @@ export function ReadingLimitDialog({
                 <Button
                     disabled={isPending}
                     onClick={onResponse}
-                    variant="ghost"
+                    variant="secondary"
                     className="
       mx-auto
-
-      h-8
-      w-14
+      h-11
+      w-16
       rounded-full
       border
-      border-[#1e1d1c]/35
-      bg-[#f8f2e8]/20
-      px-3
+      mt-2
       text-[12px]
       font-semibold
       tracking-[0.08em]
-      text-[#7f6230]
       shadow-none
-      hover:bg-[#efe4d1]
-      hover:text-[#6c5228]
       focus-visible:ring-0
       focus-visible:outline-none
-      disabled:opacity-100
-      disabled:bg-[#f8f2e8]/20
-      disabled:border-[#1e1d1c]/35
+      disabled:opacity-100! 
       [-webkit-tap-highlight-color:transparent]
     "
                 >

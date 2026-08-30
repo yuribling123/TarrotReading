@@ -9,6 +9,7 @@ import { useReadingSession } from "@/app/components/reading-session-provider";
 import { messages } from "@/lib/i18n";
 import { shuffleDeck } from "@/lib/tarot/deck";
 import type { ReadingResponse, TarotCard } from "@/lib/types";
+import { getVisitorId } from "@/lib/visitor/visitor-id";
 
 
 export default function SelectPage() {
@@ -68,10 +69,14 @@ export default function SelectPage() {
         }),
       });
       const reading = (await response.json()) as ReadingResponse 
+      // 成功生成 reading 后，Redis 次数 +1
+      const visitorId = getVisitorId();
+      await fetch(`/api/reading-limit/${visitorId}`, {method: "POST",});
       setReading(reading);
       setIsReadingReady(true);
       // Let the completion animation finish.
       await new Promise((resolve) => setTimeout(resolve, 650));
+
       router.push("/reading");
     } catch (error) {
       router.push("/error");

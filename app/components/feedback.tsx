@@ -52,7 +52,7 @@ export function FeedBack() {
         <div className=" flex flex-col items-center mt-4 ">
             <p className="mt-4 text-[10px] text-[#595858]/80 self-center">听说留下共鸣的人，牌意更容易被宇宙收到 ✦</p>
             <Button size="lg" onClick={handleOnClick} variant="secondary" disabled={feedback || isPending} className="mt-4 w-22 self-center">
-                {feedback ? <p>☾ 月光收下了</p> : <p>♡ 留下共鸣</p>}
+                {feedback ? <p>已收下</p> : <p>♡ 留下共鸣</p>}
             </Button>
 
             <p className="mt-4  text-[9px] font-medium text-[#383140]/90 self-center">今夜已有 {count} 份共鸣</p>

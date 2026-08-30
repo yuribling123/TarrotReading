@@ -79,7 +79,7 @@ export function FeatureInterest({ language }: Props) {
                     {text.description}
                 </p>
 
-                <div className=" mt-1 flex items-center justify-between text-xs" >
+                <div className=" mt-3 flex items-center justify-between text-xs" >
                     <button
                         disabled={liked}
                         type="button"

@@ -51,9 +51,9 @@ export function ReadingLimitDialog({
                         className="
         text-center
         text-[13px]
-        font-medium
+       
         tracking-[0.02em]
-        text-[#4f4659]
+        text-[#1b1a1c]/85
         pb-2
       "
                     >
@@ -64,7 +64,7 @@ export function ReadingLimitDialog({
                         className="
         text-center
         text-[11px]
-        text-[#756d67]
+        text-[#1b1a1c]/70
       "
                     >
                          ✦ 留下一点共鸣，再继续下一问

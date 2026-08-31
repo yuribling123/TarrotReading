@@ -59,7 +59,7 @@ export function QuestionForm({
       <form className="questionForm" onSubmit={submitQuestion}>
         {/* <label htmlFor="question"  >{label}</label> */}
         <div className="relative w-full">
-          <Input id="question" value={question} onBlur={() => window.scrollTo(0, 0)} onChange={(event) => setQuestion(event.target.value)} placeholder={placeholder} autoComplete="off" lang={language} className="pr-21 pl-5 h-17 text-[16px]!  bg-white border-primary/70 text-[#342d3d]/80 focus-visible:ring-0 focus-visible:border-primary caret-[#7f5b1f]/80" />
+          <Input id="question" value={question} onBlur={() => window.scrollTo(0, 0)} onChange={(event) => setQuestion(event.target.value)} placeholder={placeholder} autoComplete="off" lang={language} className="pr-21 pl-5 h-17 text-[16px]!  bg-white border-primary/70 text-[#342d3d] tracking-[0.02em] focus-visible:ring-0 focus-visible:border-primary caret-[#7f5b1f]/80 placeholder:text-[#342d3d]/25" />
 
           {/* 强制16字体：输入时才不会自动放大 */}
           {/* <input

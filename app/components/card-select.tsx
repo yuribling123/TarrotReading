@@ -2,6 +2,7 @@ import { CardFan } from "@/app/components/card-fan";
 import { QuestionSummary } from "@/app/components/question-summary";
 import { messages } from "@/lib/i18n";
 import type { Language, TarotCard } from "@/lib/types";
+import { ZodiacReadingOption } from "./zodiac-reading";
 
 type CardSelectProps = {
   language: Language;
@@ -53,6 +54,9 @@ export function CardSelect({
           selectedCards={selectedCards}
           onSelect={onSelect}
         />
+
+        <ZodiacReadingOption/>
+        
         <button
           className="primaryAction"
           onClick={onReveal}

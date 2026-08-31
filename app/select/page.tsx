@@ -126,7 +126,9 @@ export default function SelectPage() {
           onSelect={selectCard}
           onReveal={revealCards}
         />
+       
       )}
     </div>
+    
   );
 }

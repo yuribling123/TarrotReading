@@ -18,7 +18,7 @@ export function ZodiacReadingOption() {
       hover:text-[#d7b56d]
         active:scale-[0.96]
         active:shadow-[0_0_18px_rgba(215,181,109,0.35)]
-        text-[#b89552]/65
+        text-[#b89552]
       "
     >
       <span

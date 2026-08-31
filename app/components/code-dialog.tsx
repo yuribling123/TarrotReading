@@ -94,13 +94,13 @@ export function CodeDialog({
         bg-white/45
         px-4
         text-center
-        text-[12px]
+        text-[16px]!
         tracking-[0.08em]
         text-[#4f4659]
         caret-[#b89552]
         outline-none
         transition
-        placeholder:text-[11px]
+        placeholder:text-[12px]
         placeholder:tracking-normal
         placeholder:text-[#756d67]/45
         focus:border-[#c9ad73]/50
@@ -125,7 +125,7 @@ export function CodeDialog({
         focus-visible:outline-none
         focus-visible:ring-0
         [-webkit-tap-highlight-color:transparent]
-        
+
       "
                 >
                     {isPending ? <Loading /> : "开启"}

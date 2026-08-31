@@ -3,6 +3,7 @@ import { QuestionSummary } from "@/app/components/question-summary";
 import { messages } from "@/lib/i18n";
 import type { Language, TarotCard } from "@/lib/types";
 import { ZodiacReadingOption } from "./zodiac-reading";
+import { Button } from "@/components/ui/button";
 
 type CardSelectProps = {
   language: Language;
@@ -45,8 +46,8 @@ export function CardSelect({
           </div>
 
         <div className="deckHeader">
-          <p>{text.selectionInstructionFirstLine}</p>
-          <p className="opacity-60 translate-y-4">{text.selectionInstructionSecondLine}</p>
+          <p className="tracking-[0.03em]">{text.selectionInstructionFirstLine}</p>
+          <p className="opacity-60 translate-y-4 tracking-[0.03em]">{text.selectionInstructionSecondLine}</p>
         </div>
 
         <CardFan
@@ -57,14 +58,15 @@ export function CardSelect({
 
         <ZodiacReadingOption/>
         
-        <button
-          className="primaryAction"
+        <Button
+        
+          variant="secondary"
           onClick={onReveal}
-          type="button"
           disabled={!canReveal}
-        >
+          className="mx-auto flex text-[14px] h-15 w-21 font-bold rounded-full shadow-[0_6px_18px_rgba(41,36,56,0.22)] hover:scale-105 active:scale-85 duration-300 transition-all tracking-[0.06em]"
+        > 
           Reveal
-        </button>
+        </Button>
    
       </section>
 

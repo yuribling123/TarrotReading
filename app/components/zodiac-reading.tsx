@@ -7,10 +7,10 @@ export function ZodiacReadingOption() {
   const [open, setOpen] = useState(false);
   return (
     <>
-    <button
-      onClick={() => setOpen(true)}
-      type="button"
-      className="
+      <button
+        onClick={() => setOpen(true)}
+        type="button"
+        className="
         group mx-auto flex items-center justify-center gap-2 mb-18 h-10 px-5 rounded-full
         bg-transparent
         text-[11px] font-medium tracking-[0.08em]
@@ -20,34 +20,36 @@ export function ZodiacReadingOption() {
         active:shadow-[0_0_18px_rgba(215,181,109,0.35)]
         text-[#b89552]
       "
-    >
-      <span
-        className="
+      >
+        <span
+          className="
           inline-block
-          text-[10px] text-[#d7b56d]
+          text-[10px] text-[#7f5b1f]/70
           drop-shadow-[0_0_5px_rgba(215,181,109,0.7)]
           animate-[pulse_2.8s_ease-in-out_infinite]
         "
-      >
-        ✦
-      </span>
+        >
+          ✦
+        </span>
 
-      <span>
-      带上你的星座 让解读更靠近你
-      </span>
+        <span className="text-[#7f5b1f]
 
-      <span
-        className="
+          animate-[pulse_2s_ease-in-out_1]">
+          带上你的星座 · 让解读更靠近你
+        </span>
+
+        <span
+          className="
           inline-block
-          text-[8px] text-[#d7b56d]/80
+          text-[8px] text-[#7f5b1f]/70
           drop-shadow-[0_0_4px_rgba(215,181,109,0.5)]
-          animate-[pulse_2.8s_ease-in-out_1.2s_infinite]
+          animate-[pulse_5s_ease-in-out_1.2s_infinite]
         "
-      >
-        ✧
-      </span>
-    </button>
-    <CodeDialog open={open} onOpenChange={setOpen}/>
+        >
+          ✧
+        </span>
+      </button>
+      <CodeDialog open={open} onOpenChange={setOpen} />
 
 
     </>

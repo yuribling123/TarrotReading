@@ -92,7 +92,7 @@ async function handleQuestion(question: string) {
     <>
       <TarotPreloader deck={deck} />
       <div className="landingBackdrop" aria-hidden="true" />
-      <div className="content landingContent -translate-y-30"> 
+      <div className="content landingContent -translate-y-25"> 
         <DailyZodiac/>
         <QuestionForm 
           language={language}
@@ -117,7 +117,7 @@ async function handleQuestion(question: string) {
 
       />
         
-      <FeatureInterest language={language} />
+      {/* <FeatureInterest language={language} /> */}
     </>
   );
 }

@@ -53,7 +53,7 @@ export function ReadingLimitDialog({
         text-[13px]
        
         tracking-[0.02em]
-        text-[#1b1a1c]/85
+        text-[#232125]/88
         pb-2
       "
                     >

@@ -96,7 +96,7 @@ export function CodeDialog({
         text-center
         text-[16px]!
         tracking-[0.08em]
-        text-[#4f4659]
+        text-[#232125]/88
         caret-[#b89552]
         outline-none
         transition

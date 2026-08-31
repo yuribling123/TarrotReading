@@ -15,7 +15,7 @@ export function DailyZodiac() {
   </div>
 
   {/* 第二行 */}
-  <div className="flex items-center text-[#F4F0E8]/70 pt-0.5">
+  <div className="flex items-center text-[#F4F0E8]/80 pt-0.5">
   
   <span className="text-[10px] tracking-[0.15em]">
    {moonSignMessage}

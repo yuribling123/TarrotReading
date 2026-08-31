@@ -16,18 +16,18 @@ export function MoonPhase({ language }: Props) {
   const roundedAge = Math.round(age)
 return (
   <div className="">
-  <div className="inline-flex items-center gap-1 rounded-full border border-[#b89552]/30 bg-white/70 px-1.5 py-1.5 backdrop-blur-sm">
-    <span className="text-xs text-[#8a8174]">
+  <div className="inline-flex items-center gap-1 rounded-full  bg-white/70 px-1.5 py-1.5 backdrop-blur-sm">
+    <span className="text-xs text-[#7f5b1f]/80">
       {text.moonPhases[phase]}
     </span>
     {phase=="fullMoon"&&
-    <span className="text-xs text-[#8a8174]">
+    <span className="text-xs text-[#7f5b1f]/40">
            {text.moonAge(roundedAge)}
     </span>
     }
     
     {phase!="fullMoon"&&
-    <span className="text-xs text-[#8a8174]">
+    <span className="text-xs text-[#7f5b1f]/40">
       {text.fullMoonDays.fullMoonIn(daysUntilFullMoon)}
     </span>
     }

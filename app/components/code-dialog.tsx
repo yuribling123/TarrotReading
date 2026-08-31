@@ -71,7 +71,7 @@ export function CodeDialog({
           text-[13px]
           font-medium
           tracking-[0.02em]
-          text-[#4f4659]/90
+          text-[#232125]/88
         "
                     >
                         输入月光兑换码

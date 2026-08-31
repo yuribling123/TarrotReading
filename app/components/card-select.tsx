@@ -28,7 +28,7 @@ export function CardSelect({
 
   return (
     <div >
-      <section className="deckArea pt-20">
+      <section className="deckArea pt-24">
            <div className="selectionStars">
             {[0, 1, 2].map((index) => (
               <span

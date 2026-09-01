@@ -4,6 +4,8 @@ import { messages } from "@/lib/i18n";
 import type { Language, TarotCard } from "@/lib/types";
 import { ZodiacReadingOption } from "./zodiac-reading";
 import { Button } from "@/components/ui/button";
+import { OpeningRitual } from "./ritual";
+import { useState } from "react";
 
 type CardSelectProps = {
   language: Language;
@@ -23,9 +25,19 @@ export function CardSelect({
   onReveal,
 }: CardSelectProps) {
   // Only reveal when three cards selected
-  const canReveal = selectedCards.length === 3;
+  const [ritualDone, setRitualDone] = useState(false);
 
+  const canReveal = selectedCards.length === 3;
   const text = messages[language];
+
+  // 仪式还没结束：只显示仪式
+  if (!ritualDone) {
+    return (
+      <OpeningRitual
+        onComplete={() => setRitualDone(true)}
+      />
+    );
+  }
 
   return (
     <div >
@@ -57,28 +69,29 @@ export function CardSelect({
         />
 
         <ZodiacReadingOption />
-
-        {canReveal && (
-          <Button
-            variant="secondary"
-            onClick={onReveal}
-            className="
-      mx-auto flex
-      text-[14px] h-15 w-21
-      font-bold rounded-full
-      tracking-[0.06em]
-      shadow-[0_6px_18px_rgba(41,36,56,0.22)]
-      hover:scale-105
-      active:scale-85
-      animate-in fade-in zoom-in-90
-      duration-1000
-      delay-1000
-      fill-mode-both
-    "
-          >
-            Reveal
-          </Button>
-        )}
+        <div className="h-15 mt-4 flex items-center justify-center">
+          {canReveal && (
+            <Button
+              variant="secondary"
+              onClick={onReveal}
+              className="
+        flex
+        text-[14px] h-15 w-21
+        font-bold rounded-full
+        tracking-[0.06em]
+        shadow-[0_6px_18px_rgba(41,36,56,0.22)]
+        hover:scale-105
+        active:scale-85
+        animate-in fade-in zoom-in-90
+        duration-800
+        delay-800
+        fill-mode-both
+      "
+            >
+              Reveal
+            </Button>
+          )}
+        </div>
 
       </section>
 

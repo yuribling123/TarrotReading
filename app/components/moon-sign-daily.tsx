@@ -23,7 +23,7 @@ export function DailyZodiac() {
       </div>
 
       {/* 第一行 */}
-      <div className="flex items-center gap-1.5 text-[#f8e3bb]/75">
+      <div className="flex items-center gap-1.5 text-[#f8e3bb]/85">
 
         <span className="text-[11px] tracking-[0.12em] ">    月亮在{moonSign}</span>
 

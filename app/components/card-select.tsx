@@ -30,20 +30,20 @@ export function CardSelect({
   return (
     <div >
       <section className="deckArea pt-45">
-           <div className="selectionStars">
-            {[0, 1, 2].map((index) => (
-              <span
-                key={index}
-                className={
-                  index < selectedCards.length
-                    ? "selectionStar active"
-                    : "selectionStar"
-                }
-              >
-                ★
-              </span>
-            ))}
-          </div>
+        <div className="selectionStars">
+          {[0, 1, 2].map((index) => (
+            <span
+              key={index}
+              className={
+                index < selectedCards.length
+                  ? "selectionStar active"
+                  : "selectionStar"
+              }
+            >
+              ★
+            </span>
+          ))}
+        </div>
 
         <div className="deckHeader">
           <p className="tracking-[0.03em]">{text.selectionInstructionFirstLine}</p>
@@ -56,18 +56,30 @@ export function CardSelect({
           onSelect={onSelect}
         />
 
-        <ZodiacReadingOption/>
-        
-        <Button
-        
-          variant="secondary"
-          onClick={onReveal}
-          disabled={!canReveal}
-          className="mx-auto flex text-[14px] h-15 w-21 font-bold rounded-full shadow-[0_6px_18px_rgba(41,36,56,0.22)] hover:scale-105 active:scale-85 duration-300 transition-all tracking-[0.06em]"
-        > 
-          Reveal
-        </Button>
-   
+        <ZodiacReadingOption />
+
+        {canReveal && (
+          <Button
+            variant="secondary"
+            onClick={onReveal}
+            className="
+      mx-auto flex
+      text-[14px] h-15 w-21
+      font-bold rounded-full
+      tracking-[0.06em]
+      shadow-[0_6px_18px_rgba(41,36,56,0.22)]
+      hover:scale-105
+      active:scale-85
+      animate-in fade-in zoom-in-90
+      duration-1000
+      delay-1000
+      fill-mode-both
+    "
+          >
+            Reveal
+          </Button>
+        )}
+
       </section>
 
 

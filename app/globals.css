@@ -1554,7 +1554,7 @@ box-shadow:
   }
 
   .landingBackdrop::before {
-    border-radius: 22%;
+    border-radius: 25%;
     overflow: hidden;
 
     

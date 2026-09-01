@@ -1,7 +1,7 @@
 export const tarotReadingSchema = {
   type: "object",
   additionalProperties: false,
-  required: ["spreadName", "cards", "answer", "guidance"],
+  required: ["spreadName", "cards", "answer", "guidance","verdict"],
   properties: {
     spreadName: { type: "string" },
     cards: {
@@ -20,6 +20,7 @@ export const tarotReadingSchema = {
         },
       },
     },
+    verdict:{type:"string"},
     answer: { type: "string" },
     guidance: { type: "string" },
   },

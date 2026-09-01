@@ -236,12 +236,13 @@ button:disabled {
   background-repeat: no-repeat;
   background-size: contain;
  
-
-  border-radius: 50% 50% 0 0 / 7% 7% 0 0;
+  border-radius: 22%;
+  overflow: hidden;
 
   bottom: 24px;
   left: 50%;
   top: 24px;
+  opacity: 0.93;
 
   transform: translateX(-50%);
 
@@ -747,13 +748,12 @@ box-shadow:
 
 
 .cardFan.spreadOut:not(.dealing) .cardBack.selected {
-  z-index: 99;
+  z-index: 290;
   transform: translateY(-18px);
-  filter: saturate(1.2);
 }
 
 .cardFan.spreadOut:not(.dealing) .cardBack:hover {
-  z-index: 200;
+  z-index: 300;
 }
 
 
@@ -1212,7 +1212,7 @@ box-shadow:
 
   border-radius: 12px;
 
-  margin-top: 24px;
+  margin-top: 8px;
 
   max-width: 780px;
 
@@ -1245,10 +1245,6 @@ box-shadow:
     repeat(3, 1fr);
 }
 
-.readingGrid span {
-  color: rgb(127 91 31 / 90%);
-  font-weight: 560;
-}
 
 .readingGrid article {
   min-height: 0;
@@ -1258,16 +1254,8 @@ box-shadow:
 .reading article,
 .synthesis {
   background: #ffffff;
-
-  border:
-    1px solid
-    rgba(19, 15, 31, 0.12);
-
-  border-radius: 8px;
-
   line-height: 1.65;
-
-  padding: 20px;
+  padding: 20px 20px;
 }
 
 .reading h3 {
@@ -1512,7 +1500,7 @@ box-shadow:
 
   .readingContent .readingGrid {
     grid-template-columns: 1fr;
-    gap: 10px;
+    gap: 8px;
   }
 
   .readingContent .readingGrid article {
@@ -1565,6 +1553,7 @@ box-shadow:
   }
 
   .landingBackdrop::before {
+
     
     aspect-ratio: 701 / 1200;
 

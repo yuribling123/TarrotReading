@@ -32,7 +32,7 @@ export default function ReadingPage() {
 
   return (
     <div className="content readingContent">
-      <QuestionSummary
+      <QuestionSummary 
         question={question}
       />
 

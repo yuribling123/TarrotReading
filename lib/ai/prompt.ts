@@ -53,6 +53,7 @@ You will receive one JSON object with:
     { "position": "position for card 2", "title": "card 2 title in the output language", "orientation": "card 2 orientation in the output language", "message": "interpretation for card 2" },
     { "position": "position for card 3", "title": "card 3 title in the output language", "orientation": "card 3 orientation in the output language", "message": "interpretation for card 3" }
   ],
+  "verdict": "answer the user’s question directly in 1–2 short sentences",
   "answer": "direct, nuanced answer to the user's question",
   "guidance": "deeper reflection followed by a grounded next step"
 }

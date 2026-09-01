@@ -29,7 +29,7 @@ export function Card({
         } as CSSProperties
       }
     >
-      <span className="cardInner">
+      <span className="cardInner ">
         <CardBack />
         <CardFront card={isSelected ? card : undefined} />
       </span>

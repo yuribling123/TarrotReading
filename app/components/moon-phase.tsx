@@ -26,11 +26,7 @@ return (
     </span>
     }
     
-    {phase!="fullMoon"&&
-    <span className="text-xs text-[#7f5b1f]/40">
-      {text.fullMoonDays.fullMoonIn(daysUntilFullMoon)}
-    </span>
-    }
+
   </div>
 
   </div>

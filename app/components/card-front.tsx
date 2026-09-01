@@ -13,7 +13,7 @@ export function CardFront({ card }: CardFrontProps) {
   const imageSrc = `/images/cards/rider-waite/${imageName}.webp`;
 
   return (
-    <span className="cardFrontFace">
+    <span className="cardFrontFace border! rounded-[13px] border-[#9d9890]/70">
       <img
         src={imageSrc}
         alt={card.name}

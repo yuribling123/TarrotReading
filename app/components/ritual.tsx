@@ -11,20 +11,29 @@ export function OpeningRitual({
   onComplete,
 }: OpeningRitualProps) {
   const [mounted, setMounted] = useState(false);
+  const [entered, setEntered] = useState(false);
   const [leaving, setLeaving] = useState(false);
 
   useEffect(() => {
     setMounted(true);
 
+    // 淡入
+    const enterTimer = setTimeout(() => {
+      setEntered(true);
+    }, 500);
+
+    // 开始淡出
     const fadeTimer = setTimeout(() => {
       setLeaving(true);
-    }, 2600);
+    }, 4000);
 
+    // 淡出结束
     const completeTimer = setTimeout(() => {
       onComplete();
-    }, 3000);
+    }, 5000);
 
     return () => {
+      clearTimeout(enterTimer);
       clearTimeout(fadeTimer);
       clearTimeout(completeTimer);
     };
@@ -42,9 +51,13 @@ export function OpeningRitual({
 
         transition-opacity
         duration-700
-        ease-out
+        ease-in-out
 
-        ${leaving ? "opacity-0" : "opacity-100"}
+        ${
+          !entered || leaving
+            ? "opacity-0"
+            : "opacity-100"
+        }
       `}
     >
       {/* stars */}
@@ -70,23 +83,16 @@ export function OpeningRitual({
 
       {/* center */}
       <div className="flex h-full flex-col items-center justify-center text-center">
-
-
-
         <p
           className="
-            mt-6
             text-[13px]
             font-medium
             tracking-[0.16em]
-            text-[rgb(212, 199, 162)]/10
+            text-[#f5efe1]/80
           "
         >
           让思绪安静片刻
         </p>
-
-   
-
       </div>
     </div>,
     document.body

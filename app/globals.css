@@ -235,9 +235,10 @@ button:disabled {
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
- 
-  border-radius: 22%;
+  border-radius: 30px;
   overflow: hidden;
+ 
+
 
   bottom: 24px;
   left: 50%;
@@ -1553,6 +1554,8 @@ box-shadow:
   }
 
   .landingBackdrop::before {
+    border-radius: 22%;
+    overflow: hidden;
 
     
     aspect-ratio: 701 / 1200;

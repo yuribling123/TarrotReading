@@ -15,7 +15,7 @@ export function DailyZodiac() {
   
 
   return (
-    <button className="group  mx-auto -translate-y-40 flex w-fit flex-col items-center gap-1.5 rounded-[28px] border border-white/15 bg-[#292438]/50 px-5 py-3.5 shadow-[0_5px_20px_rgba(20,16,30,0.18)] backdrop-blur-[5px] transition-all duration-300 hover:bg-[#332c45]/40 active:scale-[0.97] active:bg-[#332c45]/40  ">
+    <button className="group  mx-auto -translate-y-41 flex w-fit flex-col items-center gap-1.5 rounded-[28px] border border-white/15 bg-[#292438]/50 px-5 py-3.5 shadow-[0_5px_20px_rgba(20,16,30,0.18)] backdrop-blur-[5px] transition-all duration-300 hover:bg-[#332c45]/40 active:scale-[0.97] active:bg-[#332c45]/40  ">
       <div className="flex items-center text-[#f5eee0]/90 pt-0.5 tracking-widest">
         <span className="text-[10px] ">
          {date} 

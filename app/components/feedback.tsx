@@ -55,7 +55,7 @@ export function FeedBack() {
                 {feedback ? <p>已收下</p> : <p>♡ 留下共鸣</p>}
             </Button>
 
-            <p className="mt-4  text-[9px] font-medium text-[#383140]/90 self-center">今夜已有 {count} 份共鸣</p>
+            <p className="mt-4  text-[9px] font-medium text-[#383140]/90 self-center">已有 {count} 份共鸣</p>
 
         </div>
 

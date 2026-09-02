@@ -8,7 +8,7 @@ export function ReadingVerdict({
     const sentences = verdict.split("。").filter(Boolean);
     return (
 
- <div className="mx-auto mt-8 max-w-130 text-center px-13">
+ <div className="mx-auto mt-8 max-w-130 text-center px-12">
   
 
   <p className="mt-3 text-[0.92rem]  font-semibold leading-[1.65] tracking-[0.02em] text-[#342d3d]">

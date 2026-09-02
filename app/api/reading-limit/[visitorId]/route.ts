@@ -2,7 +2,8 @@ import { NextResponse } from "next/server";
 import { redis } from "@/lib/redis/redis";
 
 const KEY = "reading_limit";
-const LIMIT = 1;
+const LIMIT = 1; //1
+const DAILY_LIMIT= 3 //3
 
 //返回日期："2026-09-02"
 function getToday() {
@@ -38,7 +39,8 @@ export async function GET(
   const readingCount = count ?? 0;
   const resonanceCount = resonance ?? 0;
 
-  const dailyLimitReached = readingCount >= 3;
+  //一天只能玩x次
+  const dailyLimitReached = readingCount >= DAILY_LIMIT;
   const resonanceRequired =
     readingCount >= (resonanceCount + 1) * LIMIT;
 

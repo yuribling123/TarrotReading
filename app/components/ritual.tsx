@@ -17,7 +17,7 @@ export function OpeningRitual({
   useEffect(() => {
     setMounted(true);
 
-    // 淡入
+    // 淡入：500 毫秒后执行 setEntered(true)
     const enterTimer = setTimeout(() => {
       setEntered(true);
     }, 500);
@@ -27,7 +27,7 @@ export function OpeningRitual({
       setLeaving(true);
     }, 4000);
 
-    // 淡出结束
+    // 淡出结束，告诉父组件,setRitualDone=True
     const completeTimer = setTimeout(() => {
       onComplete();
     }, 5000);
@@ -41,11 +41,12 @@ export function OpeningRitual({
 
   if (!mounted) return null;
 
+  //让这个遮罩直接盖在整个网页最上面
   return createPortal(
     <div
       className={`
-        fixed inset-0 z-[99999]
-        h-[100svh] w-screen
+        fixed inset-0 z-99999
+        h-svh w-screen
         overflow-hidden
         bg-[#12101a]
 
@@ -77,9 +78,9 @@ export function OpeningRitual({
         ✦
       </span>
 
-      <span className="absolute left-[10%] top-[54%] h-[2px] w-[2px] rounded-full bg-white/40" />
+      <span className="absolute left-[10%] top-[54%] h-0.5 w-0.5 rounded-full bg-white/40" />
 
-      <span className="absolute right-[12%] top-[58%] h-[2px] w-[2px] rounded-full bg-[#d8ba77]/50" />
+      <span className="absolute right-[12%] top-[58%] h-0.5 w-0.5 rounded-full bg-[#d8ba77]/50" />
 
       {/* center */}
       <div className="flex h-full flex-col items-center justify-center text-center">

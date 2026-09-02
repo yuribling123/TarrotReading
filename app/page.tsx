@@ -13,7 +13,7 @@ import { useState } from "react";
 import { getVisitorId } from "@/lib/visitor/visitor-id";
 import { toast } from "@/components/ui/toast";
 import { ReadingLimitDialog } from "./components/dialog/reading-limit-dialog";
-import { DailyLimitDialog } from "./components/dialog/daily-limit";
+import { DailyLimitDialog } from "./components/dialog/daily-limit-dialog";
 
 //用户增加共鸣换取次数
 export default function LandingPage() {

@@ -532,32 +532,6 @@ box-shadow:
    QUESTION PANEL
    ================================================== */
 
-.questionPanel {
-  background: transparent;
-  border: 0;
-
-  color: #3f352c;
-  width: 100%;
-  max-width: 80%;
-  min-width: 0;
-
-  font-size: 1rem;
-  font-weight: 400;
-  letter-spacing: 0.06em;
-  line-height: 1.7;
-
-  margin-top: 60px;
-
-  overflow-x: auto;
-  overflow-y: hidden;
-
-  scrollbar-width: none;
-
-  text-align: center;
-  text-shadow: 0 1px 3px rgba(63, 53, 44, 0.3);
-
-  white-space: nowrap;
-}
 
 /* ==================================================
    CARD SELECTION

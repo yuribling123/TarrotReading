@@ -6,7 +6,7 @@ export function QuestionSummary({ question }: QuestionSummaryProps) {
   return (
     <>
       <div className="mt-20 lg:mt-35 flex justify-center">
-        <span className="text-[9px]  drop-shadow-[0_1px_2px_rgba(155,114,42,0.18)] font-semibold  tracking-[0.28em] text-[#9b722a]/60">
+        <span className="text-[9px]  font-medium drop-shadow-[0_1px_1px_rgba(60,55,50,0.28)]  tracking-[0.28em] text-[#9b722a]/60">
           今夜所问
         </span>
       </div>

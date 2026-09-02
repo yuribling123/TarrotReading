@@ -9,13 +9,13 @@ export function ReadingZodiac({
     <section
       className="
         relative
-        mx-8
+        mx-6
         my-8
         max-w-[720px]
         overflow-hidden
         rounded-[22px]
         border
-        border-[#b89552]/20
+        border-[#b89552]/40
         px-6
         py-5
        

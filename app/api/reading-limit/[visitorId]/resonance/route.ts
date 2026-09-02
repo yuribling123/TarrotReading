@@ -3,8 +3,11 @@ import { redis } from "@/lib/redis/redis";
 
 const KEY = "reading_limit";
 
+//返回日期："2026-09-02"
 function getToday() {
-  return new Date().toISOString().slice(0, 10);
+  return new Intl.DateTimeFormat("en-CA", {
+    timeZone: "Asia/Shanghai",
+  }).format(new Date());
 }
 
 // POST: 留下一次共鸣

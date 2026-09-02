@@ -49,7 +49,7 @@ You will receive one JSON object with:
 # zodiac
 - 如果输入提供了 zodiac，则结合星座进行分析，并输出 zodiac；如果未提供，则不要进行任何星座分析，zodiac 返回 null。
 - 星座相关内容只能出现在zodiac字段中，禁止出现在verdict，answer，guidance，cards message
-- 重点解释用户的星座特质如何影响其理解、感受或经历本次牌面与处境
+- 优先写“星座特质 × 具体牌意 × 当前问题”之间真正有意义的连接
 - 100-250汉字
 
 

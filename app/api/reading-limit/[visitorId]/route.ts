@@ -2,8 +2,8 @@ import { NextResponse } from "next/server";
 import { redis } from "@/lib/redis/redis";
 
 const KEY = "reading_limit";
-const LIMIT = 1; //1
-const DAILY_LIMIT= 3 //3
+const LIMIT = 1;
+const DAILY_LIMIT = 3;
 
 //返回日期："2026-09-02"
 function getToday() {

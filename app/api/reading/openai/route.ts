@@ -6,27 +6,31 @@ import type { GeneratedTarotReading, ReadingRequest } from "@/lib/types";
 
 // Calls the OpenAI API to generate a tarot reading based on the user's question and selected cards
 export async function POST(request: Request) {
-  const { question, cards, language } = (await request.json()) as ReadingRequest;
+  const { question, cards, language, zodiac } = (await request.json()) as ReadingRequest;
 
   const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
- 
+
 
   try {
+    const readingInput = {
+      language,
+      question,
+      zodiac,
+      cards: cards.map((card, index) => ({
+        order: index + 1,
+        name: card.name,
+        orientation: card.orientation,
+      })),
+    };
+
+    console.log("Reading input:", readingInput);
     const response = await openai.responses.create({
       model: process.env.OPENAI_MODEL ?? "gpt-5.6-luna",
       input: [
         { role: "system", content: tarotReadingPrompt },
         {
           role: "user",
-          content: JSON.stringify({
-            language,
-            question,
-            cards: cards.map((card, index) => ({
-              order: index + 1,
-              name: card.name,
-              orientation: card.orientation,
-            })),
-          }),
+          content:JSON.stringify(readingInput),
         },
       ],
       text: {
@@ -45,13 +49,13 @@ export async function POST(request: Request) {
     return NextResponse.json(generatedReading);
   } catch (error) {
     console.error("Reading generation failed", error);
-     return NextResponse.json(
-    {
-      success: false,
-      error: "Failed to generate tarot reading",
-    },
-    { status: 500 }
-  );
+    return NextResponse.json(
+      {
+        success: false,
+        error: "Failed to generate tarot reading",
+      },
+      { status: 500 }
+    );
 
   }
 }

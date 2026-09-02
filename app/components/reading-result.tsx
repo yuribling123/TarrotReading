@@ -2,10 +2,12 @@
 
 import type { ReadingResponse } from "@/lib/types";
 import { ReadingVerdict } from "./reading-verdict";
+import { ReadingZodiac } from "./reading-zodiac";
 
 type ReadingResultProps = {
   reading: ReadingResponse;
   summaryLabel: string;
+  zodiac: string | null;
 };
 
 export function ReadingResult({
@@ -47,6 +49,12 @@ export function ReadingResult({
           <p className="text-[0.89rem] pt-2 pb-6 leading-7!">{reading.guidance}</p>
         </div>
       </section>
+
+      {reading.zodiac && (
+
+        <ReadingZodiac zodiac={reading.zodiac} />
+
+      )}
     </div>
   );
 }

@@ -5,7 +5,7 @@ export function CardBack() {
     <div className="cardFace">
       <img
 
-        src="/images/cards/card-back.webp"
+        src="/images/cards/card-back-2.jpg"
         alt="Tarot card"
         className="cardArtwork"
 

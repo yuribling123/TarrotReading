@@ -3,8 +3,13 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } f
 import { useState } from "react";
 import { CodeDialog } from "./dialog/code-dialog";
 
+interface Props{
+  onConfirm: (zodiac: string) => void;
+}
 
-export function ZodiacReadingOption() {
+export function ZodiacReadingOption(
+  {onConfirm}:Props
+) {
   const [open, setOpen] = useState(false);
   return (
     <>
@@ -50,7 +55,7 @@ export function ZodiacReadingOption() {
           ✧
         </span>
       </button>
-      <CodeDialog open={open} onOpenChange={setOpen} />
+      <CodeDialog open={open} onOpenChange={setOpen} onConfirm={onConfirm} />
 
 
     </>

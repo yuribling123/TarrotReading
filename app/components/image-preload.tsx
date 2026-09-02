@@ -19,7 +19,7 @@ export function TarotPreloader({
             // background
             // card back
             const cardBack = new window.Image();
-            cardBack.src = "/images/cards/card-back.webp";
+            cardBack.src = "/images/cards/card-back-2.jpg";
 
             // front
             deck.forEach((cardName) => {

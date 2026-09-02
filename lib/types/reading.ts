@@ -17,4 +17,5 @@ export type ReadingRequest = {
   question: string;
   cards:  TarotCard[];
   language: Language;
+   zodiac: string|null;
 };

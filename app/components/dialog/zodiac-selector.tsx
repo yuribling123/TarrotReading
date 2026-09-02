@@ -1,0 +1,127 @@
+"use client";
+
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+
+import {
+  GiAries,
+  GiTaurus,
+  GiGemini,
+  GiCancer,
+  GiLeo,
+  GiVirgo,
+  GiLibra,
+  GiScorpio,
+  GiSagittarius,
+  GiCapricorn,
+  GiAquarius,
+  GiPisces,
+} from "react-icons/gi";
+
+const zodiacSigns = [
+  { name: "白羊座", Icon: GiAries },
+  { name: "金牛座", Icon: GiTaurus },
+  { name: "双子座", Icon: GiGemini },
+  { name: "巨蟹座", Icon: GiCancer },
+  { name: "狮子座", Icon: GiLeo },
+  { name: "处女座", Icon: GiVirgo },
+  { name: "天秤座", Icon: GiLibra },
+  { name: "天蝎座", Icon: GiScorpio },
+  { name: "射手座", Icon: GiSagittarius },
+  { name: "摩羯座", Icon: GiCapricorn },
+  { name: "水瓶座", Icon: GiAquarius },
+  { name: "双鱼座", Icon: GiPisces },
+];
+
+type ZodiacSelectorProps = {
+  onConfirm: (zodiac: string) => void;
+};
+
+export function ZodiacSelector({
+  onConfirm,
+}: ZodiacSelectorProps) {
+  const [selected, setSelected] = useState<string | null>(null);
+
+  return (
+    <div className="w-full animate-in fade-in slide-in-from-bottom-2 duration-700">
+      <div className="mb-6 text-center">
+    
+
+  
+
+        <h2 className="mt-3 text-[16px] font-medium text-[#543f00]/90">
+          选择你的星座
+        </h2>
+
+      
+      </div>
+
+      <div className="grid grid-cols-4 gap-2.5">
+        {zodiacSigns.map((sign) => {
+          const isSelected = selected === sign.name;
+          const Icon = sign.Icon;
+
+          return (
+            <button
+              key={sign.name}
+              type="button"
+              onClick={() => setSelected(sign.name)}
+              className={`
+                flex h-15 w-15 flex-col items-center justify-center
+                rounded-[18px] border
+                transition-all duration-300
+                ${
+                  isSelected
+                    ? `
+                      border-[#9b722a]
+                     
+                      text-[#7f5b1f]
+                  
+                    `
+                    : `
+                      border-[#b89552]/12
+                      bg-white/15
+                      text-[#543f00]/80
+                      hover:border-[#b89552]/25
+                      hover:bg-white/60
+                    `
+                }
+              `}
+            >
+              <Icon
+                className={`
+                  text-[13px]
+                  transition-all duration-300
+                  ${
+                    isSelected
+                      ? "scale-110 text-[#7f5b1f]"
+                      : ""
+                  }
+                `}
+              />
+
+              <span className="mt-1.5 text-[11px] ">
+                {sign.name}
+              </span>
+            </button>
+          );
+        })}
+      </div>
+
+      <Button
+        type="button"
+        variant="secondary"
+        disabled={!selected}
+        onClick={() => selected && onConfirm(selected)}
+        className="
+          mt-6 h-12 w-full rounded-full
+          disabled:opacity-40
+        "
+      >
+        确认我的星座
+      </Button>
+
+ 
+    </div>
+  );
+}

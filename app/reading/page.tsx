@@ -17,6 +17,7 @@ export default function ReadingPage() {
     isHydrated,
     question,
     reading,
+
   } = useReadingSession();
   const text = messages[language];
 
@@ -52,7 +53,7 @@ export default function ReadingPage() {
         </section>
       </div>
 
-      <ReadingResult reading={reading} summaryLabel={text.readingSummary}/>
+      <ReadingResult   zodiac={reading.zodiac} reading={reading} summaryLabel={text.readingSummary}/>
 
       <FeedBack/>
     </div>

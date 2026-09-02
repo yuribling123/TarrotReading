@@ -6,6 +6,7 @@ import { ZodiacReadingOption } from "./zodiac-reading";
 import { Button } from "@/components/ui/button";
 import { OpeningRitual } from "./ritual";
 import { useState } from "react";
+import { SelectedZodiac } from "./dialog/zodiac-selected";
 
 type CardSelectProps = {
   language: Language;
@@ -14,9 +15,13 @@ type CardSelectProps = {
   question: string;
   onSelect: (card: TarotCard) => void;
   onReveal: () => void;
+  zodiac: string | null;
+  setZodiac: (zodiac: string) => void;
 };
 
 export function CardSelect({
+  zodiac,
+  setZodiac,
   language,
   deck,
   selectedCards,
@@ -26,9 +31,10 @@ export function CardSelect({
 }: CardSelectProps) {
   // Only reveal when three cards selected
   const [ritualDone, setRitualDone] = useState(false);
-
   const canReveal = selectedCards.length === 3;
   const text = messages[language];
+
+
 
   // 仪式还没结束：只显示仪式
   if (!ritualDone) {
@@ -68,7 +74,11 @@ export function CardSelect({
           onSelect={onSelect}
         />
 
-        <ZodiacReadingOption />
+        {zodiac ? (
+          <SelectedZodiac zodiac={zodiac} />): (
+          <ZodiacReadingOption onConfirm={setZodiac} />
+        )}
+
         <div className="h-15 mt-4 flex items-center justify-center">
           {canReveal && (
             <Button

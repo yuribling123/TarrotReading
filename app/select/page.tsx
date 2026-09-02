@@ -20,6 +20,7 @@ export default function SelectPage() {
   const [selectedCards, setSelectedCards] = useState<TarotCard[]>([]);
   const [isRevealing, setIsRevealing] = useState(false);
   const [isReadingReady, setIsReadingReady] = useState(false);
+  const [zodiac, setZodiac] = useState<string | null>(null);
 
   const {
     isHydrated,
@@ -66,6 +67,7 @@ export default function SelectPage() {
           question,
           cards,
           language,
+          zodiac,
         }),
       });
       const reading = (await response.json()) as ReadingResponse 
@@ -125,6 +127,8 @@ export default function SelectPage() {
           question={question}
           onSelect={selectCard}
           onReveal={revealCards}
+          zodiac={zodiac}
+          setZodiac={setZodiac}
         />
        
       )}

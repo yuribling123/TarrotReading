@@ -49,8 +49,8 @@ export function ZodiacSelector({
 
   
 
-        <h2 className="mt-3 text-[16px] font-medium text-[#543f00]/90">
-          选择你的星座
+        <h2 className="mt-3 text-[16px] font-medium text-black/65">
+              你的星座是？
         </h2>
 
       
@@ -79,8 +79,8 @@ export function ZodiacSelector({
                   
                     `
                     : `
-                      border-[#b89552]/12
-                      bg-white/15
+                      border-[#b89552]/30
+                      bg-white/20
                       text-[#543f00]/80
                       hover:border-[#b89552]/25
                       hover:bg-white/60
@@ -114,11 +114,11 @@ export function ZodiacSelector({
         disabled={!selected}
         onClick={() => selected && onConfirm(selected)}
         className="
-          mt-6 h-12 w-full rounded-full
+          mt-6 h-12 w-20 rounded-full
           disabled:opacity-40
         "
       >
-        确认我的星座
+                选好了
       </Button>
 
  

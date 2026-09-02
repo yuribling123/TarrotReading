@@ -41,7 +41,7 @@ export function ZodiacReadingOption(
         <span className="text-[#7f5b1f]
 
           animate-[pulse_2s_ease-in-out_1]">
-          带上你的星座 · 让解读更靠近你
+          带上星座 · 让解读更靠近你
         </span>
 
         <span

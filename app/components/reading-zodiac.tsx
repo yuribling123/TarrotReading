@@ -1,26 +1,24 @@
 type ReadingZodiacProps = {
-
   zodiac: string;
 };
 
 export function ReadingZodiac({
-  zodiac
+  zodiac,
 }: ReadingZodiacProps) {
   return (
     <section
       className="
         relative
-        mx-auto
+        mx-8
         my-8
         max-w-[720px]
         overflow-hidden
         rounded-[22px]
         border
         border-[#b89552]/20
-        bg-[#fffdf9]/10
         px-6
         py-5
-        shadow-[0_8px_28px_rgba(127,91,31,0.06)]
+       
         backdrop-blur
       "
     >
@@ -34,46 +32,56 @@ export function ReadingZodiac({
           h-28
           w-28
           rounded-full
-          bg-[#d6ad58]/8
+          bg-[#d6ad58]/10
           blur-3xl
         "
       />
 
       <div className="relative">
+        {/* Header */}
         <div className="mb-3 flex items-center justify-between">
-          <p className="text-[13px] font-semibold tracking-[0.08em] text-[#181817]/80">
-            ✦ 星辰私语
+          <p className="flex items-center text-[13px] tracking-[0.05em]">
+            <span className="mr-1.5 inline-block animate-[twinkle_2.8s_ease-in-out_infinite] text-[14px] text-[#d3be57]">
+              ˖
+            </span>
+
+            <span className="font-medium text-[#3c2b0d]/80">
+              星辰来信
+            </span>
           </p>
 
           <span
             className="
               rounded-full
-              border border-[#b89552]/20
-              bg-[#d6ad58]/6
+              border
+              border-[#3c2b0d]/20
+              bg-[#d6ad58]/5
               px-2.5
-              py-0.5
+              py-1
               text-[9px]
               font-medium
-              tracking-[0.06em]
-              text-[#8b6729]/80
+              tracking-[0.08em]
+              text-[#3c2b0d]/40
             "
           >
             已解锁
           </span>
         </div>
 
+        {/* 极淡分隔线 */}
         <div
           className="
             mb-3
             h-px
             bg-gradient-to-r
             from-transparent
-            via-[#b89552]/15
+            via-[#b89552]/14
             to-transparent
           "
         />
 
-        <p className="text-[0.89rem] leading-7 text-[#342d3d]/85">
+        {/* 星座解读 */}
+        <p className="text-[0.89rem] leading-7 text-[#342d3d]">
           {zodiac}
         </p>
       </div>

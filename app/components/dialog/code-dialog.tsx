@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { toast } from "@/components/ui/toast";
 import { useState } from "react";
-import { Loading } from "./loading";
+import { Loading } from "../loading";
 
 
 interface ZodiacUnlockDialogProps {

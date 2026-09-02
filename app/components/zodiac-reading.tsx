@@ -1,7 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { useState } from "react";
-import { CodeDialog } from "./code-dialog";
+import { CodeDialog } from "./dialog/code-dialog";
+
 
 export function ZodiacReadingOption() {
   const [open, setOpen] = useState(false);

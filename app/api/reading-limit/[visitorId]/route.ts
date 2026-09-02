@@ -4,9 +4,13 @@ import { redis } from "@/lib/redis/redis";
 const KEY = "reading_limit";
 const LIMIT = 1;
 
+//返回日期："2026-09-02"
 function getToday() {
-  return new Date().toISOString().slice(0, 10);
+  return new Intl.DateTimeFormat("en-CA", {
+    timeZone: "Asia/Shanghai",
+  }).format(new Date());
 }
+
 
 function getFields(visitorId: string) {
   const today = getToday();
@@ -34,16 +38,25 @@ export async function GET(
   const readingCount = count ?? 0;
   const resonanceCount = resonance ?? 0;
 
-  const allowed =
-    readingCount < (resonanceCount + 1) * LIMIT;
+  const dailyLimitReached = readingCount >= 3;
+  const resonanceRequired =
+    readingCount >= (resonanceCount + 1) * LIMIT;
+
+  let reason: "daily_limit" | "resonance_required" | null = null;
+
+  if (dailyLimitReached) {
+    reason = "daily_limit";
+  } else if (resonanceRequired) {
+    reason = "resonance_required";
+  }
 
   return NextResponse.json({
     count: readingCount,
     resonance: resonanceCount,
-    allowed,
+    allowed: reason === null,
+    reason,
   });
 }
-
 
 // POST: 成功完成一次占卜
 export async function POST(

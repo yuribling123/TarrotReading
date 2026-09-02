@@ -9,7 +9,8 @@ import {
 } from "@/components/ui/dialog";
 
 import { Button } from "@/components/ui/button";
-import { Loading } from "./loading";
+import { Loading } from "../loading";
+
 
 interface ReadingLimitDialogProps {
     isPending: boolean;

@@ -10,12 +10,11 @@ export function ReadingZodiac({
       className="
         relative
         mx-6
-        my-8
         max-w-[720px]
         overflow-hidden
         rounded-[22px]
         border
-        border-[#b89552]/40
+        border-[#7f5b1f]/30
         px-6
         py-5
        
@@ -45,7 +44,7 @@ export function ReadingZodiac({
               ˖
             </span>
 
-            <span className="font-medium text-[#3c2b0d]/80">
+            <span className="font-medium text-[#3c2b0d]/90">
               星辰来信
             </span>
           </p>

@@ -65,7 +65,7 @@ export function CardSelect({
 
         <div className="deckHeader">
           <p className="tracking-[0.03em]">{text.selectionInstructionFirstLine}</p>
-          <p className="translate-y-4 tracking-[0.03em]">{text.selectionInstructionSecondLine}</p>
+          <p className="translate-y-4 tracking-[0.03em] text-[#4b2020]/70">{text.selectionInstructionSecondLine}</p>
         </div>
 
         <CardFan

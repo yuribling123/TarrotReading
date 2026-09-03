@@ -12,20 +12,28 @@ export async function POST(request: Request) {
       );
     }
 
-    const normalizedCode = code.trim();
+    const normalizedCode = code.trim().toUpperCase();
 
-    // 检查这个兑换码是否存在
-    const exists = await redis.sismember("code", normalizedCode);
+    // 获取兑换码剩余次数
+    const remaining = await redis.hget<number>(
+      "code",
+      normalizedCode
+    );
 
-    if (!exists) {
+    if (!remaining || remaining <= 0) {
       return Response.json(
         { success: false, message: "兑换码无效" },
         { status: 400 }
       );
     }
 
-    // 兑换成功，只删除使用过的这个码
-    await redis.srem("code", normalizedCode);
+    if (remaining === 1) {
+      // 最后一次，用完后删除
+      await redis.hdel("code", normalizedCode);
+    } else {
+      // 剩余次数 -1
+      await redis.hincrby("code", normalizedCode, -1);
+    }
 
     return Response.json({
       success: true,

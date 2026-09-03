@@ -56,7 +56,7 @@ export function ZodiacSelector({
       
       </div>
 
-      <div className="grid grid-cols-4 gap-2.5">
+      <div className="grid grid-cols-4 gap-2.5 pt-2">
         {zodiacSigns.map((sign) => {
           const isSelected = selected === sign.name;
           const Icon = sign.Icon;
@@ -67,21 +67,22 @@ export function ZodiacSelector({
               type="button"
               onClick={() => setSelected(sign.name)}
               className={`
-                flex h-15 w-15 flex-col items-center justify-center
-                rounded-[18px] border
+                flex h-14 w-14 flex-col items-center justify-center
+                rounded-[20px] border
                 transition-all duration-300
                 ${
                   isSelected
                     ? `
+                        scale-115
                       border-[#9b722a]
                      
-                      text-[#7f5b1f]
+                      text-[#543f00]
                   
                     `
                     : `
-                      border-[#b89552]/30
+                      border-[#9b722a]/60
                       bg-white/20
-                      text-[#543f00]/80
+                      text-[#543f00]/70
                       hover:border-[#b89552]/25
                       hover:bg-white/60
                     `
@@ -90,17 +91,17 @@ export function ZodiacSelector({
             >
               <Icon
                 className={`
-                  text-[13px]
+                  text-[11px]
                   transition-all duration-300
                   ${
                     isSelected
-                      ? "scale-110 text-[#7f5b1f]"
+                      ? ""
                       : ""
                   }
                 `}
               />
 
-              <span className="mt-1.5 text-[11px] ">
+              <span className="mt-1.5 text-[10px] ">
                 {sign.name}
               </span>
             </button>

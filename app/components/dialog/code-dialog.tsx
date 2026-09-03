@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
+  DialogDescription,
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
@@ -17,7 +18,7 @@ interface ZodiacUnlockDialogProps {
 }
 
 export function CodeDialog({
-   onConfirm,
+  onConfirm,
   open,
   onOpenChange,
 }: ZodiacUnlockDialogProps) {
@@ -91,6 +92,19 @@ export function CodeDialog({
               >
                 输入月光兑换码
               </DialogTitle>
+
+              <DialogDescription
+
+                className="
+      text-center
+      text-[10px]
+      text-[#232125]/50
+    "
+              >
+
+                还没有兑换码？可以向开发者索取
+
+              </DialogDescription>
             </DialogHeader>
 
             <input

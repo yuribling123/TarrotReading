@@ -24,7 +24,7 @@ export function SelectedZodiac({
     before:inset-[-10px]
     before:-z-10
     before:rounded-full
-    before:bg-[#d6ad58]/10
+    before:bg-[#d6ad58]/25
     before:blur-xl
   "
         >

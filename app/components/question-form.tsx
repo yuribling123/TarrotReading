@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button";
 import { Loading } from "./loading";
 
-const maxQuestionLength = 180;
+const maxQuestionLength = 250;
 
 type QuestionFormProps = {
   language: Language;

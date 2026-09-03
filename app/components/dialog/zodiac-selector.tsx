@@ -73,7 +73,7 @@ export function ZodiacSelector({
                 ${
                   isSelected
                     ? `
-                        scale-115
+                        scale-105
                       border-[#9b722a]
                      
                       text-[#543f00]

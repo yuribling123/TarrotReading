@@ -3,12 +3,12 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } f
 import { useState } from "react";
 import { CodeDialog } from "./dialog/code-dialog";
 
-interface Props{
+interface Props {
   onConfirm: (zodiac: string) => void;
 }
 
 export function ZodiacReadingOption(
-  {onConfirm}:Props
+  { onConfirm }: Props
 ) {
   const [open, setOpen] = useState(false);
   return (
@@ -38,12 +38,18 @@ export function ZodiacReadingOption(
           ✦
         </span>
 
-        <span className="text-[#7f5b1f]
-
-          animate-[pulse_2s_ease-in-out_1]">
+        <span
+          className="
+    text-[#7f5b1f]
+    underline
+    decoration-[#7f5b1f]/35
+    decoration-[0.5px]
+    underline-offset-12
+    animate-[pulse_2s_ease-in-out_1]
+  "
+        >
           带上星座 · 让解读更靠近你
         </span>
-
         <span
           className="
           inline-block

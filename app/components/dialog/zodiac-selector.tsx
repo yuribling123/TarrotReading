@@ -43,14 +43,14 @@ export function ZodiacSelector({
   const [selected, setSelected] = useState<string | null>(null);
 
   return (
-    <div className="w-full animate-in fade-in slide-in-from-bottom-2 duration-700">
+    <div className="w-full animate-in fade-in slide-in-from-bottom-2 duration-1400">
       <div className="mb-6 text-center">
     
 
   
 
-        <h2 className="mt-3 text-[16px] font-medium text-black/65">
-              你的星座是？
+        <h2 className="text-[16px] font-medium text-[#7f5b1f] ">
+              你的星座
         </h2>
 
       
@@ -68,21 +68,22 @@ export function ZodiacSelector({
               onClick={() => setSelected(sign.name)}
               className={`
                 flex h-14 w-14 flex-col items-center justify-center
-                rounded-[20px] border
+                rounded-[21px] border
                 transition-all 
                 ${
                   isSelected
                     ? `
                       
-                      border-[#9b722a]
-                     
+                      border-[#543f00]
+                      bg-white/40
                       text-[#543f00]
+                      scale-105
                   
                     `
                     : `
-                      border-[#9b722a]/40
+                      border-[#141005]/30
                       bg-white/20
-                      text-[#543f00]/50
+                      text-[#141005]/30
                       hover:border-[#b89552]/25
                       hover:bg-white/60
                     `

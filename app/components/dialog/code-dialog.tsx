@@ -59,15 +59,15 @@ export function CodeDialog({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent
         className="
-          w-90
-          max-w-[88vw]
+          w-[74vw]
+          max-w-[75vw]
           rounded-[28px]
           border
           border-[#c9ad73]/25
           bg-[#fffdf9]/70
-          pt-8
-          pb-5
-          px-8
+          pt-10
+          pb-6
+          px-12
           text-center
           shadow-[0_18px_50px_rgba(45,38,55,0.16)]
           backdrop-blur-xl
@@ -97,7 +97,7 @@ export function CodeDialog({
 
                 className="
       text-center
-      text-[10px]
+      text-[11px]
       text-[#232125]/50
     "
               >
@@ -114,8 +114,8 @@ export function CodeDialog({
               placeholder="输入兑换码"
               className="
                 mx-auto
-                mt-2
-                h-10
+                mt-4
+                h-12
                 w-45
                 rounded-full
                 border
@@ -126,7 +126,7 @@ export function CodeDialog({
                 text-[16px]!
                 tracking-[0.08em]
                 text-[#232125]/88
-                caret-[#b89552]
+                caret-[#7f5b1f]
                 outline-none
                 transition
                 placeholder:text-[12px]
@@ -143,7 +143,7 @@ export function CodeDialog({
               disabled={isPending}
               className="
                 mx-auto
-                mt-2
+                mt-3
                 h-11
                 w-16
                 rounded-full

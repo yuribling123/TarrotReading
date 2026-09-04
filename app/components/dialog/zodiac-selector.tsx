@@ -69,7 +69,7 @@ export function ZodiacSelector({
               className={`
                 flex h-14 w-14 flex-col items-center justify-center
                 rounded-[21px] border
-                transition-all 
+               
                 ${
                   isSelected
                     ? `

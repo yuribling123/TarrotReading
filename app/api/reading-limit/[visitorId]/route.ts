@@ -3,7 +3,7 @@ import { redis } from "@/lib/redis/redis";
 
 const KEY = "reading_limit";
 const LIMIT = 1; //1
-const DAILY_LIMIT = 5; //3
+const DAILY_LIMIT = 3; //3
 
 //返回日期："2026-09-02"
 function getToday() {

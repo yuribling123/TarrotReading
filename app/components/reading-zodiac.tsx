@@ -45,7 +45,7 @@ export function ReadingZodiac({
             </span>
 
             <span className="font-medium text-[#3c2b0d]/90">
-              星辰来信
+              星象私语
             </span>
           </p>
 

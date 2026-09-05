@@ -1,55 +1,126 @@
-const stars = [
-  { className: "left-[12%] top-[18%] size-1", delay: "0s" },
-  { className: "left-[24%] top-[34%] size-1.5", delay: "1.8s" },
-  { className: "left-[32%] top-[12%] size-1", delay: "3.4s" },
-  { className: "right-[31%] top-[20%] size-1", delay: "0.9s" },
-  { className: "right-[19%] top-[39%] size-1.5", delay: "2.6s" },
-  { className: "right-[10%] top-[15%] size-1", delay: "4.1s" },
-] as const;
-
-function BotanicalOrnament({ side }: { side: "left" | "right" }) {
-  return (
-    <svg
-      viewBox="0 0 180 520"
-      className={`absolute bottom-[-4%] hidden h-[68%] w-auto text-[#9c7b45]/14 lg:block ${
-        side === "left" ? "left-0" : "right-0 -scale-x-100"
-      }`}
-      fill="none"
-      stroke="currentColor"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
-      <path d="M30 516C36 390 68 286 132 180C154 144 164 101 158 50" strokeWidth="1.1" />
-      <path d="M55 412C29 399 16 376 17 346C42 351 59 368 65 394" />
-      <path d="M78 337C51 326 38 305 40 276C66 281 81 298 87 321" />
-      <path d="M105 267C86 250 80 226 89 199C111 210 121 229 116 252" />
-      <path d="M128 203C149 191 162 171 164 144C142 149 128 164 121 188" />
-      <path d="M56 421C78 414 92 398 98 373C75 374 60 386 51 405" />
-      <path d="M82 344C105 339 121 325 129 301C105 300 89 311 78 329" />
-      <circle cx="159" cy="47" r="8" />
-      <path d="m159 29 3 10 10 3-10 3-3 10-3-10-10-3 10-3 3-10Z" />
-      <path d="M27 453a17 17 0 1 0 0-34 14 14 0 0 1 0 34Z" />
-    </svg>
-  );
-}
-
 export function HomeBackground() {
   return (
     <div
       aria-hidden="true"
       inert
-      className="pointer-events-none absolute inset-x-0 bottom-0 top-[76px] isolate overflow-hidden "
+      className="pointer-events-none absolute inset-x-0 bottom-0 top-[76px] overflow-hidden"
     >
-      <div className="absolute inset-0 " />
+      <style>{`
+        @keyframes lunar-star-breathe {
+          0%, 18%, 52%, 100% {
+            opacity: 0.24;
+            transform: scale(0.72);
+          }
+          30%, 40% {
+            opacity: 0.92;
+            transform: scale(1);
+          }
+        }
 
+        @keyframes lunar-crescent-breathe {
+          0%, 100% {
+            opacity: 0.45;
+            filter: drop-shadow(0 0 0 rgba(196, 151, 69, 0));
+          }
+          50% {
+            opacity: 0.82;
+            filter: drop-shadow(0 0 5px rgba(196, 151, 69, 0.28));
+          }
+        }
 
+        .lunar-star {
+          transform-box: fill-box;
+          transform-origin: center;
+          animation: lunar-star-breathe 8.5s ease-in-out infinite;
+        }
 
-      <BotanicalOrnament side="left" />
-      <BotanicalOrnament side="right" />
+        .lunar-crescent {
+          animation: lunar-crescent-breathe 7s ease-in-out infinite;
+        }
 
+        @media (prefers-reduced-motion: reduce) {
+          .lunar-path-traveler,
+          .lunar-star,
+          .lunar-crescent {
+            animation: none;
+          }
 
+          .lunar-path-traveler {
+            visibility: hidden;
+          }
+        }
+      `}</style>
 
+      <div className="absolute bottom-[calc(env(safe-area-inset-bottom)+1.25rem)] left-1/2 w-[min(68vw,17rem)] -translate-x-1/2 md:bottom-6 md:w-[19rem]">
+        <svg
+          viewBox="0 0 300 112"
+          className="h-auto w-full overflow-visible"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <defs>
+            <linearGradient id="lunar-path-line" x1="34" y1="49" x2="266" y2="49">
+              <stop offset="0" stopColor="#a8813e" stopOpacity="0" />
+              <stop offset="0.18" stopColor="#a8813e" stopOpacity="0.28" />
+              <stop offset="0.5" stopColor="#8e744c" stopOpacity="0.2" />
+              <stop offset="0.82" stopColor="#a8813e" stopOpacity="0.28" />
+              <stop offset="1" stopColor="#a8813e" stopOpacity="0" />
+            </linearGradient>
+            <radialGradient id="lunar-moving-light">
+              <stop offset="0" stopColor="#f0cd77" stopOpacity="1" />
+              <stop offset="0.35" stopColor="#ddb55b" stopOpacity="0.72" />
+              <stop offset="1" stopColor="#ddb55b" stopOpacity="0" />
+            </radialGradient>
+          </defs>
+
+          <path
+            d="M38 49C94 92 206 92 262 49"
+            stroke="url(#lunar-path-line)"
+            strokeWidth="1"
+          />
+          <path
+            d="M60 53C106 83 194 83 240 53"
+            stroke="#a8813e"
+            strokeOpacity="0.08"
+            strokeWidth="0.7"
+            strokeDasharray="1 7"
+          />
+
+          <g className="lunar-crescent">
+            <circle cx="31" cy="45" r="10" fill="#d8b45f" fillOpacity="0.72" />
+            <circle cx="35" cy="41" r="10" fill="#fffaf1" />
+          </g>
+
+          <g className="lunar-star" style={{ animationDelay: "0s" }}>
+            <circle cx="92" cy="71" r="2.4" fill="#b68a3e" />
+            <circle cx="92" cy="71" r="6" stroke="#b68a3e" strokeOpacity="0.12" />
+          </g>
+          <g className="lunar-star" style={{ animationDelay: "1.15s" }}>
+            <path
+              d="m150 79 2.4 5.6 5.6 2.4-5.6 2.4-2.4 5.6-2.4-5.6-5.6-2.4 5.6-2.4 2.4-5.6Z"
+              fill="#c39a4c"
+              fillOpacity="0.78"
+            />
+          </g>
+          <g className="lunar-star" style={{ animationDelay: "2.3s" }}>
+            <circle cx="208" cy="71" r="2.4" fill="#b68a3e" />
+            <circle cx="208" cy="71" r="6" stroke="#b68a3e" strokeOpacity="0.12" />
+          </g>
+
+          <circle className="lunar-path-traveler" r="7" fill="url(#lunar-moving-light)">
+            <animateMotion
+              dur="11s"
+              repeatCount="indefinite"
+              path="M38 49C94 92 206 92 262 49"
+              keyTimes="0;0.12;0.8;1"
+              keyPoints="0;0;1;1"
+              calcMode="spline"
+              keySplines="0 0 1 1;0.42 0 0.58 1;0 0 1 1"
+            />
+          </circle>
+        </svg>
+      </div>
     </div>
   );
 }

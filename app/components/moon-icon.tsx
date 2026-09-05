@@ -16,7 +16,7 @@ export function MoonIcon({ language }: Props) {
 
   return (
 
-    <div className="pb-18">
+    <div className="">
       <button
         type="button"
       >

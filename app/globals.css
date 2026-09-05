@@ -513,8 +513,83 @@ box-shadow:
 }
 
 .deckArea {
+  --selection-card-width: 90px;
+
   transform: translateY(40px);
   padding-inline: 20px;
+}
+
+.selectionZodiac {
+  margin-top: 20px;
+}
+
+.selectionZodiac > button,
+.selectionZodiac > div {
+  margin-bottom: 0;
+}
+
+.selectedCardSlots {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 18px;
+}
+
+.selectedCardSlot {
+  aspect-ratio: 701 / 1200;
+  border: 1px dashed rgba(155, 114, 42, 0.22);
+  border-radius: 7px;
+  overflow: hidden;
+  position: relative;
+  width: var(--selection-card-width);
+}
+
+.selectedCardSlot::after {
+  color: rgba(155, 114, 42, 0.24);
+  content: "✦";
+  font-size: 0.65rem;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.selectedCardSlot:has(.cardArtwork) {
+  border-style: solid;
+  box-shadow: 0 5px 16px rgba(41, 36, 56, 0.13);
+}
+
+.selectedCardSlot:has(.cardArtwork)::after {
+  display: none;
+}
+
+.selectedCardSlot .cardArtwork {
+  inset: 0;
+  position: absolute;
+}
+
+.flyingCard {
+  border-radius: 12px;
+  pointer-events: none;
+  position: fixed;
+  transform-origin: top left;
+  z-index: 1000;
+}
+
+.flyingCard .cardInner {
+  animation: flying-card-flip 460ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes flying-card-flip {
+  from { transform: rotateY(0deg); }
+  to { transform: rotateY(180deg); }
+}
+
+.cardEmptySlot {
+  border: 1px dashed rgba(155, 114, 42, 0.14);
+  border-radius: inherit;
+  inset: 2px;
+  position: absolute;
 }
 
 .deckHeader {
@@ -578,9 +653,10 @@ box-shadow:
   max-width: 100%;
 
   overflow-x: auto;
-  overflow-y: visible;
+  overflow-y: hidden;
 
   overscroll-behavior-inline: contain;
+  touch-action: pan-x;
 
   scrollbar-width: none;
 }
@@ -590,13 +666,14 @@ box-shadow:
 }
 
 .cardFan {
-  --card-width: 90px;
-  --card-overlap: 42px;
+  --card-width: var(--selection-card-width);
+  --card-step: 20px;
+  --card-overlap: calc(var(--card-width) - var(--card-step));
 
   align-items: flex-end;
   display: flex;
 
-  padding: 46px 0 42px;
+  padding: 46px calc(50vw - var(--card-width) / 2) 126px;
   perspective: 1000px;
 
   width: max-content;
@@ -670,22 +747,19 @@ box-shadow:
 
 /* 发牌过程：保持现在的慢速 */
 .cardFan.spreadOut:not(.dealing) .cardBack {
-  transform: translateX(0);
+  z-index: var(--fan-layer, var(--card-index));
+  transform:
+    translateY(var(--fan-y, 0px))
+    rotate(var(--fan-angle, 0deg));
+  transform-origin: 50% 115%;
+  will-change: transform;
 
-  transition:
-    transform 2800ms ease,
-    filter 180ms ease;
-
-  transition-delay: 600ms, 0ms;
+  transition: filter 180ms ease;
 }
 
-/* 选中以后：覆盖 transition，让上升快一点 */
+/* 选中牌也必须同步跟随弧线，不能延迟追赶滚动坐标。 */
 .cardFan.spreadOut:not(.dealing) .cardBack.selected {
-  transition:
-    transform 900ms ease-out,
-    filter 180ms ease;
-
-  transition-delay: 0ms;
+  transition: filter 180ms ease;
 }
 
 /* ==================================================
@@ -695,7 +769,9 @@ box-shadow:
 
 .cardFan.spreadOut:not(.dealing) .cardBack.selected {
   z-index: 290;
-  transform: translateY(-18px);
+  transform:
+    translateY(calc(var(--fan-y, 0px) - 18px))
+    rotate(var(--fan-angle, 0deg));
 }
 
 .cardFan.spreadOut:not(.dealing) .cardBack:hover {
@@ -713,9 +789,27 @@ box-shadow:
   position: absolute;
 
   transform-style: preserve-3d;
+  translate: 0 0;
 
   transition:
-    transform 620ms ease;
+    transform 620ms ease,
+    translate 180ms ease,
+    filter 180ms ease;
+}
+
+.cardFan.spreadOut:not(.dealing) .cardBack[data-center-active="true"] {
+  z-index: 280;
+}
+
+.cardFan.spreadOut:not(.dealing) .cardBack[data-center-active="true"] .cardInner {
+  filter:
+    brightness(1.1)
+    drop-shadow(0 0 8px rgba(197, 158, 84, 0.38));
+  translate: 0 -6px;
+}
+
+.cardFan.spreadOut:not(.dealing) .cardBack.selected[data-center-active="true"] {
+  z-index: 310;
 }
 
 .cardBackFace,
@@ -1409,6 +1503,9 @@ box-shadow:
    ================================================== */
 
 @media (max-width: 860px) {
+  .deckArea {
+    --selection-card-width: 102px;
+  }
   .inputRow {
     padding: 5px 1px;
   }
@@ -1431,7 +1528,7 @@ box-shadow:
   /* card sizing */
 
   .cardFan {
-    --card-width: 102px;
+    --card-width: var(--selection-card-width);
   }
 
   .cardBack {
@@ -1514,6 +1611,42 @@ box-shadow:
    overflow: hidden;
   }
 
+  .selectionContent {
+    transform: none;
+  }
+
+  .selectionDeckArea {
+    --selection-card-width:
+      clamp(
+        50px,
+        19vw,
+        82px
+      );
+
+    display: flex;
+    flex-direction: column;
+    height: calc(100svh - 76px);
+    padding: clamp(52px, 8svh, 72px) 20px 0;
+    transform: none;
+  }
+
+  .selectionDeckArea > p {
+    padding-bottom: 22px;
+  }
+
+  .selectionZodiac {
+    margin-top: 18px;
+  }
+
+  .selectedCardSlots {
+    margin-top: clamp(30px, 4.5svh, 42px);
+  }
+
+  .selectionDeckArea .cardFanViewport {
+    margin-top: auto;
+    width: 100%;
+  }
+
   [data-slot="toast-viewport"] {
     bottom:
       max(
@@ -1548,12 +1681,8 @@ box-shadow:
   /* card sizing */
 
   .cardFan {
-    --card-width:
-      clamp(
-        50px,
-        19vw,
-        82px
-      );
+    --card-width: var(--selection-card-width);
+    --card-step: 16px;
   }
 
   .cardBack {

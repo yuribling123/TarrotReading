@@ -13,10 +13,6 @@ export function TarotPreloader({
     useEffect(() => {
         // wait for website to load first
         const timer = setTimeout(() => {
-            const background = new window.Image();
-            background.src = "/images/backgrounds/moonlit-oracle.jpg";
-
-            // background
             // card back
             const cardBack = new window.Image();
             cardBack.src = "/images/cards/card-back-2.jpg";

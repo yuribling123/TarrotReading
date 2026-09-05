@@ -214,46 +214,17 @@ button:disabled {
 
 }
 
-.landingBackdrop {
-  background: #ffffff;
-  inset: 76px 0 0;
-  overflow: hidden;
-  pointer-events: none;
-  position: absolute;
-  z-index: 0;
+@keyframes home-orbit {
+  to { transform: translateX(-50%) rotate(360deg); }
 }
 
-.landingBackdrop::before,
-.landingBackdrop::after {
-  content: "";
-  inset: 0;
-  position: absolute;
+@keyframes home-orbit-reverse {
+  to { transform: translateX(-50%) rotate(-360deg); }
 }
 
-.landingBackdrop::before {
-  background-image: url("/images/backgrounds/moonlit-oracle.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
-  border-radius: 30px;
-  overflow: hidden;
- 
-
-
-  bottom: 24px;
-  left: 50%;
-  top: 24px;
-  opacity: 0.93;
-
-  transform: translateX(-50%);
-
-  width:
-    min(
-      72vw,
-      calc((100vh - 124px) * 0.5)
-    );
-
-
+@keyframes home-star {
+  0%, 100% { opacity: 0.22; transform: rotate(45deg) scale(0.7); }
+  50% { opacity: 0.78; transform: rotate(45deg) scale(1.15); }
 }
 
 .eyebrow {
@@ -1543,24 +1514,6 @@ box-shadow:
    overflow: hidden;
   }
 
-  .landingBackdrop::before {
-    border-radius: 25%;
-    overflow: hidden;
-
-    
-    aspect-ratio: 701 / 1200;
-
-    background-position: top center;
-
-    bottom: auto;
-
-    height: auto;
-
-    width: min(91vw, 430px);
-   
-  }
-
-
   [data-slot="toast-viewport"] {
     bottom:
       max(
@@ -1614,12 +1567,6 @@ box-shadow:
     min-height: unset;
 
   }
-
-  .landingBackdrop::before {
-   
-  }
-
-  
 
   /* reading */
 
@@ -1728,7 +1675,7 @@ box-shadow:
 
   background: #e3c36d;
 
-  box-shadow:
+  /* box-shadow:
 
     0 0 8px
 
@@ -1736,9 +1683,9 @@ box-shadow:
 
     0 0 18px
 
-    rgba(215, 181, 109, 0.16);
+    rgba(215, 181, 109, 0.16); */
 
-  animation:
+  /* animation:
 
     moonGlow
 
@@ -1746,7 +1693,7 @@ box-shadow:
 
     ease-in-out
 
-    infinite;
+    infinite; */
 
 }
 
@@ -1789,7 +1736,7 @@ box-shadow:
    ------------------------------ */
 
 .moon-waxingCrescent::after {
-  transform: translateX(-8px);
+  transform: translateX(-32%);
 }
 
 
@@ -1808,7 +1755,7 @@ box-shadow:
    ------------------------------ */
 
 .moon-waxingGibbous::after {
-  transform: translateX(-20px);
+  transform: translateX(-80%);
 }
 
 
@@ -1826,7 +1773,7 @@ box-shadow:
    ------------------------------ */
 
 .moon-waningGibbous::after {
-  transform: translateX(20px);
+  transform: translateX(80%);
 }
 
 
@@ -1845,7 +1792,56 @@ box-shadow:
    ------------------------------ */
 
 .moon-waningCrescent::after {
-  transform: translateX(8px);
+  transform: translateX(32%);
+}
+
+/* Homepage background: two complete discs whose overlap follows the moon phase. */
+.overlapMoon .moonIcon {
+  background: #e3c36d;
+  border: 0;
+  overflow: visible;
+}
+
+.overlapMoon .moonIcon::after {
+  background: #fffaf0;
+  display: block;
+  inset: 0;
+  left: 0;
+  right: 0;
+  box-shadow: 0 0 22px rgba(255, 250, 240, 0.24);
+  transition: transform 600ms ease;
+}
+
+.overlapMoon .moon-newMoon::after {
+  transform: translateX(0);
+}
+
+.overlapMoon .moon-waxingCrescent::after {
+  transform: translateX(-20%);
+}
+
+.overlapMoon .moon-firstQuarter::after {
+  transform: translateX(-52%);
+}
+
+.overlapMoon .moon-waxingGibbous::after {
+  transform: translateX(-82%);
+}
+
+.overlapMoon .moon-fullMoon::after {
+  transform: translateX(-115%);
+}
+
+.overlapMoon .moon-waningGibbous::after {
+  transform: translateX(82%);
+}
+
+.overlapMoon .moon-lastQuarter::after {
+  transform: translateX(52%);
+}
+
+.overlapMoon .moon-waningCrescent::after {
+  transform: translateX(20%);
 }
 
 

@@ -16,18 +16,16 @@ export function MoonIcon({ language }: Props) {
 
   return (
 
-    <div className="moon flex items-center gap-1">
+    <div className="pb-20">
       <button
         type="button"
-        className="moonPhaseHeader"
-        onClick={() => setShowDetails((current) => !current)}
       >
         <div
-          className={`moonIcon moon-${phase}`}
+          className={`moonIcon moon-${phase}  scale-200`}
           aria-hidden="true"
         />
       </button>
-    {(showDetails) && (<MoonPhase language={language}/>)}
+    {/* {(showDetails) && (<MoonPhase language={language}/>)} */}
     </div>
 
     

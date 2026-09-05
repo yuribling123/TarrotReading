@@ -8,6 +8,8 @@ import { tarotDeck } from "@/lib/tarot/constants";
 import { TarotPreloader } from "./components/image-preload";
 import { FeatureInterest } from "./components/feature-interest";
 import { DailyZodiac } from "./components/moon-sign-daily";
+import { HomeBackground } from "./components/home-background";
+import { MoonIcon } from "./components/moon-icon";
 
 import { useState } from "react";
 import { getVisitorId } from "@/lib/visitor/visitor-id";
@@ -100,9 +102,12 @@ export default function LandingPage() {
   return (
     <>
       <TarotPreloader deck={deck} />
-      <div className="landingBackdrop" aria-hidden="true" />
-      <div className="content landingContent -translate-y-25">
-        <DailyZodiac />
+      <HomeBackground />
+      <div className="content landingContent -translate-y-60">
+        <div className="overlapMoon mx-auto ">
+          <MoonIcon language={language} />
+        </div>
+        {/* <DailyZodiac /> */}
         <QuestionForm
           language={language}
           label={text.questionLabel}

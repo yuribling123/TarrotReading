@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button";
 import { Loading } from "./loading";
+import { Textarea } from "@/components/ui/textarea";
 
 const maxQuestionLength = 250;
 
@@ -58,24 +59,80 @@ export function QuestionForm({
 
       <form className="questionForm" onSubmit={submitQuestion}>
         {/* <label htmlFor="question"  >{label}</label> */}
-        <div className="relative w-full">
-          <Input id="question" value={question} onBlur={() => window.scrollTo(0, 0)} onChange={(event) => setQuestion(event.target.value)} placeholder={placeholder} autoComplete="off" lang={language} className="pr-21 pl-5 h-17 text-[16px]!  bg-white border-primary/70 text-[#342d3d] tracking-[0.02em] focus-visible:ring-0 focus-visible:border-primary caret-[#7f5b1f]/80 placeholder:text-[#342d3d]/25" />
+        <div className="w-full opacity-80">
+          <Textarea
+            id="question"
+            value={question}
+            maxLength={250}
+            onBlur={() => window.scrollTo(0, 0)}
+            onChange={(event) => setQuestion(event.target.value)}
+            placeholder={placeholder}
+            autoComplete="off"
+            lang={language}
+            className="
+      h-40
+      resize-none
+      overflow-y-auto
 
-          {/* 强制16字体：输入时才不会自动放大 */}
-          {/* <input
-          className="text-[16px]! placeholder:text-[0.86rem]"
-          id="question"
-          value={question}
-          onChange={(event) => setQuestion(event.target.value)}
-          placeholder={placeholder}
-          autoComplete="off"
-          lang={language}
-        />
-        <button type="submit">{submitLabel}</button>
-       */}
-          <Button disabled={isPending} variant="secondary" type="submit" className="disabled:opacity-100!  absolute w-16 right-3 top-1/2 -translate-y-1/2 h-13 px-5 rounded-full  shadow-none transition-all duration-300 active:scale-[0.76] active:shadow-[0_0_0_5px_rgba(230,203,126,0.10),0_0_22px_rgba(201,154,69,0.32)]"><p className="font-medium">{isPending ? <Loading /> :submitLabel}</p></Button>
+      pl-5
+      pt-3
+      text-[16px]!
+      leading-8
+      tracking-[0.02em]
+      bg-white
+      border-primary/70
+      text-[#342d3d]
+
+      focus-visible:ring-0
+      focus-visible:border-primary
+
+      caret-[#7f5b1f]/80
+      placeholder:text-[#342d3d]/25
+    "
+          />
+
+          {/* 字数 + 开始 */}
+          <div className="mt-2 flex items-center justify-between px-1">
+            <span
+              className={`
+        text-[10px]
+        tracking-[0.06em]
+        transition-colors
+        ${question.length >= 230
+                  ? "text-[#9b722a]/65"
+                  : "text-[#342d3d]/30"
+                }
+      `}
+            >
+              {question.length} / 250
+            </span>
+
+            <Button
+              disabled={isPending}
+              variant="secondary"
+              type="submit"
+              className="
+        h-11
+        min-w-16
+        rounded-full
+        px-5
+
+        shadow-none
+        disabled:opacity-100!
+
+        transition-all
+        duration-300
+
+        active:scale-[0.86]
+        active:shadow-[0_0_0_5px_rgba(230,203,126,0.10),0_0_22px_rgba(201,154,69,0.32)]
+      "
+            >
+              <p className="font-medium">
+                {isPending ? <Loading /> : submitLabel}
+              </p>
+            </Button>
+          </div>
         </div>
-
 
       </form>
 

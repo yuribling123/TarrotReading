@@ -12,7 +12,7 @@ export function Navigation() {
   return (
     <nav className="topNavigation" aria-label="Site navigation">
 
-      <MoonIcon language={language}></MoonIcon>
+      {/* <MoonIcon language={language}></MoonIcon> */}
 
       <Link className="navBrand" href="/" onClick={resetReading}>
         {text.brand}
@@ -29,12 +29,12 @@ export function Navigation() {
       </button> */}
 
             
-      <button
+      {/* <button
         className="languageToggle"
         type="button"
       >
         <p>EN</p>
-      </button>
+      </button> */}
 
     </nav>
   );

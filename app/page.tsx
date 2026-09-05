@@ -103,7 +103,7 @@ export default function LandingPage() {
     <>
       <TarotPreloader deck={deck} />
       <HomeBackground />
-      <div className="content landingContent -translate-y-60">
+      <div className="content landingContent absolute! inset-x-0 top-[calc(76px+8svh)] md:top-[calc(76px+10vh)]">
         <div className="overlapMoon mx-auto ">
           <MoonIcon language={language} />
         </div>

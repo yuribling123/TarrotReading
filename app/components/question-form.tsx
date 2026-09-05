@@ -92,7 +92,7 @@ export function QuestionForm({
           />
 
           {/* 字数 + 开始 */}
-          <div className="mt-2 flex items-center justify-between px-1">
+          <div className="mt-6 flex items-center justify-between px-1">
             <span
               className={`
         text-[10px]

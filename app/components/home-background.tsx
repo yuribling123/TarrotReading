@@ -51,7 +51,7 @@ export function HomeBackground() {
         }
       `}</style>
 
-      <div className="absolute bottom-[calc(env(safe-area-inset-bottom)+1.25rem)] left-1/2 w-[min(68vw,17rem)] -translate-x-1/2 md:bottom-6 md:w-[19rem]">
+      <div className="absolute bottom-[calc(env(safe-area-inset-bottom)+8.25rem)] left-1/2 w-[min(68vw,17rem)] -translate-x-1/2 md:bottom-6 ">
         <svg
           viewBox="0 0 300 112"
           className="h-auto w-full overflow-visible"

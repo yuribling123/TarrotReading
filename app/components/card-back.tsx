@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export function CardBack() {
   return (
-    <div className="cardFace">
+    <span className="cardBackFace">
       <img
 
         src="/images/cards/card-back-2.jpg"
@@ -10,6 +10,6 @@ export function CardBack() {
         className="cardArtwork"
 
       />
-    </div>
+    </span>
   );
 }

@@ -17,7 +17,7 @@ export function ZodiacReadingOption(
         onClick={() => setOpen(true)}
         type="button"
         className="
-        group mx-auto flex items-center justify-center gap-2 mb-18 h-10 px-5 rounded-full
+        group mx-auto flex items-center justify-center gap-2 mb-5 h-10 px-5 rounded-full
         bg-transparent
         text-[11px] font-medium tracking-[0.08em]
         transition-all duration-300
@@ -30,7 +30,7 @@ export function ZodiacReadingOption(
         <span
           className="
           inline-block
-          text-[10px] text-[#7f5b1f]/70
+          text-[10px] text-[#7f5b1f]/40
           drop-shadow-[0_0_5px_rgba(215,181,109,0.7)]
           animate-[pulse_2.8s_ease-in-out_infinite]
         "
@@ -40,7 +40,7 @@ export function ZodiacReadingOption(
 
         <span
           className="
-    text-[#7f5b1f]
+    text-[#7f5b1f]/40
     underline
     decoration-[#7f5b1f]/35
     decoration-[0.5px]

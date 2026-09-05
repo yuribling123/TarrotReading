@@ -55,7 +55,7 @@ export const messages = {
     questionPlaceholder: "写下此刻的心事",
     enter: "开始",
     selectionInstructionFirstLine: "默念你的问题",
-    selectionInstructionSecondLine: "凭第一直觉 选择最吸引你的三张牌",
+    selectionInstructionSecondLine: "选择最吸引你的三张牌",
     reveal: "揭开牌阵",
     readingSummary: "指引",
     retry: "再试一次",

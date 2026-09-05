@@ -48,6 +48,7 @@ export function CardSelect({
   return (
     <div >
       <section className="deckArea pt-45">
+                  <p className=" pb-10 text-center text-[14px] tracking-[0.08em] text-[#7f5b1f]">{text.selectionInstructionSecondLine}</p>
         <div className="selectionStars">
           {[0, 1, 2].map((index) => (
             <span
@@ -63,10 +64,7 @@ export function CardSelect({
           ))}
         </div>
 
-        <div className="deckHeader">
-
-          <p className="translate-y-4 tracking-[0.03em] text-[#7f5b1f]">{text.selectionInstructionSecondLine}</p>
-        </div>
+   
 
         <CardFan
           deck={deck}

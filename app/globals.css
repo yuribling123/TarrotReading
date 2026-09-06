@@ -682,8 +682,10 @@ box-shadow:
     rotate(var(--fan-angle, 0deg));
 }
 
-.cardFan.spreadOut:not(.dealing) .cardBack:hover {
-  z-index: 300;
+@media (hover: hover) and (pointer: fine) {
+  .cardFan.spreadOut:not(.dealing) .cardBack:hover {
+    z-index: 300;
+  }
 }
 
 

@@ -549,6 +549,42 @@ box-shadow:
   }
 }
 
+@keyframes selection-reveal-ring {
+  0% {
+    opacity: 0;
+    transform: scale(0.88);
+  }
+  35% { opacity: 0.68; }
+  100% {
+    opacity: 0;
+    transform: scale(1.28);
+  }
+}
+
+@keyframes selection-reveal-breathe {
+  0%, 100% {
+    border-color: rgba(181, 138, 63, 0.38);
+    background-color: rgba(255, 253, 248, 0.9);
+    box-shadow: 0 5px 18px rgba(155, 114, 42, 0.13), 0 0 0 rgba(230, 203, 126, 0);
+  }
+  50% {
+    border-color: rgba(181, 138, 63, 0.7);
+    background-color: rgba(255, 249, 232, 0.98);
+    box-shadow: 0 7px 24px rgba(155, 114, 42, 0.27), 0 0 18px rgba(230, 203, 126, 0.28);
+  }
+}
+
+@keyframes selection-reveal-text-breathe {
+  0%, 100% {
+    color: rgba(111, 80, 29, 0.78);
+    text-shadow: 0 0 0 rgba(181, 138, 63, 0);
+  }
+  50% {
+    color: rgb(125, 84, 20);
+    text-shadow: 0 0 8px rgba(181, 138, 63, 0.3);
+  }
+}
+
 .deckHeader {
   align-items: center;
   color: #4b2020;

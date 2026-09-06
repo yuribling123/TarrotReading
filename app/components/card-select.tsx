@@ -121,15 +121,23 @@ export function CardSelect({
 
         <div className="flex h-[76px] items-center justify-center pt-12 ">
           {canReveal && (
-            <Button
-              variant="secondary"
-              onClick={onReveal}
-              className="flex h-11 min-w-36  animate-in items-center gap-2 rounded-full border border-[#b58a3f]/35 bg-[#fffdf8]/90 px-6 text-[13px] font-medium tracking-[0.12em] text-[#6f501d] shadow-[0_5px_18px_rgba(155,114,42,0.14)] backdrop-blur-sm fade-in slide-in-from-bottom-1 fill-mode-both [animation-delay:180ms] [animation-duration:420ms] transition-[transform,border-color,box-shadow,background-color] duration-200 hover:border-[#b58a3f]/55 hover:bg-[#fffdf8] hover:shadow-[0_7px_22px_rgba(155,114,42,0.22)] active:scale-[0.97]"
-            >
-             
-              <span>{text.reveal}</span>
-         
-            </Button>
+            <div className="relative animate-in fade-in slide-in-from-bottom-1 fill-mode-both [animation-delay:180ms] [animation-duration:520ms]">
+              <span
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-0 animate-[selection-reveal-ring_900ms_ease-out_280ms_both] rounded-full border border-[#d6b56d]/45 motion-reduce:hidden"
+              />
+              <Button
+                variant="secondary"
+                onClick={onReveal}
+                className="relative z-10 flex h-11 min-w-36 animate-[selection-reveal-breathe_2.8s_ease-in-out_1s_infinite] items-center gap-2 rounded-full border border-[#b58a3f]/42 bg-[#fffdf8]/92 px-6 text-[13px] font-medium tracking-[0.12em] text-[#6f501d] shadow-[0_5px_18px_rgba(155,114,42,0.14)] backdrop-blur-sm transition-[transform,border-color,box-shadow,background-color] duration-200 hover:border-[#b58a3f]/60 hover:bg-[#fffdf8] active:animate-none active:scale-[0.97] active:bg-[#fff8e6] active:shadow-[0_0_0_5px_rgba(230,203,126,0.12),0_0_18px_rgba(201,154,69,0.30)] motion-reduce:animate-none"
+              >
+                <span className="animate-in fade-in fill-mode-both [animation-delay:360ms] [animation-duration:420ms]">
+                  <span className="inline-block animate-[selection-reveal-text-breathe_2.8s_ease-in-out_1s_infinite] motion-reduce:animate-none">
+                    {text.reveal}
+                  </span>
+                </span>
+              </Button>
+            </div>
           )}
         </div>
 

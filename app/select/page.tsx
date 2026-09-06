@@ -121,6 +121,7 @@ export default function SelectPage() {
           stages={text.loadingStages}
         />
       ) : (
+        
         <CardSelect
           language={language}
           deck={deck}

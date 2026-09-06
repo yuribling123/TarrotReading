@@ -89,7 +89,7 @@ export function CardSelect({
 
   return (
     <div >
-      <section className="translate-y-10 px-5 [--selection-card-width:90px] max-[860px]:[--selection-card-width:102px] max-[520px]:flex max-[520px]:h-[calc(100svh-76px)] max-[520px]:translate-y-0 max-[520px]:flex-col max-[520px]:pt-[clamp(52px,8svh,72px)] max-[520px]:pb-0 max-[520px]:[--selection-card-width:clamp(50px,19vw,82px)]">
+<section className="px-5 pt-60 [--selection-card-width:90px]  max-[860px]:[--selection-card-width:102px] max-[520px]:flex max-[520px]:h-[calc(100svh-76px)] max-[520px]:flex-col max-[520px]:pt-[clamp(52px,8svh,72px)]  max-[520px]:[--selection-card-width:clamp(50px,19vw,82px)]">
         <div className="flex h-11 items-start justify-center">
           {selectedCards.length === 0 ? (
             <p className="animate-in text-center text-[12px] tracking-[0.08em] text-[#7f5b1f] fade-in duration-300">
@@ -103,7 +103,7 @@ export function CardSelect({
           )}
         </div>
 
-        <div>
+        <div className="py-6">
           {zodiac ? (
             <SelectedZodiac zodiac={zodiac} />
           ) : (
@@ -111,7 +111,7 @@ export function CardSelect({
           )}
         </div>
 
-        <div ref={slotsRef}>
+        <div ref={slotsRef} className="pt-5" >
           <SelectedCardSlots
             cards={selectedCards}
             flight={flight}
@@ -119,7 +119,7 @@ export function CardSelect({
           />
         </div>
 
-        <div className="flex h-[76px] items-center justify-center pt-12 ">
+        <div className="flex h-[76px] items-center justify-center pt-22 ">
           {canReveal && (
             <div className="relative animate-in fade-in slide-in-from-bottom-1 fill-mode-both [animation-delay:180ms] [animation-duration:520ms]">
               <span aria-hidden="true" className="pointer-events-none absolute inset-0 animate-[selection-reveal-ripple_3s_ease-out_infinite] rounded-full border border-[#c9a45a]/38 motion-reduce:hidden" />

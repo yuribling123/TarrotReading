@@ -623,7 +623,7 @@ box-shadow:
 
 .cardFan {
   --card-width: var(--selection-card-width);
-  --card-step: 20px;
+  --card-step: 24px;
   --card-overlap: calc(var(--card-width) - var(--card-step));
 
   padding: 46px calc(50vw - var(--card-width) / 2) 126px;
@@ -1534,7 +1534,7 @@ box-shadow:
 
   .cardFan {
     --card-width: var(--selection-card-width);
-    --card-step: 16px;
+    --card-step: 20px;
   }
 
   .cardBack {

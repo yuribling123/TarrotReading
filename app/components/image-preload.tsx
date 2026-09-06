@@ -4,31 +4,28 @@ import { useEffect } from "react";
 import { getTarotCardImageSrc } from "@/lib/tarot/card-image";
 
 type TarotPreloaderProps = {
-    deck: readonly string[];
+  deck: readonly string[];
 };
 
-export function TarotPreloader({
-    deck,
-}: TarotPreloaderProps) {
+export function TarotPreloader({ deck }: TarotPreloaderProps) {
+  useEffect(() => {
+    // wait for website to load first
+    const timer = setTimeout(() => {
+      // card back
+      const cardBack = new window.Image();
+      cardBack.src = "/images/cards/card-back-2.jpg";
+      cardBack.decode().catch(() => {});
 
-    useEffect(() => {
-        // wait for website to load first
-        const timer = setTimeout(() => {
-            // card back
-            const cardBack = new window.Image();
-            cardBack.src = "/images/cards/card-back-2.jpg";
+      // front
+      deck.forEach((cardName) => {
+        const img = new window.Image();
+        img.src = getTarotCardImageSrc(cardName);
+        img.decode().catch(() => {});
+      });
+    }, 1000);
 
-            // front
-            deck.forEach((cardName) => {
-                const img = new window.Image();
-                img.src = getTarotCardImageSrc(cardName);
-            });
-        }, 1000);
+    return () => clearTimeout(timer);
+  }, [deck]);
 
-        return () => clearTimeout(timer);
-    }, [deck]);
-
-
-
-    return null;
+  return null;
 }

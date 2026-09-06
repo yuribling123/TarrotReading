@@ -25,7 +25,7 @@ export function Card({
   return (
     <button
       data-fan-card
-      className={`cardBack ${isSelected ? "selected" : ""}`}
+      className={`cardBack ${isSelected ? "selected pointer-events-none" : ""}`}
       aria-disabled={disabled || (isSelected && leaveEmptyWhenSelected)}
       disabled={isSelected && leaveEmptyWhenSelected}
       onClick={(event) => {

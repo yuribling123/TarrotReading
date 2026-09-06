@@ -47,7 +47,7 @@ export function CardFan({
         card.style.setProperty("--fan-angle", `${normalized * 34}deg`);
         card.style.setProperty("--fan-layer", `${200 - Math.round(distance * 100)}`);
 
-        if (distance < nearestDistance) {
+        if (!card.classList.contains("selected") && distance < nearestDistance) {
           nearestCard = card;
           nearestDistance = distance;
         }

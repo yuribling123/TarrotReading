@@ -135,7 +135,7 @@ export function CardSelect({
           )}
         </div>
 
-        <div ref={slotsRef} className="pt-1" >
+        <div ref={slotsRef} className="pt-0" >
           <SelectedCardSlots
             cards={selectedCards}
             flight={flight}

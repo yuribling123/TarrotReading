@@ -56,7 +56,11 @@ export default function SelectPage() {
   async function generateReading(cards: TarotCard[]) {
     setError("");
     setIsReadingReady(false);
-    const zodiacForReading = zodiac?.replace(/^[♈-♓]\s*/, "") ?? null;
+    const zodiacForReading =
+      zodiac
+        ?.replace(/[\uFE0E\uFE0F]/g, "")
+        .replace(/^\s*[♈-♓]\s*|\s*[♈-♓]\s*$/g, "")
+        .trim() ?? null;
 
     try {
       const response = await fetch("/api/reading/openai", {

@@ -55,6 +55,8 @@ export default function ReadingPage() {
 
       <ReadingResult   zodiac={reading.zodiac} reading={reading} summaryLabel={text.readingSummary}/>
 
+    
+
       <FeedBack/>
     </div>
   );

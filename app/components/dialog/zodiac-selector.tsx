@@ -68,42 +68,58 @@ export function ZodiacSelector({
               type="button"
               onClick={() => setSelected(value)}
               className={`
-                flex h-14 w-14 flex-col items-center justify-center
+                relative flex h-14 w-14 flex-col items-center justify-center
                 rounded-[21px] border
-               
+                transition-[transform,border-color,background-color,box-shadow,opacity]
+                duration-300
                 ${
                   isSelected
                     ? `
-                      
-                      border-[#543f00]
-                      bg-white/40
-                      text-[#543f00]
-                      scale-105
-                  
+                      -translate-y-1
+                      border-[#b88a35]/70
+                      bg-[radial-gradient(circle_at_50%_35%,rgba(240,211,135,0.38),rgba(255,255,255,0.28)_72%)]
+                      text-[#8b641f]
+                      shadow-[0_0_0_3px_rgba(215,181,109,0.11),0_8px_20px_rgba(127,91,31,0.16)]
                     `
                     : `
                       border-[#141005]/30
                       bg-white/20
                       text-[#141005]/30
+                      ${selected ? "opacity-65" : "opacity-100"}
                       hover:border-[#b89552]/25
                       hover:bg-white/60
+                      hover:opacity-100
                     `
                 }
               `}
             >
+              <span
+                aria-hidden="true"
+                className={`absolute -right-1 -top-1 text-[9px] text-[#c4963d] transition-[opacity,transform] duration-300 ${
+                  isSelected
+                    ? "scale-100 opacity-100 [text-shadow:0_0_8px_rgba(196,150,61,0.55)]"
+                    : "scale-50 opacity-0"
+                }`}
+              >
+                ✦
+              </span>
               <Icon
                 className={`
                   text-[11px]
-                  transition-all duration-300
+                  transition-[color,transform,filter] duration-300
                   ${
                     isSelected
-                      ? ""
-                      : ""
+                      ? "scale-125 text-[#b48531] drop-shadow-[0_0_5px_rgba(196,150,61,0.38)]"
+                      : "scale-100"
                   }
                 `}
               />
 
-              <span className="mt-1.5 text-[10px] ">
+              <span
+                className={`mt-1.5 text-[10px] transition-[color,font-weight] duration-300 ${
+                  isSelected ? "font-medium text-[#765218]" : "font-normal"
+                }`}
+              >
                 {sign.name}
               </span>
             </button>

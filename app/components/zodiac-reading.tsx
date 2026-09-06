@@ -17,7 +17,7 @@ export function ZodiacReadingOption(
         onClick={() => setOpen(true)}
         type="button"
         className="
-        group mx-auto flex items-center justify-center gap-2 mb-5 h-10 px-5 rounded-full
+        group mx-auto flex items-center justify-center gap-2 mb-5 h-10  rounded-full
         bg-transparent
         text-[11px] font-medium tracking-[0.08em]
         transition-all duration-300

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { toast } from "@/components/ui/toast";
 import { useReadingSession } from "./reading-session-provider";
 import { getVisitorId } from "@/lib/visitor/visitor-id";
+import { HomeLunarPath } from "./home-lunar-path";
 
 export function FeedBack() {
     const { feedback, setFeedback } = useReadingSession();
@@ -50,12 +51,13 @@ export function FeedBack() {
 
     return (
         <div className=" flex flex-col items-center mt-4 ">
-            <p className="mt-4 text-[10px] text-[#595858]/80 self-center">听说留下共鸣的人，牌意更容易被宇宙收到 ✦</p>
-            <Button size="lg" onClick={handleOnClick} variant="secondary" disabled={feedback || isPending} className="mt-4 w-22 self-center">
+
+            <p className="mt-5 text-[10px] text-[#595858]/80 self-center">听说留下共鸣的人，牌意更容易被宇宙收到 ✦</p>
+            <Button size="lg" onClick={handleOnClick} variant="secondary" disabled={feedback || isPending} className="mt-5 w-22 self-center">
                 {feedback ? <p>已收下</p> : <p>♡ 留下共鸣</p>}
             </Button>
-
-            <p className="mt-4  text-[9px] font-medium text-[#383140]/90 self-center">已有 {count} 份共鸣</p>
+            <p className="mt-5 text-[9px] font-medium text-[#383140]/90 self-center">已有 {count} 份共鸣</p>
+            <HomeLunarPath />
 
         </div>
 

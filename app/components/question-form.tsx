@@ -57,7 +57,7 @@ export function QuestionForm({
   return (
     <div>
 
-      <form className="questionForm" onSubmit={submitQuestion}>
+      <form className="questionForm mb-20" onSubmit={submitQuestion}>
         {/* <label htmlFor="question"  >{label}</label> */}
         <div className="w-full opacity-80">
           <Textarea

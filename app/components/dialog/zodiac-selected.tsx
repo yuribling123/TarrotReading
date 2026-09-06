@@ -9,7 +9,7 @@ export function SelectedZodiac({ zodiac }: SelectedZodiacProps) {
   const symbol = match ? `${match[2]}\uFE0E` : "";
 
   return (
-    <div className="relative mx-auto  mb-5 px-5 flex h-10 w-fit animate-in items-center justify-center gap-1 rounded-full bg-[#fffdf8]/65  shadow-[0_5px_18px_rgba(127,91,31,0.10)] backdrop-blur-sm fade-in zoom-in-90 duration-500 before:absolute before:inset-[-7px] before:-z-10 before:rounded-full before:bg-[#69547f]/24 before:blur-xl">
+    <div className="relative mx-auto  mb-5 px-5 flex h-10 w-fit animate-in items-center justify-center gap-1 rounded-full bg-[#69547f]/5  shadow-[0_5px_18px_rgba(127,91,31,0.10)] backdrop-blur-sm fade-in zoom-in-90 duration-500 before:absolute before:inset-[-7px] before:-z-10 before:rounded-full before:bg-[#69547f]/24 before:blur-xl">
       <span className="text-[11px] tracking-[0.2em] text-[#69547f]/88">
         今夜星象
       </span>

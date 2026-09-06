@@ -23,7 +23,7 @@ export function SelectedZodiac({ zodiac }: SelectedZodiacProps) {
 
    
 
-      <span className="text-[8px] leading-none text-[#806a96] [text-shadow:0_0_8px_rgba(105,84,127,0.24)]">
+      <span className="text-[10px] leading-none text-[#806a96] [text-shadow:0_0_8px_rgba(105,84,127,0.24)]">
         {symbol}
       </span>
 

@@ -17,7 +17,7 @@ export function DivinationCatalysts({ language }: DivinationCatalystsProps) {
   useEffect(() => {
     if (!activeCatalyst) return;
 
-    const timeout = window.setTimeout(() => setActiveCatalyst(null), 1800);
+    const timeout = window.setTimeout(() => setActiveCatalyst(null), 800);
     return () => window.clearTimeout(timeout);
   }, [activeCatalyst]);
 
@@ -42,9 +42,9 @@ export function DivinationCatalysts({ language }: DivinationCatalystsProps) {
           onClick={() => activate("moonstone")}
           className="group flex w-12 flex-col items-center gap-2 rounded-full outline-none focus-visible:ring-1 focus-visible:ring-[#b58a3f]/50 focus-visible:ring-offset-4"
         >
-          <span className="relative grid size-9 place-items-center overflow-hidden rounded-full border border-[#b58a3f]/25 bg-[radial-gradient(circle_at_35%_28%,#fffdf8_0%,#f3e8cf_48%,#d9bd82_100%)] shadow-[0_5px_14px_rgba(127,91,31,0.10)] transition duration-300 group-hover:-translate-y-0.5 group-hover:shadow-[0_6px_18px_rgba(127,91,31,0.18)] motion-reduce:transition-none">
+          <span className="relative grid size-11 place-items-center overflow-hidden rounded-full border border-[#b58a3f]/25 bg-[radial-gradient(circle_at_35%_28%,#fffdf8_0%,#f3e8cf_48%,#d9bd82_100%)] shadow-[0_5px_14px_rgba(127,91,31,0.10)] transition duration-300 group-hover:-translate-y-0.5 group-hover:shadow-[0_6px_18px_rgba(127,91,31,0.18)] motion-reduce:transition-none">
             <span
-              className={`absolute -inset-y-2 w-3 -skew-x-12 bg-white/70 blur-[2px] transition-transform duration-1000 ease-in-out motion-reduce:transition-none ${
+              className={`absolute -inset-y-2 w-3 -skew-x-12 bg-white/70 blur-[2px] transition-transform duration-500 ease-in-out motion-reduce:transition-none ${
                 activeCatalyst === "moonstone"
                   ? "translate-x-8"
                   : "-translate-x-8"
@@ -63,7 +63,7 @@ export function DivinationCatalysts({ language }: DivinationCatalystsProps) {
           onClick={() => activate("candle")}
           className="group flex w-12 flex-col items-center gap-2 rounded-full outline-none focus-visible:ring-1 focus-visible:ring-[#b58a3f]/50 focus-visible:ring-offset-4"
         >
-          <span className="relative grid size-9 place-items-end rounded-full border border-[#b58a3f]/20 bg-white/35 pb-1.5 shadow-[0_5px_14px_rgba(127,91,31,0.08)] transition duration-300 group-hover:-translate-y-0.5 motion-reduce:transition-none">
+          <span className="relative grid size-11 place-items-end rounded-full border border-[#b58a3f]/20 bg-white/35 pb-1.5 shadow-[0_5px_14px_rgba(127,91,31,0.08)] transition duration-300 group-hover:-translate-y-0.5 motion-reduce:transition-none">
             <span className="h-3 w-2 rounded-b-sm bg-[#d8c39a]/80" />
             <span
               className={`absolute left-1/2 top-[7px] h-3.5 w-2 -translate-x-1/2 rounded-[70%_30%_65%_35%] bg-[#d8a643] shadow-[0_0_8px_rgba(216,166,67,0.42)] transition duration-500 origin-bottom motion-reduce:transition-none ${
@@ -84,7 +84,7 @@ export function DivinationCatalysts({ language }: DivinationCatalystsProps) {
           onClick={() => activate("stardust")}
           className="group flex w-12 flex-col items-center gap-2 rounded-full outline-none focus-visible:ring-1 focus-visible:ring-[#b58a3f]/50 focus-visible:ring-offset-4"
         >
-          <span className="relative grid size-9 place-items-center rounded-full border border-[#b58a3f]/20 bg-white/35 shadow-[0_5px_14px_rgba(127,91,31,0.08)] transition duration-300 group-hover:-translate-y-0.5 motion-reduce:transition-none">
+          <span className="relative grid size-11 place-items-center rounded-full border border-[#b58a3f]/20 bg-white/35 shadow-[0_5px_14px_rgba(127,91,31,0.08)] transition duration-300 group-hover:-translate-y-0.5 motion-reduce:transition-none">
             <span className="text-[14px] text-[#bd9143] transition-transform duration-500 group-hover:rotate-12">✦</span>
             {[
               "left-[8px] top-[16px] -translate-x-1 -translate-y-3",

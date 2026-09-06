@@ -10,6 +10,7 @@ import { SelectedZodiac } from "./dialog/zodiac-selected";
 import { SelectedCardSlots } from "./selected-card-slots";
 import type { CardBounds, CardFlight } from "@/lib/types";
 import { getTarotCardImageSrc } from "@/lib/tarot/card-image";
+import { SelectionShootingStars } from "./selection-shooting-stars";
 
 type CardSelectProps = {
   language: Language;
@@ -95,24 +96,10 @@ export function CardSelect({
               {text.selectionInstructionSecondLine}
             </p>
           ) : (
-            <div
-              className="flex animate-in items-center justify-center gap-5 fade-in slide-in-from-bottom-1 duration-300"
-              aria-label={text.chosenHint.replace("{count}", String(selectedCards.length))}
-            >
-              {[0, 1, 2].map((index) => (
-                <span
-                  key={index}
-                  aria-hidden="true"
-                  className={`text-base transition-[color,transform,text-shadow] duration-300 ${
-                    index < selectedCards.length
-                      ? "scale-100 text-[#d7b56d] [text-shadow:0_0_8px_rgba(215,181,109,0.5)]"
-                      : "scale-[0.85] text-[rgba(155,114,42,0.18)]"
-                  }`}
-                >
-                  ★
-                </span>
-              ))}
-            </div>
+            <SelectionShootingStars
+              count={selectedCards.length}
+              label={text.chosenHint.replace("{count}", String(selectedCards.length))}
+            />
           )}
         </div>
 

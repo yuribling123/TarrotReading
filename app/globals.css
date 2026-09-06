@@ -517,6 +517,34 @@ box-shadow:
   to { transform: rotateY(180deg); }
 }
 
+@keyframes selection-comet-arrive {
+  0% {
+    opacity: 0;
+    transform: translate(-34px, -20px) rotate(28deg) scale(0.65);
+  }
+  18% { opacity: 1; }
+  78% { opacity: 1; }
+  100% {
+    opacity: 0;
+    transform: translate(-3px, -2px) rotate(28deg) scale(1);
+  }
+}
+
+@keyframes selection-star-settle {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.45) rotate(35deg);
+  }
+  62% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.22) rotate(0deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1) rotate(0deg);
+  }
+}
+
 .deckHeader {
   align-items: center;
   color: #4b2020;

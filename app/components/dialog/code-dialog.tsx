@@ -44,11 +44,12 @@ export function CodeDialog({
         toast.add({
           id: "invalid-redeem-code",
           title: "兑换码无效",
+          timeout: 1200
         });
         return;
       }
 
-      toast.add({ title: "已开启 ✦" });
+      toast.add({ title: "已开启 ✦" ,timeout: 1200});
       setUnlocked(true);
     } finally {
       setIsPending(false);

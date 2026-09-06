@@ -58,7 +58,7 @@ export function ZodiacSelector({
 
       <div className="grid grid-cols-4 gap-2.5 pt-2">
         {zodiacSigns.map((sign) => {
-          const value = `${sign.symbol} ${sign.name}`;
+          const value = `${sign.name}  ${sign.symbol}`;
           const isSelected = selected === value;
           const Icon = sign.Icon;
 

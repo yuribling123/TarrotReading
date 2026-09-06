@@ -14,7 +14,7 @@ export function SelectedZodiac({ zodiac }: SelectedZodiacProps) {
         今夜星象
       </span>
 
-      <span className="text-[8px] px-2 leading-none text-[#806a96] [text-shadow:0_0_8px_rgba(105,84,127,0.24)]">
+      <span className="text-[11px] px-2  text-[#806a96] [text-shadow:0_0_8px_rgba(105,84,127,0.24)]">
         ✦
       </span>
 
@@ -23,7 +23,7 @@ export function SelectedZodiac({ zodiac }: SelectedZodiacProps) {
       </span>
 
       {symbol && (
-        <span className="font-serif text-[13px] leading-none text-[#806a96] [text-shadow:0_0_8px_rgba(105,84,127,0.24)]">
+        <span className="font-serif text-[13px]  text-[#69547f] [text-shadow:0_0_8px_rgba(105,84,127,0.24)]">
           {symbol}
         </span>
       )}

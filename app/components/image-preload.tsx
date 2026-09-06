@@ -20,7 +20,7 @@ export function TarotPreloader({ deck }: TarotPreloaderProps) {
       deck.forEach((cardName) => {
         const img = new window.Image();
         img.src = getTarotCardImageSrc(cardName);
-        img.decode().catch(() => {});
+     
       });
     }, 1000);
 

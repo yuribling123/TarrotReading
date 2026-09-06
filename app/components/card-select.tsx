@@ -124,7 +124,11 @@ export function CardSelect({
             <div className="relative animate-in fade-in slide-in-from-bottom-1 fill-mode-both [animation-delay:180ms] [animation-duration:520ms]">
               <span
                 aria-hidden="true"
-                className="pointer-events-none absolute inset-0 animate-[selection-reveal-ring_900ms_ease-out_280ms_both] rounded-full border border-[#d6b56d]/45 motion-reduce:hidden"
+                className="pointer-events-none absolute inset-0 animate-[selection-reveal-ring_1050ms_ease-out_180ms_both] rounded-full border border-[#cfa755]/65 motion-reduce:hidden"
+              />
+              <span
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-0 animate-[selection-reveal-ring_1150ms_ease-out_420ms_both] rounded-full border border-[#dfc47e]/38 motion-reduce:hidden"
               />
               <Button
                 variant="secondary"

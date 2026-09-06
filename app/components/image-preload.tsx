@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { getTarotCardImageSrc } from "@/lib/tarot/card-image";
 
 type TarotPreloaderProps = {
     deck: readonly string[];
@@ -19,11 +20,8 @@ export function TarotPreloader({
 
             // front
             deck.forEach((cardName) => {
-                const imageName = cardName.replaceAll(" ", "_");
                 const img = new window.Image();
-
-                img.src =
-                    `/images/cards/rider-waite/${imageName}.webp`;
+                img.src = getTarotCardImageSrc(cardName);
             });
         }, 1000);
 

@@ -1,12 +1,12 @@
 import type { TarotCard } from "@/lib/types";
+import { getTarotCardImageSrc } from "@/lib/tarot/card-image";
 
 type CardFrontProps = {
   card?: TarotCard;
 };
 
 export function TarotCardArtwork({ card }: { card: TarotCard }) {
-  const imageName = card.name.replaceAll(" ", "_");
-  const imageSrc = `/images/cards/rider-waite/${imageName}.webp`;
+  const imageSrc = getTarotCardImageSrc(card.name);
 
   return (
     <img

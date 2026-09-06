@@ -9,6 +9,7 @@ import { useCallback, useRef, useState } from "react";
 import { SelectedZodiac } from "./dialog/zodiac-selected";
 import { SelectedCardSlots } from "./selected-card-slots";
 import type { CardBounds, CardFlight } from "@/lib/types";
+import { getTarotCardImageSrc } from "@/lib/tarot/card-image";
 
 type CardSelectProps = {
   language: Language;
@@ -34,21 +35,42 @@ export function CardSelect({
   // Only reveal when three cards selected
   const [ritualDone, setRitualDone] = useState(false);
   const [flight, setFlight] = useState<CardFlight | null>(null);
+  const [isPreparingCard, setIsPreparingCard] = useState(false);
   const slotsRef = useRef<HTMLDivElement>(null);
+  const selectionLockRef = useRef(false);
+  const preparedImageRef = useRef<HTMLImageElement | null>(null);
   const canReveal = selectedCards.length === 3;
   const text = messages[language];
 
-  const completeFlight = useCallback(() => setFlight(null), []);
+  const completeFlight = useCallback(() => {
+    setFlight(null);
+    preparedImageRef.current = null;
+    selectionLockRef.current = false;
+  }, []);
 
-  function selectFromFan(card: TarotCard, source: CardBounds) {
-    if (flight || selectedCards.length >= 3) return;
+  async function selectFromFan(card: TarotCard, source: CardBounds) {
+    if (selectionLockRef.current || flight || selectedCards.length >= 3) return;
 
     const slot = slotsRef.current?.querySelector<HTMLElement>(
       `[data-selected-slot="${selectedCards.length}"]`,
     );
     if (!slot) return;
 
+    selectionLockRef.current = true;
+    setIsPreparingCard(true);
+
+    const preparedImage = new window.Image();
+    preparedImage.src = getTarotCardImageSrc(card.name);
+    preparedImageRef.current = preparedImage;
+
+    try {
+      await preparedImage.decode();
+    } catch {
+      // Continue with the browser's normal image fallback if decoding fails.
+    }
+
     const { top, left, width, height } = slot.getBoundingClientRect();
+    setIsPreparingCard(false);
     setFlight({ card, source, target: { top, left, width, height } });
     onSelect(card);
   }
@@ -127,7 +149,7 @@ export function CardSelect({
         <CardFan
           deck={deck}
           selectedCards={selectedCards}
-          interactionLocked={Boolean(flight)}
+          interactionLocked={Boolean(flight) || isPreparingCard}
           onSelect={selectFromFan}
         />
 

@@ -51,7 +51,7 @@ export function SelectionShootingStars({
             style={{ left: `${position.left}%`, top: position.top }}
           >
             <span
-              className="absolute left-1/2 top-1/2 animate-[selection-comet-arrive_720ms_cubic-bezier(0.22,1,0.36,1)_both] motion-reduce:hidden"
+              className="absolute left-1/2 top-1/2 animate-[selection-comet-arrive_1050ms_cubic-bezier(0.22,1,0.36,1)_both] motion-reduce:hidden"
               style={{ animationDelay: `${position.delay}ms` }}
             >
               <span className="absolute right-1 top-1/2 h-px w-9 -translate-y-1/2 bg-gradient-to-l from-[#dbb760]/70 via-[#d6b25f]/24 to-transparent blur-[0.3px]" />
@@ -59,7 +59,7 @@ export function SelectionShootingStars({
             </span>
 
             <span
-              className="absolute left-1/2 top-1/2 animate-[selection-star-settle_600ms_cubic-bezier(0.22,1,0.36,1)_160ms_both] motion-reduce:animate-none motion-reduce:-translate-x-1/2 motion-reduce:-translate-y-1/2 motion-reduce:opacity-100"
+              className="absolute left-1/2 top-1/2 animate-[selection-star-settle_1050ms_ease-out_both] motion-reduce:animate-none motion-reduce:-translate-x-1/2 motion-reduce:-translate-y-1/2 motion-reduce:opacity-100"
             >
               <SolidFivePointStar
                 size={position.size}

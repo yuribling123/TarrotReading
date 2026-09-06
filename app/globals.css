@@ -533,11 +533,15 @@ box-shadow:
 @keyframes selection-star-settle {
   0% {
     opacity: 0;
-    transform: translate(-50%, -50%) scale(0.45) rotate(35deg);
+    transform: translate(-50%, -50%) scale(0.9) rotate(6deg);
   }
-  62% {
+  45% {
+    opacity: 0.28;
+    transform: translate(-50%, -50%) scale(0.94) rotate(3deg);
+  }
+  88% {
     opacity: 1;
-    transform: translate(-50%, -50%) scale(1.22) rotate(0deg);
+    transform: translate(-50%, -50%) scale(1.02) rotate(0deg);
   }
   100% {
     opacity: 1;

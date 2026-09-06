@@ -29,9 +29,9 @@ export function DivinationCatalysts({ language }: DivinationCatalystsProps) {
   return (
     <section
       aria-label={text.label}
-      className="mx-auto mt-7 w-fit text-[#7f5b1f] md:mt-9"
+      className="mx-auto mt-7 w-fit text-[#6f6a67] md:mt-9"
     >
-      <p className="mb-3 text-center text-[10px] tracking-[0.16em] text-[#7f5b1f]/45">
+      <p className="mb-3 text-center text-[10px] tracking-[0.16em] ">
         {text.prompt}
       </p>
 
@@ -40,19 +40,21 @@ export function DivinationCatalysts({ language }: DivinationCatalystsProps) {
           type="button"
           aria-pressed={activeCatalyst === "moonstone"}
           onClick={() => activate("moonstone")}
-          className="group flex w-12 flex-col items-center gap-2 rounded-full outline-none focus-visible:ring-1 focus-visible:ring-[#b58a3f]/50 focus-visible:ring-offset-4"
+          className="group grid w-12 grid-rows-[44px_auto] place-items-center gap-2 rounded-full outline-none focus-visible:ring-1 focus-visible:ring-[#8a8680]/40 focus-visible:ring-offset-4"
         >
-          <span className="relative grid size-11 place-items-center overflow-hidden rounded-full border border-[#b58a3f]/25 bg-[radial-gradient(circle_at_35%_28%,#fffdf8_0%,#f3e8cf_48%,#d9bd82_100%)] shadow-[0_5px_14px_rgba(127,91,31,0.10)] transition duration-300 group-hover:-translate-y-0.5 group-hover:shadow-[0_6px_18px_rgba(127,91,31,0.18)] motion-reduce:transition-none">
+          <span className={`relative grid h-9 w-11 place-items-center overflow-hidden rounded-[58%_42%_53%_47%/48%_55%_45%_52%] border border-[#d8d0c3]/60 bg-[radial-gradient(circle_at_32%_25%,#ffffff_0%,#faf6ed_44%,#f0e8db_78%,#ded4c5_100%)] shadow-[inset_-3px_-3px_7px_rgba(132,111,82,0.08),0_0_10px_rgba(244,226,183,0.14),0_5px_12px_rgba(99,83,62,0.07)] transition duration-300 group-hover:-translate-y-0.5 motion-reduce:transition-none ${activeCatalyst === "moonstone" ? "shadow-[inset_-3px_-3px_7px_rgba(132,111,82,0.07),0_0_21px_rgba(243,222,172,0.50)]" : "group-hover:shadow-[inset_-3px_-3px_7px_rgba(132,111,82,0.07),0_0_16px_rgba(237,218,177,0.28)]"}`}>
+            <span className="absolute inset-1 rounded-[inherit] bg-[radial-gradient(circle_at_56%_48%,rgba(255,249,234,0.72)_0%,rgba(248,235,204,0.30)_36%,transparent_68%)] blur-[1px]" />
             <span
-              className={`absolute -inset-y-2 w-3 -skew-x-12 bg-white/70 blur-[2px] transition-transform duration-500 ease-in-out motion-reduce:transition-none ${
+              className={`absolute -inset-y-3 w-7 rounded-full bg-[radial-gradient(ellipse,rgba(255,255,255,0.94)_0%,rgba(243,222,172,0.50)_36%,transparent_72%)] blur-[3px] transition-transform duration-900 ease-in-out motion-reduce:transition-none ${
                 activeCatalyst === "moonstone"
-                  ? "translate-x-8"
-                  : "-translate-x-8"
+                  ? "translate-x-10"
+                  : "-translate-x-10"
               }`}
             />
-            <span className="size-2.5 rounded-full border border-white/80 bg-white/25" />
+            <span className="absolute left-2.5 top-1.5 h-1.5 w-3 rotate-[-18deg] rounded-full bg-white/85 blur-[0.8px]" />
+            <span className="absolute bottom-2 right-2 h-px w-4 -rotate-12 bg-[#e2c98f]/30" />
           </span>
-          <span className="text-[10px] tracking-[0.12em] text-[#7f5b1f]/60">
+          <span className="text-[10px] tracking-[0.12em] text-[#6f6a67]/72">
             {text.moonstone}
           </span>
         </button>
@@ -61,19 +63,19 @@ export function DivinationCatalysts({ language }: DivinationCatalystsProps) {
           type="button"
           aria-pressed={activeCatalyst === "candle"}
           onClick={() => activate("candle")}
-          className="group flex w-12 flex-col items-center gap-2 rounded-full outline-none focus-visible:ring-1 focus-visible:ring-[#b58a3f]/50 focus-visible:ring-offset-4"
+          className="group grid w-12 grid-rows-[44px_auto] place-items-center gap-2 rounded-full outline-none focus-visible:ring-1 focus-visible:ring-[#8a8680]/40 focus-visible:ring-offset-4"
         >
-          <span className="relative grid size-11 place-items-end rounded-full border border-[#b58a3f]/20 bg-white/35 pb-1.5 shadow-[0_5px_14px_rgba(127,91,31,0.08)] transition duration-300 group-hover:-translate-y-0.5 motion-reduce:transition-none">
-            <span className="h-3 w-2 rounded-b-sm bg-[#d8c39a]/80" />
+          <span className={`relative flex size-11 items-end justify-center rounded-full border border-[#c9875a]/10 bg-[#fffaf5]/55 pb-2 shadow-[0_5px_14px_rgba(145,95,61,0.08)] transition duration-300 group-hover:-translate-y-0.5 motion-reduce:transition-none ${activeCatalyst === "candle" ? "shadow-[0_0_18px_rgba(200,155,69,0.25)]" : ""}`}>
+            <span className="h-3 w-2 rounded-b-sm bg-[#e7d8c6]" />
             <span
-              className={`absolute left-1/2 top-[7px] h-3.5 w-2 -translate-x-1/2 rounded-[70%_30%_65%_35%] bg-[#d8a643] shadow-[0_0_8px_rgba(216,166,67,0.42)] transition duration-500 origin-bottom motion-reduce:transition-none ${
+              className={`absolute left-1/2 top-[7px] h-3.5 w-2 -translate-x-1/2 rounded-[70%_30%_65%_35%] bg-[#c9875a] shadow-[0_0_8px_rgba(201,135,90,0.34)] transition duration-500 origin-bottom motion-reduce:transition-none ${
                 activeCatalyst === "candle"
-                  ? "-rotate-12 scale-125 bg-[#efc76e] shadow-[0_0_14px_rgba(216,166,67,0.72)]"
+                  ? "-rotate-12 scale-125 bg-[#e7a266] shadow-[0_0_14px_rgba(200,155,69,0.48)]"
                   : "rotate-3 scale-100"
               }`}
             />
           </span>
-          <span className="text-[10px] tracking-[0.12em] text-[#7f5b1f]/60">
+          <span className="text-[10px] tracking-[0.12em] text-[#6f6a67]/72">
             {text.candle}
           </span>
         </button>
@@ -82,10 +84,18 @@ export function DivinationCatalysts({ language }: DivinationCatalystsProps) {
           type="button"
           aria-pressed={activeCatalyst === "stardust"}
           onClick={() => activate("stardust")}
-          className="group flex w-12 flex-col items-center gap-2 rounded-full outline-none focus-visible:ring-1 focus-visible:ring-[#b58a3f]/50 focus-visible:ring-offset-4"
+          className="group grid w-12 grid-rows-[44px_auto] place-items-center gap-2 rounded-full outline-none focus-visible:ring-1 focus-visible:ring-[#8a8680]/40 focus-visible:ring-offset-4"
         >
-          <span className="relative grid size-11 place-items-center rounded-full border border-[#b58a3f]/20 bg-white/35 shadow-[0_5px_14px_rgba(127,91,31,0.08)] transition duration-300 group-hover:-translate-y-0.5 motion-reduce:transition-none">
-            <span className="text-[14px] text-[#bd9143] transition-transform duration-500 group-hover:rotate-12">✦</span>
+          <span className={`relative grid size-11 place-items-center transition duration-300 group-hover:-translate-y-0.5 motion-reduce:transition-none ${activeCatalyst === "stardust" ? "drop-shadow-[0_0_10px_rgba(151,130,174,0.50)]" : ""}`}>
+            <span className={`relative mt-1 h-7 w-5 rounded-b-[7px] rounded-t-[3px] border border-[#c5c8c6]/85 bg-[linear-gradient(110deg,rgba(255,255,255,0.78),rgba(224,228,228,0.24)_44%,rgba(255,255,255,0.62))] shadow-[inset_1px_0_2px_rgba(255,255,255,0.75),0_4px_9px_rgba(79,91,105,0.09)] transition-transform duration-500 ${activeCatalyst === "stardust" ? "rotate-12" : "-rotate-6"}`}>
+              <span className="absolute -top-1.5 left-1/2 h-2 w-3 -translate-x-1/2 rounded-t-sm border border-[#bcc1c0]/75 bg-[#f1f2ef]/85" />
+              <span className="absolute inset-x-0.5 bottom-0.5 h-4 overflow-hidden rounded-b-[5px] bg-[linear-gradient(to_top,#655271,rgba(132,110,153,0.62)_68%,rgba(170,150,189,0.13))]">
+                <span className="absolute left-1 top-1 size-0.5 rounded-full bg-[#eef0ed]" />
+                <span className="absolute right-1 top-2 size-0.5 rounded-full bg-[#c0b2cf]" />
+                <span className="absolute bottom-1 left-2 size-px rounded-full bg-white/80" />
+              </span>
+              <span className="absolute left-1 top-1 h-3 w-px rotate-12 bg-white/65" />
+            </span>
             {[
               "left-[8px] top-[16px] -translate-x-1 -translate-y-3",
               "left-[17px] top-[8px] translate-x-1 -translate-y-3",
@@ -93,14 +103,14 @@ export function DivinationCatalysts({ language }: DivinationCatalystsProps) {
             ].map((position, index) => (
               <span
                 key={position}
-                className={`absolute size-1 rounded-full bg-[#d5ae60] opacity-0 transition-all duration-1000 motion-reduce:transition-none ${position} ${
+                className={`absolute rounded-full opacity-0 transition-all duration-1000 motion-reduce:transition-none ${index === 1 ? "size-1 bg-[#f0ebf4]" : "size-0.5 bg-[#c0b2cf]"} ${position} ${
                   activeCatalyst === "stardust" ? "opacity-80" : "translate-x-0 translate-y-0"
                 }`}
                 style={{ transitionDelay: `${index * 70}ms` }}
               />
             ))}
           </span>
-          <span className="text-[10px] tracking-[0.12em] text-[#7f5b1f]/60">
+          <span className="text-[10px] tracking-[0.12em] text-[#6f6a67]/72">
             {text.stardust}
           </span>
         </button>

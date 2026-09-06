@@ -135,7 +135,7 @@ export function CardSelect({
           )}
         </div>
 
-        <div ref={slotsRef} className="pt-5" >
+        <div ref={slotsRef} className="pt-1" >
           <SelectedCardSlots
             cards={selectedCards}
             flight={flight}
@@ -144,7 +144,7 @@ export function CardSelect({
           />
         </div>
 
-        <div className="flex h-[76px] items-center justify-center pt-22 ">
+        <div className="flex h-19 items-center justify-center pt-22 ">
           {canReveal && (
             <div className="relative animate-in fade-in slide-in-from-bottom-1 fill-mode-both [animation-delay:180ms] [animation-duration:520ms]">
               <span aria-hidden="true" className="pointer-events-none absolute inset-0 animate-[selection-reveal-ripple_3s_ease-out_infinite] rounded-full border border-[#c9a45a]/38 motion-reduce:hidden" />

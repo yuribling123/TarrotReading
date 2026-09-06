@@ -14,7 +14,7 @@ export function TarotPreloader({ deck }: TarotPreloaderProps) {
       // card back
       const cardBack = new window.Image();
       cardBack.src = "/images/cards/card-back-2.jpg";
-      cardBack.decode().catch(() => {});
+   
 
       // front
       deck.forEach((cardName) => {

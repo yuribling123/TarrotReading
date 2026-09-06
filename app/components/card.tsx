@@ -11,7 +11,7 @@ type CardProps = {
   isSelected: boolean;
   disabled?: boolean;
   leaveEmptyWhenSelected?: boolean;
-  onSelect: (card: TarotCard, source: CardBounds) => void;
+  onSelect: (card: TarotCard, source: CardBounds) => void | Promise<void>;
 }
 
 export function Card({
@@ -30,15 +30,21 @@ export function Card({
       disabled={isSelected && leaveEmptyWhenSelected}
       onClick={(event) => {
         if (disabled) return;
+        const cardElement = event.currentTarget;
+        if (leaveEmptyWhenSelected) cardElement.style.zIndex = "320";
         const rect = event.currentTarget.getBoundingClientRect();
         const width = event.currentTarget.offsetWidth;
         const height = event.currentTarget.offsetHeight;
 
-        onSelect(card, {
+        const selection = onSelect(card, {
           top: rect.top + (rect.height - height) / 2,
           left: rect.left + (rect.width - width) / 2,
           width,
           height,
+        });
+
+        void Promise.resolve(selection).finally(() => {
+          cardElement.style.removeProperty("z-index");
         });
       }}
       type="button"

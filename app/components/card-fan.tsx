@@ -8,7 +8,7 @@ type CardFanProps = {
   deck: TarotCard[];
   selectedCards: TarotCard[];
   interactionLocked?: boolean;
-  onSelect: (card: TarotCard, source: CardBounds) => void;
+  onSelect: (card: TarotCard, source: CardBounds) => void | Promise<void>;
 };
 
 const CENTER_ACTIVATION_DISTANCE = 0.12;

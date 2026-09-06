@@ -15,7 +15,6 @@ export function TarotPreloader({ deck }: TarotPreloaderProps) {
       const cardBack = new window.Image();
       cardBack.src = "/images/cards/card-back-2.jpg";
    
-
       // front
       deck.forEach((cardName) => {
         const img = new window.Image();

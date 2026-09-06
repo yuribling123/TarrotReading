@@ -36,18 +36,32 @@ export function CardSelect({
   // Only reveal when three cards selected
   const [ritualDone, setRitualDone] = useState(false);
   const [flight, setFlight] = useState<CardFlight | null>(null);
-  const [isPreparingCard, setIsPreparingCard] = useState(false);
+  const [flightFaceReady, setFlightFaceReady] = useState(false);
   const slotsRef = useRef<HTMLDivElement>(null);
   const selectionLockRef = useRef(false);
   const preparedImageRef = useRef<HTMLImageElement | null>(null);
+  const flightMotionDoneRef = useRef(false);
+  const flightFlipDoneRef = useRef(false);
   const canReveal = selectedCards.length === 3;
   const text = messages[language];
 
-  const completeFlight = useCallback(() => {
+  const finishFlight = useCallback(() => {
     setFlight(null);
+    setFlightFaceReady(false);
     preparedImageRef.current = null;
     selectionLockRef.current = false;
   }, []);
+
+  const finishFlightWhenReady = useCallback(() => {
+    if (flightMotionDoneRef.current && flightFlipDoneRef.current) {
+      finishFlight();
+    }
+  }, [finishFlight]);
+
+  const completeFlightMotion = useCallback(() => {
+    flightMotionDoneRef.current = true;
+    finishFlightWhenReady();
+  }, [finishFlightWhenReady]);
 
   async function selectFromFan(card: TarotCard, source: CardBounds) {
     if (selectionLockRef.current || flight || selectedCards.length >= 3) return;
@@ -58,22 +72,32 @@ export function CardSelect({
     if (!slot) return;
 
     selectionLockRef.current = true;
-    setIsPreparingCard(true);
+    flightMotionDoneRef.current = false;
+    flightFlipDoneRef.current = false;
+    setFlightFaceReady(false);
 
     const preparedImage = new window.Image();
     preparedImage.src = getTarotCardImageSrc(card.name);
     preparedImageRef.current = preparedImage;
 
+    const { top, left, width, height } = slot.getBoundingClientRect();
+    setFlight({ card, source, target: { top, left, width, height } });
+    onSelect(card);
+
     try {
       await preparedImage.decode();
     } catch {
-      // Continue with the browser's normal image fallback if decoding fails.
+      // Let the browser use its normal image fallback if explicit decoding fails.
     }
 
-    const { top, left, width, height } = slot.getBoundingClientRect();
-    setIsPreparingCard(false);
-    setFlight({ card, source, target: { top, left, width, height } });
-    onSelect(card);
+    setFlightFaceReady(true);
+    const flipDuration = window.matchMedia("(prefers-reduced-motion: reduce)").matches
+      ? 0
+      : 460;
+    window.setTimeout(() => {
+      flightFlipDoneRef.current = true;
+      finishFlightWhenReady();
+    }, flipDuration);
   }
 
 
@@ -115,7 +139,8 @@ export function CardSelect({
           <SelectedCardSlots
             cards={selectedCards}
             flight={flight}
-            onFlightComplete={completeFlight}
+            flightFaceReady={flightFaceReady}
+            onFlightComplete={completeFlightMotion}
           />
         </div>
 
@@ -140,7 +165,7 @@ export function CardSelect({
         <CardFan
           deck={deck}
           selectedCards={selectedCards}
-          interactionLocked={Boolean(flight) || isPreparingCard}
+          interactionLocked={Boolean(flight)}
           onSelect={selectFromFan}
         />
 

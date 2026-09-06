@@ -99,7 +99,7 @@ export function CardFan({
   return (
     <div
       ref={viewportRef}
-      className="cardFanViewport max-w-full touch-pan-x overflow-x-auto overflow-y-hidden overscroll-x-contain pt-30   lg:pt-50 [scrollbar-width:none] max-[520px]:mt-auto max-[520px]:w-full"
+      className="cardFanViewport max-w-full touch-pan-x overflow-x-auto overflow-y-hidden overscroll-x-contain   lg:pt-30 md:pt-25 sm:pt-40 scrollbar-none  max-[520px]:w-full max-[520px]:mt-10"
     >
       <div className={`cardFan flex w-max items-end ${spread ? "spreadOut" : "stacked"}`}>
         {deck.map((card, index) => (

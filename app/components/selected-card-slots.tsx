@@ -8,6 +8,7 @@ import type { CardFlight, TarotCard } from "@/lib/types";
 type SelectedCardSlotsProps = {
   cards: TarotCard[];
   flight: CardFlight | null;
+  flightFaceReady: boolean;
   onFlightComplete: () => void;
 };
 
@@ -16,10 +17,12 @@ const FLIGHT_DURATION_MS = 560;
 function SelectedSlotCard({
   card,
   flight,
+  faceReady,
   onComplete,
 }: {
   card: TarotCard;
   flight?: CardFlight;
+  faceReady: boolean;
   onComplete: () => void;
 }) {
   const cardRef = useRef<HTMLDivElement>(null);
@@ -60,8 +63,8 @@ function SelectedSlotCard({
       <span
         className="cardInner"
         style={{
-          transform: "rotateY(180deg)",
-          animation: flight
+          transform: !flight || faceReady ? "rotateY(180deg)" : "rotateY(0deg)",
+          animation: flight && faceReady
             ? "selected-card-flip 460ms cubic-bezier(0.22, 1, 0.36, 1) forwards"
             : undefined,
         }}
@@ -76,6 +79,7 @@ function SelectedSlotCard({
 export function SelectedCardSlots({
   cards,
   flight,
+  flightFaceReady,
   onFlightComplete,
 }: SelectedCardSlotsProps) {
   return (
@@ -104,6 +108,7 @@ export function SelectedCardSlots({
               <SelectedSlotCard
                 card={card}
                 flight={cardFlight}
+                faceReady={!cardFlight || flightFaceReady}
                 onComplete={onFlightComplete}
               />
             )}

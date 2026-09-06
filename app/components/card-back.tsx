@@ -7,7 +7,7 @@ export function CardBack() {
 
         src="/images/cards/card-back-2.jpg"
         alt="Tarot card"
-        className="cardArtwork"
+        className="h-full w-full rounded-xl object-fill"
 
       />
     </span>

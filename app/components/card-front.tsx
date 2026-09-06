@@ -12,7 +12,7 @@ export function TarotCardArtwork({ card }: { card: TarotCard }) {
     <img
       src={imageSrc}
       alt={card.name}
-      className={`cardArtwork ${card.orientation === "Reversed" ? "reversed" : ""}`}
+      className={`h-full w-full rounded-xl object-fill ${card.orientation === "Reversed" ? "rotate-180" : ""}`}
     />
   );
 }

@@ -8,7 +8,6 @@ import { OpeningRitual } from "./ritual";
 import { useCallback, useRef, useState } from "react";
 import { SelectedZodiac } from "./dialog/zodiac-selected";
 import { SelectedCardSlots } from "./selected-card-slots";
-import { FlyingCard } from "./flying-card";
 import type { CardBounds, CardFlight } from "@/lib/types";
 
 type CardSelectProps = {
@@ -35,16 +34,11 @@ export function CardSelect({
   // Only reveal when three cards selected
   const [ritualDone, setRitualDone] = useState(false);
   const [flight, setFlight] = useState<CardFlight | null>(null);
-  const [flightApproaching, setFlightApproaching] = useState(false);
   const slotsRef = useRef<HTMLDivElement>(null);
   const canReveal = selectedCards.length === 3;
   const text = messages[language];
 
-  const approachSlot = useCallback(() => setFlightApproaching(true), []);
-  const completeFlight = useCallback(() => {
-    setFlight(null);
-    setFlightApproaching(false);
-  }, []);
+  const completeFlight = useCallback(() => setFlight(null), []);
 
   function selectFromFan(card: TarotCard, source: CardBounds) {
     if (flight || selectedCards.length >= 3) return;
@@ -55,7 +49,6 @@ export function CardSelect({
     if (!slot) return;
 
     const { top, left, width, height } = slot.getBoundingClientRect();
-    setFlightApproaching(false);
     setFlight({ card, source, target: { top, left, width, height } });
     onSelect(card);
   }
@@ -73,17 +66,17 @@ export function CardSelect({
 
   return (
     <div >
-      <section className="deckArea selectionDeckArea pt-45">
-                  <p className=" text-center text-[12px] tracking-[0.08em] text-[#7f5b1f]">{text.selectionInstructionSecondLine}</p>
-        <div className="selectionStars pt-5">
+      <section className="translate-y-10 px-5 [--selection-card-width:90px] max-[860px]:[--selection-card-width:102px] max-[520px]:flex max-[520px]:h-[calc(100svh-76px)] max-[520px]:translate-y-0 max-[520px]:flex-col max-[520px]:pt-[clamp(52px,8svh,72px)] max-[520px]:pb-0 max-[520px]:[--selection-card-width:clamp(50px,19vw,82px)]">
+        <p className="text-center text-[12px] tracking-[0.08em] text-[#7f5b1f] max-[520px]:pb-[22px]">{text.selectionInstructionSecondLine}</p>
+        <div className="flex -translate-y-5 items-center justify-center gap-5 pt-5">
           {[0, 1, 2].map((index) => (
             <span
               key={index}
-              className={
+              className={`text-base transition-[color,transform,text-shadow] duration-300 ${
                 index < selectedCards.length
-                  ? "selectionStar active"
-                  : "selectionStar"
-              }
+                  ? "scale-100 text-[#d7b56d] [text-shadow:0_0_8px_rgba(215,181,109,0.5)]"
+                  : "scale-[0.85] text-[rgba(155,114,42,0.18)]"
+              }`}
             >
               ★
             </span>
@@ -101,11 +94,12 @@ export function CardSelect({
         <div ref={slotsRef}>
           <SelectedCardSlots
             cards={selectedCards}
-            flyingCardName={flight && !flightApproaching ? flight.card.name : undefined}
+            flight={flight}
+            onFlightComplete={completeFlight}
           />
         </div>
 
-        <div className="h-15 mt-15 flex items-center justify-center">
+        <div className="h-15  flex items-center justify-center">
           {canReveal && (
             <Button
               variant="secondary"
@@ -122,6 +116,7 @@ export function CardSelect({
         duration-800
         delay-800
         fill-mode-both
+        mt-20
       "
             >
               Reveal
@@ -135,14 +130,6 @@ export function CardSelect({
           interactionLocked={Boolean(flight)}
           onSelect={selectFromFan}
         />
-
-        {flight && (
-          <FlyingCard
-            flight={flight}
-            onApproach={approachSlot}
-            onComplete={completeFlight}
-          />
-        )}
 
       </section>
 

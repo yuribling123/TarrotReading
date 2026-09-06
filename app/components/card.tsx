@@ -49,7 +49,10 @@ export function Card({
       }
     >
       {isSelected && leaveEmptyWhenSelected ? (
-        <span className="cardEmptySlot" aria-hidden="true" />
+        <span
+          className="absolute inset-0.5 rounded-[inherit] border border-dashed border-[rgba(155,114,42,0.14)]"
+          aria-hidden="true"
+        />
       ) : (
         <span className="cardInner ">
           <CardBack />

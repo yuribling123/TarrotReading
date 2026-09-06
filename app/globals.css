@@ -512,84 +512,9 @@ box-shadow:
   transform: translateY(-80px);
 }
 
-.deckArea {
-  --selection-card-width: 90px;
-
-  transform: translateY(40px);
-  padding-inline: 20px;
-}
-
-.selectionZodiac {
-  margin-top: 20px;
-}
-
-.selectionZodiac > button,
-.selectionZodiac > div {
-  margin-bottom: 0;
-}
-
-.selectedCardSlots {
-  display: flex;
-  gap: 12px;
-  justify-content: center;
-  margin-top: 18px;
-}
-
-.selectedCardSlot {
-  aspect-ratio: 701 / 1200;
-  border: 1px dashed rgba(155, 114, 42, 0.22);
-  border-radius: 7px;
-  overflow: hidden;
-  position: relative;
-  width: var(--selection-card-width);
-}
-
-.selectedCardSlot::after {
-  color: rgba(155, 114, 42, 0.24);
-  content: "✦";
-  font-size: 0.65rem;
-  left: 50%;
-  position: absolute;
-  top: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.selectedCardSlot:has(.cardArtwork) {
-  border-style: solid;
-  box-shadow: 0 5px 16px rgba(41, 36, 56, 0.13);
-}
-
-.selectedCardSlot:has(.cardArtwork)::after {
-  display: none;
-}
-
-.selectedCardSlot .cardArtwork {
-  inset: 0;
-  position: absolute;
-}
-
-.flyingCard {
-  border-radius: 12px;
-  pointer-events: none;
-  position: fixed;
-  transform-origin: top left;
-  z-index: 1000;
-}
-
-.flyingCard .cardInner {
-  animation: flying-card-flip 460ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
-}
-
-@keyframes flying-card-flip {
+@keyframes selected-card-flip {
   from { transform: rotateY(0deg); }
   to { transform: rotateY(180deg); }
-}
-
-.cardEmptySlot {
-  border: 1px dashed rgba(155, 114, 42, 0.14);
-  border-radius: inherit;
-  inset: 2px;
-  position: absolute;
 }
 
 .deckHeader {
@@ -648,19 +573,6 @@ box-shadow:
    CARD FAN
    ================================================== */
 
-.cardFanViewport {
-  transform: translateY(10px);
-  max-width: 100%;
-
-  overflow-x: auto;
-  overflow-y: hidden;
-
-  overscroll-behavior-inline: contain;
-  touch-action: pan-x;
-
-  scrollbar-width: none;
-}
-
 .cardFanViewport::-webkit-scrollbar {
   display: none;
 }
@@ -670,13 +582,9 @@ box-shadow:
   --card-step: 20px;
   --card-overlap: calc(var(--card-width) - var(--card-step));
 
-  align-items: flex-end;
-  display: flex;
-
   padding: 46px calc(50vw - var(--card-width) / 2) 126px;
   perspective: 1000px;
 
-  width: max-content;
 }
 
 /* ==================================================
@@ -832,73 +740,6 @@ box-shadow:
   transform: rotateY(180deg);
 }
 
-/* ==================================================
-   CARD IMAGE
-   ================================================== */
-
-.cardArtwork {
-  border-radius: 12px;
-
-  height: 100%;
-  width: 100%;
-
-  object-fit: fill;
-}
-
-.cardArtwork.reversed {
-  transform: rotate(180deg);
-}
-
-/* ==================================================
-   SELECTION FOOTER
-   ================================================== */
-
-.deckArea > .primaryAction {
-  color: #ffffff;
-
-  display: block;
-
-  font-weight: 500;
-
-  margin-inline: auto;
-}
-
-.selectionStars {
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  gap: 20px;
-
-
-
-  transform: translateY(-20px);
-  
-}
-
-.selectionStar {
-  color: rgba(155, 114, 42, 0.18);
-
-  font-size: 1rem;
-
-  transform: scale(0.85);
-
-  transition:
-    color 280ms ease,
-    transform 280ms ease,
-    text-shadow 280ms ease;
-}
-
-.selectionStar.active {
-  color: #d7b56d;
-
-  transform: scale(1);
-
-  text-shadow:
-    0 0 8px rgba(215, 181, 109, 0.5);
-}
 /* ==================================================
    FINAL READING SPREAD
    ================================================== */
@@ -1503,9 +1344,6 @@ box-shadow:
    ================================================== */
 
 @media (max-width: 860px) {
-  .deckArea {
-    --selection-card-width: 102px;
-  }
   .inputRow {
     padding: 5px 1px;
   }
@@ -1613,38 +1451,6 @@ box-shadow:
 
   .selectionContent {
     transform: none;
-  }
-
-  .selectionDeckArea {
-    --selection-card-width:
-      clamp(
-        50px,
-        19vw,
-        82px
-      );
-
-    display: flex;
-    flex-direction: column;
-    height: calc(100svh - 76px);
-    padding: clamp(52px, 8svh, 72px) 20px 0;
-    transform: none;
-  }
-
-  .selectionDeckArea > p {
-    padding-bottom: 22px;
-  }
-
-  .selectionZodiac {
-    margin-top: 18px;
-  }
-
-  .selectedCardSlots {
-    margin-top: clamp(30px, 4.5svh, 42px);
-  }
-
-  .selectionDeckArea .cardFanViewport {
-    margin-top: auto;
-    width: 100%;
   }
 
   [data-slot="toast-viewport"] {

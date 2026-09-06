@@ -10,6 +10,7 @@ import { FeatureInterest } from "./components/feature-interest";
 import { DailyZodiac } from "./components/moon-sign-daily";
 import { HomeBackground } from "./components/home-background";
 import { MoonIcon } from "./components/moon-icon";
+import { DivinationCatalysts } from "./components/divination-catalysts";
 
 import { useState } from "react";
 import { getVisitorId } from "@/lib/visitor/visitor-id";
@@ -118,6 +119,7 @@ export default function LandingPage() {
           onSubmit={handleQuestion}
           isPending={isPending}
         />
+        <DivinationCatalysts language={language} />
       </div>
 
 

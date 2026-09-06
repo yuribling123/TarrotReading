@@ -16,11 +16,7 @@ export function SelectedZodiac({
         px-5
         py-2
 
-        animate-in
-        fade-in
-        zoom-in-90
-        duration-1000
-
+     
         before:absolute
         before:inset-[-8px]
         before:-z-10

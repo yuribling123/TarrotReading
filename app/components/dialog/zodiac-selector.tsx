@@ -19,18 +19,18 @@ import {
 } from "react-icons/gi";
 
 const zodiacSigns = [
-  { name: "白羊座", Icon: GiAries },
-  { name: "金牛座", Icon: GiTaurus },
-  { name: "双子座", Icon: GiGemini },
-  { name: "巨蟹座", Icon: GiCancer },
-  { name: "狮子座", Icon: GiLeo },
-  { name: "处女座", Icon: GiVirgo },
-  { name: "天秤座", Icon: GiLibra },
-  { name: "天蝎座", Icon: GiScorpio },
-  { name: "射手座", Icon: GiSagittarius },
-  { name: "摩羯座", Icon: GiCapricorn },
-  { name: "水瓶座", Icon: GiAquarius },
-  { name: "双鱼座", Icon: GiPisces },
+  { name: "白羊座", symbol: "♈", Icon: GiAries },
+  { name: "金牛座", symbol: "♉", Icon: GiTaurus },
+  { name: "双子座", symbol: "♊", Icon: GiGemini },
+  { name: "巨蟹座", symbol: "♋", Icon: GiCancer },
+  { name: "狮子座", symbol: "♌", Icon: GiLeo },
+  { name: "处女座", symbol: "♍", Icon: GiVirgo },
+  { name: "天秤座", symbol: "♎", Icon: GiLibra },
+  { name: "天蝎座", symbol: "♏", Icon: GiScorpio },
+  { name: "射手座", symbol: "♐", Icon: GiSagittarius },
+  { name: "摩羯座", symbol: "♑", Icon: GiCapricorn },
+  { name: "水瓶座", symbol: "♒", Icon: GiAquarius },
+  { name: "双鱼座", symbol: "♓", Icon: GiPisces },
 ];
 
 type ZodiacSelectorProps = {
@@ -58,14 +58,15 @@ export function ZodiacSelector({
 
       <div className="grid grid-cols-4 gap-2.5 pt-2">
         {zodiacSigns.map((sign) => {
-          const isSelected = selected === sign.name;
+          const value = `${sign.symbol} ${sign.name}`;
+          const isSelected = selected === value;
           const Icon = sign.Icon;
 
           return (
             <button
               key={sign.name}
               type="button"
-              onClick={() => setSelected(sign.name)}
+              onClick={() => setSelected(value)}
               className={`
                 flex h-14 w-14 flex-col items-center justify-center
                 rounded-[21px] border
@@ -118,6 +119,8 @@ export function ZodiacSelector({
         className="
           mt-6 h-12 w-20 rounded-full
           disabled:opacity-40
+          active:scale-95
+          hover:scale-95
         "
       >
                 选好了

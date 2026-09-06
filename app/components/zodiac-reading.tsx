@@ -35,7 +35,7 @@ export function ZodiacReadingOption(
           animate-[pulse_2.8s_ease-in-out_infinite]
         "
         >
-          ✦
+          
         </span>
 
         <span
@@ -58,7 +58,7 @@ export function ZodiacReadingOption(
           animate-[pulse_5s_ease-in-out_1.2s_infinite]
         "
         >
-          ✧
+          
         </span>
       </button>
       <CodeDialog open={open} onOpenChange={setOpen} onConfirm={onConfirm} />

@@ -89,20 +89,31 @@ export function CardSelect({
   return (
     <div >
       <section className="translate-y-10 px-5 [--selection-card-width:90px] max-[860px]:[--selection-card-width:102px] max-[520px]:flex max-[520px]:h-[calc(100svh-76px)] max-[520px]:translate-y-0 max-[520px]:flex-col max-[520px]:pt-[clamp(52px,8svh,72px)] max-[520px]:pb-0 max-[520px]:[--selection-card-width:clamp(50px,19vw,82px)]">
-        <p className="text-center text-[12px] tracking-[0.08em] text-[#7f5b1f] max-[520px]:pb-[22px]">{text.selectionInstructionSecondLine}</p>
-        <div className="flex -translate-y-5 items-center justify-center gap-5 pt-5">
-          {[0, 1, 2].map((index) => (
-            <span
-              key={index}
-              className={`text-base transition-[color,transform,text-shadow] duration-300 ${
-                index < selectedCards.length
-                  ? "scale-100 text-[#d7b56d] [text-shadow:0_0_8px_rgba(215,181,109,0.5)]"
-                  : "scale-[0.85] text-[rgba(155,114,42,0.18)]"
-              }`}
+        <div className="flex h-11 items-start justify-center">
+          {selectedCards.length === 0 ? (
+            <p className="animate-in text-center text-[12px] tracking-[0.08em] text-[#7f5b1f] fade-in duration-300">
+              {text.selectionInstructionSecondLine}
+            </p>
+          ) : (
+            <div
+              className="flex animate-in items-center justify-center gap-5 fade-in slide-in-from-bottom-1 duration-300"
+              aria-label={text.chosenHint.replace("{count}", String(selectedCards.length))}
             >
-              ★
-            </span>
-          ))}
+              {[0, 1, 2].map((index) => (
+                <span
+                  key={index}
+                  aria-hidden="true"
+                  className={`text-base transition-[color,transform,text-shadow] duration-300 ${
+                    index < selectedCards.length
+                      ? "scale-100 text-[#d7b56d] [text-shadow:0_0_8px_rgba(215,181,109,0.5)]"
+                      : "scale-[0.85] text-[rgba(155,114,42,0.18)]"
+                  }`}
+                >
+                  ★
+                </span>
+              ))}
+            </div>
+          )}
         </div>
 
         <div>
@@ -121,27 +132,16 @@ export function CardSelect({
           />
         </div>
 
-        <div className="h-15  flex items-center justify-center">
+        <div className="flex h-[76px] items-center justify-center pt-12 ">
           {canReveal && (
             <Button
               variant="secondary"
               onClick={onReveal}
-              className="
-        flex
-        text-[14px] h-15 w-21
-        font-bold rounded-full
-        tracking-[0.06em]
-        shadow-[0_6px_18px_rgba(41,36,56,0.22)]
-        hover:scale-105
-        active:scale-85
-        animate-in fade-in zoom-in-90
-        duration-800
-        delay-800
-        fill-mode-both
-        mt-20
-      "
+              className="flex h-11 min-w-36  animate-in items-center gap-2 rounded-full border border-[#b58a3f]/35 bg-[#fffdf8]/90 px-6 text-[13px] font-medium tracking-[0.12em] text-[#6f501d] shadow-[0_5px_18px_rgba(155,114,42,0.14)] backdrop-blur-sm fade-in slide-in-from-bottom-1 fill-mode-both [animation-delay:180ms] [animation-duration:420ms] transition-[transform,border-color,box-shadow,background-color] duration-200 hover:border-[#b58a3f]/55 hover:bg-[#fffdf8] hover:shadow-[0_7px_22px_rgba(155,114,42,0.22)] active:scale-[0.97]"
             >
-              Reveal
+             
+              <span>{text.reveal}</span>
+         
             </Button>
           )}
         </div>

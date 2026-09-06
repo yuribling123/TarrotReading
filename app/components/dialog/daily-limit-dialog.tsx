@@ -26,7 +26,7 @@ export function DailyLimitDialog({
     >
       <DialogContent
         className="
-          w-66
+          w-80
           max-w-[85vw]
           rounded-[28px]
           border
@@ -49,7 +49,7 @@ export function DailyLimitDialog({
               text-[#232125]/88
             "
           >
-                今夜的牌已落定 
+            今夜的占卜已结束 <br />明日再会
           </DialogTitle>
 
           <DialogDescription
@@ -61,7 +61,9 @@ export function DailyLimitDialog({
               text-[#1b1a1c]/70
             "
           >
-            明日再来
+            为了控制运营成本，请遵守每日占卜次数限制
+            <br />
+            多次绕过限制可能被永久限制访问，感谢理解
           </DialogDescription>
         </DialogHeader>
 

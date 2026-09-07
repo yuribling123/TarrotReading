@@ -512,6 +512,13 @@ box-shadow:
   transform: translateY(-80px);
 }
 
+/* Keep the selection stage anchored to the viewport while the fan scrolls horizontally. */
+.hero:has(.selectionContent) {
+  height: 100svh;
+  min-height: 0;
+  overflow: hidden;
+}
+
 @keyframes selected-card-flip {
   from { transform: rotateY(0deg); }
   to { transform: rotateY(180deg); }
@@ -1487,9 +1494,7 @@ box-shadow:
     min-height: 100svh;
     overflow-x: hidden;
   }
-  .hero:has(.landingContent), 
-  .hero:has(.selectionContent)
-  {
+  .hero:has(.landingContent) {
    height: 100svh;
    min-height: 0;
    overflow: hidden;

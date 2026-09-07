@@ -2,7 +2,7 @@
 
 import { type FormEvent, useState } from "react";
 import { toast } from "@/components/ui/toast";
-import type { Language } from "@/lib/types";
+import type { DivinationCatalyst, Language } from "@/lib/types";
 import { useRouter } from "next/navigation";
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button";
@@ -21,6 +21,16 @@ type QuestionFormProps = {
   initialQuestion?: string;
   onSubmit: (question: string) => Promise<boolean>;
   isPending: boolean;
+  catalyst?: DivinationCatalyst | null;
+};
+
+const catalystGlow: Record<DivinationCatalyst, string> = {
+  moonstone:
+    "border-[#d8c49a]/70 shadow-[0_0_0_4px_rgba(240,226,194,0.16),0_0_24px_rgba(226,202,151,0.38)]",
+  candle:
+    "border-[#c9875a]/65 shadow-[0_0_0_4px_rgba(201,135,90,0.12),0_0_24px_rgba(218,139,84,0.38)]",
+  stardust:
+    "border-[#806a96]/55 shadow-[0_0_0_4px_rgba(128,106,150,0.10),0_0_25px_rgba(105,84,127,0.34)]",
 };
 
 export function QuestionForm({
@@ -31,6 +41,7 @@ export function QuestionForm({
   submitLabel,
   initialQuestion = "",
   onSubmit,
+  catalyst = null,
 }: QuestionFormProps) {
   const [question, setQuestion] = useState(initialQuestion);
   const router = useRouter();
@@ -111,7 +122,7 @@ export function QuestionForm({
               disabled={isPending}
               variant="secondary"
               type="submit"
-              className="
+              className={`
         h-11
         min-w-16
         rounded-full
@@ -125,7 +136,8 @@ export function QuestionForm({
 
         active:scale-[0.86]
         active:shadow-[0_0_0_5px_rgba(230,203,126,0.10),0_0_22px_rgba(201,154,69,0.32)]
-      "
+        ${catalyst ? catalystGlow[catalyst] : "shadow-none"}
+      `}
             >
               <p className="font-medium">
                 {isPending ? <Loading /> : submitLabel}

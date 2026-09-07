@@ -13,6 +13,7 @@ import { MoonIcon } from "./components/moon-icon";
 import { DivinationCatalysts } from "./components/divination-catalysts";
 
 import { useState } from "react";
+import type { DivinationCatalyst } from "@/lib/types";
 import { getVisitorId } from "@/lib/visitor/visitor-id";
 import { toast } from "@/components/ui/toast";
 import { ReadingLimitDialog } from "./components/dialog/reading-limit-dialog";
@@ -23,6 +24,7 @@ export default function LandingPage() {
   const [isPending, setIsPending] = useState(false);
   const [dailyLimitOpen, setDailyLimitOpen] = useState(false);
   const [ReadingLimitOpen, setReadingLimitOpen] = useState(false);
+  const [selectedCatalyst, setSelectedCatalyst] = useState<DivinationCatalyst | null>(null);
 
   const { language, setError, setQuestion } = useReadingSession();
   const text = messages[language];
@@ -118,8 +120,13 @@ export default function LandingPage() {
           questionTooLongMessage={text.questionTooLong}
           onSubmit={handleQuestion}
           isPending={isPending}
+          catalyst={selectedCatalyst}
         />
-        <DivinationCatalysts language={language} />
+        <DivinationCatalysts
+          language={language}
+          onActivate={setSelectedCatalyst}
+          onClear={() => setSelectedCatalyst(null)}
+        />
       </div>
 
 

@@ -1,18 +1,38 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { messages } from "@/lib/i18n";
-import type { Language } from "@/lib/types";
-
-type Catalyst = "moonstone" | "candle" | "stardust";
+import type { DivinationCatalyst, Language } from "@/lib/types";
 
 type DivinationCatalystsProps = {
   language: Language;
+  onActivate?: (catalyst: DivinationCatalyst) => void;
+  onClear?: () => void;
 };
 
-export function DivinationCatalysts({ language }: DivinationCatalystsProps) {
-  const [activeCatalyst, setActiveCatalyst] = useState<Catalyst | null>(null);
+export function DivinationCatalysts({
+  language,
+  onActivate,
+  onClear,
+}: DivinationCatalystsProps) {
+  const [activeCatalyst, setActiveCatalyst] = useState<DivinationCatalyst | null>(null);
+  const sectionRef = useRef<HTMLElement>(null);
   const text = messages[language].catalysts;
+
+  useEffect(() => {
+    function clearFromBlankArea(event: PointerEvent) {
+      const target = event.target;
+      if (!(target instanceof Element)) return;
+      if (sectionRef.current?.contains(target)) return;
+      if (target.closest("button, a, input, textarea, select, [role='button'], [role='dialog']")) return;
+
+      setActiveCatalyst(null);
+      onClear?.();
+    }
+
+    document.addEventListener("pointerdown", clearFromBlankArea);
+    return () => document.removeEventListener("pointerdown", clearFromBlankArea);
+  }, [onClear]);
 
   useEffect(() => {
     if (!activeCatalyst) return;
@@ -21,13 +41,15 @@ export function DivinationCatalysts({ language }: DivinationCatalystsProps) {
     return () => window.clearTimeout(timeout);
   }, [activeCatalyst]);
 
-  function activate(catalyst: Catalyst) {
+  function activate(catalyst: DivinationCatalyst) {
     setActiveCatalyst(null);
+    onActivate?.(catalyst);
     window.requestAnimationFrame(() => setActiveCatalyst(catalyst));
   }
 
   return (
     <section
+      ref={sectionRef}
       aria-label={text.label}
       className="mx-auto mt-7 w-fit text-[#6f6a67] md:mt-9"
     >

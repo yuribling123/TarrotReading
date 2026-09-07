@@ -21,7 +21,7 @@ export function CardFan({
   interactionLocked = false,
   onSelect,
 }: CardFanProps) {
-  const [spread, setSpread] = useState(false);
+  const [isReady, setIsReady] = useState(false);
   const viewportRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -30,6 +30,23 @@ export function CardFan({
 
     let activeCard: HTMLElement | null = null;
     let lastHapticAt = 0;
+    let hasUserMovedFan = false;
+
+    const centerInitialCard = () => {
+      const cards = viewport.querySelectorAll<HTMLElement>("[data-fan-card]");
+      if (!cards.length) return;
+
+      const rightMiddleIndex = Math.floor(cards.length / 2);
+      const rightMiddleCard = cards[rightMiddleIndex];
+      const leftMiddleCard = cards[Math.max(0, rightMiddleIndex - 1)];
+      const leftCenter = leftMiddleCard.offsetLeft + leftMiddleCard.offsetWidth / 2;
+      const rightCenter = rightMiddleCard.offsetLeft + rightMiddleCard.offsetWidth / 2;
+      const deckCenter = cards.length % 2 === 0
+        ? (leftCenter + rightCenter) / 2
+        : rightCenter;
+
+      viewport.scrollLeft = deckCenter - viewport.clientWidth / 2;
+    };
 
     const positionCards = (allowHaptic = false) => {
       const viewportCenter = viewport.clientWidth / 2;
@@ -79,20 +96,30 @@ export function CardFan({
 
     const handleScroll = () => positionCards(true);
 
-    const observer = new ResizeObserver(() => positionCards());
+    const observer = new ResizeObserver(() => {
+      if (!hasUserMovedFan) centerInitialCard();
+      positionCards();
+    });
     observer.observe(viewport);
     viewport.addEventListener("scroll", handleScroll, { passive: true });
+    const markAsUserMoved = () => {
+      hasUserMovedFan = true;
+    };
+    viewport.addEventListener("pointerdown", markAsUserMoved, { passive: true });
+    viewport.addEventListener("wheel", markAsUserMoved, { passive: true });
 
-    const timer = window.setTimeout(() => {
-      viewport.scrollLeft = (viewport.scrollWidth - viewport.clientWidth) / 2;
+    const frame = window.requestAnimationFrame(() => {
+      centerInitialCard();
       positionCards();
-      setSpread(true);
-    }, 250);
+      setIsReady(true);
+    });
 
     return () => {
-      window.clearTimeout(timer);
+      window.cancelAnimationFrame(frame);
       observer.disconnect();
       viewport.removeEventListener("scroll", handleScroll);
+      viewport.removeEventListener("pointerdown", markAsUserMoved);
+      viewport.removeEventListener("wheel", markAsUserMoved);
     };
   }, []);
 
@@ -101,7 +128,11 @@ export function CardFan({
       ref={viewportRef}
       className="cardFanViewport max-w-full touch-pan-x overflow-x-auto overflow-y-hidden overscroll-x-contain  scrollbar-none mt-40 max-[520px]:w-full max-[520px]:mt-0 max-[1024px]:mt-30 "
     >
-      <div className={`cardFan flex w-max items-end ${spread ? "spreadOut" : "stacked"}`}>
+      <div
+        className={`cardFan spreadOut flex w-max items-end transition-opacity duration-500 ease-out ${
+          isReady ? "opacity-100" : "opacity-0"
+        }`}
+      >
         {deck.map((card, index) => (
           <Card
             key={card.name}

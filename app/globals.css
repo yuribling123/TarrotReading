@@ -797,60 +797,6 @@ box-shadow:
    FINAL READING SPREAD
    ================================================== */
 
-.readingContent {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-}
-
-.spreadPanel {
-  background: #ffffff;
-
-  border: 1px solid transparent;
-  border-radius: 12px;
-
-  max-width: 780px;
-
-  padding: 28px 32px;
-
-  width: 100%;
-}
-
-.spread {
-  align-items: center;
-
-  display: flex;
-
-  gap: clamp(18px, 6vw, 100px);
-
-  justify-content: center;
-
-  margin: 0 auto;
-
-  width: 100%;
-}
-
-.spread .cardBack {
-  flex: 0 1 120px;
-
-  min-height: 0;
-  min-width: 0;
-
-  width: 120px;
-
-  transition: none;
-}
-
-.spread .cardBack + .cardBack {
-  margin-left: 0;
-}
-
-.spread .cardBack,
-.spread .cardBack:hover,
-.spread .cardBack.selected {
-  transform: none;
-}
-
 /* ==================================================
    RITUAL / LOADING
    ================================================== */
@@ -1428,26 +1374,6 @@ box-shadow:
 
   /* reading */
 
-  .readingContent .spreadPanel {
-    padding:
-      20px
-      clamp(8px, 3vw, 20px);
-  }
-
-  .spread {
-    gap:
-      clamp(
-        12px,
-        3vw,
-        28px
-      );
-  }
-
-  .spread .cardBack {
-    flex-basis: 110px;
-    width: 110px;
-  }
-
   .readingContent .readingGrid {
     grid-template-columns: 1fr;
     gap: 8px;
@@ -1555,25 +1481,6 @@ box-shadow:
   }
 
   /* reading */
-
-  .spreadPanel {
-    margin-top: 16px;
-    padding-inline: 12px;
-  }
-
-  .spread {
-    gap: 10px;
-    padding-inline: 8px;
-  }
-
-  .spread .cardBack {
-    flex: 1 1 0;
-
-    max-width: 92px;
-    min-width: 0;
-
-    width: auto;
-  }
 
   .reading {
     padding: 18px 14px;

@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 
 import { ReadingError } from "@/app/components/reading-error";
-import { Card } from "@/app/components/card";
+import { ReadingCardSpread } from "@/app/components/reading-card-spread";
 import type { TarotCard } from "@/lib/types";
 
 type ReadingLoadingProps = {
@@ -55,16 +55,7 @@ export function ReadingLoading({
           : stages[stageIndex]}
       </p>
       {/* 卡片 */}
-      <div className="spread pt-10">
-        {cards.map((card) => (
-          <Card
-            key={card.name}
-            card={card}
-            isSelected
-            onSelect={() => {}}
-          />
-        ))}
-      </div>
+      <ReadingCardSpread cards={cards} className="pt-10" />
       {/* 卡牌下的装饰 */}
       <div className="ritualThread" aria-hidden="true">
         <span />

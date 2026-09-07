@@ -4,6 +4,7 @@ import type { CSSProperties } from "react";
 import type { CardBounds, TarotCard } from "@/lib/types";
 import { CardBack } from "@/app/components/card-back";
 import { CardFront } from "@/app/components/card-front";
+import { cn } from "@/lib/utils";
 
 type CardProps = {
   card: TarotCard;
@@ -11,6 +12,7 @@ type CardProps = {
   isSelected: boolean;
   disabled?: boolean;
   leaveEmptyWhenSelected?: boolean;
+  variant?: "default" | "spread";
   onSelect: (card: TarotCard, source: CardBounds) => void | Promise<void>;
 }
 
@@ -20,12 +22,22 @@ export function Card({
   isSelected,
   disabled = false,
   leaveEmptyWhenSelected = false,
+  variant = "default",
   onSelect,
 }: CardProps) {
   return (
     <button
       data-fan-card
-      className={`cardBack ${isSelected ? "selected pointer-events-none" : ""}`}
+      className={cn(
+        "cardBack",
+        isSelected && "selected pointer-events-none",
+        variant === "spread" && [
+          "!ml-0 !min-h-0 !min-w-0 !max-w-[92px] !flex-[1_1_0] !w-auto",
+          "!transform-none !transition-none",
+          "sm:!w-[110px] sm:!max-w-none sm:!flex-[0_1_110px]",
+          "lg:!w-[120px] lg:!flex-[0_1_120px]",
+        ],
+      )}
       aria-disabled={disabled || (isSelected && leaveEmptyWhenSelected)}
       disabled={isSelected && leaveEmptyWhenSelected}
       onClick={(event) => {

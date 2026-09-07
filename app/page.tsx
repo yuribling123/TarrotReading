@@ -11,6 +11,7 @@ import { DailyZodiac } from "./components/moon-sign-daily";
 import { HomeBackground } from "./components/home-background";
 import { MoonIcon } from "./components/moon-icon";
 import { DivinationCatalysts } from "./components/divination-catalysts";
+import { MoonlitPostcard } from "./components/moonlit-postcard";
 
 import { useState } from "react";
 import type { DivinationCatalyst } from "@/lib/types";
@@ -106,6 +107,7 @@ export default function LandingPage() {
     <>
       <TarotPreloader deck={deck} />
       <HomeBackground />
+      <MoonlitPostcard />
       <div className="content landingContent absolute! inset-x-0 top-[calc(76px+5svh)] md:top-[calc(76px+10vh)]">
         <div className="overlapMoon mx-auto ">
           <MoonIcon language={language} />

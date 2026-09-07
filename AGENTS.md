@@ -2,9 +2,6 @@
 
 ## Bilingual UI
 
-- This website must always maintain feature parity between the English and Chinese versions.
-- When modifying the UI, interactions, content structure, components, state, or page flows in either language, always review and update the other language version as needed.
-
 
 ## Assets
 

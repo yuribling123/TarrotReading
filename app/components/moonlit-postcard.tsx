@@ -52,7 +52,7 @@ export function MoonlitPostcard() {
           if (!isRead) recordPostcardOpen();
           setIsOpen(true);
         }}
-        className={`group fixed right-1.5 top-[96px] z-20 h-8 w-10 overflow-visible bg-transparent drop-shadow-[0_5px_9px_rgba(91,69,105,0.14)] transition duration-300 hover:-translate-x-1 sm:right-3 sm:top-[104px] ${
+        className={`group fixed right-4 top-[96px] z-20 h-8 w-10 overflow-visible bg-transparent drop-shadow-[0_5px_9px_rgba(91,69,105,0.14)] transition duration-300 hover:-translate-x-1 sm:right-3 sm:top-[104px] ${
           isReadStateReady ? "opacity-100" : "pointer-events-none opacity-0"
         }`}
         aria-label={isRead ? "重新查看月之彼岸的今日来信" : "打开月之彼岸的今日来信"}

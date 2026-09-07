@@ -52,12 +52,11 @@ export function MoonlitPostcard() {
           if (!isRead) recordPostcardOpen();
           setIsOpen(true);
         }}
-        className={`group fixed right-4 top-[96px] z-20 h-8 w-10 overflow-visible bg-transparent drop-shadow-[0_5px_9px_rgba(91,69,105,0.14)] transition duration-300 hover:-translate-x-1 sm:right-3 sm:top-[104px] ${
-          isReadStateReady ? "opacity-100" : "pointer-events-none opacity-0"
-        }`}
+        className={`group fixed right-4 top-[96px] z-20 h-8 w-10 overflow-visible bg-transparent drop-shadow-[0_5px_9px_rgba(91,69,105,0.14)] transition duration-300 hover:-translate-x-1 sm:right-3 sm:top-[104px] ${isReadStateReady ? "opacity-100" : "pointer-events-none opacity-0"
+          }`}
         aria-label={isRead ? "重新查看月之彼岸的今日来信" : "打开月之彼岸的今日来信"}
       >
-    
+
         <svg
           viewBox="0 0 58 48"
           className="absolute inset-0 z-10 size-full text-[#897491]"
@@ -71,12 +70,11 @@ export function MoonlitPostcard() {
           <path d="m7 40 15.7-14.3M51 40 35.3 25.7" stroke="currentColor" strokeWidth=".85" opacity=".28" />
         </svg>
         <span
-          className={`absolute left-[12.5px] top-[11px] z-40 grid size-2.5 place-items-center rounded-full transition duration-500 ${
-            isRead
-              ? "border border-[#9a8da0]/35 bg-[#f7f4f7] opacity-60"
-              : "bg-[#8d7898] shadow-[0_2px_5px_rgba(76,56,86,0.25)]"
-          }`}
-          aria-hidden="true"
+          className={`absolute left-[12.5px] top-[11px] z-40 grid size-2.5
+    place-items-center rounded-full border transition duration-500 ${isRead
+              ? "border-[#9a8da0]/35 bg-[#f7f4f7] opacity-60"
+              : "border-transparent bg-[#8d7898] shadow-[0_2px_5px_rgba(76,56,86,0.25)]"
+            }`}
         >
           <svg viewBox="0 0 12 13" className="size-2" fill="none">
             <path

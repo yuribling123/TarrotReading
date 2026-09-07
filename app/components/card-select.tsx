@@ -127,7 +127,7 @@ export function CardSelect({
           )}
         </div>
 
-        <div className="py-6">
+        <div className="pt-6">
           {zodiac ? (
             <SelectedZodiac zodiac={zodiac} />
           ) : (

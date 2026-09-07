@@ -39,7 +39,7 @@ export function SelectionShootingStars({
 }: SelectionShootingStarsProps) {
   return (
     <div
-      className="relative -mt-1 h-10 w-32 animate-in fade-in duration-300"
+      className="relative h-10 w-32 animate-in fade-in duration-300"
       aria-label={label}
     >
       {starPositions.map((position, index) =>

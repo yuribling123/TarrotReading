@@ -4,3 +4,4 @@ export type { ReadingRequest, ReadingResponse, ReadingSessionData } from "./read
 export type { CardBounds, CardFlight, TarotCard } from "./tarot";
 export type { MoonPhase} from "./moon"
 export type { DivinationCatalyst } from "./catalyst";
+export type { MoonlitPostcardMessage } from "./postcard";

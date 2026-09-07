@@ -76,7 +76,7 @@ export function MoonlitPostcard() {
               : "border-transparent bg-[#8d7898] shadow-[0_2px_5px_rgba(76,56,86,0.25)]"
             }`}
         >
-          <svg viewBox="0 0 12 13" className="size-2" fill="none">
+          <svg viewBox="0 0 13 13" className="size-2" fill="none">
             <path
               d="M7.9 2.2A4.1 4.1 0 1 0 9.8 8 3.55 3.55 0 0 1 7.9 2.2Z"
               fill={isRead ? "#9a8da0" : "#f5f0f5"}

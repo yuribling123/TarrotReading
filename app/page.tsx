@@ -12,6 +12,7 @@ import { HomeBackground } from "./components/home-background";
 import { MoonIcon } from "./components/moon-icon";
 import { DivinationCatalysts } from "./components/divination-catalysts";
 import { MoonlitPostcard } from "./components/moonlit-postcard";
+import { MoonLore } from "./components/moon-lore";
 
 import { useState } from "react";
 import type { DivinationCatalyst } from "@/lib/types";
@@ -26,6 +27,7 @@ export default function LandingPage() {
   const [dailyLimitOpen, setDailyLimitOpen] = useState(false);
   const [ReadingLimitOpen, setReadingLimitOpen] = useState(false);
   const [selectedCatalyst, setSelectedCatalyst] = useState<DivinationCatalyst | null>(null);
+  const [moonLoreOpen, setMoonLoreOpen] = useState(false);
 
   const { language, setError, setQuestion } = useReadingSession();
   const text = messages[language];
@@ -108,9 +110,10 @@ export default function LandingPage() {
       <TarotPreloader deck={deck} />
       <HomeBackground />
       <MoonlitPostcard />
+      <MoonLore open={moonLoreOpen} onClose={() => setMoonLoreOpen(false)} />
       <div className="content landingContent absolute! inset-x-0 top-[calc(76px+5svh)] md:top-[calc(76px+10vh)]">
         <div className="overlapMoon mx-auto ">
-          <MoonIcon language={language} />
+          <MoonIcon language={language} onClick={() => setMoonLoreOpen(true)} />
         </div>
         <DailyZodiac />
         <QuestionForm

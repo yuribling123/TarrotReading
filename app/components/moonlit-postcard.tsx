@@ -99,14 +99,6 @@ export function MoonlitPostcard() {
           }}
         >
           <div className="relative w-full max-w-[420px] [perspective:1200px]">
-            <button
-              type="button"
-              onClick={closePostcard}
-              className="absolute -right-1 -top-11 z-20 grid size-9 place-items-center rounded-full border border-white/60 bg-white/75 text-lg font-light text-[#75677d] shadow-sm backdrop-blur-md transition hover:bg-white"
-              aria-label="关闭来信"
-            >
-              ×
-            </button>
 
             <button
               type="button"

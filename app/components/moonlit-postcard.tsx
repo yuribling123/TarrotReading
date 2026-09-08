@@ -97,8 +97,6 @@ export function MoonlitPostcard() {
             block
             h-full
             w-full
-
-            ${!isRead ? "moonlit-letter-float" : ""}
           `}
         >
           <svg

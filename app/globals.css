@@ -1784,48 +1784,8 @@ box-shadow:
   }
 }
 
-@keyframes moonlit-letter-float {
-  0%,
-  68%,
-  100% {
-    transform: translateY(0);
-  }
 
-  76% {
-    transform: translateY(-2px);
-  }
 
-  84% {
-    transform: translateY(-0.5px);
-  }
-
-  90% {
-    transform: translateY(0);
-  }
-}
-
-.moonlit-letter-float {
-  animation: moonlit-letter-float 5.6s ease-in-out infinite;
-}
-
-@keyframes moonlit-seal-glow {
-  0%,
-  100% {
-    box-shadow:
-      0 2px 5px rgba(76, 56, 86, 0.25),
-      0 0 0 0 rgba(179, 148, 189, 0);
-  }
-
-  50% {
-    box-shadow:
-      0 2px 5px rgba(76, 56, 86, 0.25),
-      0 0 9px 3px rgba(179, 148, 189, 0.28);
-  }
-}
-
-.moonlit-seal-glow {
-  animation: moonlit-seal-glow 2.8s ease-in-out infinite;
-}
 
 @keyframes moonlit-letter-spark {
   0%,

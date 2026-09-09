@@ -11,6 +11,7 @@ import { SelectedCardSlots } from "./selected-card-slots";
 import type { CardBounds, CardFlight } from "@/lib/types";
 import { getTarotCardImageSrc } from "@/lib/tarot/card-image";
 import { SelectionShootingStars } from "./selection-shooting-stars";
+import { StarBackground } from "./ui/stars";
 
 type CardSelectProps = {
   language: Language;
@@ -164,7 +165,13 @@ export function CardSelect({
         />
         <div className="flex justify-center pt-0 -translate-y-4 ">
           {zodiac ? (
-            <SelectedZodiac zodiac={zodiac} />
+            <div className="">
+
+              <StarBackground />
+
+              <SelectedZodiac zodiac={zodiac} />
+
+            </div>
           ) : (
             <ZodiacReadingOption onConfirm={setZodiac} />
           )}

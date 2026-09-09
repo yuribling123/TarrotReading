@@ -1,3 +1,5 @@
+import { StarBackground } from "../ui/stars";
+
 type SelectedZodiacProps = {
   zodiac: string;
 };
@@ -9,7 +11,8 @@ export function SelectedZodiac({ zodiac }: SelectedZodiacProps) {
   const symbol = match ? `${match[2]}\uFE0E` : "";
 
   return (
-    <div className="relative text-[#7f5469]/88 mx-auto  mb-5 px-5 flex h-10 w-fit animate-in items-center justify-center gap-1 rounded-[15px] bg-[#7f545c]/7  shadow-[0_5px_18px_rgba(127,91,31,0.10)] fade-in zoom-in-90 duration-500 before:absolute before:inset-[-7px] before:-z-10 before:rounded-full before:bg-[#69547f]/ before:blur-xl">
+    <div className="relative text-[#7f5469]/88 mx-auto  mb-5 px-5 flex h-10 w-fit animate-in items-center justify-center gap-1 rounded-[15px] fade-in zoom-in-90 duration-500 before:absolute before:inset-[-7px] before:-z-10 before:rounded-full before:bg-[#69547f]/ before:blur-xl">
+     
       <span className="text-[11px] tracking-[0.2em] ">
         今夜星象
       </span>

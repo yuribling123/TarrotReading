@@ -45,7 +45,7 @@ export function ZodiacSelector({
   return (
     <div className="w-full ">
       <div className="mb-6 text-center">
-        <h2 className="text-[16px] font-medium text-[#7f5b1f]">
+        <h2 className="text-[15px]  text-[#7f5b1f]">
           你的星座
         </h2>
       </div>

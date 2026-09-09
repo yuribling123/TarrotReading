@@ -33,9 +33,10 @@ export function QuestionSummary({ question }: QuestionSummaryProps) {
       >
         <p
           className="
+            pt-2
             text-center
             text-[0.82rem]
-           
+            font-medium
             tracking-[0.06em]
             text-[#342d3d]/85
             [text-shadow:0_1px_8px_rgba(184,149,82,0.10)]

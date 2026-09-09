@@ -17,19 +17,17 @@ function SolidFivePointStar({
   rotation: number;
 }) {
   return (
-    <svg
-      viewBox="0 0 24 24"
-      width={size}
-      height={size}
-      className="overflow-visible drop-shadow-[0_0_4px_rgba(200,155,69,0.48)]"
-      style={{ transform: `rotate(${rotation}deg)` }}
+    <span
+      className="block text-[#c89b45] drop-shadow-[0_0_4px_rgba(200,155,69,0.48)]"
+      style={{
+        fontSize: `${size}px`,
+        lineHeight: 1,
+        transform: `rotate(${rotation}deg)`,
+      }}
       aria-hidden="true"
     >
-      <path
-        d="M12 1.8 15.05 8.17 22 9.12 16.95 13.92 18.2 20.8 12 17.5 5.8 20.8 7.05 13.92 2 9.12 8.95 8.17 12 1.8Z"
-        fill="#c89b45"
-      />
-    </svg>
+      ✦
+    </span>
   );
 }
 

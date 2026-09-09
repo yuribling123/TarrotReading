@@ -55,7 +55,7 @@ export function ReadingZodiac({
               border
               border-[#3c2b0d]/20
               bg-[#d6ad58]/5
-              px-2.5
+              px-2
               py-1
               text-[9px]
               font-medium

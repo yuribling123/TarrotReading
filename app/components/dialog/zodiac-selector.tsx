@@ -97,8 +97,8 @@ export function ZodiacSelector({
                 aria-hidden="true"
                 className={`absolute -right-1 -top-1 text-[9px] text-[#c4963d] transition-[opacity,transform] duration-300 ${
                   isSelected
-                    ? "scale-100 opacity-100 [text-shadow:0_0_8px_rgba(196,150,61,0.55)]"
-                    : "scale-50 opacity-0"
+                    ? " opacity-100 [text-shadow:0_0_8px_rgba(196,150,61,0.55)]"
+                    : " opacity-0"
                 }`}
               >
                 ✦
@@ -109,8 +109,8 @@ export function ZodiacSelector({
                   transition-[color,transform,filter] duration-300
                   ${
                     isSelected
-                      ? "scale-125 text-[#b48531] drop-shadow-[0_0_5px_rgba(196,150,61,0.38)]"
-                      : "scale-100"
+                      ? " text-[#b48531] drop-shadow-[0_0_5px_rgba(196,150,61,0.38)]"
+                      : ""
                   }
                 `}
               />

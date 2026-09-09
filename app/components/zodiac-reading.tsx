@@ -29,8 +29,8 @@ export function ZodiacReadingOption(
       >
 
         <span className="relative h-4 w-4">
-          <span className="absolute inset-[2px] rounded-full border border-[#b89552]/65" />
-          <span className="absolute -right-px top-[3px] size-[3px] rounded-full bg-[#b89552]/85" />
+          <span className="absolute inset-[1px] rounded-full border border-[#b89552]/65" />
+          <span className="absolute -right-[3px]  top-[2px] size-[3px] rounded-full bg-[#b89552]/85" />
         </span>
 
       </button>

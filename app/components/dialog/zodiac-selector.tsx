@@ -43,7 +43,7 @@ export function ZodiacSelector({
   const [selected, setSelected] = useState<string | null>(null);
 
   return (
-    <div className="w-full animate-in fade-in slide-in-from-bottom-2 duration-1400">
+    <div className="w-full ">
       <div className="mb-6 text-center">
         <h2 className="text-[16px] font-medium text-[#7f5b1f]">
           你的星座

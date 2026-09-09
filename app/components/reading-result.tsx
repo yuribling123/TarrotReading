@@ -36,7 +36,7 @@ export function ReadingResult({
                   </span>
                 </p>
 
-                <p className="mt-3 text-[0.89rem]">
+                <p className="mt-3 text-[0.89rem] text-black/75">
                   {card.message}
                 </p>
               </article>
@@ -45,8 +45,8 @@ export function ReadingResult({
         </div>
         <div className="synthesis border-b! border-[#7f5b1f]/15!">
           <h3 style={{ fontWeight: 620 }}>{summaryLabel}</h3>
-          <p className="text-[0.89rem] leading-7!">{reading.answer}</p>
-          <p className="text-[0.89rem] pt-2 pb-6 leading-7!">{reading.guidance}</p>
+          <p className="text-[0.89rem] leading-7! text-black/75">{reading.answer}</p>
+          <p className="text-[0.89rem] pt-2 pb-6 leading-7! text-black/75">{reading.guidance}</p>
         </div>
       </section>
 

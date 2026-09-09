@@ -69,7 +69,6 @@ export function ZodiacSelector({
                 justify-center
                 rounded-[21px]
                 border
-
                 transition-[border-color,background-color,box-shadow]
                 duration-300
 
@@ -78,13 +77,11 @@ export function ZodiacSelector({
                     ? `
                       border-[#b88a35]/70
                       bg-[radial-gradient(circle_at_50%_35%,rgba(240,211,135,0.38),rgba(255,255,255,0.28)_72%)]
-                      text-[#8b641f]
                       shadow-[0_0_0_3px_rgba(215,181,109,0.11),0_8px_20px_rgba(127,91,31,0.16)]
                     `
                     : `
                       border-[#141005]/30
                       bg-white/20
-                      text-[#141005]/30
                       hover:border-[#b89552]/25
                       hover:bg-white/60
                     `
@@ -102,6 +99,7 @@ export function ZodiacSelector({
                   text-[#c4963d]
                   transition-opacity
                   duration-300
+
                   ${
                     isSelected
                       ? "opacity-100 [text-shadow:0_0_8px_rgba(196,150,61,0.55)]"
@@ -112,24 +110,35 @@ export function ZodiacSelector({
                 ✦
               </span>
 
-              {/* 固定尺寸容器，防止 icon 视觉跳动 */}
-              <div className="flex h-[13px] w-[16px] shrink-0 items-center justify-center">
+              {/* 星座图标：SVG 本身永远不改变 class */}
+              <div
+                className={`
+                  flex
+                  h-[13px]
+                  w-[16px]
+                  shrink-0
+                  items-center
+                  justify-center
+
+                  ${
+                    isSelected
+                      ? "text-[#b48531]"
+                      : "text-[#141005]/30"
+                  }
+                `}
+              >
                 <Icon
-                  className={`
-                    block h-[11px] w-[11px]
-                    ${
-                      isSelected
-                        ? "text-[#b48531] drop-shadow-[0_0_5px_rgba(196,150,61,0.38)]"
-                        : "text-[#141005]/30"
-                    }
-                  `}
+                  aria-hidden="true"
+                  className="block h-[11px] w-[11px] shrink-0"
                 />
               </div>
 
+              {/* 星座名称 */}
               <span
                 className={`
                   mt-1.5
                   text-[10px]
+
                   ${
                     isSelected
                       ? "font-medium text-[#765218]"
@@ -156,7 +165,7 @@ export function ZodiacSelector({
           rounded-full
           disabled:opacity-40
           active:scale-95
-      "
+        "
       >
         选好了
       </Button>

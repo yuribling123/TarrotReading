@@ -45,7 +45,7 @@ export function QuestionSummary({ question }: QuestionSummaryProps) {
         </p>
 
       </div>
-      <div className="mt-1 h-px w-8 bg-[#b89552]/25" />
+      {/* <div className="mt-1 h-px w-8 bg-[#b89552]/25" /> */}
     </>
   );
 }

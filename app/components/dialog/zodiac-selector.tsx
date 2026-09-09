@@ -67,8 +67,6 @@ export function ZodiacSelector({
                 w-14
                 rounded-[21px]
                 border
-                transition-[border-color,background-color,box-shadow]
-                duration-300
 
                 ${
                   isSelected
@@ -80,8 +78,7 @@ export function ZodiacSelector({
                     : `
                       border-[#141005]/30
                       bg-white/20
-                      hover:border-[#b89552]/25
-                      hover:bg-white/60
+                      hover:border-[#b88a35]/70
                     `
                 }
               `}
@@ -96,8 +93,6 @@ export function ZodiacSelector({
                   -top-1
                   text-[9px]
                   text-[#c4963d]
-                  transition-opacity
-                  duration-300
 
                   ${
                     isSelected
@@ -109,17 +104,16 @@ export function ZodiacSelector({
                 ✦
               </span>
 
-              {/* 图标：位置完全锁死 */}
+              {/* 星座图标 */}
               <span
                 className={`
                   pointer-events-none
                   absolute
-                  left-1/2
+                  left-0
+                  right-0
                   top-[6px]
                   flex
                   h-[12px]
-                  w-[12px]
-                  -translate-x-1/2
                   items-center
                   justify-center
 
@@ -136,14 +130,15 @@ export function ZodiacSelector({
                 />
               </span>
 
-              {/* 名字：位置也锁死 */}
+              {/* 星座名字 */}
               <span
                 className={`
                   pointer-events-none
                   absolute
                   bottom-[10px]
-                  left-1/2
-                  -translate-x-1/2
+                  left-0
+                  right-0
+                  text-center
                   whitespace-nowrap
                   text-[10px]
                   leading-none

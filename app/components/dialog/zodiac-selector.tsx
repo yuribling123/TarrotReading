@@ -44,18 +44,14 @@ export function ZodiacSelector({
 
   return (
     <div className="w-full animate-in fade-in slide-in-from-bottom-2 duration-1400">
+      {/* 标题 */}
       <div className="mb-6 text-center">
-    
-
-  
-
-        <h2 className="text-[16px] font-medium text-[#7f5b1f] ">
-              你的星座
+        <h2 className="text-[16px] font-medium text-[#7f5b1f]">
+          你的星座
         </h2>
-
-      
       </div>
 
+      {/* 星座 */}
       <div className="grid grid-cols-4 gap-2.5 pt-2">
         {zodiacSigns.map((sign) => {
           const value = `${sign.name}  ${sign.symbol}`;
@@ -68,10 +64,17 @@ export function ZodiacSelector({
               type="button"
               onClick={() => setSelected(value)}
               className={`
-                relative flex h-14 w-14 flex-col items-center justify-center
-                rounded-[21px] border
-                transition-[transform,border-color,background-color,box-shadow,opacity]
+                relative
+                flex h-14 w-14
+                flex-col
+                items-center
+                justify-center
+                rounded-[21px]
+                border
+
+                transition-[transform,border-color,background-color,box-shadow]
                 duration-300
+
                 ${
                   isSelected
                     ? `
@@ -85,40 +88,63 @@ export function ZodiacSelector({
                       border-[#141005]/30
                       bg-white/20
                       text-[#141005]/30
-                      ${selected ? "opacity-65" : "opacity-100"}
                       hover:border-[#b89552]/25
                       hover:bg-white/60
-                      hover:opacity-100
                     `
                 }
               `}
             >
+              {/* 选中后右上角星星 */}
               <span
                 aria-hidden="true"
-                className={`absolute -right-1 -top-1 text-[9px] text-[#c4963d] transition-[opacity,transform] duration-300 ${
-                  isSelected
-                    ? " opacity-100 [text-shadow:0_0_8px_rgba(196,150,61,0.55)]"
-                    : " opacity-0"
-                }`}
+                className={`
+                  absolute
+                  -right-1
+                  -top-1
+                  text-[9px]
+                  text-[#c4963d]
+                  transition-opacity
+                  duration-300
+
+                  ${
+                    isSelected
+                      ? "opacity-100 [text-shadow:0_0_8px_rgba(196,150,61,0.55)]"
+                      : "opacity-0"
+                  }
+                `}
               >
                 ✦
               </span>
+
+              {/* 星座图标 */}
               <Icon
                 className={`
                   text-[11px]
-                  transition-[color,transform,filter] duration-300
+                  transition-[color,filter]
+                  duration-300
+
                   ${
                     isSelected
-                      ? " text-[#b48531] drop-shadow-[0_0_5px_rgba(196,150,61,0.38)]"
+                      ? "text-[#b48531] drop-shadow-[0_0_5px_rgba(196,150,61,0.38)]"
                       : ""
                   }
                 `}
               />
 
+              {/* 星座名称 */}
               <span
-                className={`mt-1.5 text-[10px] transition-[color,font-weight] duration-300 ${
-                  isSelected ? "font-medium text-[#765218]" : "font-normal"
-                }`}
+                className={`
+                  mt-1.5
+                  text-[10px]
+                  transition-colors
+                  duration-300
+
+                  ${
+                    isSelected
+                      ? "font-medium text-[#765218]"
+                      : "font-normal"
+                  }
+                `}
               >
                 {sign.name}
               </span>
@@ -127,22 +153,24 @@ export function ZodiacSelector({
         })}
       </div>
 
+      {/* 确认 */}
       <Button
         type="button"
         variant="secondary"
         disabled={!selected}
         onClick={() => selected && onConfirm(selected)}
         className="
-          mt-6 h-12 w-20 rounded-full
+          mt-6
+          h-12
+          w-20
+          rounded-full
           disabled:opacity-40
-          active:scale-95
           hover:scale-95
+          active:scale-95
         "
       >
-                选好了
+        选好了
       </Button>
-
- 
     </div>
   );
 }

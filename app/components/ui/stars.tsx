@@ -1,6 +1,6 @@
 export function StarBackground() {
   const stars = [
-    { top: "5%", left: "8%", symbol: "✦", size: 8, duration: 3.2, delay: 0 },
+    { top: "5%", left: "30%", symbol: "✦", size: 8, duration: 3.2, delay: 0 },
     { top: "13%", left: "73%", symbol: "·", size: 13, duration: 4.4, delay: 1.1 },
     { top: "20%", left: "91%", symbol: "⋆", size: 9, duration: 3.7, delay: 0.4 },
 

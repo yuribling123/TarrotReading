@@ -49,7 +49,7 @@ export function CodeDialog({
         return;
       }
 
-      toast.add({ title: "已开启 ✦" ,timeout: 1200});
+      toast.add({ title: "已开启 ✦", timeout: 1200 });
       setUnlocked(true);
     } finally {
       setIsPending(false);
@@ -91,10 +91,10 @@ export function CodeDialog({
                   text-[#232125]/70
                 "
               >
-                加入星座
+                  今夜星象暂歇
               </DialogTitle>
 
-              {/* <DialogDescription
+              <DialogDescription
 
                 className="
       text-center
@@ -103,19 +103,19 @@ export function CodeDialog({
     "
               >
 
-                还没有兑换码？可以向开发者索取
+                    开放时间：每周五至周日
 
-              </DialogDescription> */}
+              </DialogDescription>
             </DialogHeader>
 
             <input
               value={code}
               onChange={(e) => setCode(e.target.value)}
               type="text"
-              placeholder="输入兑换码"
+              placeholder="凭月光码提前开启"
               className="
                 mx-auto
-                mt-4
+                
                 h-12
                 w-45
                 rounded-full
@@ -144,7 +144,7 @@ export function CodeDialog({
               disabled={isPending}
               className="
                 mx-auto
-                mt-3
+                mt-2
                 h-11
                 w-16
                 rounded-full

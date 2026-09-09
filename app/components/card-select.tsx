@@ -165,12 +165,9 @@ export function CardSelect({
         />
         <div className="flex justify-center pt-0 -translate-y-4 ">
           {zodiac ? (
-            <div className="">
-
+            <div >
               <StarBackground />
-
               <SelectedZodiac zodiac={zodiac} />
-
             </div>
           ) : (
             <ZodiacReadingOption onConfirm={setZodiac} />

@@ -83,18 +83,18 @@ export function CodeDialog({
             <DialogHeader className="items-center text-center">
               <DialogTitle
                 className="
-                  pb-2
+             
                   text-center
                   text-[13px]
                   font-medium
                   tracking-[0.02em]
-                  text-[#232125]/88
+                  text-[#232125]/70
                 "
               >
-                输入月光兑换码
+                加入星座
               </DialogTitle>
 
-              <DialogDescription
+              {/* <DialogDescription
 
                 className="
       text-center
@@ -105,7 +105,7 @@ export function CodeDialog({
 
                 还没有兑换码？可以向开发者索取
 
-              </DialogDescription>
+              </DialogDescription> */}
             </DialogHeader>
 
             <input

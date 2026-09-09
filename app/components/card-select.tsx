@@ -113,7 +113,7 @@ export function CardSelect({
 
   return (
     <div >
-<section className="px-5 pt-60 [--selection-card-width:90px]  max-[860px]:[--selection-card-width:102px] max-[520px]:flex max-[520px]:h-[calc(100svh-76px)] max-[520px]:flex-col max-[520px]:pt-30  max-[520px]:[--selection-card-width:clamp(50px,19vw,82px)]">
+      <section className="px-5 pt-60 [--selection-card-width:90px]  max-[860px]:[--selection-card-width:102px] max-[520px]:flex max-[520px]:h-[calc(100svh-76px)] max-[520px]:flex-col max-[520px]:pt-30  max-[520px]:[--selection-card-width:clamp(50px,19vw,82px)]">
         <div className="relative flex h-11 shrink-0 items-start justify-center overflow-visible">
           {selectedCards.length === 0 ? (
             <p className="animate-in text-center text-[12px] tracking-[0.08em] text-[#7f5b1f] fade-in duration-300">
@@ -127,13 +127,7 @@ export function CardSelect({
           )}
         </div>
 
-        {/* <div className="pt-6">
-          {zodiac ? (
-            <SelectedZodiac zodiac={zodiac} />
-          ) : (
-            <ZodiacReadingOption onConfirm={setZodiac} />
-          )}
-        </div> */}
+
 
         <div ref={slotsRef} className="pt-15 max-[520px]:pt-0  " >
           <SelectedCardSlots
@@ -168,6 +162,13 @@ export function CardSelect({
           interactionLocked={Boolean(flight)}
           onSelect={selectFromFan}
         />
+        <div className="pt-0s">
+          {zodiac ? (
+            <SelectedZodiac zodiac={zodiac} />
+          ) : (
+            <ZodiacReadingOption onConfirm={setZodiac} />
+          )}
+        </div>
 
       </section>
 

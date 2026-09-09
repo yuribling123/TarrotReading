@@ -40,7 +40,7 @@ export function ReadingZodiac({
         {/* Header */}
         <div className="mb-3 flex items-center justify-between">
           <p className="flex items-center text-[13px] tracking-[0.05em]">
-            <span className="mr-1.5 inline-block animate-[twinkle_2.8s_ease-in-out_infinite] text-[14px] text-[#d3be57]">
+            <span className="mr-1.5 inline-block animate-[twinkle_2.8s_ease-in-out_infinite] text-[14px] text-[#8f6f98]">
               ˖
             </span>
 

@@ -168,7 +168,6 @@ export function ZodiacSelector({
           w-20
           rounded-full
           disabled:opacity-40
-          active:scale-95
         "
       >
         选好了

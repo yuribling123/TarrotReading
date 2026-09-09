@@ -8,7 +8,7 @@ export function ReadingVerdict({
     const sentences = verdict.split("。").filter(Boolean);
     return (
 
- <div className=" font-medium text-[0.89rem] mt-12 max-w-130 text-center mx-10 ">
+ <div className=" mx-auto font-medium text-[0.89rem] mt-12 max-w-130 text-center px-8">
   
 
   <p className=" tracking-[0.02em] leading-[1.65] text-[#342d3d]">

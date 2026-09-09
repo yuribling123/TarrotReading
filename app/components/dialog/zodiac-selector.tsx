@@ -44,14 +44,12 @@ export function ZodiacSelector({
 
   return (
     <div className="w-full animate-in fade-in slide-in-from-bottom-2 duration-1400">
-      {/* 标题 */}
       <div className="mb-6 text-center">
         <h2 className="text-[16px] font-medium text-[#7f5b1f]">
           你的星座
         </h2>
       </div>
 
-      {/* 星座 */}
       <div className="grid grid-cols-4 gap-2.5 pt-2">
         {zodiacSigns.map((sign) => {
           const value = `${sign.name}  ${sign.symbol}`;
@@ -72,13 +70,12 @@ export function ZodiacSelector({
                 rounded-[21px]
                 border
 
-                transition-[transform,border-color,background-color,box-shadow]
+                transition-[border-color,background-color,box-shadow]
                 duration-300
 
                 ${
                   isSelected
                     ? `
-                      -translate-y-1
                       border-[#b88a35]/70
                       bg-[radial-gradient(circle_at_50%_35%,rgba(240,211,135,0.38),rgba(255,255,255,0.28)_72%)]
                       text-[#8b641f]
@@ -94,7 +91,7 @@ export function ZodiacSelector({
                 }
               `}
             >
-              {/* 选中后右上角星星 */}
+              {/* 右上角 */}
               <span
                 aria-hidden="true"
                 className={`
@@ -105,7 +102,6 @@ export function ZodiacSelector({
                   text-[#c4963d]
                   transition-opacity
                   duration-300
-
                   ${
                     isSelected
                       ? "opacity-100 [text-shadow:0_0_8px_rgba(196,150,61,0.55)]"
@@ -116,33 +112,28 @@ export function ZodiacSelector({
                 ✦
               </span>
 
-              {/* 星座图标 */}
-              <Icon
-                className={`
-                  text-[11px]
-                  transition-[color,filter]
-                  duration-300
+              {/* 固定尺寸容器，防止 icon 视觉跳动 */}
+              <div className="flex h-[13px] w-[16px] shrink-0 items-center justify-center">
+                <Icon
+                  className={`
+                    block h-[11px] w-[11px]
+                    ${
+                      isSelected
+                        ? "text-[#b48531] drop-shadow-[0_0_5px_rgba(196,150,61,0.38)]"
+                        : "text-[#141005]/30"
+                    }
+                  `}
+                />
+              </div>
 
-                  ${
-                    isSelected
-                      ? "text-[#b48531] drop-shadow-[0_0_5px_rgba(196,150,61,0.38)]"
-                      : ""
-                  }
-                `}
-              />
-
-              {/* 星座名称 */}
               <span
                 className={`
                   mt-1.5
                   text-[10px]
-                  transition-colors
-                  duration-300
-
                   ${
                     isSelected
                       ? "font-medium text-[#765218]"
-                      : "font-normal"
+                      : "font-normal text-[#141005]/30"
                   }
                 `}
               >
@@ -153,7 +144,6 @@ export function ZodiacSelector({
         })}
       </div>
 
-      {/* 确认 */}
       <Button
         type="button"
         variant="secondary"
@@ -165,9 +155,8 @@ export function ZodiacSelector({
           w-20
           rounded-full
           disabled:opacity-40
-          hover:scale-95
           active:scale-95
-        "
+      "
       >
         选好了
       </Button>

@@ -4,9 +4,9 @@ type SelectionShootingStarsProps = {
 };
 
 const starPositions = [
-  { left: 20, top: 18, delay: 0, size: 12, rotation: 0 },
-  { left: 50, top: 18, delay: 30, size: 12, rotation: 0 },
-  { left: 80, top: 18, delay: 60, size: 12, rotation: 0 },
+  { left: 20, top: 18, delay: 0, size: 18, rotation: 0 },
+  { left: 50, top: 18, delay: 30, size: 18, rotation: 0 },
+  { left: 80, top: 18, delay: 60, size: 18, rotation: 0 },
 ];
 
 function SolidFivePointStar({

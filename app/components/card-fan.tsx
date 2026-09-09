@@ -126,7 +126,7 @@ export function CardFan({
   return (
     <div
       ref={viewportRef}
-      className="cardFanViewport max-w-full touch-pan-x overflow-x-auto overflow-y-hidden overscroll-x-contain  scrollbar-none mt-40 max-[520px]:w-full max-[520px]:mt-5 max-[1024px]:mt-30 "
+      className="cardFanViewport max-w-full touch-pan-x overflow-x-auto overflow-y-hidden overscroll-x-contain  scrollbar-none mt-40 max-[520px]:w-full max-[520px]:mt-10 max-[1024px]:mt-30 "
     >
       <div
         className={`cardFan spreadOut flex w-max items-end transition-opacity duration-500 ease-out ${

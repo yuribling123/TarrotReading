@@ -39,7 +39,7 @@ export default function ReadingPage() {
 
       <div
         className="
-          mt-4 w-full max-w-[780px] rounded-xl bg-white px-3 py-2
+          mt-8 w-full max-w-[780px] rounded-xl bg-white px-3 py-2
           sm:py-4 sm:px-5
           lg:px-8 lg:py-7
         "

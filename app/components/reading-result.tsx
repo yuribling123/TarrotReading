@@ -26,12 +26,12 @@ export function ReadingResult({
                 key={card.position}
                 className={"border-b border-[#7f5b1f]/15! "}
               >
-                <span className="font-semibold text-[#7f5b1f]!">{card.position}</span>
+                <span className=" text-[#7f5b1f]!">{card.position}</span>
 
-                <p className="font-semibold">
+                <p className="">
                   {card.title}
                   <span className="mx-1">·</span>
-                  <span className="font-normal! text-[black]/80 ">
+                  <span className=" text-[black]/50 ">
                     {card.orientation}
                   </span>
                 </p>

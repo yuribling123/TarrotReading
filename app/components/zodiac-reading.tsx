@@ -38,7 +38,7 @@ export function ZodiacReadingOption(
           
         </span>
 
-        <span
+        {/* <span
           className="
     text-[#7f5b1f]/40
     underline
@@ -49,7 +49,7 @@ export function ZodiacReadingOption(
   "
         >
           带上星座 · 让解读更靠近你
-        </span>
+        </span> */}
         <span
           className="
           inline-block

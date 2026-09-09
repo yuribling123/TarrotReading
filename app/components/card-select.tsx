@@ -127,13 +127,13 @@ export function CardSelect({
           )}
         </div>
 
-        <div className="pt-6">
+        {/* <div className="pt-6">
           {zodiac ? (
             <SelectedZodiac zodiac={zodiac} />
           ) : (
             <ZodiacReadingOption onConfirm={setZodiac} />
           )}
-        </div>
+        </div> */}
 
         <div ref={slotsRef} className="pt-15 max-[520px]:pt-0  " >
           <SelectedCardSlots
@@ -144,7 +144,7 @@ export function CardSelect({
           />
         </div>
 
-        <div className="flex h-19 items-center justify-center  ">
+        <div className="flex h-19 items-center justify-center pt-6 ">
           {canReveal && (
             <div className="relative animate-in fade-in slide-in-from-bottom-1 fill-mode-both [animation-delay:180ms] [animation-duration:520ms]">
               <span aria-hidden="true" className="pointer-events-none absolute inset-0 animate-[selection-reveal-ripple_3s_ease-out_infinite] rounded-full border border-[#c9a45a]/38 motion-reduce:hidden" />

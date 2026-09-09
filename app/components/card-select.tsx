@@ -162,7 +162,7 @@ export function CardSelect({
           interactionLocked={Boolean(flight)}
           onSelect={selectFromFan}
         />
-        <div className="flex justify-center pt-0 -translate-y-13 ">
+        <div className="flex justify-center pt-0 -translate-y-4 ">
           {zodiac ? (
             <SelectedZodiac zodiac={zodiac} />
           ) : (

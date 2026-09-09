@@ -63,10 +63,8 @@ export function ZodiacSelector({
               onClick={() => setSelected(value)}
               className={`
                 relative
-                flex h-14 w-14
-                flex-col
-                items-center
-                justify-center
+                h-14
+                w-14
                 rounded-[21px]
                 border
                 transition-[border-color,background-color,box-shadow]
@@ -88,10 +86,11 @@ export function ZodiacSelector({
                 }
               `}
             >
-              {/* 右上角 */}
+              {/* 右上角星星 */}
               <span
                 aria-hidden="true"
                 className={`
+                  pointer-events-none
                   absolute
                   -right-1
                   -top-1
@@ -110,13 +109,17 @@ export function ZodiacSelector({
                 ✦
               </span>
 
-              {/* 星座图标：SVG 本身永远不改变 class */}
-              <div
+              {/* 图标：位置完全锁死 */}
+              <span
                 className={`
+                  pointer-events-none
+                  absolute
+                  left-1/2
+                  top-[6px]
                   flex
-                  h-[13px]
-                  w-[16px]
-                  shrink-0
+                  h-[12px]
+                  w-[12px]
+                  -translate-x-1/2
                   items-center
                   justify-center
 
@@ -129,20 +132,26 @@ export function ZodiacSelector({
               >
                 <Icon
                   aria-hidden="true"
-                  className="block h-[11px] w-[11px] shrink-0"
+                  className="block h-[11px] w-[11px]"
                 />
-              </div>
+              </span>
 
-              {/* 星座名称 */}
+              {/* 名字：位置也锁死 */}
               <span
                 className={`
-                  mt-1.5
+                  pointer-events-none
+                  absolute
+                  bottom-[10px]
+                  left-1/2
+                  -translate-x-1/2
+                  whitespace-nowrap
                   text-[10px]
+                  leading-none
 
                   ${
                     isSelected
-                      ? "font-medium text-[#765218]"
-                      : "font-normal text-[#141005]/30"
+                      ? "text-[#765218]"
+                      : "text-[#141005]/30"
                   }
                 `}
               >

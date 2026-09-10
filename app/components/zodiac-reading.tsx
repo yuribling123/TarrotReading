@@ -21,16 +21,17 @@ export function ZodiacReadingOption({ onConfirm }: Props) {
       <button
         onClick={() => setOpen(true)}
         type="button"
-        className="
-          mx-auto flex items-center justify-center rounded-full
-          bg-transparent
-          text-[11px] font-medium tracking-[0.08em]
-          text-[#b89552]
-          transition-all duration-300
-          hover:text-[#d7b56d]
-          active:scale-[0.96]
-          active:shadow-[0_0_18px_rgba(215,181,109,0.35)]
-        "
+        className={`
+    mx-auto flex items-center justify-center rounded-full
+    bg-transparent
+    text-[11px] font-medium tracking-[0.08em]
+    text-[#b89552]
+    transition-all duration-300
+    hover:text-[#d7b56d]
+    active:scale-[0.96]
+    active:shadow-[0_0_18px_rgba(215,181,109,0.35)]
+    ${zodiacAvailable ? "animate-bounce" : ""}
+  `}
       >
         <span className="relative h-4 w-4">
           <span className="absolute inset-[1px] rounded-full border border-[#b89552]/65" />

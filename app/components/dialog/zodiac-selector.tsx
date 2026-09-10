@@ -68,6 +68,9 @@ export function ZodiacSelector({
                 w-14
                 rounded-[21px]
                 border
+                focus:outline-none
+                focus-visible:outline-none
+                focus-visible:ring-0
 
                 ${isSelected
                   ? `

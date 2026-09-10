@@ -60,8 +60,8 @@ export function CodeDialog({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent
         className="
-          w-[74vw]
-          max-w-[75vw]
+          w-[60vw]
+          max-w-[60vw]
           rounded-[28px]
           border
           border-[#c9ad73]/25
@@ -75,9 +75,12 @@ export function CodeDialog({
         "
       >
         {unlocked ? (
-          <ZodiacSelector
-            onConfirm={onConfirm}
-          />
+          <div className="mx-auto w-fit">
+
+            <ZodiacSelector onConfirm={onConfirm} />
+
+          </div>
+
         ) : (
           <>
             <DialogHeader className="items-center text-center">
@@ -91,7 +94,7 @@ export function CodeDialog({
                   text-[#232125]/70
                 "
               >
-                  今夜星象暂歇
+                今夜星象暂歇
               </DialogTitle>
 
               <DialogDescription
@@ -103,7 +106,7 @@ export function CodeDialog({
     "
               >
 
-                    开放时间：每周五至周日
+                开放时间：每周五至周日
 
               </DialogDescription>
             </DialogHeader>

@@ -50,7 +50,7 @@ export function ZodiacSelector({
         </h2>
       </div>
 
-      <div className="grid grid-cols-4 gap-2.5 pt-2">
+      <div className="mx-auto grid w-fit grid-cols-4 gap-5 pt-1">
         {zodiacSigns.map((sign) => {
           const value = `${sign.name}  ${sign.symbol}`;
           const isSelected = selected === value;
@@ -62,20 +62,20 @@ export function ZodiacSelector({
               type="button"
               onClick={() => setSelected(value)}
               className={`
+                
                 relative
                 h-14
                 w-14
                 rounded-[21px]
                 border
 
-                ${
-                  isSelected
-                    ? `
+                ${isSelected
+                  ? `
                       border-[#b88a35]/70
                       bg-[radial-gradient(circle_at_50%_35%,rgba(240,211,135,0.38),rgba(255,255,255,0.28)_72%)]
                       shadow-[0_0_0_3px_rgba(215,181,109,0.11),0_8px_20px_rgba(127,91,31,0.16)]
                     `
-                    : `
+                  : `
                       border-[#141005]/30
                       bg-white/20
                       hover:border-[#b88a35]/70
@@ -94,10 +94,9 @@ export function ZodiacSelector({
                   text-[9px]
                   text-[#c4963d]
 
-                  ${
-                    isSelected
-                      ? "opacity-100 [text-shadow:0_0_8px_rgba(196,150,61,0.55)]"
-                      : "opacity-0"
+                  ${isSelected
+                    ? "opacity-100 [text-shadow:0_0_8px_rgba(196,150,61,0.55)]"
+                    : "opacity-0"
                   }
                 `}
               >
@@ -117,10 +116,9 @@ export function ZodiacSelector({
                   items-center
                   justify-center
 
-                  ${
-                    isSelected
-                      ? "text-[#b48531]"
-                      : "text-[#141005]/30"
+                  ${isSelected
+                    ? "text-[#b48531]"
+                    : "text-[#141005]/30"
                   }
                 `}
               >
@@ -143,10 +141,9 @@ export function ZodiacSelector({
                   text-[10px]
                   leading-none
 
-                  ${
-                    isSelected
-                      ? "text-[#765218]"
-                      : "text-[#141005]/30"
+                  ${isSelected
+                    ? "text-[#765218]"
+                    : "text-[#141005]/30"
                   }
                 `}
               >
@@ -163,11 +160,13 @@ export function ZodiacSelector({
         disabled={!selected}
         onClick={() => selected && onConfirm(selected)}
         className="
-          mt-6
-          h-12
-          w-20
-          rounded-full
-          disabled:opacity-40
+    mx-auto
+    mt-6
+    flex
+    h-12
+    w-20
+    rounded-full
+    disabled:opacity-40
         "
       >
         选好了

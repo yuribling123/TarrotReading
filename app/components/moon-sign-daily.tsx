@@ -43,7 +43,7 @@ export function DailyZodiac() {
           </span>
 
           <span className="text-[10px] tracking-[0.1em] ">
-            今夜星象加读已开放
+            星象加读已开放
           </span>
           <span className="text-[9px] ">
             ·

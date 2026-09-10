@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { CodeDialog } from "./dialog/code-dialog";
 import { ZodiacSelector } from "./dialog/zodiac-selector";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 
 
 interface Props {
@@ -38,13 +39,25 @@ export function ZodiacReadingOption({ onConfirm }: Props) {
       </button>
 
       {zodiacAvailable ? (
+        <Dialog open={open} onOpenChange={setOpen}>
+          <DialogContent
+            className="
+        w-[320px]
+        rounded-[28px]
+        border
+        border-[#b89552]/25
+        bg-[#fffdf8]
+        p-7
+      "
+          >
             <ZodiacSelector
               onConfirm={(zodiac) => {
                 onConfirm(zodiac);
                 setOpen(false);
               }}
             />
-         
+          </DialogContent>
+        </Dialog>
       ) : (
         <CodeDialog
           open={open}
@@ -52,6 +65,8 @@ export function ZodiacReadingOption({ onConfirm }: Props) {
           onConfirm={onConfirm}
         />
       )}
+
+
     </>
   );
 }

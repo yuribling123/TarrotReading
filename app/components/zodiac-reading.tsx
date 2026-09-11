@@ -22,6 +22,7 @@ export function ZodiacReadingOption({ onConfirm }: Props) {
         onClick={() => setOpen(true)}
         type="button"
         className={`
+    gap-2
     mx-auto flex items-center justify-center rounded-full
     bg-transparent
     text-[11px] font-medium tracking-[0.08em]
@@ -33,10 +34,18 @@ export function ZodiacReadingOption({ onConfirm }: Props) {
     ${zodiacAvailable ? "animate-bounce" : ""}
   `}
       >
+        {zodiacAvailable && (
+          <span className=" text-[10px] text-[#b89552]/80">
+            星象已开放
+          </span>
+        )}
         <span className="relative h-4 w-4">
           <span className="absolute inset-[1px] rounded-full border border-[#b89552]/65" />
           <span className="absolute -right-[3px] top-[2px] size-[3px] rounded-full bg-[#b89552]/85" />
         </span>
+
+
+
       </button>
 
       {zodiacAvailable ? (

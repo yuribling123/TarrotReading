@@ -20,6 +20,7 @@ export default function SelectPage() {
   const [selectedCards, setSelectedCards] = useState<TarotCard[]>([]);
   const [isRevealing, setIsRevealing] = useState(false);
   const [isReadingReady, setIsReadingReady] = useState(false);
+  const [zodiacOpen, setZodiacOpen] = useState(false);
   const [zodiac, setZodiac] = useState<string | null>(null);
 
   const {
@@ -75,10 +76,10 @@ export default function SelectPage() {
           zodiac: zodiacForReading,
         }),
       });
-      const reading = (await response.json()) as ReadingResponse 
+      const reading = (await response.json()) as ReadingResponse
       // 成功生成 reading 后，Redis 次数 +1
       const visitorId = getVisitorId();
-      await fetch(`/api/reading-limit/${visitorId}`, {method: "POST",});
+      await fetch(`/api/reading-limit/${visitorId}`, { method: "POST", });
       setReading(reading);
       setIsReadingReady(true);
       // Let the completion animation finish.
@@ -95,13 +96,20 @@ export default function SelectPage() {
       setError(text.incompleteSpread);
       return;
     }
+     // 周五、六、日，而且还没选星座 → 打开星座弹窗
+    const day = new Date().getDay();
+    const zodiacAvailable = day === 5 || day === 6 || day === 0;
+    if (zodiacAvailable && !zodiac) {
+        setZodiacOpen(true);
+        return;
+    }
 
     // These cards are already fully determined by the shuffle + selection.
     setCards(selectedCards);
     setReading(null);
     setError("");
     setIsRevealing(true);
-
+    //进入揭牌动画 
     setTimeout(() => {
       void generateReading(selectedCards);
     }, 1300);
@@ -125,7 +133,7 @@ export default function SelectPage() {
           stages={text.loadingStages}
         />
       ) : (
-        
+
         <CardSelect
           language={language}
           deck={deck}
@@ -135,10 +143,12 @@ export default function SelectPage() {
           onReveal={revealCards}
           zodiac={zodiac}
           setZodiac={setZodiac}
+          zodiacOpen={zodiacOpen}
+          setZodiacOpen={setZodiacOpen}
         />
-       
+
       )}
     </div>
-    
+
   );
 }

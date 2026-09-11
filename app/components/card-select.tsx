@@ -22,9 +22,13 @@ type CardSelectProps = {
   onReveal: () => void;
   zodiac: string | null;
   setZodiac: (zodiac: string) => void;
+  zodiacOpen: boolean;
+  setZodiacOpen: (open: boolean) => void;
 };
 
 export function CardSelect({
+  zodiacOpen,
+  setZodiacOpen,
   zodiac,
   setZodiac,
   language,
@@ -170,7 +174,11 @@ export function CardSelect({
               <SelectedZodiac zodiac={zodiac} />
             </div>
           ) : (
-            <ZodiacReadingOption onConfirm={setZodiac} />
+            <ZodiacReadingOption
+              zodiacOpen={zodiacOpen}
+              setZodiacOpen={setZodiacOpen}
+              onConfirm={setZodiac}
+            />
           )}
         </div>
 

@@ -180,30 +180,6 @@ button:disabled {
   color: #63400b;
 }
 
-.languageToggle {
-  background: rgba(255, 255, 255, 0.42);
-  border: 0;
-  border-radius: 999px;
-
-  color: var(--night);
-
-  font-size: 0.7rem;
-  font-weight: 800;
-  letter-spacing: 0.06em;
-
-  padding: 10px 14px;
-
-  position: absolute;
-  right: 20px;
-  top: 14px;
-
-
-
-  z-index: 2;
-}
-
-
-
 /* ==================================================
    LANDING
    ================================================== */
@@ -212,35 +188,6 @@ button:disabled {
   color: #f7f3e8;
   text-align: center;
 
-}
-
-@keyframes home-orbit {
-  to { transform: translateX(-50%) rotate(360deg); }
-}
-
-@keyframes home-orbit-reverse {
-  to { transform: translateX(-50%) rotate(-360deg); }
-}
-
-@keyframes home-star {
-  0%, 100% { opacity: 0.22; transform: rotate(45deg) scale(0.7); }
-  50% { opacity: 0.78; transform: rotate(45deg) scale(1.15); }
-}
-
-.eyebrow {
-  color: var(--gold);
-
-  font-size: 0.82rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-
-  margin: 0 0 18px;
-
-  text-transform: uppercase;
-}
-
-.landingContent .eyebrow {
-  text-align: center;
 }
 
 h1 {
@@ -266,130 +213,6 @@ h1 {
   max-width: 820px;
 }
 
-.questionForm label {
-  display: block;
-  padding: 5px 0;
-}
-
-.inputRow {
-  background: rgba(255, 255, 255, 0.96);
-
-  border: 1px solid rgba(19, 15, 31, 0.24);
-  border-radius: 8px;
-
-  display: grid;
-  gap: 10px;
-  grid-template-columns: 1fr auto;
-
-  padding: 10px;
-  position: relative;
-
-  transition:
-    background 220ms ease,
-    border-color 220ms ease,
-    box-shadow 220ms ease;
-}
-
-.inputRow:focus-within {
-  background: #ffffff;
-  border-color: rgba(190, 145, 59, 0.64);
-  box-shadow: 0 0 0 3px rgba(215, 181, 109, 0.1);
-}
-
-.inputRow > * {
-  position: relative;
-  z-index: 1;
-}
-
-.inputRow input {
-  
-  background: transparent;
-  border: 0;
-
-  caret-color: #a97924;
-  color: var(--night);
-
-  min-width: 0;
-  outline: 0;
-  padding: 14px;
-}
-
-.inputRow input::placeholder {
-  color: rgba(19, 15, 31, 0.48);
-}
-
-.inputRow button,
-.primaryAction,
-.secondaryAction,
-.error button {
-  background: rgb(224 196 127 / 99%);
-  border: 0;
-  border-radius: 999px;
-
-box-shadow:
-  inset 0 1px 0 rgba(255, 255, 255, 0.45),
-  0 4px 8px rgba(117, 78, 21, 0.20),
-  0 10px 24px rgba(117, 78, 21, 0.22);
-
-  color: #1d1508;
-
-  font-weight: 800;
-  letter-spacing: 0.04em;
-
-  min-width: 82px;
-  padding: 13px 20px;
-
-  transition:
-    transform 180ms ease,
-    box-shadow 180ms ease;
-}
-
-.primaryAction {
- 
-}
-
-
-
-.inputRow button {
-  background: transparent;
-  box-shadow: none;
-  color: #8c621f;
-}
-
-.inputRow button:hover {
-  background:
-    radial-gradient(
-      circle at 50% 35%,
-      rgba(242, 211, 135, 0.52),
-      rgba(215, 181, 109, 0.14) 70%
-    );
-
-  box-shadow:
-    0 8px 20px
-    rgba(185, 137, 56, 0.22);
-
-  color: #63400b;
-
-  transform:
-    translateY(-2px)
-    scale(1.04);
-}
-
-.inputRow button:focus-visible {
-  outline: 2px solid rgba(190, 145, 59, 0.72);
-  outline-offset: 2px;
-}
-
-.primaryAction:hover,
-.primaryAction:active,
-.secondaryAction:hover,
-.error button:hover {
-  box-shadow:
-  0 10px 24px rgba(215, 181, 109, 0.32),
-  0 18px 42px rgba(155, 114, 42, 0.20);
-  transform: translateY(5px);
-}
-
 /* ==================================================
    LANDING QUESTION FORM
    ================================================== */
@@ -398,60 +221,6 @@ box-shadow:
   margin-left: auto;
   margin-right: auto;
   text-align: left;
-}
-
-.landingContent .questionForm label {
-  margin-bottom:25px;
-  color: #79591e;
-  font-size: 0.86rem;
-  font-weight: 500;
-  position: relative;
-  width: fit-content;
-  z-index: 1;
-
-}
-.landingContent .questionForm label::before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  pointer-events: none;
-
-  inset: -10px -22px;
-  border-radius: 999px;
-
- background: radial-gradient(
-  ellipse at center,
-  rgba(255, 255, 255, 0.85) 0%,
-  rgba(255, 255, 255, 0.72) 40%,
-  rgba(255, 255, 255, 0.42) 68%,
-  rgba(255, 255, 255, 0.15) 84%,
-  transparent 100%
-);
-}
-
-.landingContent .inputRow {
-  background: #ffffff;
-  border-color: rgba(137, 104, 45, 0.44);
-
-  box-shadow:
-    0 16px 40px
-    rgba(41, 28, 10, 0.12);
-}
-
-.landingContent .inputRow:focus-within {
-  border-color: #b98c38;
-
-  box-shadow:
-    0 14px 38px rgba(41, 28, 10, 0.16),
-    0 0 0 3px rgba(215, 181, 109, 0.18);
-}
-
-.landingContent .inputRow input {
-  color: #171526;
-}
-
-.landingContent .inputRow input::placeholder {
-  color: rgba(23, 21, 38, 0.48);
 }
 
 /* ==================================================
@@ -568,65 +337,9 @@ box-shadow:
   }
 }
 
-.deckHeader {
-  align-items: center;
-  color: #4b2020;
-
-  display: flex;
-  flex-direction: column;
-
-  font-size: 1.1rem;
-
-  justify-content: center;
-
-  margin: auto;
-
-  position: relative;
-
-  transform: translateY(-10px);
-}
-
-.selectionInstructions {
-  text-align: center;
-}
-
-.selectionInstructions p {
-  color: var(--selection-primary-text);
-
-  font-family:
-    "Iowan Old Style",
-    Baskerville,
-    "Palatino Linotype",
-    "Songti SC",
-    STSong,
-    serif;
-
-  font-size:
-    clamp(1.05rem, 1.65vw, 1.45rem);
-
-  font-weight: 500;
-  letter-spacing: 0.07em;
-
-  margin: 0;
-}
-
-.selectionInstructions p + p {
-  color: rgba(19, 15, 31, 0.48);
-
-  font-size: 0.9rem;
-  font-weight: 400;
-  letter-spacing: 0.035em;
-
-  padding-top: 20px;
-}
-
 /* ==================================================
    CARD FAN
    ================================================== */
-
-.cardFanViewport::-webkit-scrollbar {
-  display: none;
-}
 
 .cardFan {
   --card-width: var(--selection-card-width);
@@ -951,73 +664,6 @@ box-shadow:
   display: none;
 }
 
-.ritualSpread {
-  display: flex;
-
-  gap: clamp(18px, 5vw, 34px);
-
-  justify-content: center;
-
-  max-width: 610px;
-
-  position: relative;
-
-  width: 100%;
-}
-
-.ritualSpread::before {
-  animation:
-    ritualLightSweep
-    3.8s
-    ease-in-out
-    infinite;
-
-  background:
-    linear-gradient(
-      90deg,
-      transparent,
-      rgba(229, 198, 119, 0.38),
-      transparent
-    );
-
-  content: "";
-
-  filter: blur(8px);
-
-  inset: -18px -30px;
-
-  pointer-events: none;
-  position: absolute;
-}
-
-.ritualSpread .cardBack {
-  flex: 0 1 150px;
-
-  min-height: 0;
-  min-width: 0;
-
-  width: 150px;
-
-  filter:
-    drop-shadow(
-      0 16px 18px
-      rgba(41, 30, 15, 0.14)
-    );
-
-  position: relative;
-  z-index: 1;
-}
-
-.ritualSpread .cardBack + .cardBack {
-  margin-left: 0;
-}
-
-.ritualSpread .cardBack,
-.ritualSpread .cardBack:hover,
-.ritualSpread .cardBack.selected {
-  transform: none;
-}
-
 .ritualThread {
   align-items: center;
 
@@ -1101,19 +747,6 @@ box-shadow:
   width: 100%;
 }
 
-.spreadLens {
-  font-size: 1rem;
-  font-weight: 600;
-
-  margin: 0 0 16px;
-
-  text-transform: uppercase;
-}
-
-.spreadLens span {
-  margin-right: 6px;
-}
-
 .readingGrid {
   align-items: stretch;
 
@@ -1175,43 +808,6 @@ box-shadow:
   margin-top: 14px;
 }
 
-.secondaryAction {
-  margin-top: 18px;
-}
-
-/* ==================================================
-   ERROR
-   ================================================== */
-
-.error {
-  align-items: center;
-
-  background: rgba(180, 106, 121, 0.16);
-
-  border:
-    1px solid
-    rgba(180, 106, 121, 0.45);
-
-  border-radius: 8px;
-
-  display: flex;
-
-  gap: 14px;
-
-  justify-content: space-between;
-
-  margin-top: 20px;
-
-  max-width: 820px;
-
-  padding: 14px;
-}
-
-.error p,
-.selectedHint {
-  margin: 0;
-}
-
 /* ==================================================
    ANIMATIONS
    ================================================== */
@@ -1259,19 +855,6 @@ box-shadow:
   50% {
     opacity: 1;
     transform: scale(1.16);
-  }
-}
-
-@keyframes ritualLightSweep {
-  0%,
-  100% {
-    opacity: 0.2;
-    transform: translateX(-10%);
-  }
-
-  50% {
-    opacity: 0.75;
-    transform: translateX(10%);
   }
 }
 
@@ -1343,20 +926,6 @@ box-shadow:
    ================================================== */
 
 @media (max-width: 860px) {
-  .inputRow {
-    padding: 5px 1px;
-  }
-  .inputRow input {
-
-    padding: 8px 15px; /* 这里也会影响整体高度 */
-
-  }
-  .inputRow button {
-
-    padding: 8px 15px;
-  }
-
-
   .questionForm {
   margin-top: 0;
   padding-inline: 10vw;
@@ -1392,15 +961,6 @@ box-shadow:
   .readingRitual {
     min-height: 560px;
     padding: 16px 8px 30px;
-  }
-
-  .ritualSpread {
-    gap: 14px;
-  }
-
-  .ritualSpread .cardBack {
-    flex-basis: 120px;
-    width: 120px;
   }
 
   .hero:has(.readingContent),
@@ -1439,26 +999,6 @@ box-shadow:
 
     left: 12px;
     right: 12px;
-  }
-
-  .selectionInstructions p {
-    font-size:
-      clamp(
-        0.98rem,
-        4vw,
-        1.12rem
-      );
-  }
-
-  .selectionInstructions p + p {
-    font-size:
-      clamp(
-        0.76rem,
-        3vw,
-        0.88rem
-      );
-
-    padding-top: 12px;
   }
 
   /* card sizing */
@@ -1510,28 +1050,10 @@ box-shadow:
     margin-bottom: 20px;
   }
 
-  .ritualSpread {
-    gap: 10px;
-    padding-inline: 8px;
-  }
-
-  .ritualSpread .cardBack {
-    flex: 1 1 0;
-
-    max-width: 92px;
-    min-width: 0;
-
-    width: auto;
-  }
-
   .ritualThread {
     margin-top: 18px;
   }
 
-  .error {
-    align-items: flex-start;
-    flex-direction: column;
-  }
 }
 
 /* ==================================================
@@ -1745,44 +1267,6 @@ box-shadow:
    ANIMATIONS
 
    ------------------------------ */
-
-@keyframes moonGlow {
-  0%,
-  100% {
-    filter: brightness(0.95);
-
-    box-shadow:
-      0 0 4px rgba(215, 181, 109, 0.25),
-      0 0 8px rgba(215, 181, 109, 0.12);
-
-    transform: scale(0.98);
-  }
-
-  50% {
-    filter: brightness(1.05);
-
-    box-shadow:
-      0 0 6px rgba(215, 181, 109, 0.4),
-      0 0 12px rgba(215, 181, 109, 0.18);
-
-    transform: scale(1);
-  }
-}
-
-@keyframes starBlink {
-  0%,
-  100% {
-    opacity: 0.65;
-    text-shadow: 0 0 0 rgba(215, 181, 109, 0);
-  }
-
-  50% {
-    opacity: 1;
-    text-shadow:
-      0 0 5px rgba(215, 181, 109, 0.65),
-      0 0 12px rgba(215, 181, 109, 0.35);
-  }
-}
 
 
 

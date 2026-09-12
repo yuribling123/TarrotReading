@@ -4,7 +4,6 @@ import { type FormEvent, useState } from "react";
 import { toast } from "@/components/ui/toast";
 import type { DivinationCatalyst, Language } from "@/lib/types";
 import { useRouter } from "next/navigation";
-import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button";
 import { Loading } from "./loading";
 import { Textarea } from "@/components/ui/textarea";
@@ -13,11 +12,8 @@ const maxQuestionLength = 250;
 
 type QuestionFormProps = {
   language: Language;
-  label: string;
   placeholder: string;
   submitLabel: string;
-  emptyQuestionMessage: string;
-  questionTooLongMessage: string;
   initialQuestion?: string;
   onSubmit: (question: string) => Promise<boolean>;
   isPending: boolean;
@@ -36,7 +32,6 @@ const catalystGlow: Record<DivinationCatalyst, string> = {
 export function QuestionForm({
   isPending,
   language,
-  label,
   placeholder,
   submitLabel,
   initialQuestion = "",
@@ -69,7 +64,6 @@ export function QuestionForm({
     <div>
 
       <form className="questionForm mb-20" onSubmit={submitQuestion}>
-        {/* <label htmlFor="question"  >{label}</label> */}
         <div className="w-full opacity-80">
           <Textarea
             id="question"

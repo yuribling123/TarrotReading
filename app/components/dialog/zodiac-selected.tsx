@@ -1,5 +1,3 @@
-import { StarBackground } from "../ui/stars";
-
 type SelectedZodiacProps = {
   zodiac: string;
 };

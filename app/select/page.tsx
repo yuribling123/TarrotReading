@@ -128,8 +128,6 @@ export default function SelectPage() {
         <ReadingLoading
           cards={selectedCards}
           complete={isReadingReady}
-          onRetry={() => void generateReading(selectedCards)}
-          retryLabel={text.retry}
           stages={text.loadingStages}
         />
       ) : (
@@ -138,7 +136,6 @@ export default function SelectPage() {
           language={language}
           deck={deck}
           selectedCards={selectedCards}
-          question={question}
           onSelect={selectCard}
           onReveal={revealCards}
           zodiac={zodiac}

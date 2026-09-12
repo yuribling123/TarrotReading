@@ -18,9 +18,8 @@ export function ReadingResult({
     <div>
       <ReadingVerdict verdict={reading.verdict} />
       <section className="reading border-0!">
-        {/* <p className="spreadLens ">{reading.spreadName}</p> */}
         <div className="readingGrid  ">
-          {reading.cards.map((card, index) => {
+          {reading.cards.map((card) => {
             return (
               <article
                 key={card.position}

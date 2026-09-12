@@ -12,7 +12,7 @@ function getToday() {
 
 // POST: 留下一次共鸣
 export async function POST(
-  request: Request,
+  _request: Request,
   { params }: { params: Promise<{ visitorId: string }> }
 ) {
   const { visitorId } = await params;

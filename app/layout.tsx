@@ -26,8 +26,6 @@ export default function RootLayout({
         <ReadingSessionProvider>
           <main className="shell">
             <section className="hero" aria-label="Moonlit tarot reading">
-              <div className="stars" />
-              <div className="aurora" />
               <Navigation />
               {children}
             </section>

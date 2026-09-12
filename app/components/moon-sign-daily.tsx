@@ -1,11 +1,7 @@
 "use client"
-import { messages } from "@/lib/i18n";
-
-import { getMoonSign, getMoonSignMessage } from "@/lib/moon/moon-sign";
+import { getMoonSign } from "@/lib/moon/moon-sign";
 
 export function DailyZodiac() {
-  const text = messages["zh"];
-
   const moonSign = getMoonSign();
 
   const now = new Date();

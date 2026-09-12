@@ -2,15 +2,12 @@
 
 import { useEffect, useState } from "react";
 
-import { ReadingError } from "@/app/components/reading-error";
 import { ReadingCardSpread } from "@/app/components/reading-card-spread";
 import type { TarotCard } from "@/lib/types";
 
 type ReadingLoadingProps = {
   cards: TarotCard[];
   complete: boolean;
-  onRetry: () => void;
-  retryLabel: string;
   stages: readonly string[];
 };
 

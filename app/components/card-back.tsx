@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 export function CardBack() {
   return (
     <span className="cardBackFace">

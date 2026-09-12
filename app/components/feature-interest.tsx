@@ -14,7 +14,6 @@ export function FeatureInterest({ language }: Props) {
     // React state: 修改后会自动重新渲染 UI
     const [liked, setLiked] = useState(false);
     const [count, setCount] = useState(0);
-    const [isHydrated, setIsHydrated] = useState(false);
 
     // 第一次加载时：加载真实 Redis 数量 + 检查用户是否点过
     useEffect(() => {
@@ -24,7 +23,6 @@ export function FeatureInterest({ language }: Props) {
             const response = await fetch("/api/feature-interest");
             const data = await response.json(); // HTTP Response object -> JS object
             setCount(data.count);
-            setIsHydrated(true);
         }
         loadInterest();
     }, []);

@@ -25,7 +25,7 @@ function getFields(visitorId: string) {
 
 // GET: 检查当前还能不能继续占卜
 export async function GET(
-  request: Request,
+  _request: Request,
   { params }: { params: Promise<{ visitorId: string }> }
 ) {
   const { visitorId } = await params;
@@ -62,7 +62,7 @@ export async function GET(
 
 // POST: 成功完成一次占卜
 export async function POST(
-  request: Request,
+  _request: Request,
   { params }: { params: Promise<{ visitorId: string }> }
 ) {
   const { visitorId } = await params;
@@ -78,4 +78,3 @@ export async function POST(
     count,
   });
 }
-

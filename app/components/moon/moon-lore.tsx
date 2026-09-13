@@ -23,7 +23,7 @@ export function MoonLore({ open, onClose }: MoonLoreProps) {
 
   return (
     <div
-      className="fixed inset-0 z-[60] flex items-start justify-center bg-transparent px-4 pb-8 pt-40 animate-in fade-in duration-300 sm:px-6 sm:pt-[140px]"
+      className="fixed inset-0 z-[60] flex items-start justify-center bg-transparent px-4 pb-8 pt-40 sm:px-6 sm:pt-[140px]"
       role="dialog"
       aria-modal="true"
       aria-labelledby="moon-lore-title"

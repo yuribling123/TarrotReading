@@ -3,11 +3,11 @@
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { messages } from "@/lib/i18n";
-import { QuestionSummary } from "@/app/components/question-summary";
-import { ReadingResult } from "@/app/components/reading-result";
-import { ReadingCardSpread } from "@/app/components/reading-card-spread";
-import { useReadingSession } from "@/app/components/reading-session-provider";
-import { FeedBack } from "../components/feedback";
+import { QuestionSummary } from "@/app/components/reading/question-summary";
+import { ReadingResult } from "@/app/components/reading/reading-result";
+import { ReadingCardSpread } from "@/app/components/cards/reading-card-spread";
+import { useReadingSession } from "@/app/components/reading/reading-session-provider";
+import { Feedback } from "@/app/components/reading/feedback";
 
 export default function ReadingPage() {
   const router = useRouter();
@@ -32,7 +32,7 @@ export default function ReadingPage() {
   }
 
   return (
-    <div className="content readingContent flex flex-col items-center">
+    <div className="readingContent relative z-[1] mx-auto flex w-full max-w-[1120px] flex-col items-center">
       <QuestionSummary 
         question={question}
       />
@@ -51,7 +51,7 @@ export default function ReadingPage() {
 
     
 
-      <FeedBack/>
+      <Feedback />
     </div>
   );
 }

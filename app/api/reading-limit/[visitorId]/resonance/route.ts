@@ -1,22 +1,16 @@
 import { NextResponse } from "next/server";
 import { redis } from "@/lib/redis/redis";
+import { getShanghaiDateKey } from "@/lib/date/shanghai";
 
 const KEY = "reading_limit";
 
-//返回日期："2026-09-02"
-function getToday() {
-  return new Intl.DateTimeFormat("en-CA", {
-    timeZone: "Asia/Shanghai",
-  }).format(new Date());
-}
-
 // POST: 留下一次共鸣
 export async function POST(
-  request: Request,
+  _request: Request,
   { params }: { params: Promise<{ visitorId: string }> }
 ) {
   const { visitorId } = await params;
-  const today = getToday();
+  const today = getShanghaiDateKey();
 
   const resonanceField =
     `${visitorId}:${today}:resonance`;

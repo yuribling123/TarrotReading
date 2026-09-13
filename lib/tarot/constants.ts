@@ -1,7 +1,3 @@
-import type { TarotCard } from "@/lib/types";
-
-export const SPREAD_POSITIONS = ["Situation", "Hidden Influence", "Guidance"] as const;
-
 export const tarotDeck = [
   // Major Arcana
   "The Fool",

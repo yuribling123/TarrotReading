@@ -1,16 +1,7 @@
-import { NextResponse } from "next/server";
-import { redis } from "@/lib/redis/redis";
+import { createCounterHandlers } from "@/lib/redis/counter";
 
 const KEY = "tarot_astrology_interest";
-//查人数
-export async function GET() {
-  const count = (await redis.get<number>(KEY)) ?? 0;
+const handlers = createCounterHandlers(KEY);
 
-  return NextResponse.json({ count });
-}
-//更新人数
-export async function POST() {
-  const count = await redis.incr(KEY);
-
-  return NextResponse.json({ count });
-}
+export const GET = handlers.GET;
+export const POST = handlers.POST;

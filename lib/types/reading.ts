@@ -8,14 +8,14 @@ export type ReadingSessionData = {
   language: Language;
   question: string;
   selectedIndexes: number[];
-  cards:  TarotCard [];
+  cards: TarotCard[];
   reading: ReadingResponse | null;
   feedback: boolean;
 };
 
 export type ReadingRequest = {
   question: string;
-  cards:  TarotCard[];
+  cards: TarotCard[];
   language: Language;
-   zodiac: string|null;
+  zodiac: string | null;
 };

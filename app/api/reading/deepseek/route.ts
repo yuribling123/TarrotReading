@@ -2,6 +2,8 @@ import OpenAI from "openai";
 import { NextResponse } from "next/server";
 import { tarotReadingPrompt } from "@/lib/ai/prompt";
 import { tarotReadingSchema } from "@/lib/ai/schema";
+import { toReadingInputCards } from "@/lib/ai/reading-input";
+import { readingGenerationErrorResponse } from "@/lib/ai/responses";
 import type {
   GeneratedTarotReading,
   ReadingRequest,
@@ -35,11 +37,7 @@ ${JSON.stringify(tarotReadingSchema)}
           content: JSON.stringify({
             language,
             question,
-            cards: cards.map((card, index) => ({
-              order: index + 1,
-              name: card.name,
-              orientation: card.orientation,
-            })),
+            cards: toReadingInputCards(cards),
           }),
         },
       ],
@@ -62,13 +60,7 @@ ${JSON.stringify(tarotReadingSchema)}
 
     return NextResponse.json(generatedReading);
   } catch (error) {
-     return NextResponse.json(
-    {
-      success: false,
-      error: "Failed to generate tarot reading",
-    },
-    { status: 500 }
-  );
+    return readingGenerationErrorResponse();
 
   }
 }

@@ -8,9 +8,8 @@ export type GeneratedCardReading = {
 export type GeneratedTarotReading = {
   spreadName: string;
   cards: GeneratedCardReading[];
-  verdict:string;
+  verdict: string;
   answer: string;
   guidance: string;
-  zodiac:string | null;
- 
+  zodiac: string | null;
 };

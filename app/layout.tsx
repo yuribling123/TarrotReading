@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { Navigation } from "@/app/components/navigation";
-import { ReadingSessionProvider } from "@/app/components/reading-session-provider";
+import { Navigation } from "@/app/components/shared/navigation";
+import { ReadingSessionProvider } from "@/app/components/reading/reading-session-provider";
 import { Toaster } from "@/components/ui/toast";
 import "./globals.css";
 import { cn } from "@/lib/utils";
@@ -24,10 +24,8 @@ export default function RootLayout({
         <Toaster />
         <Analytics />
         <ReadingSessionProvider>
-          <main className="shell">
-            <section className="hero" aria-label="Moonlit tarot reading">
-              <div className="stars" />
-              <div className="aurora" />
+          <main className="min-h-screen overflow-hidden max-[520px]:min-h-svh max-[520px]:overflow-x-hidden">
+            <section className="hero relative flex min-h-screen items-center bg-transparent text-[var(--night)]" aria-label="Moonlit tarot reading">
               <Navigation />
               {children}
             </section>

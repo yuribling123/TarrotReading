@@ -3,13 +3,14 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
-import { CardSelect } from "@/app/components/card-select";
-import { ReadingLoading } from "@/app/components/reading-loading";
-import { useReadingSession } from "@/app/components/reading-session-provider";
+import { CardSelect } from "@/app/components/selection/card-select";
+import { ReadingLoading } from "@/app/components/reading/reading-loading";
+import { useReadingSession } from "@/app/components/reading/reading-session-provider";
 import { messages } from "@/lib/i18n";
 import { shuffleDeck } from "@/lib/tarot/deck";
 import type { ReadingResponse, TarotCard } from "@/lib/types";
 import { getVisitorId } from "@/lib/visitor/visitor-id";
+import { isZodiacReadingAvailable } from "@/lib/zodiac/availability";
 
 
 export default function SelectPage() {
@@ -97,8 +98,7 @@ export default function SelectPage() {
       return;
     }
      // 周五、六、日，而且还没选星座 → 打开星座弹窗
-    const day = new Date().getDay();
-    const zodiacAvailable = day === 5 || day === 6 || day === 0;
+    const zodiacAvailable = isZodiacReadingAvailable();
     if (zodiacAvailable && !zodiac) {
         setZodiacOpen(true);
         return;
@@ -121,15 +121,13 @@ export default function SelectPage() {
 
   return (
     <div
-      className={`content selectionContent ${isRevealing ? "ritualContent" : ""
+      className={`selectionContent relative z-[1] mx-auto w-full max-w-[1120px] ${isRevealing ? "translate-y-1 max-[520px]:translate-y-0" : "-translate-y-20 max-[520px]:translate-y-0"
         }`}
     >
       {isRevealing ? (
         <ReadingLoading
           cards={selectedCards}
           complete={isReadingReady}
-          onRetry={() => void generateReading(selectedCards)}
-          retryLabel={text.retry}
           stages={text.loadingStages}
         />
       ) : (
@@ -138,7 +136,6 @@ export default function SelectPage() {
           language={language}
           deck={deck}
           selectedCards={selectedCards}
-          question={question}
           onSelect={selectCard}
           onReveal={revealCards}
           zodiac={zodiac}

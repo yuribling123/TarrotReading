@@ -13,7 +13,7 @@ export default function ErrorPage() {
       </h1>
 
       <p className="mt-2 text-gray-400">
-        We couldn't generate your tarot reading.
+        We couldn&apos;t generate your tarot reading.
       </p>
 
       <Button 

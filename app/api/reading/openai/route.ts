@@ -2,6 +2,8 @@ import OpenAI from "openai";
 import { NextResponse } from "next/server";
 import { tarotReadingPrompt } from "@/lib/ai/prompt";
 import { tarotReadingSchema } from "@/lib/ai/schema";
+import { toReadingInputCards } from "@/lib/ai/reading-input";
+import { readingGenerationErrorResponse } from "@/lib/ai/responses";
 import type { GeneratedTarotReading, ReadingRequest } from "@/lib/types";
 
 // Calls the OpenAI API to generate a tarot reading based on the user's question and selected cards
@@ -16,11 +18,7 @@ export async function POST(request: Request) {
       language,
       question,
       zodiac,
-      cards: cards.map((card, index) => ({
-        order: index + 1,
-        name: card.name,
-        orientation: card.orientation,
-      })),
+      cards: toReadingInputCards(cards),
     };
 
     console.log("Reading input:", readingInput);
@@ -49,13 +47,7 @@ export async function POST(request: Request) {
     return NextResponse.json(generatedReading);
   } catch (error) {
     console.error("Reading generation failed", error);
-    return NextResponse.json(
-      {
-        success: false,
-        error: "Failed to generate tarot reading",
-      },
-      { status: 500 }
-    );
+    return readingGenerationErrorResponse();
 
   }
 }

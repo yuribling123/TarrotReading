@@ -1,4 +1,4 @@
-import type { Language, MoonPhase } from "@/lib/types";
+import type { MoonPhase } from "@/lib/types";
 
 
 export function getMoonPhase(date = new Date()) {

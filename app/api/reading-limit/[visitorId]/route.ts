@@ -1,20 +1,13 @@
 import { NextResponse } from "next/server";
 import { redis } from "@/lib/redis/redis";
+import { getShanghaiDateKey } from "@/lib/date/shanghai";
 
 const KEY = "reading_limit";
 const LIMIT = 1; //1
 const DAILY_LIMIT = 4; //3
 
-//返回日期："2026-09-02"
-function getToday() {
-  return new Intl.DateTimeFormat("en-CA", {
-    timeZone: "Asia/Shanghai",
-  }).format(new Date());
-}
-
-
 function getFields(visitorId: string) {
-  const today = getToday();
+  const today = getShanghaiDateKey();
 
   return {
     countField: `${visitorId}:${today}:count`,
@@ -25,7 +18,7 @@ function getFields(visitorId: string) {
 
 // GET: 检查当前还能不能继续占卜
 export async function GET(
-  request: Request,
+  _request: Request,
   { params }: { params: Promise<{ visitorId: string }> }
 ) {
   const { visitorId } = await params;
@@ -62,7 +55,7 @@ export async function GET(
 
 // POST: 成功完成一次占卜
 export async function POST(
-  request: Request,
+  _request: Request,
   { params }: { params: Promise<{ visitorId: string }> }
 ) {
   const { visitorId } = await params;
@@ -78,4 +71,3 @@ export async function POST(
     count,
   });
 }
-

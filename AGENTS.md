@@ -43,6 +43,7 @@
 - Put image assets under `public/images/`; create purpose-specific subfolders when useful.
 - Use existing public asset paths.
 - Use Tailwind CSS classes for component-local layout, spacing, sizing, colors, borders, and responsive rules.
+- Prefer canonical Tailwind utility classes when an equivalent exists. For example, use `h-19` instead of `h-[76px]` because both represent 76px. Use arbitrary values such as `top-[26px]` only when no canonical utility expresses the exact value clearly.
 - Keep `app/globals.css` limited to theme variables, reset rules, shared keyframes, complex pseudo-elements, dynamic/cross-component selectors, browser compatibility rules, and styles that cannot be expressed clearly with Tailwind.
 - Before adding a rule to `globals.css`, check whether Tailwind can express it clearly. Do not duplicate equivalent rules.
 - Do not change existing breakpoints, dimensions, colors, spacing, z-index values, or animation durations during structural cleanup.

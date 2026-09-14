@@ -604,6 +604,31 @@ h1 {
 /* ==================================================
    ANIMATIONS
    ================================================== */
+@keyframes home-moon-dust {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  15% {
+    opacity: 0.9;
+  }
+
+  75% {
+    opacity: 0.7;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+}
+
+.home-moon-dust {
+  animation-name: home-moon-dust;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
 
 @keyframes ritualMoonBreath {
   0%,

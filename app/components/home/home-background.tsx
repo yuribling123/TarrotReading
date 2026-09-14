@@ -1,5 +1,12 @@
 import { HomeLunarPath } from "./home-lunar-path";
 
+const moonDust = [
+  { left: "28%", delay: "0s", duration: "5s", size: "5px", color: "#cdb9d3", type: "dot" },
+  { left: "40%", delay: "2s", duration: "6s", size: "6px", color: "#cdb9d3", type: "star" },
+  { left: "48%", delay: "4s", duration: "6s", size: "6px", color: "#cdb9d3", type: "star" },
+  { left: "52%", delay: "1s", duration: "7s", size: "4px", color: "#cdb9d3", type: "dot" },
+  { left: "65%", delay: "5s", duration: "5s", size: "5px", color: "#cdb9d3", type: "dot" },
+];
 export function HomeBackground() {
   return (
     <div
@@ -7,6 +14,40 @@ export function HomeBackground() {
       inert
       className="pointer-events-none absolute inset-x-0 bottom-0 top-[76px] overflow-hidden"
     >
+
+
+      {/* 月尘 */}
+      {moonDust.map((dust, index) => (
+        <span
+          key={index}
+          className="home-moon-dust absolute bottom-[8%]"
+          style={{
+            left: dust.left,
+            animationDelay: dust.delay,
+            animationDuration: dust.duration,
+            color: dust.color,
+          }}
+        >
+          {dust.type === "star" ? (
+            <span
+              className="home-moon-dust-star block text-[12px] drop-shadow-[0_0_7px_currentColor]"
+            >
+              ✦
+            </span>
+          ) : (
+            <span
+              className="block rounded-full shadow-[0_0_8px_currentColor]"
+              style={{
+                width: dust.size,
+                height: dust.size,
+                backgroundColor: dust.color,
+              }}
+            />
+          )}
+        </span>
+      ))}
+
+
       <HomeLunarPath className="absolute bottom-[calc(env(safe-area-inset-bottom)+2.25rem)] left-1/2 -translate-x-1/2 md:bottom-6" />
     </div>
   );

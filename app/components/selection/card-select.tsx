@@ -4,12 +4,13 @@ import type { Language, TarotCard } from "@/lib/types";
 import { ZodiacReadingOption } from "@/app/components/zodiac/zodiac-reading";
 import { Button } from "@/components/ui/button";
 import { OpeningRitual } from "./ritual";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { SelectedZodiac } from "@/app/components/zodiac/zodiac-selected";
 import { SelectedCardSlots } from "@/app/components/cards/selected-card-slots";
 import { SelectionShootingStars } from "./selection-shooting-stars";
 import { StarBackground } from "@/app/components/shared/stars";
 import { useCardFlight } from "./use-card-flight";
+import { ShootingStars } from "../shared/shooting-star";
 
 type CardSelectProps = {
   language: Language;
@@ -35,6 +36,7 @@ export function CardSelect({
   onReveal,
 }: CardSelectProps) {
   // Only reveal when three cards selected
+
   const [ritualDone, setRitualDone] = useState(false);
   const canReveal = selectedCards.length === 3;
   const text = messages[language];
@@ -45,6 +47,25 @@ export function CardSelect({
     selectFromFan,
     slotsRef,
   } = useCardFlight({ onSelect, selectedCards });
+
+
+ 
+
+  // 仪式还没结束：只显示仪式
+
+  if (!ritualDone) {
+
+    return (
+
+      <OpeningRitual
+
+        onComplete={() => setRitualDone(true)}
+
+      />
+
+    );
+
+  }
 
 
 
@@ -60,6 +81,7 @@ export function CardSelect({
   return (
     <div >
       <section className="px-5 pt-60 [--selection-card-width:90px]  max-[860px]:[--selection-card-width:102px] max-[520px]:flex max-[520px]:h-[calc(100svh-76px)] max-[520px]:flex-col max-[520px]:pt-30  max-[520px]:[--selection-card-width:clamp(50px,19vw,82px)]">
+      
         <div className="relative flex h-11 shrink-0 items-start justify-center overflow-visible">
           {selectedCards.length === 0 ? (
             <p className="animate-in text-center text-[12px] tracking-[0.08em] text-[#7f5b1f] fade-in duration-300">

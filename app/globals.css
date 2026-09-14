@@ -177,12 +177,6 @@ h1 {
    CARD SELECTION
    ================================================== */
 
-/* Keep the selection stage anchored to the viewport while the fan scrolls horizontally. */
-.hero:has(.selectionContent) {
-  height: 100svh;
-  min-height: 0;
-  overflow: hidden;
-}
 
 @keyframes selected-card-flip {
   from { transform: rotateY(0deg); }
@@ -411,21 +405,7 @@ h1 {
    ================================================== */
 
 .readingRitual {
-  align-items: center;
 
-  display: flex;
-  flex-direction: column;
-
-  margin: 0 auto;
-
-  max-width: 820px;
-  min-height: 610px;
-
-  padding: 16px 24px 30px;
-
-  text-align: center;
-
-  width: 100%;
 }
 
 .ritualSky {
@@ -749,19 +729,7 @@ h1 {
     min-height: 154px;
   }
 
-  /* reading */
 
-  .readingRitual {
-    min-height: 560px;
-    padding: 16px 8px 30px;
-  }
-
-  .hero:has(.readingContent),
-  .hero:has(.readingRitual) {
-    align-items: center;
-    padding-bottom: 14px;
-    padding-top: 44px;
-  }
 }
 
 /* ==================================================
@@ -807,10 +775,7 @@ h1 {
 
   /* reading */
 
-  .readingRitual {
-    min-height: 560px;
-    padding: 16px 8px 30px;
-  }
+
 
   .ritualSky {
     height: 68px;
@@ -957,6 +922,32 @@ h1 {
 
 .moonlit-letter-spark {
   animation: moonlit-letter-spark 5.2s ease-out infinite;
+}
+
+@keyframes selection-shooting-star {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 0, 0) rotate(-28deg) scaleX(0.55);
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  70% {
+    opacity: 0.9;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(-280px, 150px, 0) rotate(-28deg) scaleX(1);
+  }
+}
+
+.selection-shooting-star {
+  animation-name: selection-shooting-star;
+  animation-timing-function: ease-out;
+  animation-iteration-count: infinite;
 }
 
 @keyframes moonlit-letter-spark-secondary {

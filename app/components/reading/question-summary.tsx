@@ -5,7 +5,7 @@ type QuestionSummaryProps = {
 export function QuestionSummary({ question }: QuestionSummaryProps) {
   return (
     <>
-      <div className="mt-16 flex justify-center sm:mt-24 lg:mt-32">
+      <div className="mt-30 flex justify-center sm:mt-30 lg:mt-35">
         <span className="text-[0.82rem]!  font-medium drop-shadow-[0_1px_1px_rgba(60,55,50,0.28)]  tracking-[0.28em] text-[#70627D]">
           今夜所问
         </span>

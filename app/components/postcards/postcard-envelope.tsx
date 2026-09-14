@@ -9,10 +9,10 @@ export function PostcardEnvelope({ isRead, isReady, onOpen }: PostcardEnvelopePr
     <button
       type="button"
       onClick={onOpen}
-      className={`group fixed right-4 top-[96px] z-20 h-9 w-11 overflow-visible bg-transparent drop-shadow-[0_5px_9px_rgba(91,69,105,0.14)] transition duration-300 hover:-translate-x-1 sm:right-3 sm:top-[104px] ${isReady ? "opacity-100" : "pointer-events-none opacity-0"}`}
+      className={`group fixed right-4 top-[96px] z-20 h-9 w-11 overflow-visible bg-transparent drop-shadow-[0_5px_9px_rgba(91,69,105,0.14)] transition duration-300 hover:-translate-x-1 sm:right-3 sm:top-[104px] ${isReady ? "opacity-100" : "pointer-events-none opacity-0"} ${!isRead ? "animate-bounce" : ""} ` }
       aria-label={isRead ? "重新查看月之彼岸的今日来信" : "打开月之彼岸的今日来信"}
     >
-      <span className="relative block h-full w-full">
+      <span className="relative block h-full w-full ">
         <svg viewBox="0 0 58 48" className="absolute inset-0 z-10 size-full text-[#897491]" fill="none" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
           <rect x="7" y="9.5" width="44" height="31" rx="4.5" fill="#fbfaf8" stroke="currentColor" strokeWidth=".85" opacity=".96" />
           <path d="M7 12.5 29 29l22-16.5" stroke="currentColor" strokeWidth=".85" opacity=".52" />

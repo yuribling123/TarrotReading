@@ -17,7 +17,7 @@
   --primary: #7f5b1f;/* 月光金 */
   --secondary: #292438;  /* 月夜紫 */
 
-  --background: #fffdf9;
+  --background: #fffefc;
   --foreground: oklch(0.145 0 0);
 
   --card: oklch(1 0 0);
@@ -843,90 +843,68 @@ h1 {
 
    ================================================== */
 
-/* ------------------------------
 
-   MOON BASE
-
-   ------------------------------ */
 
 .moonIcon {
+  position: relative;
+
+  display: block;
 
   width: 25px;
-
   height: 25px;
+  min-width: 25px;
+  min-height: 25px;
+  aspect-ratio: 1 / 1;
 
-  flex-shrink: 0;
+  flex: none;
 
   overflow: hidden;
-
   border-radius: 50%;
 
   background: #e3c36d;
-
-  /* box-shadow:
-
-    0 0 8px
-
-    rgba(215, 181, 109, 0.4),
-
-    0 0 18px
-
-    rgba(215, 181, 109, 0.16); */
-
-  /* animation:
-
-    moonGlow
-
-    6s
-
-    ease-in-out
-
-    infinite; */
-
 }
 
-/* dark part of moon */
-
 .moonIcon::after {
-
   content: "";
 
   position: absolute;
-
-  inset: 0;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
 
   border-radius: 50%;
 
-  background: #FFFFFE;
-
+  background: var(--background);
 }
-
-
-/* ------------------------------
-   NEW MOON
-   ------------------------------ */
-
-.moon-newMoon {
-  background: #171526;
-
-  border:
-    1px solid
-    rgba(215, 181, 109, 0.45);
-}
-
-.moon-newMoon::after {
-  display: none;
-}
-
-
-/* ------------------------------
-   WAXING CRESCENT
-   ------------------------------ */
 
 .moon-waxingCrescent::after {
   transform: translateX(-32%);
 }
 
+.moon-firstQuarter::after {
+  transform: translateX(-50%);
+}
+
+.moon-waxingGibbous::after {
+  transform: translateX(-80%);
+}
+
+.moon-fullMoon::after {
+  display: none;
+}
+
+.moon-waningGibbous::after {
+  transform: translateX(80%);
+}
+
+.moon-lastQuarter::after {
+  transform: translateX(50%);
+}
+
+.moon-waningCrescent::after {
+  transform: translateX(32%);
+}
 
 /* ------------------------------
    FIRST QUARTER
@@ -936,102 +914,6 @@ h1 {
   left: -50%;
   right: 50%;
 }
-
-
-/* ------------------------------
-   WAXING GIBBOUS
-   ------------------------------ */
-
-.moon-waxingGibbous::after {
-  transform: translateX(-80%);
-}
-
-
-/* ------------------------------
-   FULL MOON
-   ------------------------------ */
-
-.moon-fullMoon::after {
-  display: none;
-}
-
-
-/* ------------------------------
-   WANING GIBBOUS
-   ------------------------------ */
-
-.moon-waningGibbous::after {
-  transform: translateX(80%);
-}
-
-
-/* ------------------------------
-   LAST QUARTER
-   ------------------------------ */
-
-.moon-lastQuarter::after {
-  left: 50%;
-  right: -50%;
-}
-
-
-/* ------------------------------
-   WANING CRESCENT
-   ------------------------------ */
-
-.moon-waningCrescent::after {
-  transform: translateX(32%);
-}
-
-/* Homepage background: two complete discs whose overlap follows the moon phase. */
-.overlapMoon .moonIcon {
-  background: #e3c36d;
-  border: 0;
-  overflow: visible;
-}
-
-.overlapMoon .moonIcon::after {
-  background:  #FFFFFF;
-  display: block;
-  inset: 0;
-  left: 0;
-  right: 0;
-  box-shadow: 0 0 22px rgba(255, 250, 240, 0.24);
-  transition: transform 600ms ease;
-}
-
-.overlapMoon .moon-newMoon::after {
-  transform: translateX(0);
-}
-
-.overlapMoon .moon-waxingCrescent::after {
-  transform: translateX(-20%);
-}
-
-.overlapMoon .moon-firstQuarter::after {
-  transform: translateX(-52%);
-}
-
-.overlapMoon .moon-waxingGibbous::after {
-  transform: translateX(-82%);
-}
-
-.overlapMoon .moon-fullMoon::after {
-  transform: translateX(-115%);
-}
-
-.overlapMoon .moon-waningGibbous::after {
-  transform: translateX(82%);
-}
-
-.overlapMoon .moon-lastQuarter::after {
-  transform: translateX(52%);
-}
-
-.overlapMoon .moon-waningCrescent::after {
-  transform: translateX(20%);
-}
-
 
 
 

@@ -46,7 +46,7 @@ export function ReadingLoading({
 
       {/* 原本 Loading 内容 */}
       <section
-        className={`readingRitual relative z-10 mx-auto flex w-full flex-col items-center px-6 pt-60 text-center ${complete ? "complete" : ""
+        className={`readingRitual relative z-10 mx-auto flex w-full flex-col items-center px-6 pt-40 text-center ${complete ? "complete" : ""
           }`}
         aria-live="polite"
       >

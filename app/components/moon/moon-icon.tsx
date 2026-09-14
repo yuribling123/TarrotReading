@@ -21,7 +21,7 @@ export function MoonIcon({ language, onClick }: MoonIconProps) {
         aria-label={language === "zh" ? "阅读月亮的故事" : "Read the story of the moon"}
       >
         <div
-          className={`moonIcon moon-${phase}  scale-200`}
+          className={`moonIcon moon-${phase}  scale-160`}
           aria-hidden="true"
         />
       </button>

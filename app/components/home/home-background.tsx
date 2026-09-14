@@ -2,10 +2,10 @@ import { HomeLunarPath } from "./home-lunar-path";
 
 const moonDust = [
   { left: "28%", delay: "0s", duration: "5s", size: "5px", color: "#cdb9d3", type: "dot" },
-  { left: "40%", delay: "2s", duration: "6s", size: "6px", color: "#cdb9d3", type: "star" },
-  { left: "48%", delay: "4s", duration: "6s", size: "6px", color: "#cdb9d3", type: "star" },
-  { left: "52%", delay: "1s", duration: "7s", size: "4px", color: "#cdb9d3", type: "dot" },
-  { left: "65%", delay: "5s", duration: "5s", size: "5px", color: "#cdb9d3", type: "dot" },
+  { left: "40%", delay: "-2s", duration: "6s", size: "6px", color: "#cdb9d3", type: "star" },
+  { left: "48%", delay: "-4s", duration: "6s", size: "6px", color: "#cdb9d3", type: "star" },
+  { left: "52%", delay: "-1s", duration: "7s", size: "4px", color: "#cdb9d3", type: "dot" },
+  { left: "65%", delay: "-4s", duration: "5s", size: "5px", color: "#cdb9d3", type: "dot" },
 ];
 export function HomeBackground() {
   return (

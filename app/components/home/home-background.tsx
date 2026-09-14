@@ -48,7 +48,7 @@ export function HomeBackground() {
       ))}
 
 
-      <HomeLunarPath className="absolute bottom-[calc(env(safe-area-inset-bottom)+1.25rem)] left-1/2 -translate-x-1/2 md:bottom-6" />
+      {/* <HomeLunarPath className="absolute bottom-[calc(env(safe-area-inset-bottom)+1.25rem)] left-1/2 -translate-x-1/2 md:bottom-6" /> */}
     </div>
   );
 }

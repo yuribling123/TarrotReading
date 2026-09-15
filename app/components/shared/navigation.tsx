@@ -25,17 +25,17 @@ export function Navigation() {
         className="pointer-events-none absolute left-1/2 top-[49px] flex -translate-x-1/2 items-center gap-[5px]"
         aria-hidden="true"
       >
-        <span className="h-px w-6 bg-gradient-to-r from-transparent to-[#b89755]/40" />
+        <span className="h-px w-6 bg-[#b89755]/40" />
 
         <span className="text-[6px] leading-none text-[#b89755]/70">·</span>
 
-        <span className="text-[7px] animate-[starBreath_4s_ease-in-out_infinite] leading-none text-[#9b72c7]/70">
+        <span className="text-[7px]  leading-none text-[#9b72c7]/70">
           ✦
         </span>
 
         <span className="text-[6px] leading-none text-[#b89755]/70">·</span>
 
-        <span className="h-px w-6 bg-gradient-to-l from-transparent to-[#b89755]/40" />
+        <span className="h-px w-6 bg-[#b89755]/40" />
       </div>
     </nav>
   );

@@ -121,7 +121,7 @@ export default function SelectPage() {
 
   return (
     <div
-      className={`selectionContent overflow-y-hidden relative z-[1] mx-auto w-full max-w-[1120px] ${isRevealing ? "translate-y-1 max-[520px]:translate-y-0" : "-translate-y-20 max-[520px]:translate-y-0"
+      className={`selectionContent overflow-hidden relative z-[1] mx-auto w-full max-w-[1120px] ${isRevealing ? "translate-y-1 max-[520px]:translate-y-0" : "-translate-y-20 max-[520px]:translate-y-0"
         }`}
     >
       {isRevealing ? (

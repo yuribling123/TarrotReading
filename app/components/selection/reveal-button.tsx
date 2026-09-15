@@ -137,7 +137,7 @@ export function HoldToRevealButton({
   }, []);
 
   return (
-    <div className="flex flex-col items-center gap-2 mt-30  md:mt-28 lg:mt-32">
+    <div className="flex flex-col items-center gap-2">
       <div className="relative flex size-[64px] items-center justify-center">
         {/* 外围淡淡的光 */}
         <span
@@ -170,7 +170,7 @@ export function HoldToRevealButton({
               {/* 紫色星屑：和泡泡完全一样的移动方式 */}
               <span className="floating-symbol star-purple float-left">✧</span>
 
-             
+
 
               {/* 月尘 */}
               <span className="moon-dust dust-purple">·</span>

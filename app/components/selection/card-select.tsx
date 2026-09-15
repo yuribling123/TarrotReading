@@ -63,7 +63,7 @@ export function CardSelect({
   return (
     <div >
       <section className="px-5 pt-60 [--selection-card-width:90px]  max-[860px]:[--selection-card-width:102px] max-[520px]:flex max-[520px]:h-[calc(100svh-76px)] max-[520px]:flex-col max-[520px]:pt-20  max-[520px]:[--selection-card-width:clamp(50px,19vw,82px)]">
-      
+
         <div className="relative flex h-11 shrink-0 items-start justify-center overflow-visible">
           {selectedCards.length === 0 ? (
             <p className="animate-in text-center text-[12px] tracking-[0.08em] text-[#7f5b1f] fade-in duration-300">
@@ -71,7 +71,7 @@ export function CardSelect({
             </p>
           ) : (
             <SelectionShootingStars
-             isChanneling={isChanneling}
+              isChanneling={isChanneling}
               count={selectedCards.length}
               label={text.chosenHint.replace("{count}", String(selectedCards.length))}
             />
@@ -88,26 +88,14 @@ export function CardSelect({
             onFlightComplete={completeFlightMotion}
           />
         </div>
-
-        <div className="flex h-19 items-center justify-center ">
+        
+        <div className="mt-10 h-10 md:mt-28 lg:mt-32">
           {canReveal && (
-            // <div className="relative animate-in fade-in slide-in-from-bottom-1 fill-mode-both [animation-delay:180ms] [animation-duration:520ms]">
-            //   <span aria-hidden="true" className="pointer-events-none absolute inset-0 animate-[selection-reveal-ripple_3s_ease-out_infinite] rounded-full border border-[#c9a45a]/38 motion-reduce:hidden" />
-            //   <span aria-hidden="true" className="pointer-events-none absolute inset-0 animate-[selection-reveal-ripple_3s_ease-out_1.5s_infinite] rounded-full border border-[#d8bd80]/28 motion-reduce:hidden" />
-            //   <Button
-            //     variant="secondary"
-            //     onClick={onReveal}
-            //     className="relative z-10 flex h-11 min-w-36 items-center gap-2 rounded-full border border-[#b58a3f]/42 bg-[#fffdf8]/92 px-6 text-[13px] font-medium tracking-[0.12em] text-[#6f501d]/90 shadow-[0_5px_18px_rgba(155,114,42,0.14)] backdrop-blur-sm transition-[transform,border-color,box-shadow,background-color] duration-200 hover:border-[#b58a3f]/60 hover:bg-[#fffdf8] active:scale-[0.97] active:bg-[#fff8e6] active:shadow-[0_0_0_5px_rgba(230,203,126,0.12),0_0_18px_rgba(201,154,69,0.30)]"
-            //   >
-            //     <span className="animate-in fade-in fill-mode-both [animation-delay:360ms] [animation-duration:420ms]">
-            //       {text.reveal}
-            //     </span>
-            //   </Button>
-            // </div>
-            <div>
-              <HoldToRevealButton onComplete={onReveal} holdDuration={4000} onHoldingChange={setIsChanneling}></HoldToRevealButton>
-              
-            </div>
+            <HoldToRevealButton
+              onComplete={onReveal}
+              holdDuration={2500}
+              onHoldingChange={setIsChanneling}
+            />
           )}
         </div>
 

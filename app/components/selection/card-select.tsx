@@ -88,14 +88,16 @@ export function CardSelect({
             onFlightComplete={completeFlightMotion}
           />
         </div>
-        
-        <div className="mt-12 flex h-12 shrink-0 items-start justify-center md:mt-28 lg:mt-32">
+
+        <div className="relative mt-10 h-0 flex justify-center md:mt-28 lg:mt-32">
           {canReveal && (
-            <HoldToRevealButton
-              onComplete={onReveal}
-              holdDuration={2500}
-              onHoldingChange={setIsChanneling}
-            />
+            <div className="absolute top-0 z-20">
+              <HoldToRevealButton
+                onComplete={onReveal}
+                holdDuration={2500}
+                onHoldingChange={setIsChanneling}
+              />
+            </div>
           )}
         </div>
 

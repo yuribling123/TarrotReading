@@ -11,6 +11,7 @@ import { SelectionShootingStars } from "./selection-shooting-stars";
 import { StarBackground } from "@/app/components/shared/stars";
 import { useCardFlight } from "./use-card-flight";
 import { ShootingStars } from "../shared/shooting-star";
+import { HoldToRevealButton } from "./reveal-button";
 
 type CardSelectProps = {
   language: Language;
@@ -47,26 +48,6 @@ export function CardSelect({
     selectFromFan,
     slotsRef,
   } = useCardFlight({ onSelect, selectedCards });
-
-
- 
-
-  // 仪式还没结束：只显示仪式
-
-  if (!ritualDone) {
-
-    return (
-
-      <OpeningRitual
-
-        onComplete={() => setRitualDone(true)}
-
-      />
-
-    );
-
-  }
-
 
 
   // 仪式还没结束：只显示仪式
@@ -108,18 +89,22 @@ export function CardSelect({
 
         <div className="flex h-19 items-center justify-center pt-6 ">
           {canReveal && (
-            <div className="relative animate-in fade-in slide-in-from-bottom-1 fill-mode-both [animation-delay:180ms] [animation-duration:520ms]">
-              <span aria-hidden="true" className="pointer-events-none absolute inset-0 animate-[selection-reveal-ripple_3s_ease-out_infinite] rounded-full border border-[#c9a45a]/38 motion-reduce:hidden" />
-              <span aria-hidden="true" className="pointer-events-none absolute inset-0 animate-[selection-reveal-ripple_3s_ease-out_1.5s_infinite] rounded-full border border-[#d8bd80]/28 motion-reduce:hidden" />
-              <Button
-                variant="secondary"
-                onClick={onReveal}
-                className="relative z-10 flex h-11 min-w-36 items-center gap-2 rounded-full border border-[#b58a3f]/42 bg-[#fffdf8]/92 px-6 text-[13px] font-medium tracking-[0.12em] text-[#6f501d]/90 shadow-[0_5px_18px_rgba(155,114,42,0.14)] backdrop-blur-sm transition-[transform,border-color,box-shadow,background-color] duration-200 hover:border-[#b58a3f]/60 hover:bg-[#fffdf8] active:scale-[0.97] active:bg-[#fff8e6] active:shadow-[0_0_0_5px_rgba(230,203,126,0.12),0_0_18px_rgba(201,154,69,0.30)]"
-              >
-                <span className="animate-in fade-in fill-mode-both [animation-delay:360ms] [animation-duration:420ms]">
-                  {text.reveal}
-                </span>
-              </Button>
+            // <div className="relative animate-in fade-in slide-in-from-bottom-1 fill-mode-both [animation-delay:180ms] [animation-duration:520ms]">
+            //   <span aria-hidden="true" className="pointer-events-none absolute inset-0 animate-[selection-reveal-ripple_3s_ease-out_infinite] rounded-full border border-[#c9a45a]/38 motion-reduce:hidden" />
+            //   <span aria-hidden="true" className="pointer-events-none absolute inset-0 animate-[selection-reveal-ripple_3s_ease-out_1.5s_infinite] rounded-full border border-[#d8bd80]/28 motion-reduce:hidden" />
+            //   <Button
+            //     variant="secondary"
+            //     onClick={onReveal}
+            //     className="relative z-10 flex h-11 min-w-36 items-center gap-2 rounded-full border border-[#b58a3f]/42 bg-[#fffdf8]/92 px-6 text-[13px] font-medium tracking-[0.12em] text-[#6f501d]/90 shadow-[0_5px_18px_rgba(155,114,42,0.14)] backdrop-blur-sm transition-[transform,border-color,box-shadow,background-color] duration-200 hover:border-[#b58a3f]/60 hover:bg-[#fffdf8] active:scale-[0.97] active:bg-[#fff8e6] active:shadow-[0_0_0_5px_rgba(230,203,126,0.12),0_0_18px_rgba(201,154,69,0.30)]"
+            //   >
+            //     <span className="animate-in fade-in fill-mode-both [animation-delay:360ms] [animation-duration:420ms]">
+            //       {text.reveal}
+            //     </span>
+            //   </Button>
+            // </div>
+            <div>
+              <HoldToRevealButton onComplete={onReveal} holdDuration={2500}></HoldToRevealButton>
+              
             </div>
           )}
         </div>

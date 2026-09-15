@@ -89,7 +89,7 @@ export function CardSelect({
           />
         </div>
         
-        <div className="mt-10 h-10 md:mt-28 lg:mt-32">
+        <div className="mt-12 flex h-12 shrink-0 items-start justify-center md:mt-28 lg:mt-32">
           {canReveal && (
             <HoldToRevealButton
               onComplete={onReveal}

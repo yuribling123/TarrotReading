@@ -3,8 +3,8 @@ import { redis } from "@/lib/redis/redis";
 import { getShanghaiDateKey } from "@/lib/date/shanghai";
 
 const KEY = "reading_limit";
-const LIMIT = 1; //1
-const DAILY_LIMIT = 3; //3
+const LIMIT = 10; //1
+const DAILY_LIMIT = 30; //3
 
 function getFields(visitorId: string) {
   const today = getShanghaiDateKey();

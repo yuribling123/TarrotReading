@@ -225,10 +225,10 @@ export function SelectionShootingStars({
   .particle-cross-purple {
     left: 50%;
     font-size: 8px;
-    color: rgba(190, 150, 217, 1);
+    color: rgba(145, 123, 164, 0.95);
     text-shadow:
-      0 0 5px rgba(190, 150, 217, 0.95),
-      0 0 11px rgba(166, 127, 194, 0.6);
+      0 0 5px rgba(145, 123, 164, 0.55),
+      0 0 11px rgba(120, 101, 140, 0.28);
     animation: particle-cross-left 2.15s ease-out infinite;
   }
 

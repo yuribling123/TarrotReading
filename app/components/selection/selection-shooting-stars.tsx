@@ -100,7 +100,7 @@ export function SelectionShootingStars({
                         animationDelay: `${950 + index * 220}ms`,
                       }}
                     >
-                      ✢
+                      ⋆
                     </span>
 
                     <span
@@ -109,7 +109,7 @@ export function SelectionShootingStars({
                         animationDelay: `${1550 + index * 260}ms`,
                       }}
                     >
-                      ✢
+                      ⋆
                     </span>
                   </>
                 )}

@@ -73,7 +73,7 @@ export function CodeDialog({
     shadow-[0_18px_50px_rgba(45,38,55,0.16)]
     backdrop-blur-xl
 
-    max-[520px]:top-[30svh]
+    max-[520px]:top-[35svh]
     max-[520px]:translate-y-0
     max-[520px]:max-h-[70svh]
     max-[520px]:overflow-y-auto

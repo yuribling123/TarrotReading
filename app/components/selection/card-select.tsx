@@ -107,19 +107,22 @@ export function CardSelect({
           interactionLocked={Boolean(flight)}
           onSelect={selectFromFan}
         />
-        <div className="flex justify-center pt-0 -translate-y-4 ">
-          {zodiac ? (
-            <div >
-              <StarBackground />
-              <SelectedZodiac zodiac={zodiac} />
-            </div>
-          ) : (
-            <ZodiacReadingOption
-              zodiacOpen={zodiacOpen}
-              setZodiacOpen={setZodiacOpen}
-              onConfirm={setZodiac}
-            />
-          )}
+        
+        <div className="relative h-0">
+          <div className="absolute inset-x-0 top-0 z-20 flex -translate-y-10 justify-center">
+            {zodiac ? (
+              <div className="relative">
+                <StarBackground />
+                <SelectedZodiac zodiac={zodiac} />
+              </div>
+            ) : (
+              <ZodiacReadingOption
+                zodiacOpen={zodiacOpen}
+                setZodiacOpen={setZodiacOpen}
+                onConfirm={setZodiac}
+              />
+            )}
+          </div>
         </div>
 
       </section>

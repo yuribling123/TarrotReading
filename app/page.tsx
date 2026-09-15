@@ -104,7 +104,7 @@ export default function LandingPage() {
       setIsPending(false);
     }
   }
-
+  //每20秒下流星雨
   useEffect(() => {
 
     const interval = setInterval(() => {

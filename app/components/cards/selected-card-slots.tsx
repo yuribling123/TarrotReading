@@ -84,7 +84,7 @@ export function SelectedCardSlots({
 }: SelectedCardSlotsProps) {
   return (
     <div
-      className="flex justify-center gap-3 max-[520px]:mt-[clamp(30px,4.5svh,42px)]"
+      className="flex justify-center gap-3"
       aria-label="Selected tarot cards"
     >
       {[0, 1, 2].map((index) => {

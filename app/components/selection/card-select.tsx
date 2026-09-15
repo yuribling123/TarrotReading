@@ -62,7 +62,7 @@ export function CardSelect({
 
   return (
     <div>
-      <section className="relative px-5 pt-60 [--selection-card-width:90px] max-[860px]:[--selection-card-width:102px] max-[520px]:flex  max-[520px]:flex-col max-[520px]:pt-15 max-[520px]:[--selection-card-width:clamp(50px,19vw,82px)]">
+      <section className="relative px-5 pt-60 [--selection-card-width:90px] max-[860px]:[--selection-card-width:102px] max-[520px]:flex  max-[520px]:flex-col max-[520px]:pt-10 max-[520px]:[--selection-card-width:clamp(50px,19vw,82px)]">
 
         {/* 长按时：四周慢慢暗下来 */}
         <div

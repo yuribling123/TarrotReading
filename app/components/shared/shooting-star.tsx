@@ -86,7 +86,7 @@ export function ShootingStars({ active }: ShootingStarsProps) {
     absolute right-0 top-1/2 z-100
     -translate-y-1/2 translate-x-1/2
     text-[8px] leading-none
-    text-[#f2e6c7]
+  text-[#d9b86f]
     drop-shadow-[0_0_5px_rgba(224,201,147,0.7)]
   "
           >

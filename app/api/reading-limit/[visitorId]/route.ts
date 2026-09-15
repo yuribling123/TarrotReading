@@ -4,7 +4,7 @@ import { getShanghaiDateKey } from "@/lib/date/shanghai";
 
 const KEY = "reading_limit";
 const LIMIT = 1; //1
-const DAILY_LIMIT = 4; //3
+const DAILY_LIMIT = 3; //3
 
 function getFields(visitorId: string) {
   const today = getShanghaiDateKey();

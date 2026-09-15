@@ -6,9 +6,11 @@ type HoldToRevealButtonProps = {
   onComplete: () => void;
   label?: string;
   holdDuration?: number;
+  onHoldingChange?: (value: boolean) => void;
 };
 
 export function HoldToRevealButton({
+  onHoldingChange,
   onComplete,
   label = "长按聚念 · 唤醒牌阵",
   holdDuration = 1800,
@@ -44,6 +46,7 @@ export function HoldToRevealButton({
    */
   const stopHolding = () => {
     setIsHolding(false);
+    onHoldingChange?.(false);
     lastFrameRef.current = null;
 
     if (animationRef.current !== null) {
@@ -69,7 +72,7 @@ export function HoldToRevealButton({
 
     completeTimerRef.current = setTimeout(() => {
       onComplete();
-    }, 360);
+    }, 800);
   };
 
   /**
@@ -112,6 +115,7 @@ export function HoldToRevealButton({
     if (isComplete || animationRef.current !== null) return;
 
     setIsHolding(true);
+    onHoldingChange?.(true);
     lastFrameRef.current = null;
 
     animationRef.current = requestAnimationFrame(animate);
@@ -309,7 +313,7 @@ export function HoldToRevealButton({
           {/* 完成以后出现 ✦ */}
           <span
             aria-hidden="true"
-            className={`absolute inset-0 z-20 flex items-center justify-center text-[15px] text-[#805817] transition-all duration-300 ${isComplete ? "scale-100 opacity-100" : "scale-75 opacity-0"}`}
+            className={`absolute inset-0 z-20 flex items-center justify-center text-[8px] text-[#805817] transition-all duration-300 ${isComplete ? "scale-100 opacity-100" : "scale-75 opacity-0"}`}
           >
             ✦
           </span>
@@ -317,7 +321,7 @@ export function HoldToRevealButton({
       </div>
 
       {/* 状态文案 */}
-      <span className={`text-[11px] tracking-[0.12em] transition-colors duration-300 ${isHolding ? "text-[#72501b]" : "text-[#896a36]/80"}`}>
+      <span className={`text-[11px] tracking-[0.12em] transition-colors duration-300 ${isHolding ? "text-[#72501b]" : "text-[#9e6381]"}`}>
         {isComplete
           ? "心念已落定"
           : isHolding

@@ -41,6 +41,7 @@ export function CardSelect({
   const [ritualDone, setRitualDone] = useState(false);
   const canReveal = selectedCards.length === 3;
   const text = messages[language];
+  const [isChanneling, setIsChanneling] = useState(false);
   const {
     completeFlightMotion,
     flight,
@@ -70,6 +71,7 @@ export function CardSelect({
             </p>
           ) : (
             <SelectionShootingStars
+             isChanneling={isChanneling}
               count={selectedCards.length}
               label={text.chosenHint.replace("{count}", String(selectedCards.length))}
             />
@@ -103,7 +105,7 @@ export function CardSelect({
             //   </Button>
             // </div>
             <div>
-              <HoldToRevealButton onComplete={onReveal} holdDuration={2500}></HoldToRevealButton>
+              <HoldToRevealButton onComplete={onReveal} holdDuration={4000} onHoldingChange={setIsChanneling}></HoldToRevealButton>
               
             </div>
           )}

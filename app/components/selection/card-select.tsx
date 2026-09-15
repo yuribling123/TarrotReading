@@ -61,10 +61,21 @@ export function CardSelect({
   }
 
   return (
-    <div >
-      <section className="px-5 pt-60 [--selection-card-width:90px]  max-[860px]:[--selection-card-width:102px] max-[520px]:flex max-[520px]:h-[calc(100svh-76px)] max-[520px]:flex-col max-[520px]:pt-20  max-[520px]:[--selection-card-width:clamp(50px,19vw,82px)]">
+    <div>
+      <section className="relative px-5 pt-60 [--selection-card-width:90px] max-[860px]:[--selection-card-width:102px] max-[520px]:flex max-[520px]:h-[calc(100svh-76px)] max-[520px]:flex-col max-[520px]:pt-20 max-[520px]:[--selection-card-width:clamp(50px,19vw,82px)]">
 
-        <div className="relative flex h-11 shrink-0 items-start justify-center overflow-visible">
+        {/* 长按时：四周慢慢暗下来 */}
+        <div
+          aria-hidden="true"
+          className={`pointer-events-none fixed inset-0 z-10 transition-opacity duration-700 ease-out ${isChanneling ? "opacity-100" : "opacity-0"}`}
+          style={{
+            background:
+              "radial-gradient(circle at 50% 38%, transparent 12%, rgba(75,58,88,0.08) 34%, rgba(43,31,52,0.26) 64%, rgba(18,13,23,0.42) 100%)",
+          }}
+        />
+
+        {/* 三颗金星：在暗场上面 */}
+        <div className="relative z-20 flex h-11 shrink-0 items-start justify-center overflow-visible">
           {selectedCards.length === 0 ? (
             <p className="animate-in text-center text-[12px] tracking-[0.08em] text-[#7f5b1f] fade-in duration-300">
               {text.selectionInstructionSecondLine}
@@ -78,9 +89,8 @@ export function CardSelect({
           )}
         </div>
 
-
-
-        <div ref={slotsRef} className="pt-15 max-[520px]:pt-0  " >
+        {/* 三张已选中的牌：保持亮 */}
+        <div ref={slotsRef} className="relative z-20 pt-15 max-[520px]:pt-0">
           <SelectedCardSlots
             cards={selectedCards}
             flight={flight}
@@ -89,7 +99,8 @@ export function CardSelect({
           />
         </div>
 
-        <div className="relative mt-10 h-0 flex justify-center md:mt-28 lg:mt-32">
+        {/* 长按按钮：保持亮 */}
+        <div className="relative z-20 mt-10 flex h-0 justify-center md:mt-28 lg:mt-32">
           {canReveal && (
             <div className="absolute top-0 z-20">
               <HoldToRevealButton
@@ -101,18 +112,21 @@ export function CardSelect({
           )}
         </div>
 
-        <CardFan
-          deck={deck}
-          selectedCards={selectedCards}
-          interactionLocked={Boolean(flight)}
-          onSelect={selectFromFan}
-        />
-        
-        <div className="relative h-0">
-          <div className="absolute inset-x-0 top-0 z-20 flex -translate-y-10 justify-center">
+        {/* 牌堆：暗场下面 */}
+        <div className="relative z-0">
+          <CardFan
+            deck={deck}
+            selectedCards={selectedCards}
+            interactionLocked={Boolean(flight)}
+            onSelect={selectFromFan}
+          />
+        </div>
+
+        {/* 星座：暗场下面 */}
+        <div className="relative z-0 h-0">
+          <div className="absolute inset-x-0 top-0 flex -translate-y-10 justify-center">
             {zodiac ? (
               <div className="relative">
-                {/* <StarBackground /> */}
                 <SelectedZodiac zodiac={zodiac} />
               </div>
             ) : (
@@ -126,8 +140,6 @@ export function CardSelect({
         </div>
 
       </section>
-
-
     </div>
   );
 }

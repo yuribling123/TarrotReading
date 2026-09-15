@@ -128,9 +128,8 @@ export function SelectionShootingStars({
 
                 {/* 金色主星呼吸 */}
                 <span
-                  className={`star-core ${
-                    isChanneling ? "star-core-channeling" : ""
-                  }`}
+                  className={`star-core ${isChanneling ? "star-core-channeling" : ""
+                    }`}
                   style={{
                     animationDelay: `${index * 120}ms`,
                   }}
@@ -147,200 +146,223 @@ export function SelectionShootingStars({
       )}
 
       <style jsx>{`
-        /* =========================
-           金色主星呼吸
-           ========================= */
+  /* =========================
+     金色主星呼吸
+     ========================= */
 
-        .star-core {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          transform-origin: center;
-          transition:
-            transform 400ms ease,
-            filter 400ms ease,
-            opacity 400ms ease;
-        }
+  .star-core {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transform-origin: center;
+    transition:
+      transform 400ms ease,
+      filter 400ms ease,
+      opacity 400ms ease;
+  }
 
-        .star-core-channeling {
-          animation: star-core-breathe 1.65s ease-in-out infinite;
-        }
+  .star-core-channeling {
+    animation: star-core-breathe 1.6s ease-in-out infinite;
+  }
 
-        @keyframes star-core-breathe {
-          0%,
-          100% {
-            transform: scale(0.97);
-            opacity: 0.88;
-            filter:
-              drop-shadow(0 0 2px rgba(200, 155, 69, 0.34))
-              drop-shadow(0 0 4px rgba(225, 187, 101, 0.12));
-          }
+  @keyframes star-core-breathe {
+    0%,
+    100% {
+      transform: scale(0.96);
+      opacity: 0.9;
+      filter:
+        drop-shadow(0 0 3px rgba(200, 155, 69, 0.45))
+        drop-shadow(0 0 6px rgba(225, 187, 101, 0.2));
+    }
 
-          50% {
-            transform: scale(1.11);
-            opacity: 1;
-            filter:
-              drop-shadow(0 0 4px rgba(236, 198, 108, 0.88))
-              drop-shadow(0 0 8px rgba(221, 174, 76, 0.58))
-              drop-shadow(0 0 13px rgba(210, 158, 57, 0.30));
-          }
-        }
+    50% {
+      transform: scale(1.14);
+      opacity: 1;
+      filter:
+        drop-shadow(0 0 5px rgba(245, 207, 116, 0.95))
+        drop-shadow(0 0 10px rgba(227, 179, 78, 0.72))
+        drop-shadow(0 0 16px rgba(205, 151, 48, 0.42));
+    }
+  }
 
-        /* =========================
-           所有释放粒子
-           ========================= */
+  /* =========================
+     粒子基础
+     ========================= */
 
-        .star-particle {
-          position: absolute;
-          z-index: 10;
-          bottom: 50%;
-          pointer-events: none;
-          line-height: 1;
-          opacity: 0;
-        }
+  .star-particle {
+    position: absolute;
+    z-index: 20;
+    bottom: 45%;
+    pointer-events: none;
+    line-height: 1;
+    opacity: 0;
+    font-weight: 500;
+  }
 
-        /* 紫色 · */
-        .particle-purple {
-          left: 2px;
-          font-size: 9px;
-          color: rgba(166, 127, 194, 0.88);
-          text-shadow: 0 0 5px rgba(166, 127, 194, 0.42);
-          animation: particle-left 1.9s ease-out infinite;
-        }
+  /* 紫色 · */
+  .particle-purple {
+    left: -1px;
+    font-size: 10px;
+    color: rgba(178, 137, 207, 1);
+    text-shadow:
+      0 0 4px rgba(178, 137, 207, 0.95),
+      0 0 9px rgba(166, 127, 194, 0.55);
+    animation: particle-left 1.8s ease-out infinite;
+  }
 
-        /* 金色 ˚ */
-        .particle-gold {
-          right: 1px;
-          font-size: 8px;
-          color: rgba(218, 177, 89, 0.9);
-          text-shadow: 0 0 5px rgba(218, 177, 89, 0.38);
-          animation: particle-right 2.1s ease-out infinite;
-        }
+  /* 金色 ˚ */
+  .particle-gold {
+    right: -2px;
+    font-size: 10px;
+    color: rgba(235, 193, 99, 1);
+    text-shadow:
+      0 0 4px rgba(235, 193, 99, 0.95),
+      0 0 9px rgba(211, 165, 77, 0.55);
+    animation: particle-right 1.95s ease-out infinite;
+  }
 
-        /* 紫色 ✢ */
-        .particle-cross-purple {
-          left: 50%;
-          font-size: 7px;
-          color: rgba(180, 143, 205, 0.82);
-          text-shadow: 0 0 6px rgba(180, 143, 205, 0.4);
-          animation: particle-cross-left 2.5s ease-out infinite;
-        }
+  /* 紫色 ✢ */
+  .particle-cross-purple {
+    left: 50%;
+    font-size: 8px;
+    color: rgba(190, 150, 217, 1);
+    text-shadow:
+      0 0 5px rgba(190, 150, 217, 0.95),
+      0 0 11px rgba(166, 127, 194, 0.6);
+    animation: particle-cross-left 2.15s ease-out infinite;
+  }
 
-        /* 金色 ✢ */
-        .particle-cross-gold {
-          left: 50%;
-          font-size: 6px;
-          color: rgba(211, 165, 77, 0.86);
-          text-shadow: 0 0 6px rgba(211, 165, 77, 0.38);
-          animation: particle-cross-right 2.8s ease-out infinite;
-        }
+  /* 金色 ✢ */
+  .particle-cross-gold {
+    left: 50%;
+    font-size: 8px;
+    color: rgba(230, 181, 82, 1);
+    text-shadow:
+      0 0 5px rgba(230, 181, 82, 0.95),
+      0 0 11px rgba(205, 151, 48, 0.58);
+    animation: particle-cross-right 2.35s ease-out infinite;
+  }
 
-        /* =========================
-           紫色月尘往左上漂
-           ========================= */
+  /* =========================
+     紫色月尘
+     ========================= */
 
-        @keyframes particle-left {
-          0% {
-            transform: translate3d(0, 2px, 0) scale(0.55);
-            opacity: 0;
-          }
+  @keyframes particle-left {
+    0% {
+      transform: translate3d(0, 3px, 0) scale(0.7);
+      opacity: 0;
+    }
 
-          18% {
-            opacity: 0.9;
-          }
+    12% {
+      opacity: 1;
+    }
 
-          52% {
-            transform: translate3d(-3px, -9px, 0) scale(1);
-            opacity: 0.65;
-          }
+    48% {
+      transform: translate3d(-5px, -13px, 0) scale(1.25);
+      opacity: 0.95;
+    }
 
-          100% {
-            transform: translate3d(-7px, -18px, 0) scale(0.7);
-            opacity: 0;
-          }
-        }
+    78% {
+      opacity: 0.65;
+    }
 
-        /* =========================
-           金色月尘往右上漂
-           ========================= */
+    100% {
+      transform: translate3d(-11px, -30px, 0) scale(1);
+      opacity: 0;
+    }
+  }
 
-        @keyframes particle-right {
-          0% {
-            transform: translate3d(0, 2px, 0) scale(0.55);
-            opacity: 0;
-          }
+  /* =========================
+     金色月尘
+     ========================= */
 
-          18% {
-            opacity: 0.86;
-          }
+  @keyframes particle-right {
+    0% {
+      transform: translate3d(0, 3px, 0) scale(0.7);
+      opacity: 0;
+    }
 
-          52% {
-            transform: translate3d(3px, -8px, 0) scale(1);
-            opacity: 0.62;
-          }
+    12% {
+      opacity: 1;
+    }
 
-          100% {
-            transform: translate3d(7px, -17px, 0) scale(0.72);
-            opacity: 0;
-          }
-        }
+    48% {
+      transform: translate3d(5px, -13px, 0) scale(1.25);
+      opacity: 0.95;
+    }
 
-        /* =========================
-           紫色 ✢
-           像泡泡一样慢慢漂
-           ========================= */
+    78% {
+      opacity: 0.65;
+    }
 
-        @keyframes particle-cross-left {
-          0% {
-            transform: translate3d(-50%, 2px, 0) scale(0.55);
-            opacity: 0;
-          }
+    100% {
+      transform: translate3d(12px, -29px, 0) scale(1);
+      opacity: 0;
+    }
+  }
 
-          18% {
-            opacity: 0.82;
-          }
+  /* =========================
+     紫色 ✢
+     ========================= */
 
-          52% {
-            transform: translate3d(calc(-50% + 3px), -10px, 0)
-              scale(1);
-            opacity: 0.6;
-          }
+  @keyframes particle-cross-left {
+    0% {
+      transform: translate3d(-50%, 3px, 0) scale(0.65);
+      opacity: 0;
+    }
 
-          100% {
-            transform: translate3d(calc(-50% - 3px), -21px, 0)
-              scale(0.7);
-            opacity: 0;
-          }
-        }
+    12% {
+      opacity: 1;
+    }
 
-        /* =========================
-           金色 ✢
-           和紫色反方向漂
-           ========================= */
+    48% {
+      transform: translate3d(calc(-50% + 7px), -15px, 0)
+        scale(1.3);
+      opacity: 1;
+    }
 
-        @keyframes particle-cross-right {
-          0% {
-            transform: translate3d(-50%, 2px, 0) scale(0.55);
-            opacity: 0;
-          }
+    78% {
+      opacity: 0.7;
+    }
 
-          18% {
-            opacity: 0.8;
-          }
+    100% {
+      transform: translate3d(calc(-50% - 7px), -34px, 0)
+        scale(0.95);
+      opacity: 0;
+    }
+  }
 
-          52% {
-            transform: translate3d(calc(-50% - 3px), -9px, 0)
-              scale(1);
-            opacity: 0.58;
-          }
+  /* =========================
+     金色 ✢
+     ========================= */
 
-          100% {
-            transform: translate3d(calc(-50% + 4px), -19px, 0)
-              scale(0.7);
-            opacity: 0;
-          }
-        }
-      `}</style>
+  @keyframes particle-cross-right {
+    0% {
+      transform: translate3d(-50%, 3px, 0) scale(0.65);
+      opacity: 0;
+    }
+
+    12% {
+      opacity: 1;
+    }
+
+    48% {
+      transform: translate3d(calc(-50% - 7px), -14px, 0)
+        scale(1.3);
+      opacity: 1;
+    }
+
+    78% {
+      opacity: 0.7;
+    }
+
+    100% {
+      transform: translate3d(calc(-50% + 8px), -32px, 0)
+        scale(0.95);
+      opacity: 0;
+    }
+  }
+`}</style>
     </div>
   );
 }

@@ -12,15 +12,17 @@ import { DivinationCatalysts } from "@/app/components/home/divination-catalysts"
 import { MoonlitPostcard } from "@/app/components/postcards/moonlit-postcard";
 import { MoonLore } from "@/app/components/moon/moon-lore";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { DivinationCatalyst } from "@/lib/types";
 import { getVisitorId } from "@/lib/visitor/visitor-id";
 import { toast } from "@/components/ui/toast";
 import { ReadingLimitDialog } from "@/app/components/limits/reading-limit-dialog";
 import { DailyLimitDialog } from "@/app/components/limits/daily-limit-dialog";
+import { ShootingStars } from "./components/shared/shooting-star";
 
 //用户增加共鸣换取次数
 export default function LandingPage() {
+  const [shootingStarsActive, setShootingStarsActive] = useState(false);
   const [isPending, setIsPending] = useState(false);
   const [dailyLimitOpen, setDailyLimitOpen] = useState(false);
   const [readingLimitOpen, setReadingLimitOpen] = useState(false);
@@ -103,10 +105,34 @@ export default function LandingPage() {
     }
   }
 
+  useEffect(() => {
+
+    const interval = setInterval(() => {
+
+      setShootingStarsActive(true);
+
+      setTimeout(() => {
+
+        setShootingStarsActive(false);
+
+      }, 10000);
+
+    }, 20000);
+
+    return () => clearInterval(interval);
+
+  }, []);
+
   return (
     <>
       <TarotPreloader deck={deck} />
       <HomeBackground />
+      <div
+        className="pointer-events-none absolute inset-0 z-10 overflow-hidden"
+        aria-hidden="true"
+      >
+        <ShootingStars active={shootingStarsActive} />
+      </div>
       <MoonlitPostcard />
       <MoonLore open={moonLoreOpen} onClose={() => setMoonLoreOpen(false)} />
       <div className="landingContent absolute! inset-x-0 top-[calc(76px+5svh)] z-[1] mx-auto w-full max-w-[1120px] text-center text-[#f7f3e8] md:top-[calc(76px+10vh)]">

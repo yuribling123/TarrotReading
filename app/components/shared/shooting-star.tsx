@@ -3,18 +3,58 @@
 type ShootingStarsProps = {
   active: boolean;
 };
-
 const shootingStars = [
-  { top: "8%", left: "28%", width: "110px", delay: "0ms", duration: "5500ms", opacity: 0.7 },
-  { top: "18%", left: "42%", width: "75px", delay: "200ms", duration: "4000ms", opacity: 0.45 },
-  { top: "30%", left: "68%", width: "145px", delay: "400ms", duration: "3500ms", opacity: 0.8 },
-
-
-  { top: "40%", left: "76%", width: "80px", delay: "1350ms", duration: "4500ms", opacity: 0.45 },
+  {
+    top: "13%",
+    left: "-5%",
+    width: "55px",
+    delay: "0ms",
+    duration: "10000ms",
+    opacity: 1,
+  },
+  {
+    top: "15%",
+    left: "18%",
+    width: "55px",
+    delay: "-1200ms",
+    duration: "10000ms",
+    opacity: 1,
+  },
+  {
+    top: "10%",
+    left: "10%",
+    width: "55px",
+    delay: "-2200ms",
+    duration: "10000ms",
+    opacity: 1,
+  },
+  {
+    top: "12%",
+    left: "0%",
+    width: "55px",
+    delay: "-2600ms",
+    duration: "10000ms",
+    opacity: 1,
+  },
+  {
+    top: "10%",
+    left: "25%",
+    width: "55px",
+    delay: "-3200ms",
+    duration: "10000ms",
+    opacity: 1,
+  },
+  {
+    top: "15%",
+    left: "7%",
+    width: "55px",
+    delay: "-4200ms",
+    duration: "10000ms",
+    opacity: 1,
+  },
 ];
-export function ShootingStars({
-  active,
-}: ShootingStarsProps) {
+
+export function ShootingStars({ active }: ShootingStarsProps) {
   if (!active) {
     return null;
   }
@@ -37,9 +77,21 @@ export function ShootingStars({
             animationDuration: star.duration,
           }}
         >
-      <span className="absolute left-0 top-1/2 size-1 -translate-y-1/2 rounded-full bg-[#f2e6c7] shadow-[0_0_7px_2px_rgba(224,201,147,0.5)]" />
+          {/* Tail */}
+          <span className="absolute inset-0 bg-gradient-to-r from-transparent via-[#cbb2d3]/30 to-[#ead9ae]/75" />
 
-<span className="absolute inset-0 bg-gradient-to-r from-[#ead9ae]/75 via-[#cbb2d3]/30 to-transparent" />
+          {/* Five-point star */}
+          <span
+            className="
+    absolute right-0 top-1/2 z-100
+    -translate-y-1/2 translate-x-1/2
+    text-[8px] leading-none
+    text-[#f2e6c7]
+    drop-shadow-[0_0_5px_rgba(224,201,147,0.7)]
+  "
+          >
+            ★
+          </span>
         </span>
       ))}
     </div>

@@ -8,7 +8,7 @@ const moonDust = [
   { left: "52%", delay: "-1s", duration: "7s", size: "4px", color: "#c997d8", type: "dot" },
    { left: "62%", delay: "-1s", duration: "7s", size: "3px", color: "#7f5b1f", type: "dot" },
   { left: "60%", delay: "-2s", duration: "5s", size: "3px", color: "#7f5b1f", type: "dot" },
-  { left: "65%", delay: "-4s", duration: "5s", size: "5px", color: "#c997d8", type: "dot" },
+  { left: "65%", delay: "-4s", duration: "5s", size: "2px", color: "#c997d8", type: "dot" },
 ];
 export function HomeBackground() {
   return (

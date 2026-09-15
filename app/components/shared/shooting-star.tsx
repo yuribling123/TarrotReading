@@ -90,7 +90,7 @@ export function ShootingStars({ active }: ShootingStarsProps) {
     drop-shadow-[0_0_5px_rgba(224,201,147,0.7)]
   "
           >
-            ★
+            ✦
           </span>
         </span>
       ))}

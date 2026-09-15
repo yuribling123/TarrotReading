@@ -15,7 +15,7 @@ export function ZodiacOption({ isSelected, onSelect, sign }: ZodiacOptionProps) 
       onClick={onSelect}
       className={`relative h-14 w-14 rounded-[21px] border focus:outline-none focus-visible:outline-none focus-visible:ring-0 ${
         isSelected
-          ? "border-[#b88a35]/70 bg-[radial-gradient(circle_at_50%_35%,rgba(240,211,135,0.38),rgba(255,255,255,0.28)_72%)] shadow-[0_0_0_3px_rgba(215,181,109,0.11),0_8px_20px_rgba(127,91,31,0.16)]"
+          ? "scale-110 border-[#b88a35]/70 bg-[radial-gradient(circle_at_50%_35%,rgba(240,211,135,0.38),rgba(255,255,255,0.28)_72%)] shadow-[0_0_0_3px_rgba(215,181,109,0.11),0_8px_20px_rgba(127,91,31,0.16)]"
           : "border-[#141005]/30 bg-white/20 hover:border-[#b88a35]/70"
       }`}
     >
@@ -23,7 +23,7 @@ export function ZodiacOption({ isSelected, onSelect, sign }: ZodiacOptionProps) 
         aria-hidden="true"
         className={`pointer-events-none absolute -right-1 -top-1 text-[9px] text-[#c4963d] ${
           isSelected
-            ? "opacity-100 [text-shadow:0_0_8px_rgba(196,150,61,0.55)]"
+            ? "opacity-100  [text-shadow:0_0_8px_rgba(196,150,61,0.55)]"
             : "opacity-0"
         }`}
       >

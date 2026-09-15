@@ -112,7 +112,7 @@ export function CardSelect({
           <div className="absolute inset-x-0 top-0 z-20 flex -translate-y-10 justify-center">
             {zodiac ? (
               <div className="relative">
-                <StarBackground />
+                {/* <StarBackground /> */}
                 <SelectedZodiac zodiac={zodiac} />
               </div>
             ) : (

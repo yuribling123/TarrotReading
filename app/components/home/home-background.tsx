@@ -5,10 +5,10 @@ const moonDust = [
   { left: "32%", delay: "-2s", duration: "5s", size: "1px", color: "#c997d8", type: "star" },
   { left: "36%", delay: "-1s", duration: "5s", size: "6px", color: "#c997d8", type: "star" },
   { left: "42%", delay: "-4s", duration: "5s", size: "6px", color: "#c49a42", type: "star" },
-    { left: "44%", delay: "-1s", duration: "5s", size: "3px", color: "#c997d8", type: "dot" },
-  { left: "52%", delay: "-1s", duration: "5s", size: "4px", color: "#c997d8", type: "dot" },
-   { left: "57%", delay: "-1s", duration: "5s", size: "3px", color: "#c49a42", type: "dot" },
-  { left: "60%", delay: "-2s", duration: "5s", size: "3px", color: "#c49a42", type: "dot" },
+    { left: "44%", delay: "-3s", duration: "5s", size: "3px", color: "#c997d8", type: "dot" },
+  { left: "52%", delay: "-2s", duration: "5s", size: "4px", color: "#c997d8", type: "dot" },
+   { left: "57%", delay: "-3s", duration: "5s", size: "3px", color: "#c49a42", type: "dot" },
+  { left: "60%", delay: "-1s", duration: "5s", size: "3px", color: "#c49a42", type: "dot" },
   { left: "65%", delay: "-4s", duration: "5s", size: "2px", color: "#c997d8", type: "dot" },
 ];
 export function HomeBackground() {

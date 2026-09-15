@@ -124,7 +124,7 @@ export function CardSelect({
 
         {/* 星座：暗场下面 */}
         <div className="relative z-0 h-0">
-          <div className="absolute inset-x-0 top-0 flex -translate-y-15 justify-center">
+          <div className="absolute inset-x-0 top-0 flex -translate-y-20 justify-center">
             {zodiac ? (
               <div className="relative">
                 <SelectedZodiac zodiac={zodiac} />

@@ -60,19 +60,24 @@ export function CodeDialog({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent
         className="
-          w-[80vw]
-          max-w-[80vw]
-          rounded-[28px]
-          border
-          border-[#c9ad73]/25
-          bg-[#fffdf9]/70
-          pt-10
-          pb-6
-          px-12
-          text-center
-          shadow-[0_18px_50px_rgba(45,38,55,0.16)]
-          backdrop-blur-xl
-        "
+    w-[80vw]
+    max-w-[80vw]
+    rounded-[28px]
+    border
+    border-[#c9ad73]/25
+    bg-[#fffdf9]/70
+    px-12
+    pb-6
+    pt-10
+    text-center
+    shadow-[0_18px_50px_rgba(45,38,55,0.16)]
+    backdrop-blur-xl
+
+    max-[520px]:top-[18svh]
+    max-[520px]:translate-y-0
+    max-[520px]:max-h-[70svh]
+    max-[520px]:overflow-y-auto
+  "
       >
         {unlocked ? (
           <div className="mx-auto w-fit">

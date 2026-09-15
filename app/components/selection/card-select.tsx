@@ -62,7 +62,7 @@ export function CardSelect({
 
   return (
     <div>
-      <section className="overflow-hidden relative px-1 pt-60 [--selection-card-width:90px] max-[860px]:[--selection-card-width:102px] max-[520px]:flex  max-[520px]:flex-col max-[520px]:pt-14 max-[520px]:[--selection-card-width:clamp(50px,19vw,82px)]">
+      <section className=" relative px-1 pt-60 [--selection-card-width:90px] max-[860px]:[--selection-card-width:102px] max-[520px]:flex  max-[520px]:flex-col max-[520px]:pt-14 max-[520px]:[--selection-card-width:clamp(50px,19vw,82px)]">
 
         {/* 长按时：四周慢慢暗下来 */}
         <div
@@ -120,7 +120,21 @@ export function CardSelect({
         </div>
 
         {/* 星座：暗场下面 */}
-   
+        <div className="relative z-0 h-0">
+          <div className="absolute inset-x-0 top-0 flex -translate-y-20 justify-center">
+            {zodiac ? (
+              <div className="relative">
+                <SelectedZodiac zodiac={zodiac} />
+              </div>
+            ) : (
+              <ZodiacReadingOption
+                zodiacOpen={zodiacOpen}
+                setZodiacOpen={setZodiacOpen}
+                onConfirm={setZodiac}
+              />
+            )}
+          </div>
+        </div>
 
       </section>
     </div>

@@ -9,7 +9,7 @@ export function PostcardEnvelope({ isRead, isReady, onOpen }: PostcardEnvelopePr
     <button
       type="button"
       onClick={onOpen}
-      className={`group fixed right-4 top-[96px] z-20 h-9 w-11 overflow-visible bg-transparent drop-shadow-[0_5px_9px_rgba(91,69,105,0.14)] transition duration-300 hover:-translate-x-1 sm:right-3 sm:top-[104px] ${isReady ? "opacity-100" : "pointer-events-none opacity-0"} ` }
+      className={`group fixed right-4 top-[96px] z-20 h-9 w-11 overflow-visible bg-transparent drop-shadow-[0_5px_9px_rgba(91,69,105,0.14)] transition duration-300 hover:-translate-x-1 sm:right-3 sm:top-[104px] ${isReady ? "opacity-100" : "pointer-events-none opacity-0"} ${isReady && !isRead ? "animate-bounce repeat-7" : ""}` }
       aria-label={isRead ? "重新查看月之彼岸的今日来信" : "打开月之彼岸的今日来信"}
     >
       <span className="relative block h-full w-full ">

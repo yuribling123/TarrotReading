@@ -60,8 +60,8 @@ export function CodeDialog({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent
         className="
-          w-[60vw]
-          max-w-[60vw]
+          w-[80vw]
+          max-w-[80vw]
           rounded-[28px]
           border
           border-[#c9ad73]/25

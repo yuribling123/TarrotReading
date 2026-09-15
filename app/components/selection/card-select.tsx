@@ -68,10 +68,7 @@ export function CardSelect({
         <div
           aria-hidden="true"
           className={`pointer-events-none fixed inset-0 z-10 transition-opacity duration-700 ease-out ${isChanneling ? "opacity-100" : "opacity-0"}`}
-          style={{
-            background:
-              "radial-gradient(circle at 50% 38%, transparent 12%, rgba(75,58,88,0.08) 34%, rgba(43,31,52,0.26) 64%, rgba(18,13,23,0.42) 100%)",
-          }}
+       
         />
 
         {/* 三颗金星：在暗场上面 */}

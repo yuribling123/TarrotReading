@@ -137,7 +137,7 @@ export function HoldToRevealButton({
   }, []);
 
   return (
-    <div className="flex flex-col items-center gap-2 mt-24  md:mt-28 lg:mt-32">
+    <div className="flex flex-col items-center gap-2 mt-30  md:mt-28 lg:mt-32">
       <div className="relative flex size-[64px] items-center justify-center">
         {/* 外围淡淡的光 */}
         <span

@@ -5,12 +5,12 @@ type ShootingStarsProps = {
 };
 
 const shootingStars = [
-  { top: "8%", left: "28%", width: "110px", delay: "0ms", duration: "5000ms", opacity: 0.7 },
-  { top: "18%", left: "42%", width: "75px", delay: "200ms", duration: "3500ms", opacity: 0.45 },
-  { top: "26%", left: "68%", width: "145px", delay: "400ms", duration: "3000ms", opacity: 0.8 },
+  { top: "8%", left: "28%", width: "110px", delay: "0ms", duration: "5500ms", opacity: 0.7 },
+  { top: "18%", left: "42%", width: "75px", delay: "200ms", duration: "4000ms", opacity: 0.45 },
+  { top: "30%", left: "68%", width: "145px", delay: "400ms", duration: "3500ms", opacity: 0.8 },
 
 
-  { top: "40%", left: "76%", width: "80px", delay: "1350ms", duration: "4000ms", opacity: 0.45 },
+  { top: "40%", left: "76%", width: "80px", delay: "1350ms", duration: "4500ms", opacity: 0.45 },
 ];
 export function ShootingStars({
   active,

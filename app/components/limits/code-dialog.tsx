@@ -88,7 +88,7 @@ export function CodeDialog({
 
         ) : (
           <>
-            <DialogHeader className="items-center text-center">
+            <DialogHeader className="items-center text-center py-4 ">
               <DialogTitle
                 className="
              
@@ -116,7 +116,7 @@ export function CodeDialog({
               </DialogDescription>
             </DialogHeader>
 
-            <input
+            {/* <input
               value={code}
               onChange={(e) => setCode(e.target.value)}
               type="text"
@@ -167,7 +167,7 @@ export function CodeDialog({
               "
             >
               {isPending ? <Loading /> : "开启"}
-            </Button>
+            </Button> */}
           </>
         )}
       </DialogContent>

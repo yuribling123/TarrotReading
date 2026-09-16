@@ -35,7 +35,7 @@ export function ReadingLoading({
   }, [complete, stages.length]);
 
   return (
-    <div className="relative min-h-[calc(100svh-76px)] w-full overflow-hidden">
+    <div className="relative h-full w-full overflow-hidden">
       {/* 流星背景 */}
       <div
         className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
@@ -46,7 +46,7 @@ export function ReadingLoading({
 
       {/* 原本 Loading 内容 */}
       <section
-        className={`readingRitual relative z-10 mx-auto flex w-full flex-col items-center px-6 pt-27 text-center ${complete ? "complete" : ""
+        className={`readingRitual relative z-10 mx-auto flex w-full flex-col items-center px-6 pt-32 text-center ${complete ? "complete" : ""
           }`}
         aria-live="polite"
       >

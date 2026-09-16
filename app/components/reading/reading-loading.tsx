@@ -35,7 +35,7 @@ export function ReadingLoading({
   }, [complete, stages.length]);
 
   return (
-    <div className="relative h-full w-full overflow-hidden">
+    <div className="fixed inset-0 overflow-hidden">
       {/* 流星背景 */}
       <div
         className="pointer-events-none absolute inset-0 z-0 overflow-hidden"

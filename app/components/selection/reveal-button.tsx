@@ -313,7 +313,7 @@ export function HoldToRevealButton({
           {/* 完成以后出现 ✦ */}
           <span
             aria-hidden="true"
-            className={`absolute inset-0 z-20 flex items-center justify-center text-[10px] text-[#805817] transition-all duration-300 ${isComplete ? "scale-100 opacity-100" : "scale-75 opacity-0"}`}
+            className={`absolute inset-0 z-20 flex items-center justify-center text-[10px] text-[#FFFEFC] transition-all duration-300 ${isComplete ? "scale-100 opacity-100" : "scale-75 opacity-0"}`}
           >
             ✦
           </span>

@@ -68,7 +68,7 @@ export function ReadingLoading({
           className="pt-10"
         />
 
-        <div className="ritualThread" aria-hidden="true">
+        <div className="ritualThread pt-10" aria-hidden="true">
           <span />
           <i />
           <span />

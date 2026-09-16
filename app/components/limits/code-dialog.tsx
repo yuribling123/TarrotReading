@@ -108,6 +108,7 @@ export function CodeDialog({
       text-center
       text-[11px]
       text-[#232125]/50
+      pt-5
     "
               >
 

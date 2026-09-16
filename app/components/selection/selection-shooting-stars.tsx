@@ -120,7 +120,7 @@ export function SelectionShootingStars({
                     isChanneling ? "star-core-channeling" : ""
                   }`}
                   style={{
-                    animationDelay: `${index * 120}ms`,
+                    animationDelay: `${index * 180}ms`,
                   }}
                 >
                   <SolidFivePointStar
@@ -137,7 +137,7 @@ export function SelectionShootingStars({
       <style jsx>{`
         /* =========================
            金色主星呼吸
-           ========================= */
+        ========================= */
 
         .star-core {
           display: inline-flex;
@@ -151,32 +151,32 @@ export function SelectionShootingStars({
         }
 
         .star-core-channeling {
-          animation: star-core-breathe 1.6s ease-in-out infinite;
+          animation: star-core-breathe 1.45s ease-in-out infinite;
         }
 
         @keyframes star-core-breathe {
           0%,
           100% {
-            transform: scale(0.96);
-            opacity: 0.9;
+            transform: scale(0.9);
+            opacity: 0.82;
             filter:
-              drop-shadow(0 0 3px rgba(198, 170, 112, 0.4))
-              drop-shadow(0 0 6px rgba(185, 160, 112, 0.18));
+              drop-shadow(0 0 2px rgba(198, 170, 112, 0.3))
+              drop-shadow(0 0 5px rgba(185, 160, 112, 0.12));
           }
 
           50% {
-            transform: scale(1.14);
+            transform: scale(1.22);
             opacity: 1;
             filter:
-              drop-shadow(0 0 5px rgba(210, 184, 132, 0.85))
-              drop-shadow(0 0 10px rgba(198, 170, 112, 0.52))
-              drop-shadow(0 0 16px rgba(168, 139, 88, 0.28));
+              drop-shadow(0 0 6px rgba(220, 193, 137, 0.95))
+              drop-shadow(0 0 12px rgba(198, 170, 112, 0.62))
+              drop-shadow(0 0 20px rgba(168, 139, 88, 0.3));
           }
         }
 
         /* =========================
            粒子基础
-           ========================= */
+        ========================= */
 
         .star-particle {
           position: absolute;
@@ -210,7 +210,7 @@ export function SelectionShootingStars({
           animation: particle-right 1.95s ease-out infinite;
         }
 
-        /* 灰紫 ✢ */
+        /* 灰紫 ⋆ */
         .particle-cross-purple {
           left: 50%;
           font-size: 8px;
@@ -221,7 +221,7 @@ export function SelectionShootingStars({
           animation: particle-cross-left 2.15s ease-out infinite;
         }
 
-        /* 香槟金 ✢ */
+        /* 香槟金 ⋆ */
         .particle-cross-gold {
           left: 50%;
           font-size: 8px;
@@ -234,7 +234,7 @@ export function SelectionShootingStars({
 
         /* =========================
            紫色月尘
-           ========================= */
+        ========================= */
 
         @keyframes particle-left {
           0% {
@@ -263,7 +263,7 @@ export function SelectionShootingStars({
 
         /* =========================
            金色月尘
-           ========================= */
+        ========================= */
 
         @keyframes particle-right {
           0% {
@@ -291,8 +291,8 @@ export function SelectionShootingStars({
         }
 
         /* =========================
-           灰紫 ✢
-           ========================= */
+           灰紫 ⋆
+        ========================= */
 
         @keyframes particle-cross-left {
           0% {
@@ -322,8 +322,8 @@ export function SelectionShootingStars({
         }
 
         /* =========================
-           香槟金 ✢
-           ========================= */
+           香槟金 ⋆
+        ========================= */
 
         @keyframes particle-cross-right {
           0% {

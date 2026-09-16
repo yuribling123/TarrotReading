@@ -42,6 +42,16 @@ export default function SelectPage() {
     }
   }, [isHydrated, question, router]);
 
+  useEffect(() => {
+    document.documentElement.style.overscrollBehavior = "none";
+    document.body.style.overscrollBehavior = "none";
+
+    return () => {
+      document.documentElement.style.overscrollBehavior = "";
+      document.body.style.overscrollBehavior = "";
+    };
+  }, []);
+
   function selectCard(card: TarotCard) {
     setError("");
     setSelectedCards((selected) => {
@@ -97,11 +107,11 @@ export default function SelectPage() {
       setError(text.incompleteSpread);
       return;
     }
-     // 周五、六、日，而且还没选星座 → 打开星座弹窗
+    // 周五、六、日，而且还没选星座 → 打开星座弹窗
     const zodiacAvailable = isZodiacReadingAvailable();
     if (zodiacAvailable && !zodiac) {
-        setZodiacOpen(true);
-        return;
+      setZodiacOpen(true);
+      return;
     }
 
     // These cards are already fully determined by the shuffle + selection.
@@ -121,8 +131,7 @@ export default function SelectPage() {
 
   return (
     <div
-      className={`selectionContent overflow-hidden relative z-[1] mx-auto w-full max-w-[1120px] ${isRevealing ? "translate-y-1 max-[520px]:translate-y-0" : "-translate-y-20 max-[520px]:translate-y-0"
-        }`}
+      className=" h-dvh  relative z-[1] mx-auto w-full max-w-[1120px] overflow-hidden"
     >
       {isRevealing ? (
         <ReadingLoading

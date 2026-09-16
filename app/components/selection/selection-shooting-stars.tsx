@@ -114,7 +114,7 @@ export function SelectionShootingStars({
                   </>
                 )}
 
-                {/* 金色主星呼吸 */}
+                {/* 金色主星：呼吸 + 360° 慢旋转 */}
                 <span
                   className={`star-core ${
                     isChanneling ? "star-core-channeling" : ""
@@ -136,7 +136,7 @@ export function SelectionShootingStars({
 
       <style jsx>{`
         /* =========================
-           金色主星呼吸
+           金色主星
         ========================= */
 
         .star-core {
@@ -144,21 +144,31 @@ export function SelectionShootingStars({
           align-items: center;
           justify-content: center;
           transform-origin: center;
+
           transition:
             transform 400ms ease,
             filter 400ms ease,
             opacity 400ms ease;
         }
 
+        /*
+         * 长按：
+         * 1. 呼吸
+         * 2. 5 秒一圈旋转
+         */
         .star-core-channeling {
-          animation: star-core-breathe 1.45s ease-in-out infinite;
+          animation:
+            star-core-breathe 1.45s ease-in-out infinite,
+            star-core-spin 5s linear infinite;
         }
 
+        /* 呼吸 */
         @keyframes star-core-breathe {
           0%,
           100% {
             transform: scale(0.9);
             opacity: 0.82;
+
             filter:
               drop-shadow(0 0 2px rgba(198, 170, 112, 0.3))
               drop-shadow(0 0 5px rgba(185, 160, 112, 0.12));
@@ -167,10 +177,22 @@ export function SelectionShootingStars({
           50% {
             transform: scale(1.22);
             opacity: 1;
+
             filter:
               drop-shadow(0 0 6px rgba(220, 193, 137, 0.95))
               drop-shadow(0 0 12px rgba(198, 170, 112, 0.62))
               drop-shadow(0 0 20px rgba(168, 139, 88, 0.3));
+          }
+        }
+
+        /* 360° 慢旋转 */
+        @keyframes star-core-spin {
+          from {
+            rotate: 0deg;
+          }
+
+          to {
+            rotate: 360deg;
           }
         }
 
@@ -182,7 +204,9 @@ export function SelectionShootingStars({
           position: absolute;
           z-index: 20;
           bottom: 45%;
+
           pointer-events: none;
+
           line-height: 1;
           opacity: 0;
           font-weight: 500;
@@ -191,44 +215,56 @@ export function SelectionShootingStars({
         /* 灰紫 · */
         .particle-purple {
           left: -1px;
+
           font-size: 10px;
           color: rgba(145, 123, 164, 0.95);
+
           text-shadow:
             0 0 4px rgba(145, 123, 164, 0.55),
             0 0 9px rgba(120, 101, 140, 0.28);
+
           animation: particle-left 1.8s ease-out infinite;
         }
 
         /* 香槟金 ˚ */
         .particle-gold {
           right: -2px;
+
           font-size: 10px;
           color: rgba(198, 170, 112, 0.95);
+
           text-shadow:
             0 0 4px rgba(198, 170, 112, 0.55),
             0 0 9px rgba(168, 139, 88, 0.28);
+
           animation: particle-right 1.95s ease-out infinite;
         }
 
         /* 灰紫 ⋆ */
         .particle-cross-purple {
           left: 50%;
+
           font-size: 8px;
           color: rgba(145, 123, 164, 0.95);
+
           text-shadow:
             0 0 5px rgba(145, 123, 164, 0.55),
             0 0 11px rgba(120, 101, 140, 0.28);
+
           animation: particle-cross-left 2.15s ease-out infinite;
         }
 
         /* 香槟金 ⋆ */
         .particle-cross-gold {
           left: 50%;
+
           font-size: 8px;
           color: rgba(198, 170, 112, 0.95);
+
           text-shadow:
             0 0 5px rgba(198, 170, 112, 0.55),
             0 0 11px rgba(168, 139, 88, 0.28);
+
           animation: particle-cross-right 2.35s ease-out infinite;
         }
 

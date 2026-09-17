@@ -123,7 +123,7 @@ export default function SelectPage() {
 
   return (
     <div
-      className=" h-dvh  relative z-[1] mx-auto w-full max-w-[1120px] overflow-hidden"
+      className=" h-full  relative z-[1] mx-auto w-full max-w-[1120px] overflow-hidden"
     >
       {isRevealing ? (
         <ReadingLoading

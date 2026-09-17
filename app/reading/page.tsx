@@ -32,7 +32,7 @@ export default function ReadingPage() {
   }
 
   return (
-    <div className="readingContent relative z-[1] mx-auto flex w-full max-w-[1120px] flex-col items-center">
+    <div className=" relative z-[1] mx-auto flex w-full max-w-[1120px] flex-col items-center">
       <QuestionSummary 
         question={question}
       />

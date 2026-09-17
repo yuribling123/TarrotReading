@@ -10,7 +10,7 @@ export function Navigation() {
 
   return (
     <nav
-      className="fixed inset-x-0 top-0 z-300 h-[76px] overflow-hidden border-b border-[rgba(112,82,34,0.16)] bg-[#fffdf8] shadow-[0_8px_22px_rgba(70,51,22,0.08)]"
+      className="sticky inset-x-0 top-0 z-300 h-[76px] overflow-hidden border-b border-[rgba(112,82,34,0.16)] bg-[#fffdf8] shadow-[0_8px_22px_rgba(70,51,22,0.08)]"
       aria-label="Site navigation"
     >
       <Link

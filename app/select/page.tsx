@@ -42,15 +42,7 @@ export default function SelectPage() {
     }
   }, [isHydrated, question, router]);
 
-  useEffect(() => {
-    document.documentElement.style.overscrollBehavior = "none";
-    document.body.style.overscrollBehavior = "none";
 
-    return () => {
-      document.documentElement.style.overscrollBehavior = "";
-      document.body.style.overscrollBehavior = "";
-    };
-  }, []);
 
   function selectCard(card: TarotCard) {
     setError("");

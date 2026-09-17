@@ -23,12 +23,12 @@ export default function RootLayout({
       <body>
         <Toaster />
         <Analytics />
+
         <ReadingSessionProvider>
-          <main className="min-h-screen overflow-hidden max-[520px]:min-h-svh max-[520px]:overflow-x-hidden">
-            <section className="hero relative flex min-h-screen items-center bg-transparent text-[var(--night)]" aria-label="Moonlit tarot reading">
-              <Navigation />
-              {children}
-            </section>
+          <Navigation />
+
+          <main className="min-h-[calc(100svh-76px)] overflow-x-hidden">
+            {children}
           </main>
         </ReadingSessionProvider>
       </body>

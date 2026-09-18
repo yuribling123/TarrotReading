@@ -20,10 +20,7 @@ export function CardFan({
   const { isReady, viewportRef } = useCardFanLayout();
 
   return (
-    <div
-      ref={viewportRef}
-      className="cardFanViewport max-w-full touch-pan-x overflow-x-auto overflow-y-hidden overscroll-x-contain  scrollbar-none mt-40 max-[520px]:w-full max-[520px]:mt-37 max-[1024px]:mt-38 "
-    >
+    <div ref={viewportRef} className="cardFanViewport mt-34 w-full max-w-full overflow-x-auto overflow-y-hidden overscroll-x-contain touch-pan-x scrollbar-none md:mt-38 lg:mt-40">
       <div
         className={`cardFan spreadOut flex w-max items-end transition-opacity duration-500 ease-out ${
           isReady ? "opacity-100" : "opacity-0"

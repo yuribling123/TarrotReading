@@ -70,7 +70,12 @@ export function ZodiacReadingOption({
           onOpenChange={setZodiacOpen}
         >
           <DialogContent
+           
             className="
+              animate-in
+              fade-in
+              zoom-in-95
+              duration-700
               w-[320px]
               rounded-[28px]
               border

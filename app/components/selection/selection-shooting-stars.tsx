@@ -19,7 +19,7 @@ function SolidFivePointStar({
 }) {
   return (
     <span
-      className="block text-[#b99a62] drop-shadow-[0_0_3px_rgba(185,154,98,0.34)]"
+      className="block text-current drop-shadow-[0_0_3px_rgba(185,154,98,0.34)]"
       style={{
         fontSize: `${size}px`,
         lineHeight: 1,
@@ -116,9 +116,8 @@ export function SelectionShootingStars({
 
                 {/* 金色主星：呼吸 + 360° 慢旋转 */}
                 <span
-                  className={`star-core ${
-                    isChanneling ? "star-core-channeling" : ""
-                  }`}
+                  className={`star-core ${isChanneling ? "star-core-channeling" : ""
+                    }`}
                   style={{
                     animationDelay: `${index * 180}ms`,
                   }}
@@ -140,6 +139,7 @@ export function SelectionShootingStars({
         ========================= */
 
         .star-core {
+          color: #b99a62;
           display: inline-flex;
           align-items: center;
           justify-content: center;
@@ -157,6 +157,7 @@ export function SelectionShootingStars({
          * 2. 5 秒一圈旋转
          */
         .star-core-channeling {
+          color: #9e6381;
           animation:
             star-core-breathe 1.45s ease-in-out infinite,
             star-core-spin 5s linear infinite;
@@ -167,15 +168,15 @@ export function SelectionShootingStars({
           0%,
           100% {
             filter:
-              drop-shadow(0 0 2px rgba(198, 170, 112, 0.3))
-              drop-shadow(0 0 5px rgba(185, 160, 112, 0.12));
+              drop-shadow(0 0 2px rgba(158, 99, 129, 0.32))
+              drop-shadow(0 0 5px rgba(158, 99, 129, 0.16));
           }
 
           50% {
             filter:
-              drop-shadow(0 0 6px rgba(220, 193, 137, 0.95))
-              drop-shadow(0 0 12px rgba(198, 170, 112, 0.62))
-              drop-shadow(0 0 20px rgba(168, 139, 88, 0.3));
+            drop-shadow(0 0 5px rgba(158, 99, 129, 0.9))
+            drop-shadow(0 0 11px rgba(158, 99, 129, 0.55))
+            drop-shadow(0 0 18px rgba(158, 99, 129, 0.25));
           }
         }
 

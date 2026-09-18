@@ -51,13 +51,14 @@ export function CardSelect({
     selectFromFan,
     slotsRef,
   } = useCardFlight({ onSelect, selectedCards });
-    // 星象开放时打开选择窗口
-    useEffect(() => {
-    if (canReveal && zodiacAvailable && zodiac==null){
-      setZodiacOpen(true)
-    }
-  }, [canReveal]);
 
+
+  // 星象开放时打开选择窗口
+  useEffect(() => {
+    if (canReveal && zodiacAvailable && zodiac === null && !zodiacOpen) {
+      setZodiacOpen(true);
+    }
+  }, [canReveal, zodiacAvailable, zodiac, zodiacOpen, setZodiacOpen]);
 
   // 仪式还没结束：只显示仪式
   if (!ritualDone) {
@@ -67,7 +68,7 @@ export function CardSelect({
       />
     );
   }
-  
+
   return (
     <div>
       <section className=" relative overflow-hidden  px-1  pt-16 [--selection-card-width:90px] max-[860px]:[--selection-card-width:102px] max-[520px]:flex  max-[520px]:flex-col  max-[520px]:[--selection-card-width:clamp(50px,19vw,82px)]">
@@ -76,7 +77,7 @@ export function CardSelect({
         <div
           aria-hidden="true"
           className={`pointer-events-none fixed inset-0 z-10 transition-opacity duration-700 ease-out ${isChanneling ? "opacity-100" : "opacity-0"}`}
-       
+
         />
 
         {/* 三颗金星：在暗场上面 */}

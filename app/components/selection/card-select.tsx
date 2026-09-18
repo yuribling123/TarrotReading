@@ -112,7 +112,7 @@ export function CardSelect({
             <div className="absolute top-0 z-20">
               <HoldToRevealButton
                 onComplete={onReveal}
-                holdDuration={2700}
+                holdDuration={4200}
                 onHoldingChange={setIsChanneling}
               />
             </div>

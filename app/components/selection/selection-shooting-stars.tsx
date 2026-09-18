@@ -166,18 +166,12 @@ export function SelectionShootingStars({
         @keyframes star-core-breathe {
           0%,
           100% {
-            transform: scale(0.9);
-            opacity: 0.82;
-
             filter:
               drop-shadow(0 0 2px rgba(198, 170, 112, 0.3))
               drop-shadow(0 0 5px rgba(185, 160, 112, 0.12));
           }
 
           50% {
-            transform: scale(1.22);
-            opacity: 1;
-
             filter:
               drop-shadow(0 0 6px rgba(220, 193, 137, 0.95))
               drop-shadow(0 0 12px rgba(198, 170, 112, 0.62))

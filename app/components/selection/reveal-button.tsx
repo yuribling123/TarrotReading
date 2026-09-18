@@ -72,7 +72,7 @@ export function HoldToRevealButton({
 
     completeTimerRef.current = setTimeout(() => {
       onComplete();
-    }, 800);
+    }, 2000);
   };
 
   /**

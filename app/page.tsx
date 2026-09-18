@@ -13,6 +13,7 @@ import { MoonlitPostcard } from "@/app/components/postcards/moonlit-postcard";
 import { MoonLore } from "@/app/components/moon/moon-lore";
 
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import type { DivinationCatalyst } from "@/lib/types";
 import { getVisitorId } from "@/lib/visitor/visitor-id";
 import { toast } from "@/components/ui/toast";
@@ -29,10 +30,11 @@ export default function LandingPage() {
   const [selectedCatalyst, setSelectedCatalyst] = useState<DivinationCatalyst | null>(null);
   const [moonLoreOpen, setMoonLoreOpen] = useState(false);
 
-  const { language, setError, setQuestion } = useReadingSession();
+  const { language, setError, setQuestion} = useReadingSession();
   const text = messages[language];
-  const deck = tarotDeck
-
+  const deck = tarotDeck;
+  const router = useRouter();
+  // 增加共鸣
   async function handleResponse() {
     setIsPending(true);
     try {
@@ -44,6 +46,7 @@ export default function LandingPage() {
       );
       if (!feedbackResponse.ok) {
         throw new Error("Failed to add feedback");
+
       }
       // 当前 visitor 的 resonance +1
       const resonanceResponse = await fetch(
@@ -59,14 +62,21 @@ export default function LandingPage() {
         timeout: 2600,
       });
       setReadingLimitOpen(false);
+      router.push("/select");
+
     } catch (error) {
       console.error("Failed to add resonance:", error);
+      toast.add({
+        title: "共鸣没有成功送达，稍后再试",
+        timeout: 2600,
+      });
     } finally {
       setIsPending(false);
     }
   }
   //用户提交问题
   async function handleQuestion(question: string) {
+    setQuestion(question);
     setIsPending(true);
     try {
       // 查 Redis 次数
@@ -80,23 +90,22 @@ export default function LandingPage() {
       }
       const data = await response.json();
       if (!data.allowed) {
+        //每日上限到达
         if (data.reason === "daily_limit") {
           setDailyLimitOpen(true);
         } else if (data.reason === "resonance_required") {
+        //需要共鸣
           setReadingLimitOpen(true);
         }
 
         return false;
       }
-      setQuestion(question);
       setError("");
       return true;
 
     } catch (error) {
       // Redis 出错时 fail-open，不影响正常占卜
       console.error("Failed to check reading limit:", error);
-
-      setQuestion(question);
       setError("");
       return true;
 

@@ -98,6 +98,7 @@ export function CardSelect({
         {/* 三张已选中的牌：保持亮 */}
         <div ref={slotsRef} className="relative z-20 pt-15 max-[520px]:pt-0">
           <SelectedCardSlots
+            isChanneling={isChanneling}
             cards={selectedCards}
             flight={flight}
             flightFaceReady={flightFaceReady}
@@ -111,7 +112,7 @@ export function CardSelect({
             <div className="absolute top-0 z-20">
               <HoldToRevealButton
                 onComplete={onReveal}
-                holdDuration={2500}
+                holdDuration={2700}
                 onHoldingChange={setIsChanneling}
               />
             </div>

@@ -597,6 +597,11 @@ h1 {
     both;
 }
 
+.readingRitual.complete .ritualMoon::after {
+  animation: none;
+  opacity: 0;
+}
+
 /* ==================================================
    READING RESULT
    ================================================== */

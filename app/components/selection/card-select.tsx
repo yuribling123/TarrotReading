@@ -12,6 +12,7 @@ import { StarBackground } from "@/app/components/shared/stars";
 import { useCardFlight } from "./use-card-flight";
 import { ShootingStars } from "../shared/shooting-star";
 import { HoldToRevealButton } from "./reveal-button";
+import { isZodiacReadingAvailable } from "@/lib/zodiac/availability";
 
 type CardSelectProps = {
   language: Language;
@@ -39,6 +40,7 @@ export function CardSelect({
   // Only reveal when three cards selected
 
   const [ritualDone, setRitualDone] = useState(false);
+  const zodiacAvailable = isZodiacReadingAvailable();
   const canReveal = selectedCards.length === 3;
   const text = messages[language];
   const [isChanneling, setIsChanneling] = useState(false);
@@ -49,6 +51,12 @@ export function CardSelect({
     selectFromFan,
     slotsRef,
   } = useCardFlight({ onSelect, selectedCards });
+    // 星象开放时打开选择窗口
+    useEffect(() => {
+    if (canReveal && zodiacAvailable && zodiac==null){
+      setZodiacOpen(true)
+    }
+  }, [canReveal]);
 
 
   // 仪式还没结束：只显示仪式
@@ -59,7 +67,7 @@ export function CardSelect({
       />
     );
   }
-
+  
   return (
     <div>
       <section className=" relative overflow-hidden  px-1  pt-20 [--selection-card-width:90px] max-[860px]:[--selection-card-width:102px] max-[520px]:flex  max-[520px]:flex-col  max-[520px]:[--selection-card-width:clamp(50px,19vw,82px)]">

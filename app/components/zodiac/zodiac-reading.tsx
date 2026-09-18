@@ -53,7 +53,7 @@ export function ZodiacReadingOption({
       >
         {zodiacAvailable && (
           <span className="text-[10px] text-[#b89552]/80">
-            星象已开放
+            选择你的星象
           </span>
         )}
 

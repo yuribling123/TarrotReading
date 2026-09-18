@@ -99,12 +99,6 @@ export default function SelectPage() {
       setError(text.incompleteSpread);
       return;
     }
-    // 周五、六、日，而且还没选星座 → 打开星座弹窗
-    const zodiacAvailable = isZodiacReadingAvailable();
-    if (zodiacAvailable && !zodiac) {
-      setZodiacOpen(true);
-      return;
-    }
 
     // These cards are already fully determined by the shuffle + selection.
     setCards(selectedCards);

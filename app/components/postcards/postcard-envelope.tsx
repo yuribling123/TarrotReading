@@ -22,7 +22,7 @@ export function PostcardEnvelope({ isRead, isReady, onOpen }: PostcardEnvelopePr
           alt=""
           width={44}
           height={36}
-          className={`size-full object-contain transition duration-500 ${isRead ? "opacity-50 md:scale-[0.6]" : "opacity-100"}`}
+          className={`size-full object-contain transition duration-500 ${isRead ? "opacity-50 md:scale-[0.6]" :"scale-[1.2] opacity-100 md:scale-100" }`}
         />
       </span>
     </button>

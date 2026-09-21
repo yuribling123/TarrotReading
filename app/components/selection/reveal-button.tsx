@@ -16,7 +16,7 @@ export function HoldToRevealButton({
   holdDuration = 1800,
 }: HoldToRevealButtonProps) {
   // 当前注入进度：0 = 空，1 = 满
-  const [progress, setProgress] = useState(0);
+  const [progress, setProgress] = useState(0.1);
 
   // 当前是否正在长按
   const [isHolding, setIsHolding] = useState(false);
@@ -326,7 +326,7 @@ export function HoldToRevealButton({
           ? "心念已落定"
           : isHolding
             ? "聚念中 ···"
-            : progress > 0
+            : progress > 0.1
               ? "继续聚念"
               : label}
       </span>

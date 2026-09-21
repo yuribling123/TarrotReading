@@ -60,7 +60,7 @@ function DialogContent({
       >
         {children}
         {showCloseButton && (
-          <DialogPrimitive.Close  className="text-[#8a8178]  hover:text-[#b89552]  hover:bg-transparent"
+          <DialogPrimitive.Close  className="text-[#8a8178]  hover:text-[#b89552]  hover:bg-transparent focus:outline-none focus-visible:outline-none  focus:ring-0  focus-visible:ring-0"
             data-slot="dialog-close"
             render={
               <Button

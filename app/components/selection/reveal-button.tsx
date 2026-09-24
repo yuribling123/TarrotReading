@@ -9,41 +9,25 @@ type HoldToRevealButtonProps = {
   onHoldingChange?: (value: boolean) => void;
 };
 
+const INITIAL_PROGRESS = 0.1;
+
 export function HoldToRevealButton({
   onHoldingChange,
   onComplete,
-  label = "长按聚念 · 唤醒牌阵",
+  label = "长按 · 唤醒星辰",
   holdDuration = 1800,
 }: HoldToRevealButtonProps) {
-  // 当前注入进度：0 = 空，1 = 满
-  const [progress, setProgress] = useState(0.1);
-
-  // 当前是否正在长按
+  const [progress, setProgress] = useState(INITIAL_PROGRESS);
   const [isHolding, setIsHolding] = useState(false);
-
-  // 是否已经完成
   const [isComplete, setIsComplete] = useState(false);
 
-  // 防止多个 SVG gradient id 冲突
   const gradientId = useId().replace(/:/g, "");
 
-  // 保存实时 progress
-  const progressRef = useRef(0);
-
-  // requestAnimationFrame id
+  const progressRef = useRef(INITIAL_PROGRESS);
   const animationRef = useRef<number | null>(null);
-
-  // 上一帧时间
   const lastFrameRef = useRef<number | null>(null);
-
-  // 完成以后延迟 reveal
   const completeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  /**
-   * 松手：
-   * 停止继续增加 progress，
-   * 但是保留当前水位。
-   */
   const stopHolding = () => {
     setIsHolding(false);
     onHoldingChange?.(false);
@@ -55,15 +39,13 @@ export function HoldToRevealButton({
     }
   };
 
-  /**
-   * 达到 100%。
-   */
   const finish = () => {
     progressRef.current = 1;
 
     setProgress(1);
     setIsHolding(false);
     setIsComplete(true);
+    onHoldingChange?.(false);
 
     if (animationRef.current !== null) {
       cancelAnimationFrame(animationRef.current);
@@ -75,18 +57,12 @@ export function HoldToRevealButton({
     }, 1000);
   };
 
-  /**
-   * 长按核心逻辑。
-   *
-   * 每一帧根据经过的时间增加 progress。
-   */
   const animate = (time: number) => {
     if (lastFrameRef.current === null) {
       lastFrameRef.current = time;
     }
 
     const delta = time - lastFrameRef.current;
-
     lastFrameRef.current = time;
 
     const nextProgress = Math.min(
@@ -105,12 +81,6 @@ export function HoldToRevealButton({
     animationRef.current = requestAnimationFrame(animate);
   };
 
-  /**
-   * 开始长按。
-   *
-   * 如果之前已经有 progress，
-   * 就从当前进度继续。
-   */
   const startHolding = () => {
     if (isComplete || animationRef.current !== null) return;
 
@@ -121,9 +91,6 @@ export function HoldToRevealButton({
     animationRef.current = requestAnimationFrame(animate);
   };
 
-  /**
-   * Component 卸载时清理。
-   */
   useEffect(() => {
     return () => {
       if (animationRef.current !== null) {
@@ -137,42 +104,71 @@ export function HoldToRevealButton({
   }, []);
 
   return (
-    <div className="flex flex-col items-center gap-2 pt-6">
-      <div className="relative flex size-[64px] items-center justify-center">
-        {/* 外围淡淡的光 */}
+    <div className="hold-reveal-enter flex flex-col items-center gap-2 pt-6">
+      <div className="relative flex size-[72px] items-center justify-center">
+        {/* ==================================================
+            外围月晕
+            ================================================== */}
         <span
           aria-hidden="true"
-          className={`pointer-events-none absolute size-[62px] rounded-full bg-[#d5ae64]/14 blur-[10px] transition-all duration-500 ${isHolding ? "scale-110 opacity-100" : progress > 0 ? "scale-100 opacity-25" : "scale-90 opacity-0"}`}
+          className={`pointer-events-none absolute size-[70px] rounded-full bg-[radial-gradient(circle,rgba(215,181,109,0.20)_0%,rgba(158,99,129,0.07)_43%,transparent_72%)] blur-[8px] transition-all duration-500 ${
+            isHolding
+              ? "scale-115 opacity-100"
+              : progress > INITIAL_PROGRESS
+                ? "scale-105 opacity-65"
+                : "scale-95 opacity-35"
+          }`}
         />
 
-        {/*
-          =============================
-          水面冒出来的能量粒子
-          =============================
+        {/* ==================================================
+            长按时向外扩散的能量环
+            ================================================== */}
+        {isHolding && !isComplete && (
+          <>
+            <span
+              aria-hidden="true"
+              className="energy-ring pointer-events-none absolute size-[60px] rounded-full border border-[#d7b56d]/28"
+            />
 
-          整组粒子的 bottom 跟着 progress 走，
-          所以永远从当前水面冒出来。
-        */}
+            <span
+              aria-hidden="true"
+              className="energy-ring energy-ring-delay pointer-events-none absolute size-[60px] rounded-full border border-[#b99ac8]/18"
+            />
+          </>
+        )}
+
+        {/* ==================================================
+            外侧细金环
+            首次出现时从 0.85 展开到 1
+            ================================================== */}
+        <span
+          aria-hidden="true"
+          className={`moon-ring-enter pointer-events-none absolute size-[63px] rounded-full border transition-[border-color,box-shadow] duration-500 ${
+            isHolding
+              ? "border-[#c99d4f]/48 shadow-[0_0_9px_rgba(201,157,79,0.10)]"
+              : "border-[#d7b56d]/25"
+          }`}
+        />
+
+        {/* ==================================================
+            水面冒出的粒子
+            ================================================== */}
         {isHolding && progress < 1 && (
-          <div className="pointer-events-none absolute left-1/2 top-1/2 z-30 size-[52px] -translate-x-1/2 -translate-y-1/2 overflow-visible">
+          <div className="pointer-events-none absolute left-1/2 top-1/2 z-30 size-[56px] -translate-x-1/2 -translate-y-1/2 overflow-visible">
             <div
               className="absolute inset-x-0"
               style={{
-                bottom: `${Math.min(progress * 52, 48)}px`,
+                bottom: `${Math.min(progress * 56, 51)}px`,
               }}
             >
-              {/* 紫色透明光泡 */}
               <span className="floating-particle bubble-purple float-left" />
 
-              {/* 金色透明光泡 */}
               <span className="floating-particle bubble-gold float-right" />
 
-              {/* 紫色星屑：和泡泡完全一样的移动方式 */}
-              <span className="floating-symbol star-purple float-left">✧</span>
+              <span className="floating-symbol star-purple float-left">
+                ✧
+              </span>
 
-
-
-              {/* 月尘 */}
               <span className="moon-dust dust-purple">·</span>
               <span className="moon-dust dust-gold">˚</span>
               <span className="moon-dust dust-soft-purple">·</span>
@@ -180,6 +176,9 @@ export function HoldToRevealButton({
           </div>
         )}
 
+        {/* ==================================================
+            主按钮 / 月池
+            ================================================== */}
         <button
           type="button"
           aria-label={label}
@@ -193,16 +192,25 @@ export function HoldToRevealButton({
           onPointerCancel={stopHolding}
           onLostPointerCapture={stopHolding}
           onContextMenu={(event) => event.preventDefault()}
-          className={`relative z-10 size-[52px] touch-none select-none overflow-hidden rounded-full border bg-[#fffdf9] outline-none transition-[transform,border-color,box-shadow] duration-300 ${isHolding ? "scale-[0.97] border-[#ad7f35]/75 shadow-[0_0_17px_rgba(188,143,67,0.14)]" : "border-[#c8a766]/50 shadow-[0_4px_13px_rgba(132,94,30,0.07)]"}`}
+          className={`relative z-10 size-[56px] touch-none select-none overflow-hidden rounded-full border outline-none transition-[transform,border-color,box-shadow] duration-300 ${
+            isComplete
+              ? "scale-100 border-[#b88938]/75 shadow-[0_0_20px_rgba(201,154,69,0.25),0_5px_15px_rgba(106,76,30,0.08)]"
+              : isHolding
+                ? "scale-[0.96] border-[#b98b3e]/75 shadow-[0_0_0_3px_rgba(215,181,109,0.07),0_0_20px_rgba(188,143,67,0.18),0_4px_12px_rgba(106,76,30,0.07)]"
+                : "border-[#c9a45a]/55 shadow-[0_5px_15px_rgba(106,76,30,0.08)]"
+          }`}
         >
-          {/*
-            =============================
-            水体
-            =============================
-          */}
+          {/* 暖白月池底色 */}
+          <span className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_40%_28%,#fffefa_0%,#fffaf1_50%,#f6ecdf_100%)]" />
+
+          {/* ==================================================
+              水体
+              ================================================== */}
           <span
             aria-hidden="true"
-            className={`absolute inset-x-0 bottom-0 ${progress > 0 ? "opacity-100" : "opacity-0"}`}
+            className={`absolute inset-x-0 bottom-0 transition-opacity duration-300 ${
+              progress > 0 ? "opacity-100" : "opacity-0"
+            }`}
             style={{
               height: `${progress * 100}%`,
             }}
@@ -211,7 +219,9 @@ export function HoldToRevealButton({
             <svg
               viewBox="0 0 240 120"
               preserveAspectRatio="none"
-              className={`water-body pointer-events-none absolute -top-[7px] left-0 h-[calc(100%+7px)] w-[200%] ${isHolding ? "water-body-holding" : ""}`}
+              className={`water-body pointer-events-none absolute -top-[7px] left-0 h-[calc(100%+7px)] w-[200%] ${
+                isHolding ? "water-body-holding" : ""
+              }`}
             >
               <defs>
                 <linearGradient
@@ -224,38 +234,38 @@ export function HoldToRevealButton({
                 >
                   <stop
                     offset="0%"
-                    stopColor="#fff8e7"
-                    stopOpacity="0.9"
+                    stopColor="#fff1c9"
+                    stopOpacity="0.96"
                   />
 
                   <stop
                     offset="16%"
-                    stopColor="#f5e2b4"
-                    stopOpacity="0.78"
+                    stopColor="#f6dfaa"
+                    stopOpacity="0.86"
                   />
 
                   <stop
                     offset="36%"
-                    stopColor="#ebcf91"
-                    stopOpacity="0.67"
+                    stopColor="#ebcb84"
+                    stopOpacity="0.76"
                   />
 
                   <stop
                     offset="58%"
-                    stopColor="#dcb467"
-                    stopOpacity="0.62"
+                    stopColor="#dcb05d"
+                    stopOpacity="0.72"
                   />
 
                   <stop
                     offset="80%"
-                    stopColor="#ca9845"
-                    stopOpacity="0.7"
+                    stopColor="#c8923c"
+                    stopOpacity="0.78"
                   />
 
                   <stop
                     offset="100%"
-                    stopColor="#ae7223"
-                    stopOpacity="0.8"
+                    stopColor="#aa6d20"
+                    stopOpacity="0.88"
                   />
                 </linearGradient>
               </defs>
@@ -283,7 +293,9 @@ export function HoldToRevealButton({
             <svg
               viewBox="0 0 240 24"
               preserveAspectRatio="none"
-              className={`water-highlight pointer-events-none absolute -top-[7px] left-0 h-[13px] w-[200%] ${isHolding ? "water-highlight-holding" : ""}`}
+              className={`water-highlight pointer-events-none absolute -top-[7px] left-0 h-[13px] w-[200%] ${
+                isHolding ? "water-highlight-holding" : ""
+              }`}
             >
               <path
                 d="
@@ -298,40 +310,104 @@ export function HoldToRevealButton({
                   C220 15 230 15 240 10
                 "
                 fill="none"
-                stroke="rgba(255, 250, 232, 0.9)"
-                strokeWidth="1.25"
+                stroke="rgba(255,250,232,0.95)"
+                strokeWidth="1.3"
               />
             </svg>
 
-            {/* 水里面扫过的反光 */}
-            <span className="water-shimmer pointer-events-none absolute inset-y-0 -left-[55%] w-[50%] bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+            {/* 水中反光 */}
+            <span className="water-shimmer pointer-events-none absolute inset-y-0 -left-[55%] w-[50%] bg-gradient-to-r from-transparent via-white/25 to-transparent" />
 
-            {/* 中上部柔光 */}
-            <span className="pointer-events-none absolute inset-x-[5px] top-[8%] h-[38%] rounded-[50%] bg-gradient-to-b from-white/16 via-[#fff0c2]/7 to-transparent blur-[4px]" />
+            {/* 水体内部柔光 */}
+            <span className="pointer-events-none absolute inset-x-[5px] top-[8%] h-[38%] rounded-[50%] bg-gradient-to-b from-white/20 via-[#fff0c2]/8 to-transparent blur-[4px]" />
           </span>
 
-          {/* 完成以后出现 ✦ */}
+          {/* ==================================================
+              完成 ✦
+              ================================================== */}
           <span
             aria-hidden="true"
-            className={`absolute inset-0 z-20 flex items-center justify-center text-[14px] text-[#FFFEFC] transition-all duration-300 ${isComplete ? "scale-100 opacity-100" : "scale-75 opacity-0"}`}
+            className={`complete-star absolute inset-0 z-40 flex items-center justify-center text-[17px] text-[#fffdf8] transition-all duration-500 ${
+              isComplete
+                ? "scale-100 opacity-100"
+                : "scale-50 opacity-0"
+            }`}
           >
             ✦
           </span>
         </button>
       </div>
 
-      {/* 状态文案 */}
-      <span className={`text-[11px] tracking-[0.12em] transition-colors duration-300 ${isHolding ? "text-[#72501b]" : "text-[#9e6381]"}`}>
+      {/* ==================================================
+          状态文案
+          ================================================== */}
+      <span
+        className={`text-[11px] tracking-[0.12em] transition-colors duration-300 ${
+          isComplete
+            ? "text-[#8c6525]"
+            : isHolding
+              ? "text-[#72501b]"
+              : "text-[#9e6381]"
+        }`}
+      >
         {isComplete
           ? "心念已落定"
           : isHolding
-            ? "聚念中 ···"
-            : progress > 0.1
-              ? "继续聚念"
+            ? "唤醒中 ···"
+            : progress > INITIAL_PROGRESS
+              ? "继续"
               : label}
       </span>
 
       <style jsx>{`
+        /* ==================================================
+           整体入场
+           轻轻从牌阵下方浮起
+           ================================================== */
+
+        .hold-reveal-enter {
+          animation: hold-reveal-enter 3000ms
+            cubic-bezier(0.22, 1, 0.36, 1) both;
+        }
+
+        @keyframes hold-reveal-enter {
+          from {
+            opacity: 0;
+            transform: translateY(8px);
+          }
+
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        /* ==================================================
+           外侧金环入场
+           0.85 → 1
+           ================================================== */
+
+        .moon-ring-enter {
+          animation: moon-ring-enter 680ms
+            cubic-bezier(0.22, 1, 0.36, 1) both;
+        }
+
+        @keyframes moon-ring-enter {
+          from {
+            transform: scale(0.85);
+            opacity: 0;
+          }
+
+          45% {
+            opacity: 0.3;
+          }
+
+          to {
+            transform: scale(1);
+            opacity: 1;
+          }
+        }
+
         /* ==================================================
            水体
            ================================================== */
@@ -405,17 +481,35 @@ export function HoldToRevealButton({
         }
 
         /* ==================================================
-           泡泡 + 星星共用的粒子逻辑
-           ==================================================
+           长按能量环
+           ================================================== */
 
-           重点：
-           星星和泡泡现在完全使用同一种运动。
+        .energy-ring {
+          animation: energy-ring-expand 1.8s ease-out infinite;
+        }
 
-           float-left：
-           上浮 → 向右漂 → 再向左漂
+        .energy-ring-delay {
+          animation-delay: 0.9s;
+        }
 
-           float-right：
-           上浮 → 向左漂 → 再向右漂
+        @keyframes energy-ring-expand {
+          0% {
+            transform: scale(0.9);
+            opacity: 0;
+          }
+
+          20% {
+            opacity: 0.65;
+          }
+
+          100% {
+            transform: scale(1.35);
+            opacity: 0;
+          }
+        }
+
+        /* ==================================================
+           泡泡 + 星屑
            ================================================== */
 
         .floating-particle,
@@ -476,7 +570,7 @@ export function HoldToRevealButton({
         }
 
         /* ==================================================
-           透明光泡
+           光泡
            ================================================== */
 
         .bubble-purple {
@@ -506,12 +600,7 @@ export function HoldToRevealButton({
         }
 
         /* ==================================================
-           ✦ 星屑
-
-           和泡泡用完全一样的：
-           float-left / float-right
-
-           没有单独的 star keyframes。
+           星屑
            ================================================== */
 
         .floating-symbol {
@@ -526,11 +615,8 @@ export function HoldToRevealButton({
           animation-delay: 0.85s;
         }
 
- 
         /* ==================================================
-           月尘 · ˚
-
-           月尘更轻、更快一点。
+           月尘
            ================================================== */
 
         .moon-dust {
@@ -580,6 +666,27 @@ export function HoldToRevealButton({
           100% {
             transform: translate3d(-1px, -21px, 0) scale(0.75);
             opacity: 0;
+          }
+        }
+
+        /* ==================================================
+           完成星光
+           ================================================== */
+
+        .complete-star {
+          text-shadow:
+            0 0 5px rgba(255, 250, 226, 0.9),
+            0 0 11px rgba(255, 236, 184, 0.55);
+        }
+
+        /* ==================================================
+           Reduced motion
+           ================================================== */
+
+        @media (prefers-reduced-motion: reduce) {
+          .hold-reveal-enter,
+          .moon-ring-enter {
+            animation: none;
           }
         }
       `}</style>

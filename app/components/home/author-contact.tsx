@@ -30,7 +30,7 @@ export function AuthorContact({ language }: { language: Language }) {
   return (
     <Dialog>
       <div className="fixed inset-x-0 bottom-[max(12px,env(safe-area-inset-bottom))] z-20 flex justify-center pointer-events-none">
-        <DialogTrigger className="pointer-events-auto cursor-pointer rounded-full  bg-[#fffdf9]/90 px-4 py-2 text-[11px] tracking-[0.08em] text-[#7f5b1f] backdrop-blur-xl transition-colors hover:bg-[#fffdf9] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#c9ad73]">
+        <DialogTrigger className="pointer-events-auto cursor-pointer rounded-full  bg-[#fffdf9]/90 px-4 py-2 text-[11px] tracking-[0.08em] text-[grey]/50 backdrop-blur-xl transition-colors hover:bg-[#fffdf9] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#c9ad73]">
           {text.trigger}
         </DialogTrigger>
       </div>

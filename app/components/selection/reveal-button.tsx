@@ -4,6 +4,7 @@ import { useEffect, useId, useRef, useState } from "react";
 
 type HoldToRevealButtonProps = {
   onComplete: () => void;
+  onCharged?: () => void;
   label?: string;
   holdDuration?: number;
   onHoldingChange?: (value: boolean) => void;
@@ -14,6 +15,7 @@ const INITIAL_PROGRESS = 0.1;
 export function HoldToRevealButton({
   onHoldingChange,
   onComplete,
+  onCharged,
   label = "长按 · 唤醒星辰",
   holdDuration = 1800,
 }: HoldToRevealButtonProps) {
@@ -55,6 +57,7 @@ export function HoldToRevealButton({
     completeTimerRef.current = setTimeout(() => {
       onComplete();
     }, 1000);
+    onCharged?.();
   };
 
   const animate = (time: number) => {
@@ -145,8 +148,8 @@ export function HoldToRevealButton({
           aria-hidden="true"
           className={`moon-ring-enter pointer-events-none absolute size-[63px] rounded-full border transition-[border-color,box-shadow] duration-500 ${
             isHolding
-              ? "border-[#c99d4f]/48 shadow-[0_0_9px_rgba(201,157,79,0.10)]"
-              : "border-[#d7b56d]/25"
+              ? "border-[#c99d4f]/28 shadow-[0_0_9px_rgba(201,157,79,0.06)]"
+              : "border-[#d7b56d]/15"
           }`}
         />
 
@@ -194,14 +197,14 @@ export function HoldToRevealButton({
           onContextMenu={(event) => event.preventDefault()}
           className={`relative z-10 size-[56px] touch-none select-none overflow-hidden rounded-full border outline-none transition-[transform,border-color,box-shadow] duration-300 ${
             isComplete
-              ? "scale-100 border-[#b88938]/75 shadow-[0_0_20px_rgba(201,154,69,0.25),0_5px_15px_rgba(106,76,30,0.08)]"
+              ? "scale-100 border-[#bca6bd]/55 shadow-[0_0_20px_rgba(190,163,192,0.22),0_5px_15px_rgba(106,76,30,0.08)]"
               : isHolding
-                ? "scale-[0.96] border-[#b98b3e]/75 shadow-[0_0_0_3px_rgba(215,181,109,0.07),0_0_20px_rgba(188,143,67,0.18),0_4px_12px_rgba(106,76,30,0.07)]"
-                : "border-[#c9a45a]/55 shadow-[0_5px_15px_rgba(106,76,30,0.08)]"
+                ? "scale-[0.96] border-[#c6b3c7]/65 shadow-[0_0_0_3px_rgba(215,181,109,0.07),0_0_20px_rgba(188,143,67,0.18),0_4px_12px_rgba(106,76,30,0.07)]"
+                : "border-[#c8becb]/50 shadow-[0_5px_15px_rgba(106,76,30,0.08)]"
           }`}
         >
-          {/* 暖白月池底色 */}
-          <span className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_40%_28%,#fffefa_0%,#fffaf1_50%,#f6ecdf_100%)]" />
+          {/* 通透的玻璃底色 */}
+          <span aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_38%_28%,#ffffff_0%,#fcf9f6_42%,#eee6ef_78%,#d6cbdc_100%)]" />
 
           {/* ==================================================
               水体
@@ -234,38 +237,38 @@ export function HoldToRevealButton({
                 >
                   <stop
                     offset="0%"
-                    stopColor="#fff1c9"
-                    stopOpacity="0.96"
+                    stopColor="#f9f3e3"
+                    stopOpacity="0.82"
                   />
 
                   <stop
                     offset="16%"
-                    stopColor="#f6dfaa"
-                    stopOpacity="0.86"
+                    stopColor="#f3ebd5"
+                    stopOpacity="0.74"
                   />
 
                   <stop
                     offset="36%"
-                    stopColor="#ebcb84"
-                    stopOpacity="0.76"
+                    stopColor="#e9ce93"
+                    stopOpacity="0.68"
                   />
 
                   <stop
                     offset="58%"
-                    stopColor="#dcb05d"
-                    stopOpacity="0.72"
+                    stopColor="#c9a14bd8"
+                    stopOpacity="0.66"
                   />
 
                   <stop
                     offset="80%"
-                    stopColor="#c8923c"
-                    stopOpacity="0.78"
+                    stopColor="#dbaf79"
+                    stopOpacity="0.7"
                   />
 
                   <stop
                     offset="100%"
-                    stopColor="#aa6d20"
-                    stopOpacity="0.88"
+                    stopColor="#a87485"
+                    stopOpacity="0.76"
                   />
                 </linearGradient>
               </defs>
@@ -321,6 +324,14 @@ export function HoldToRevealButton({
             {/* 水体内部柔光 */}
             <span className="pointer-events-none absolute inset-x-[5px] top-[8%] h-[38%] rounded-[50%] bg-gradient-to-b from-white/20 via-[#fff0c2]/8 to-transparent blur-[4px]" />
           </span>
+
+          {/* 固定在球面的玻璃厚度和反光，不随水位移动 */}
+          <span aria-hidden="true" className="pointer-events-none absolute inset-0 z-20 rounded-full shadow-[inset_2px_2px_5px_rgba(255,255,255,0.85)]" />
+          <span aria-hidden="true" className="pointer-events-none absolute inset-1 z-20 rounded-full border border-white/35" />
+          <svg aria-hidden="true" viewBox="0 0 56 56" className="pointer-events-none absolute inset-0 z-30 size-full" fill="none">
+            <path d="M 10 23 A 19 19 0 0 1 24 9" stroke="white" strokeOpacity="0.8" strokeWidth="3" strokeLinecap="round" />
+            <path d="M 37 46 A 20 20 0 0 0 47 35" stroke="white" strokeOpacity="0.4" strokeWidth="1.5" strokeLinecap="round" />
+          </svg>
 
           {/* ==================================================
               完成 ✦

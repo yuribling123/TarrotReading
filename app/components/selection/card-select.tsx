@@ -44,6 +44,7 @@ export function CardSelect({
   const canReveal = selectedCards.length === 3;
   const text = messages[language];
   const [isChanneling, setIsChanneling] = useState(false);
+  const [isCharged, setIsCharged] = useState(false);
   const {
     completeFlightMotion,
     flight,
@@ -89,6 +90,7 @@ export function CardSelect({
           ) : (
             <SelectionShootingStars
               isChanneling={isChanneling}
+              isCharged={isCharged}
               count={selectedCards.length}
               label={text.chosenHint.replace("{count}", String(selectedCards.length))}
             />
@@ -112,7 +114,8 @@ export function CardSelect({
             <div className="absolute top-0 z-20">
               <HoldToRevealButton
                 onComplete={onReveal}
-                holdDuration={4200}
+                onCharged={() => setIsCharged(true)}
+                holdDuration={1500}
                 onHoldingChange={setIsChanneling}
               />
             </div>

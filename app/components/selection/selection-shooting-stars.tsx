@@ -2,6 +2,7 @@ type SelectionShootingStarsProps = {
   count: number;
   label: string;
   isChanneling?: boolean;
+  isCharged?: boolean;
 };
 
 const starPositions = [
@@ -36,6 +37,7 @@ export function SelectionShootingStars({
   count,
   label,
   isChanneling = false,
+  isCharged = false,
 }: SelectionShootingStarsProps) {
   return (
     <div
@@ -116,10 +118,10 @@ export function SelectionShootingStars({
 
                 {/* 金色主星：呼吸 + 360° 慢旋转 */}
                 <span
-                  className={`star-core ${isChanneling ? "star-core-channeling" : ""
+                  className={`star-core ${isCharged ? "star-core-charged" : isChanneling ? "star-core-channeling" : ""
                     }`}
                   style={{
-                    animationDelay: `${index * 180}ms`,
+                    animationDelay: isCharged ? "0ms" : `${index * 180}ms`,
                   }}
                 >
                   <SolidFivePointStar
@@ -134,6 +136,22 @@ export function SelectionShootingStars({
       )}
 
       <style jsx>{`
+        .star-core-charged {
+          color: #9e6381;
+          animation: star-core-charged 900ms ease-out both;
+        }
+        @keyframes star-core-charged {
+          0%, 100% { transform: scale(1); filter: none; }
+          28% { transform: scale(1.2); filter: drop-shadow(0 0 8px rgba(158,99,129,0.85)); }
+          78% { transform: scale(1.06); filter: drop-shadow(0 0 4px rgba(158,99,129,0.4)); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .star-core-charged { animation-name: star-core-charged-reduced; }
+        }
+        @keyframes star-core-charged-reduced {
+          0%, 100% { filter: none; }
+          28% { filter: brightness(1.3); }
+        }
         /* =========================
            金色主星
         ========================= */

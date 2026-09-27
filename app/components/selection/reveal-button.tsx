@@ -56,7 +56,7 @@ export function HoldToRevealButton({
 
     completeTimerRef.current = setTimeout(() => {
       onComplete();
-    }, 1000);
+    }, 1500);
     onCharged?.();
   };
 

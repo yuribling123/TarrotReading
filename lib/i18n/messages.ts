@@ -71,8 +71,8 @@ export const messages = {
     enter: "开始",
     authorContact: {
       trigger: "联系作者",
-      title: "开发者：晴",
-      description: "欢迎分享你的想法",
+      title: "本站开发者：晴",
+      description: "分享你的想法",
       copyEmail: "复制邮箱",
       copied: "邮箱已复制",
       copyFailed: "复制未成功，请选中邮箱地址手动复制。",

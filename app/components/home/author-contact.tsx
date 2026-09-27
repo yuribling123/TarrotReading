@@ -43,7 +43,7 @@ export function AuthorContact({ language }: { language: Language }) {
             {text.description}
           </DialogDescription>
         </DialogHeader>
-        <p className="break-all text-sm ">
+        <p className="break-all text-sm text-[#1b1a1c]/90 ">
           {authorEmail}
         </p>
         <div className="mt-2 flex flex-wrap justify-center gap-3">

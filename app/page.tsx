@@ -1,6 +1,7 @@
 "use client";
 
 import { QuestionForm } from "@/app/components/home/question-form";
+import { AuthorContact } from "@/app/components/home/author-contact";
 import { useReadingSession } from "@/app/components/reading/reading-session-provider";
 import { messages } from "@/lib/i18n";
 import { tarotDeck } from "@/lib/tarot/constants";
@@ -163,6 +164,7 @@ export default function LandingPage() {
           onClear={() => setSelectedCatalyst(null)}
         />
       </div>
+      <AuthorContact language={language} />
 
 
       <ReadingLimitDialog

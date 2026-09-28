@@ -442,12 +442,7 @@ h1 {
 }
 
 .ritualMoon::after {
-  animation:
-    ritualMoonPhase
-    5.8s
-    ease-in-out
-    infinite
-    alternate;
+  animation: ritualMoonPhase 5.8s linear infinite alternate;
 
   background: #ffffff;
 

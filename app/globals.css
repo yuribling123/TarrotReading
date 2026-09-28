@@ -4,6 +4,24 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@keyframes die-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+@keyframes die-toss {
+  0% { transform: translateY(0) scale(1); }
+  16% { transform: translateY(-13px) scale(1.03); }
+  72% { transform: translateY(-10px) scale(1.02); }
+  88% { transform: translateY(3px) scale(0.98); }
+  100% { transform: translateY(0) scale(1); }
+}
+
+@keyframes die-dust {
+  from { transform: translate(-2px, 2px); opacity: 0.35; }
+  to { transform: translate(3px, -3px); opacity: 0.75; }
+}
+
 /* ==================================================
    THEME
    ================================================== */
@@ -1042,7 +1060,7 @@ h1 {
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
+  --background: #0b0a10;
   --foreground: oklch(0.985 0 0);
 
   --card: oklch(0.205 0 0);

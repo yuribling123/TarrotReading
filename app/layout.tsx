@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Navigation } from "@/app/components/shared/navigation";
+import { ThemeProvider } from "@/app/components/shared/theme-provider";
 import { ReadingSessionProvider } from "@/app/components/reading/reading-session-provider";
 import { Toaster } from "@/components/ui/toast";
 import "./globals.css";
@@ -19,18 +20,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={cn("font-sans")}>
+    <html lang="en" className={cn("font-sans")} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: `try{if(localStorage.getItem("moonlit-tarot-theme")==="dark")document.documentElement.classList.add("dark")}catch{}` }} />
+      </head>
       <body>
         <Toaster />
         <Analytics />
 
-        <ReadingSessionProvider>
-          <Navigation />
-
-          <main className="min-h-[calc(100svh-76px)] overflow-x-hidden">
-            {children}
-          </main>
-        </ReadingSessionProvider>
+        <ThemeProvider>
+          <ReadingSessionProvider>
+            <Navigation />
+            <main className="min-h-[calc(100svh-76px)] overflow-x-hidden">
+              {children}
+            </main>
+          </ReadingSessionProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

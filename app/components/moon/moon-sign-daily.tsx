@@ -15,9 +15,9 @@ export function DailyZodiac() {
 
 
   return (
-    <button className="group  mx-auto pb-10 pt-7 text-[#7f5b1f] flex w-fit flex-col items-center gap-1.5 rounded-[28px] border border-white/15   ">
+    <button className="group  mx-auto pb-10 pt-7 text-[#7f5b1f] flex w-fit flex-col items-center gap-1.5 rounded-[28px] border border-white/15 dark:border-transparent dark:bg-transparent">
       <div className="flex items-center pt-0.5 tracking-widest">
-        <span className="text-[12px] ">
+        <span className="text-[12px] dark:text-[#f7efe3]">
           {date}
         </span>
       </div>
@@ -25,7 +25,7 @@ export function DailyZodiac() {
       {/* 第一行 */}
       <div className="flex items-center gap-1.5 ">
 
-        <span className="text-[13px] tracking-[0.12em] ">    月亮在{moonSign}</span>
+        <span className="text-[13px] tracking-[0.12em] dark:text-[#f7efe3]">    月亮在{moonSign}</span>
 
       </div>
 

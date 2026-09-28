@@ -1,6 +1,7 @@
 "use client";
 
 import { QuestionForm } from "@/app/components/home/question-form";
+import { useTheme } from "@/app/components/shared/theme-provider";
 import { AuthorContact } from "@/app/components/home/author-contact";
 import { useReadingSession } from "@/app/components/reading/reading-session-provider";
 import { messages } from "@/lib/i18n";
@@ -32,6 +33,7 @@ export default function LandingPage() {
   const [moonLoreOpen, setMoonLoreOpen] = useState(false);
 
   const { language, setError, setQuestion} = useReadingSession();
+  const { theme } = useTheme();
   const text = messages[language];
   const deck = tarotDeck;
   const router = useRouter();
@@ -114,6 +116,10 @@ export default function LandingPage() {
       setIsPending(false);
     }
   }
+  async function handleOtherworldQuestion(question: string) {
+    setQuestion(question);
+    return true;
+  }
   //每20秒下流星雨
   useEffect(() => {
 
@@ -150,19 +156,21 @@ export default function LandingPage() {
           <MoonIcon language={language} onClick={() => setMoonLoreOpen(true)} />
         </div>
         <DailyZodiac />
-        <QuestionForm
+      <QuestionForm
           language={language}
-          placeholder={text.questionPlaceholder}
-          submitLabel={text.enter}
-          onSubmit={handleQuestion}
-          isPending={isPending}
-          catalyst={selectedCatalyst}
+          placeholder={theme === "dark" ? text.otherworldPlaceholder : text.questionPlaceholder}
+          hint={theme === "dark" ? text.otherworldHint : undefined}
+          submitLabel={theme === "dark" ? text.otherworldEnter : text.enter}
+          onSubmit={theme === "dark" ? handleOtherworldQuestion : handleQuestion}
+          destination={theme === "dark" ? "/dice" : "/select"}
+          isPending={theme === "dark" ? false : isPending}
+          catalyst={theme === "dark" ? null : selectedCatalyst}
         />
-        <DivinationCatalysts
+        {theme === "light" && <DivinationCatalysts
           language={language}
           onActivate={setSelectedCatalyst}
           onClear={() => setSelectedCatalyst(null)}
-        />
+        />}
       </div>
       <AuthorContact language={language} />
 

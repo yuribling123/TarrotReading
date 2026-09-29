@@ -21,6 +21,7 @@ import { getVisitorId } from "@/lib/visitor/visitor-id";
 import { toast } from "@/components/ui/toast";
 import { ReadingLimitDialog } from "@/app/components/limits/reading-limit-dialog";
 import { DailyLimitDialog } from "@/app/components/limits/daily-limit-dialog";
+import { DiceDailyLimitDialog } from "@/app/components/dice/dice-daily-limit-dialog";
 import { ShootingStars } from "./components/shared/shooting-star";
 
 //用户增加共鸣换取次数
@@ -28,6 +29,7 @@ export default function LandingPage() {
   const [shootingStarsActive, setShootingStarsActive] = useState(false);
   const [isPending, setIsPending] = useState(false);
   const [dailyLimitOpen, setDailyLimitOpen] = useState(false);
+  const [diceLimitOpen, setDiceLimitOpen] = useState(false);
   const [readingLimitOpen, setReadingLimitOpen] = useState(false);
   const [selectedCatalyst, setSelectedCatalyst] = useState<DivinationCatalyst | null>(null);
   const [moonLoreOpen, setMoonLoreOpen] = useState(false);
@@ -117,8 +119,30 @@ export default function LandingPage() {
     }
   }
   async function handleOtherworldQuestion(question: string) {
-    setQuestion(question);
-    return true;
+    setIsPending(true);
+    try {
+      const visitorId = getVisitorId();
+      const response = await fetch(`/api/dice-limit/${visitorId}`);
+      if (!response.ok) throw new Error(`Dice limit check failed: ${response.status}`);
+
+      const status: unknown = await response.json();
+      if (!status || typeof status !== "object" || !("allowed" in status) || typeof status.allowed !== "boolean") {
+        throw new Error("Invalid dice limit response");
+      }
+      if (!status.allowed) {
+        setDiceLimitOpen(true);
+        return false;
+      }
+
+      setQuestion(question);
+      return true;
+    } catch (error) {
+      console.error("Failed to check dice limit:", error);
+      toast.add({ title: text.dice.limitCheckFailed, timeout: 2600 });
+      return false;
+    } finally {
+      setIsPending(false);
+    }
   }
   //每20秒下流星雨
   useEffect(() => {
@@ -163,7 +187,8 @@ export default function LandingPage() {
           submitLabel={theme === "dark" ? text.otherworldEnter : text.enter}
           onSubmit={theme === "dark" ? handleOtherworldQuestion : handleQuestion}
           destination={theme === "dark" ? "/dice" : "/select"}
-          isPending={theme === "dark" ? false : isPending}
+          storyMode={theme === "dark"}
+          isPending={isPending}
           catalyst={theme === "dark" ? null : selectedCatalyst}
         />
         {theme === "light" && <DivinationCatalysts
@@ -186,6 +211,11 @@ export default function LandingPage() {
       <DailyLimitDialog
         open={dailyLimitOpen}
         onOpenChange={setDailyLimitOpen}
+      />
+      <DiceDailyLimitDialog
+        open={diceLimitOpen}
+        onOpenChange={setDiceLimitOpen}
+        labels={text.dice}
       />
 
     </>

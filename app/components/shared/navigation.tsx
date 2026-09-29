@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { messages } from "@/lib/i18n";
 import { useReadingSession } from "@/app/components/reading/reading-session-provider";
 import { useTheme } from "@/app/components/shared/theme-provider";
+import { clearStoredDiceStory } from "@/lib/dice/story-storage";
 
 export function Navigation() {
   const { language, resetReading } = useReadingSession();
@@ -12,15 +13,20 @@ export function Navigation() {
   const { theme, toggleTheme } = useTheme();
   const pathname = usePathname();
 
+  function returnHome() {
+    resetReading();
+    clearStoredDiceStory();
+  }
+
   return (
     <nav
-      className="sticky inset-x-0 top-0 z-300 h-[76px] overflow-hidden border-b border-[rgba(112,82,34,0.16)] bg-[#fffdf8] shadow-[0_8px_22px_rgba(70,51,22,0.08)] dark:border-white/15 dark:bg-[#171521] dark:shadow-none"
+      className={`sticky inset-x-0 top-0 z-300 h-[76px] overflow-hidden border-b border-[rgba(112,82,34,0.16)] bg-[#fffdf8] shadow-[0_8px_22px_rgba(70,51,22,0.08)] dark:shadow-none ${pathname === "/dice" ? "dark:border-[#d7b56d]/12 dark:bg-[linear-gradient(180deg,rgba(20,16,28,0.93),rgba(12,9,19,0.88))]" : "dark:border-white/15 dark:bg-[#171521]"}`}
       aria-label="Site navigation"
     >
       <Link
         className="absolute left-1/2 top-[26px] z-[2] m-0 -translate-x-1/2 text-[0.82rem] font-semibold uppercase tracking-[0.18em] text-[#7f5b1f] no-underline hover:text-[#63400b] dark:text-[#f7efe3] dark:hover:text-white"
         href="/"
-        onClick={resetReading}
+        onClick={returnHome}
       >
         {text.brand}
       </Link>
@@ -29,7 +35,7 @@ export function Navigation() {
         className="pointer-events-none absolute left-1/2 top-[49px] flex -translate-x-1/2 items-center gap-[5px]"
         aria-hidden="true"
       >
-        <span className="h-px w-6 bg-[#b89755]/40" />
+        <span className="h-px w-6 bg-[#b89755]/40 dark:bg-[#f7efe3]/20" />
 
         <span className="text-[6px] leading-none text-[#b89755]/70">·</span>
 
@@ -39,7 +45,7 @@ export function Navigation() {
 
         <span className="text-[6px] leading-none text-[#b89755]/70">·</span>
 
-        <span className="h-px w-6 bg-[#b89755]/40" />
+        <span className="h-px w-6 bg-[#b89755]/40 dark:bg-[#f7efe3]/20" />
       </div>
       {pathname === "/" && <button
         type="button"

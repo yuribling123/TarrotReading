@@ -4,6 +4,7 @@ import { tarotReadingPrompt } from "@/lib/ai/prompt";
 import { tarotReadingSchema } from "@/lib/ai/schema";
 import { toReadingInputCards } from "@/lib/ai/reading-input";
 import { readingGenerationErrorResponse } from "@/lib/ai/responses";
+import { hasMinimumQuestionLength } from "@/lib/question/min-length";
 import type {
   GeneratedTarotReading,
   ReadingRequest,
@@ -12,6 +13,9 @@ import type {
 export async function POST(request: Request) {
   const { question, cards, language } =
     (await request.json()) as ReadingRequest;
+  if (typeof question !== "string" || !hasMinimumQuestionLength(question)) {
+    return NextResponse.json({ error: "Question is too short" }, { status: 400 });
+  }
 
   const deepseek = new OpenAI({
     apiKey: process.env.DEEPSEEK_API_KEY,

@@ -7,10 +7,9 @@ export const storySchema = {
     story: {
       type: "object",
       additionalProperties: false,
-      required: ["scenes", "closing"],
+      required: ["scenes"],
       properties: {
         scenes: { type: "array", minItems: 3, maxItems: 5, items: { type: "string" } },
-        closing: { type: "string" },
       },
     },
   },

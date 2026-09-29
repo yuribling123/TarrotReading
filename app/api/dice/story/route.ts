@@ -5,6 +5,7 @@ import { storyPrompt } from "@/lib/dice/story-prompt";
 import { storySchema } from "@/lib/dice/story-schema";
 import { storyStyleRules } from "@/lib/dice/story-styles";
 import { isGeneratedStory, isStoryRequest } from "@/lib/dice/story-validation";
+import { getDiceStoryCount } from "@/lib/dice/daily-limit";
 
 export async function POST(request: Request) {
   let input: unknown;
@@ -16,11 +17,18 @@ export async function POST(request: Request) {
   if (!isStoryRequest(input)) {
     return NextResponse.json({ error: "Invalid story input" }, { status: 400 });
   }
+  const visitorId = request.headers.get("x-visitor-id");
+  if (!visitorId) {
+    return NextResponse.json({ error: "Missing visitor ID" }, { status: 400 });
+  }
   if (!process.env.OPENAI_API_KEY) {
     return NextResponse.json({ error: "Story generation unavailable" }, { status: 503 });
   }
 
   try {
+    if (await getDiceStoryCount(visitorId) >= 2) {
+      return NextResponse.json({ error: "Daily dice limit reached" }, { status: 429 });
+    }
     const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
     const response = await openai.responses.create({
       model: process.env.OPENAI_MODEL ?? "gpt-5.6-luna",

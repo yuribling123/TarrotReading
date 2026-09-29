@@ -18,6 +18,5 @@ export type GeneratedStory = {
   title: string;
   story: {
     scenes: string[];
-    closing: string;
   };
 };

@@ -1,11 +1,12 @@
 import { diceFaces } from "@/lib/dice/faces";
+import { hasMinimumQuestionLength } from "@/lib/question/min-length";
 import type { GeneratedStory, StoryRequest } from "@/lib/types";
 
 export function isStoryRequest(value: unknown): value is StoryRequest {
   if (!value || typeof value !== "object") return false;
   const input = value as Record<string, unknown>;
   return typeof input.story === "string"
-    && input.story.trim().length > 0
+    && hasMinimumQuestionLength(input.story)
     && input.story.length <= 250
     && diceFaces.some((face) => face.id === input.style)
     && (input.language === "zh" || input.language === "en");
@@ -20,7 +21,5 @@ export function isGeneratedStory(value: unknown): value is GeneratedStory {
   return Array.isArray(story.scenes)
     && story.scenes.length >= 3
     && story.scenes.length <= 5
-    && story.scenes.every((scene) => typeof scene === "string" && scene.trim())
-    && typeof story.closing === "string"
-    && Boolean(story.closing.trim());
+    && story.scenes.every((scene) => typeof scene === "string" && scene.trim());
 }

@@ -42,7 +42,7 @@ export function MoonLore({ open, onClose }: MoonLoreProps) {
 
 
         <div className="mt-8 space-y-5 text-[12px] leading-[3] tracking-[0.055em] sm:text-[13px]">
-          <p>
+          <p className="dark:text-[#f7efe3]">
             月亮并不只属于这个世界。<br />在无数个彼此平行的宇宙里，有些命运因一次选择而改变，有些世界从一开始便遵循着不同的规则。<br />
             牌面是它投下的倒影，星象是它辨认你的方式，触媒决定月光以何种形态回应你；而偶尔抵达的信件，则来自月光照见的彼岸。<br />
             月亮不会替你决定未来。它只能从无数种可能中，指出那些反复出现的征兆。

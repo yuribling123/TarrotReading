@@ -4,6 +4,56 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@keyframes die-toss {
+  0% { transform: translateY(0) scale(1); }
+  16% { transform: translateY(-13px) scale(1.03); }
+  72% { transform: translateY(-10px) scale(1.02); }
+  88% { transform: translateY(3px) scale(0.98); }
+  100% { transform: translateY(0) scale(1); }
+}
+
+@keyframes die-dust {
+  from { transform: translate(-2px, 2px); opacity: 0.35; }
+  to { transform: translate(3px, -3px); opacity: 0.75; }
+}
+
+@keyframes die-star-escape {
+  0%, 12% { transform: translate3d(0, 0, 0) scale(0.5); opacity: 0; }
+  30% { opacity: 0.65; }
+  70% { opacity: 0.35; }
+  100% { transform: translate3d(var(--star-drift-x), var(--star-rise), 0) scale(0.2); opacity: 0; }
+}
+
+@keyframes story-letter-hop {
+  0%, 8%, 22%, 100% { transform: translateY(0); }
+  15% { transform: translateY(-5px); }
+}
+
+@keyframes story-reveal-glow {
+  0%, 100% { transform: scale(0.98); opacity: 0.2; }
+  50% { transform: scale(1.06); opacity: 0.7; }
+}
+
+@keyframes story-reveal-cue {
+  0%, 38%, 68%, 100% { transform: translateX(0); }
+  52% { transform: translateX(3px); }
+}
+
+@keyframes starfield-drift-left {
+  from { transform: translate3d(-10px, 8px, 0); }
+  to { transform: translate3d(10px, -8px, 0); }
+}
+
+@keyframes starfield-drift-right {
+  from { transform: translate3d(9px, -7px, 0); }
+  to { transform: translate3d(-9px, 7px, 0); }
+}
+
+@keyframes starfield-twinkle {
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 0.85; }
+}
+
 /* ==================================================
    THEME
    ================================================== */
@@ -1037,7 +1087,7 @@ h1 {
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
+  --background: #0b0a10;
   --foreground: oklch(0.985 0 0);
 
   --card: oklch(0.205 0 0);

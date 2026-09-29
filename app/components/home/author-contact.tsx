@@ -30,24 +30,24 @@ export function AuthorContact({ language }: { language: Language }) {
   return (
     <Dialog>
       <div className="fixed inset-x-0 bottom-[max(12px,env(safe-area-inset-bottom))] z-20 flex justify-center pointer-events-none">
-        <DialogTrigger className="pointer-events-auto cursor-pointer rounded-full  bg-[#fffdf9]/90 px-4 py-2 text-[11px] tracking-[0.08em] text-[grey]/50 backdrop-blur-xl transition-colors hover:bg-[#fffdf9] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#c9ad73]">
+        <DialogTrigger className="pointer-events-auto cursor-pointer rounded-full  bg-[#fffdf9]/90 px-4 py-2 text-[11px] tracking-[0.08em] text-[grey]/50 backdrop-blur-xl transition-colors hover:bg-[#fffdf9] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#c9ad73] dark:bg-transparent dark:text-[#C9C1D0] dark:hover:bg-white/10 dark:hover:text-[#f7efe3]">
           {text.trigger}
         </DialogTrigger>
       </div>
-      <DialogContent className="w-96 max-w-[85vw] rounded-[28px] border border-[#c9ad73]/25 bg-[#fffdf9]/70 px-6 pt-10 pb-6 text-center shadow-[0_18px_50px_rgba(45,38,55,0.16)] backdrop-blur-xl">
+      <DialogContent className="w-96 max-w-[85vw] rounded-[28px] border border-[#c9ad73]/25 bg-[#fffdf9]/70 px-6 pt-10 pb-6 text-center shadow-[0_18px_50px_rgba(45,38,55,0.16)] backdrop-blur-xl dark:border-[#d7b56d]/30 dark:bg-[#17131f]/95 dark:text-[#f7efe3] dark:shadow-[0_18px_50px_rgba(0,0,0,0.5)]">
         <DialogHeader className="items-center text-center">
-          <DialogTitle className="text-center text-[13px] leading-relaxed tracking-[0.02em] text-[#232125]/88">
+          <DialogTitle className="text-center text-[13px] leading-relaxed tracking-[0.02em] text-[#232125]/88 dark:text-[#f7efe3]">
             {text.title}
           </DialogTitle>
-          <DialogDescription className="pt-2 text-center text-[11px] leading-[1.7] text-[#1b1a1c]/70">
+          <DialogDescription className="pt-2 text-center text-[11px] leading-[1.7] text-[#1b1a1c]/70 dark:text-[#cfc4d3]">
             {text.description}
           </DialogDescription>
         </DialogHeader>
-        <p className="break-all text-sm text-[#1b1a1c]/90 ">
+        <p className="break-all text-sm text-[#1b1a1c]/90 dark:text-[#f7efe3]">
           {authorEmail}
         </p>
         <div className="mt-2 flex flex-wrap justify-center gap-3">
-          <Button onClick={copyEmail} variant="secondary" className="h-11 rounded-full px-4 text-xs shadow-none">
+          <Button onClick={copyEmail} variant="secondary" className="h-11 rounded-full px-4 text-xs shadow-none dark:border dark:border-[#f6efe4] dark:bg-transparent dark:text-[#f6efe4] dark:hover:bg-[#f6efe4]/8">
             {text.copyEmail}
           </Button>
         </div>

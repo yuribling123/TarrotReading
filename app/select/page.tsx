@@ -106,9 +106,8 @@ export default function SelectPage() {
     setError("");
     setIsRevealing(true);
     //进入揭牌动画 
-    setTimeout(() => {
-      void generateReading(selectedCards);
-    }, 1300);
+    generateReading(selectedCards);
+    
   }
 
   if (!isHydrated || !question) {

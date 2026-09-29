@@ -50,6 +50,7 @@ function DialogContent({
   return (
     <DialogPortal>
       <DialogOverlay />
+
       <DialogPrimitive.Popup
         data-slot="dialog-content"
         className={cn(
@@ -59,19 +60,47 @@ function DialogContent({
         {...props}
       >
         {children}
+
         {showCloseButton && (
           <DialogPrimitive.Close className="text-[#8a8178] hover:bg-transparent hover:text-[#b89552] focus:outline-none focus-visible:outline-none focus:ring-0 focus-visible:ring-0 dark:hover:text-[#f6efe4] dark:focus-visible:text-[#f6efe4]"
             data-slot="dialog-close"
             render={
               <Button
-                variant="ghost"
-                className="absolute top-2 right-2"
+               
                 size="icon-sm"
+                className="
+                  absolute
+                  top-2
+                  right-2
+                  outline-none!
+                  border-0!
+                  focus:border-0!
+                  active:border-0!
+                  text-[#8a8178]
+
+                  hover:bg-transparent
+                  hover:text-[#b89552]
+
+                  active:bg-transparent
+                  active:text-[#8a8178]
+
+                  focus:bg-transparent
+                  focus:outline-none
+                  focus:ring-0
+                  focus:ring-offset-0
+
+                  focus-visible:bg-transparent
+                  focus-visible:outline-none
+                  focus-visible:ring-0
+                  focus-visible:ring-offset-0
+
+                  [-webkit-tap-highlight-color:transparent]
+                  [touch-action:manipulation]
+                "
               />
             }
           >
-            <XIcon 
-            />
+            <XIcon />
             <span className="sr-only">Close</span>
           </DialogPrimitive.Close>
         )}
@@ -80,7 +109,10 @@ function DialogContent({
   )
 }
 
-function DialogHeader({ className, ...props }: React.ComponentProps<"div">) {
+function DialogHeader({
+  className,
+  ...props
+}: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="dialog-header"
@@ -108,6 +140,7 @@ function DialogFooter({
       {...props}
     >
       {children}
+
       {showCloseButton && (
         <DialogPrimitive.Close render={<Button variant="outline" />}>
           Close
@@ -117,7 +150,10 @@ function DialogFooter({
   )
 }
 
-function DialogTitle({ className, ...props }: DialogPrimitive.Title.Props) {
+function DialogTitle({
+  className,
+  ...props
+}: DialogPrimitive.Title.Props) {
   return (
     <DialogPrimitive.Title
       data-slot="dialog-title"

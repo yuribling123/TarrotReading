@@ -73,6 +73,10 @@ export function CodeDialog({
     text-center
     shadow-[0_18px_50px_rgba(45,38,55,0.16)]
     backdrop-blur-xl
+    [&>button]:[-webkit-tap-highlight-color:transparent]
+    [&>button]:focus:outline-none
+    [&>button]:focus-visible:ring-0
+    [&>button]:focus-visible:outline-none
 
     max-[520px]:top-[35svh]
     max-[520px]:translate-y-0

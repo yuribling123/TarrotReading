@@ -31,7 +31,7 @@ export function MoonLore({ open, onClose }: MoonLoreProps) {
         if (event.target === event.currentTarget) onClose();
       }}
     >
-      <article className="relative max-h-[72svh] w-full max-w-[540px] overflow-y-auto rounded-[28px] border border-white/55 bg-white/[0.12] px-7 py-9 text-[#514657] shadow-[0_24px_70px_rgba(64,49,73,0.13),inset_0_1px_0_rgba(255,255,255,0.65)] ring-1 ring-[#8f7b99]/10 backdrop-blur-[16px] backdrop-saturate-150 scrollbar-none animate-in fade-in slide-in-from-bottom-2 duration-500 sm:px-12 sm:py-11">
+      <article className="relative max-h-[72svh] w-full max-w-[540px] overflow-y-auto rounded-[28px] border border-white/55 bg-white/[0.12] px-7 py-9 text-[#514657] shadow-[0_24px_70px_rgba(64,49,73,0.13),inset_0_1px_0_rgba(255,255,255,0.65)] ring-1 ring-[#8f7b99]/10 backdrop-blur-[16px] backdrop-saturate-150 scrollbar-none animate-in fade-in slide-in-from-bottom-2 duration-500 dark:border-[#f6efe4] sm:px-12 sm:py-11">
 
 
         <div className="mx-auto mb-7 flex w-fit items-center gap-3" aria-hidden="true">

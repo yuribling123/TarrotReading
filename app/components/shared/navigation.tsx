@@ -10,7 +10,7 @@ import { clearStoredDiceStory } from "@/lib/dice/story-storage";
 export function Navigation() {
   const { language, resetReading } = useReadingSession();
   const text = messages[language];
-  const { theme, toggleTheme } = useTheme();
+  const { theme, toggleTheme, hasTriedDark, isReady, themeSwitchDisabled } = useTheme();
   const pathname = usePathname();
 
   function returnHome() {
@@ -20,7 +20,7 @@ export function Navigation() {
 
   return (
     <nav
-      className={`sticky inset-x-0 top-0 z-300 h-[76px] overflow-hidden border-b border-[rgba(112,82,34,0.16)] bg-[#fffdf8] shadow-[0_8px_22px_rgba(70,51,22,0.08)] dark:shadow-none ${pathname === "/dice" ? "dark:border-[#d7b56d]/12 dark:bg-[linear-gradient(180deg,rgba(20,16,28,0.93),rgba(12,9,19,0.88))]" : "dark:border-white/15 dark:bg-[#171521]"}`}
+      className="sticky inset-x-0 top-0 z-300 h-[76px] overflow-visible border-b border-[rgba(112,82,34,0.16)] bg-[#fffdf8] shadow-[0_8px_22px_rgba(70,51,22,0.08)] dark:border-[#d7b56d]/12 dark:bg-[linear-gradient(180deg,rgba(20,16,28,0.93),rgba(12,9,19,0.88))] dark:shadow-none"
       aria-label="Site navigation"
     >
       <Link
@@ -50,12 +50,28 @@ export function Navigation() {
       {pathname === "/" && <button
         type="button"
         onClick={toggleTheme}
+        disabled={themeSwitchDisabled}
         aria-label={theme === "dark" ? text.themeToLight : text.themeToDark}
+        aria-describedby={isReady && theme === "light" && !hasTriedDark ? "theme-feature-hint" : undefined}
         aria-pressed={theme === "dark"}
-        className="absolute right-5 top-1/2 -translate-y-1/2 rounded-full border border-[#b89755]/40 px-3 py-2 text-xs text-[#7f5b1f] transition-colors hover:bg-[#b89755]/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current dark:border-[#CFC4B4]/65 dark:text-[#f7efe3] dark:hover:bg-[#f7efe3]/8"
+        className="absolute right-5 top-1/2 -translate-y-1/2 rounded-full border border-[#b89755]/40 px-3 py-2 text-xs text-[#7f5b1f] transition-colors hover:bg-[#b89755]/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current disabled:cursor-wait disabled:opacity-50 dark:border-[#CFC4B4]/65 dark:text-[#f7efe3] dark:hover:bg-[#f7efe3]/8"
       >
-        {theme === "dark" ? "☀" : "☾"}
+        {theme === "dark" ? (
+          <svg className="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="3.5" />
+            <path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4" />
+          </svg>
+        ) : "☾"}
       </button>}
+      {pathname === "/" && isReady && theme === "light" && !hasTriedDark && (
+        <span
+          id="theme-feature-hint"
+          className="pointer-events-none absolute right-18 top-1/2 -translate-y-1/2 whitespace-nowrap text-[10px] tracking-wide text-[#7f5b1f]/75"
+        >
+          <span className="sm:hidden">{text.tryDarkFeatureShort}</span>
+          <span className="hidden sm:inline">{text.tryDarkFeature} <span aria-hidden="true">→</span></span>
+        </span>
+      )}
     </nav>
   );
 }

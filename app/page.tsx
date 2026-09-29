@@ -35,10 +35,14 @@ export default function LandingPage() {
   const [moonLoreOpen, setMoonLoreOpen] = useState(false);
 
   const { language, setError, setQuestion} = useReadingSession();
-  const { theme } = useTheme();
+  const { theme, setThemeSwitchDisabled } = useTheme();
   const text = messages[language];
   const deck = tarotDeck;
   const router = useRouter();
+  useEffect(() => {
+    setThemeSwitchDisabled(isPending);
+    return () => setThemeSwitchDisabled(false);
+  }, [isPending, setThemeSwitchDisabled]);
   // 增加共鸣
   async function handleResponse() {
     setIsPending(true);

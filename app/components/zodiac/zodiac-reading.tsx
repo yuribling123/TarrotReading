@@ -80,6 +80,7 @@ export function ZodiacReadingOption({
               rounded-[28px]
               border
               border-[#b89552]/25
+              dark:border-[#f6efe4]
               bg-[#fffdf8]
               p-7
             "

@@ -66,10 +66,9 @@ export function Navigation() {
       {pathname === "/" && isReady && theme === "light" && !hasTriedDark && (
         <span
           id="theme-feature-hint"
-          className="pointer-events-none absolute right-18 top-1/2 -translate-y-1/2 whitespace-nowrap text-[10px] tracking-wide text-[#7f5b1f]/75"
+          className="pointer-events-none absolute right-16 top-[57px] whitespace-nowrap text-[10px] tracking-wide text-[#7f5b1f]/75 sm:right-18 sm:top-1/2 sm:-translate-y-1/2"
         >
-          <span className="sm:hidden">{text.tryDarkFeatureShort}</span>
-          <span className="hidden sm:inline">{text.tryDarkFeature} <span aria-hidden="true">→</span></span>
+          {text.tryDarkFeature} <span aria-hidden="true">↗</span>
         </span>
       )}
     </nav>

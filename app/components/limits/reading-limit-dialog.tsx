@@ -38,6 +38,9 @@ export function ReadingLimitDialog({
     rounded-[28px]
     border
     border-[#c9ad73]/25
+    dark:border-[#f6efe4]
+    dark:bg-[#17131f]/95
+    dark:text-[#f6efe4]
     bg-[#fffdf9]/70
     pt-8
     pb-5
@@ -55,6 +58,7 @@ export function ReadingLimitDialog({
        
         tracking-[0.02em]
         text-[#232125]/88
+        dark:text-[#f6efe4]
         pb-2
       "
                     >
@@ -66,6 +70,7 @@ export function ReadingLimitDialog({
         text-center
         text-[11px]
         text-[#1b1a1c]/70
+        dark:text-[#cfc4d3]
       "
                     >
                          ✦ 留下一点共鸣，再继续下一问
@@ -89,6 +94,9 @@ export function ReadingLimitDialog({
       shadow-none
       focus-visible:ring-0
       focus-visible:outline-none
+      dark:border-[#f6efe4]
+      dark:bg-transparent
+      dark:text-[#f6efe4]
       disabled:opacity-100! 
       [-webkit-tap-highlight-color:transparent]
     "

@@ -34,7 +34,7 @@ export function AuthorContact({ language }: { language: Language }) {
           {text.trigger}
         </DialogTrigger>
       </div>
-      <DialogContent className="w-96 max-w-[85vw] rounded-[28px] border border-[#c9ad73]/25 bg-[#fffdf9]/70 px-6 pt-10 pb-6 text-center shadow-[0_18px_50px_rgba(45,38,55,0.16)] backdrop-blur-xl dark:border-[#d7b56d]/30 dark:bg-[#17131f]/95 dark:text-[#f7efe3] dark:shadow-[0_18px_50px_rgba(0,0,0,0.5)]">
+      <DialogContent className="w-96 max-w-[85vw] rounded-[28px] border border-[#c9ad73]/25 bg-[#fffdf9]/70 px-6 pt-10 pb-6 text-center shadow-[0_18px_50px_rgba(45,38,55,0.16)] backdrop-blur-xl dark:border-[#f6efe4] dark:bg-[#17131f]/95 dark:text-[#f7efe3] dark:shadow-[0_18px_50px_rgba(0,0,0,0.5)]">
         <DialogHeader className="items-center text-center">
           <DialogTitle className="text-center text-[13px] leading-relaxed tracking-[0.02em] text-[#232125]/88 dark:text-[#f7efe3]">
             {text.title}

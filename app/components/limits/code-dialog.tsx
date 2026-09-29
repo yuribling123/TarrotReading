@@ -65,6 +65,7 @@ export function CodeDialog({
     rounded-[28px]
     border
     border-[#c9ad73]/25
+    dark:border-[#f6efe4]
     bg-[#fffdf9]/70
     px-12
     pb-6

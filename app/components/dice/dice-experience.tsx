@@ -23,17 +23,19 @@ export function DiceExperience() {
   }, [isHydrated, question, router]);
 
   if (!isLoaded || !question.trim()) return null;
+  const entering = state.phase === "idle";
 
   return (
     <div className="mx-auto max-w-2xl text-center">
-      <h1 className="mb-1 text-sm! leading-snug! tracking-[0.2em] text-[#e5dbeb] sm:text-base!">{text.title}</h1>
-      <p className="text-sm leading-6 text-[#cfc4d3]/60 pt-3 pb-3">{text.subtitle}</p>
+      <h1 className={`mb-1 text-sm! leading-snug! tracking-[0.2em] text-[#e5dbeb] sm:text-base! ${entering ? "animate-[dice-title-enter_550ms_100ms_ease-out_both] motion-reduce:animate-none" : ""}`}>{text.title}</h1>
+      <p className={`pt-3 pb-3 text-sm leading-6 text-[#cfc4d3]/60 ${entering ? "animate-[dice-title-enter_550ms_320ms_ease-out_both] motion-reduce:animate-none" : ""}`}>{text.subtitle}</p>
       <StarDie
         labels={text.faces}
         rollLabel={text.roll}
         rollingLabel={text.rolling}
         resultLabel={text.result}
         initialFace={state.face}
+        playEntrance={entering}
         onRoll={(face) => void generate(face)}
         onSettled={settle}
       />
@@ -79,7 +81,7 @@ export function DiceExperience() {
         </button>
       )}
       {state.settled && state.phase === "ready" && state.result && (
-        <div className={`grid transition-[grid-template-rows] duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none ${state.revealed ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}>
+        <div className={`grid transition-[grid-template-rows] duration-[1700ms] ease-[cubic-bezier(0.45,0,0.2,1)] motion-reduce:transition-none ${state.revealed ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}>
           <div className="min-h-0 overflow-hidden" inert={!state.revealed}>
             <article className="mx-auto mt-6 max-w-md pb-20 text-left">
               <div className="mx-auto mb-5 h-px w-30 bg-gradient-to-r from-transparent via-[#b99be8]/25 to-transparent" aria-hidden="true" />

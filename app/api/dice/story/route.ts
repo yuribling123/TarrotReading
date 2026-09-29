@@ -47,6 +47,7 @@ export async function POST(request: Request) {
     });
     const story: unknown = JSON.parse(response.output_text);
     if (!isGeneratedStory(story)) throw new Error("Invalid generated story shape");
+    console.log("Dice story result:", JSON.stringify(story, null, 2));
     return NextResponse.json(story);
   } catch (error) {
     console.error("Story generation failed", error);

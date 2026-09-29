@@ -89,7 +89,7 @@ export function QuestionForm({
 
       <form className="mx-auto mt-[42px] mb-20 max-w-[820px] text-left max-[860px]:mt-0 max-[860px]:px-[10vw]" onSubmit={submitQuestion}>
         <div className="w-full opacity-80 dark:opacity-100">
-          {hint && <p className="mb-4 text-center text-sm leading-relaxed text-[#C9C1D0]">{hint}</p>}
+          {hint && <p className="mb-8 text-center text-sm leading-relaxed text-[#C9C1D0]">{hint}</p>}
           <Textarea
             id="question"
             value={question}

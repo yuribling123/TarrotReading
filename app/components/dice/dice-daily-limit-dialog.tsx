@@ -21,7 +21,7 @@ type DiceDailyLimitDialogProps = {
 export function DiceDailyLimitDialog({ open, onOpenChange, labels }: DiceDailyLimitDialogProps) {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="w-80 max-w-[85vw] rounded-[28px] border border-[#d7b56d]/30 bg-[#17131f]/95 px-6 pt-8 pb-5 text-center text-[#f7efe3] shadow-[0_18px_50px_rgba(0,0,0,0.5)] backdrop-blur-xl">
+      <DialogContent className="w-80 max-w-[85vw] rounded-[28px] border border-[#f6efe4] bg-[#17131f]/95 px-6 pt-8 pb-5 text-center text-[#f7efe3] shadow-[0_18px_50px_rgba(0,0,0,0.5)] backdrop-blur-xl">
         <DialogHeader className="items-center text-center">
           <DialogTitle className="pb-2 text-center text-[13px] tracking-[0.02em] text-[#f7efe3]">
             {labels.dailyLimitTitle}

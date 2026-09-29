@@ -31,6 +31,9 @@ export function DailyLimitDialog({
           rounded-[28px]
           border
           border-[#c9ad73]/25
+          dark:border-[#f6efe4]
+          dark:bg-[#17131f]/95
+          dark:text-[#f6efe4]
           bg-[#fffdf9]/70
           pt-8
           pb-5
@@ -47,6 +50,7 @@ export function DailyLimitDialog({
               text-[13px]
               tracking-[0.02em]
               text-[#232125]/88
+              dark:text-[#f6efe4]
             "
           >
             今夜的占卜已结束 <br />明日再会
@@ -59,6 +63,7 @@ export function DailyLimitDialog({
               text-[11px]
               leading-[1.7]
               text-[#1b1a1c]/70
+              dark:text-[#cfc4d3]
             "
           >
             为了控制运营成本，请遵守每日占卜次数限制
@@ -83,6 +88,9 @@ export function DailyLimitDialog({
             shadow-none
             focus-visible:ring-0
             focus-visible:outline-none
+            dark:border-[#f6efe4]
+            dark:bg-transparent
+            dark:text-[#f6efe4]
             [-webkit-tap-highlight-color:transparent]
           "
         >

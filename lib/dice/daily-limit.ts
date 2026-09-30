@@ -2,7 +2,7 @@ import { getShanghaiDateKey } from "@/lib/date/shanghai";
 import { redis } from "@/lib/redis/redis";
 
 const DICE_LIMIT_KEY = "dice_limit";
-const DAILY_DICE_LIMIT = 2;
+export const DAILY_DICE_LIMIT = 2;
 
 function countField(visitorId: string) {
   return `${visitorId}:${getShanghaiDateKey()}:count`;

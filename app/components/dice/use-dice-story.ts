@@ -2,10 +2,10 @@
 
 import { useEffect, useRef, useState } from "react";
 
-import { diceStoryStorageKey } from "@/lib/dice/story-storage";
-import { isGeneratedStory, isStoryRequest } from "@/lib/dice/story-validation";
+import { diceStoryStorageKey, readStoredDiceStory, saveStoredDiceStory } from "@/lib/dice/story-storage";
+import { isGeneratedStory } from "@/lib/dice/story-validation";
 import { getVisitorId } from "@/lib/visitor/visitor-id";
-import type { DiceFaceId, GeneratedStory, Language, StoryRequest } from "@/lib/types";
+import type { DiceFaceId, GeneratedStory, StoryRequest } from "@/lib/types";
 
 type StoryState = {
   face: DiceFaceId | null;
@@ -25,9 +25,7 @@ const initialState: StoryState = {
   starLeft: false,
 };
 
-type StoredStory = { input: StoryRequest; result?: GeneratedStory; starLeft?: boolean };
-
-export function useDiceStory(story: string, language: Language, isHydrated: boolean) {
+export function useDiceStory(story: string, isHydrated: boolean) {
   const [state, setState] = useState<StoryState>(initialState);
   const [isLoaded, setIsLoaded] = useState(false);
   const activeRequest = useRef<AbortController | null>(null);
@@ -35,20 +33,17 @@ export function useDiceStory(story: string, language: Language, isHydrated: bool
   useEffect(() => {
     if (!isHydrated) return;
     try {
-      const raw = window.sessionStorage.getItem(diceStoryStorageKey);
-      if (raw) {
-        const stored: StoredStory = JSON.parse(raw);
-        if (isStoryRequest(stored.input) && stored.input.story === story) {
-          const result = isGeneratedStory(stored.result) ? stored.result : null;
-          setState({
-            face: stored.input.style,
-            result,
-            phase: result ? "ready" : "error",
-            settled: true,
-            revealed: false,
-            starLeft: Boolean(result && stored.starLeft),
-          });
-        }
+      const stored = readStoredDiceStory();
+      if (stored && stored.input.story === story) {
+        const result = stored.result ?? null;
+        setState({
+          face: stored.input.style,
+          result,
+          phase: result ? "ready" : "error",
+          settled: true,
+          revealed: false,
+          starLeft: Boolean(result && stored.starLeft),
+        });
       }
     } catch {
       window.sessionStorage.removeItem(diceStoryStorageKey);
@@ -67,7 +62,7 @@ export function useDiceStory(story: string, language: Language, isHydrated: bool
     if (!response.ok) throw new Error(`Failed to record dice story: ${response.status}`);
 
     try {
-      window.sessionStorage.setItem(diceStoryStorageKey, JSON.stringify({ input, result } satisfies StoredStory));
+      saveStoredDiceStory({ input, result });
     } catch (error) {
       console.error("Failed to save dice story:", error);
     }
@@ -78,8 +73,8 @@ export function useDiceStory(story: string, language: Language, isHydrated: bool
     activeRequest.current?.abort();
     const controller = new AbortController();
     activeRequest.current = controller;
-    const input: StoryRequest = { story, style: face, language };
-    window.sessionStorage.setItem(diceStoryStorageKey, JSON.stringify({ input } satisfies StoredStory));
+    const input: StoryRequest = { story, style: face, language: "zh" };
+    saveStoredDiceStory({ input });
     setState((current) => ({ ...current, face, result: null, phase: "generating", revealed: false, starLeft: false }));
 
     let generated: GeneratedStory | null = null;
@@ -118,7 +113,7 @@ export function useDiceStory(story: string, language: Language, isHydrated: bool
 
     setState((current) => ({ ...current, phase: "generating" }));
     try {
-      const input: StoryRequest = { story, style: state.face, language };
+      const input: StoryRequest = { story, style: state.face, language: "zh" };
       await finishStory(input, state.result, getVisitorId());
     } catch (error) {
       console.error("Failed to record dice story:", error);
@@ -135,10 +130,10 @@ export function useDiceStory(story: string, language: Language, isHydrated: bool
     reveal: () => setState((current) => ({ ...current, revealed: true })),
     markStarLeft: () => {
       if (!state.face || !state.result) return;
-      const input: StoryRequest = { story, style: state.face, language };
+      const input: StoryRequest = { story, style: state.face, language: "zh" };
       setState((current) => ({ ...current, starLeft: true }));
       try {
-        window.sessionStorage.setItem(diceStoryStorageKey, JSON.stringify({ input, result: state.result, starLeft: true } satisfies StoredStory));
+        saveStoredDiceStory({ input, result: state.result, starLeft: true });
       } catch (error) {
         console.error("Failed to save star state:", error);
       }

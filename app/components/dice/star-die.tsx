@@ -2,14 +2,10 @@
 
 import { useEffect, useRef, useState } from "react";
 
-import { diceFaces, type DiceFaceId } from "@/lib/dice/faces";
+import { diceFaceNames, diceFaces, type DiceFaceId } from "@/lib/dice/faces";
 import { DieSymbol } from "./die-symbols";
 
 type StarDieProps = {
-  labels: Record<DiceFaceId, string>;
-  rollLabel: string;
-  rollingLabel: string;
-  resultLabel: string;
   initialFace?: DiceFaceId | null;
   playEntrance?: boolean;
   onRoll: (face: DiceFaceId) => void;
@@ -23,7 +19,7 @@ const escapingStars = [
   "left-[calc(50%+12px)] top-[calc(50%-19px)] size-0.5 bg-[#d7b56d] shadow-[0_0_6px_#d7b56d] [--star-drift-x:15px] [--star-rise:-33px] [animation-delay:-4.5s] [animation-duration:5.8s]",
 ] as const;
 
-export function StarDie({ labels, rollLabel, rollingLabel, resultLabel, initialFace = null, playEntrance = false, onRoll, onSettled }: StarDieProps) {
+export function StarDie({ initialFace = null, playEntrance = false, onRoll, onSettled }: StarDieProps) {
   const [rotation, setRotation] = useState(() => {
     const face = diceFaces.find((item) => item.id === initialFace);
     return face ? { x: face.x - 14, y: face.y - 20 } : { x: -14, y: -20 };
@@ -102,7 +98,7 @@ export function StarDie({ labels, rollLabel, rollingLabel, resultLabel, initialF
 
       {selected && (
         <p className="mt-2 text-center text-xs tracking-[0.08em] text-[#f7efe3]" aria-live="polite">
-          {`${resultLabel}：${labels[selected]}`}
+          {`平行世界：${diceFaceNames[selected]}`}
         </p>
       )}
       {!selected && <button
@@ -111,7 +107,7 @@ export function StarDie({ labels, rollLabel, rollingLabel, resultLabel, initialF
         disabled={isRolling}
         className={`mt-1 rounded-full border border-[#f7efe3] px-5 py-3 text-sm font-medium text-[#f7efe3] transition-[background-color,border-color,box-shadow] hover:shadow-[0_0_20px_rgba(173,140,204,0.14)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#f7efe3] disabled:cursor-wait disabled:opacity-60 ${playEntrance ? "animate-[dice-button-enter_650ms_1150ms_ease-out_both] motion-reduce:animate-none" : ""}`}
       >
-        {isRolling ? rollingLabel : rollLabel}
+        {isRolling ? "星星正在选择…" : "去另一个宇宙"}
       </button>}
     </div>
   );

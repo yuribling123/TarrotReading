@@ -1,11 +1,10 @@
 import OpenAI from "openai";
 import { NextResponse } from "next/server";
 
-import { storyPrompt } from "@/lib/dice/story-prompt";
+import { buildStoryPrompt } from "@/lib/dice/story-prompt";
 import { storySchema } from "@/lib/dice/story-schema";
-import { storyStyleRules } from "@/lib/dice/story-styles";
 import { isGeneratedStory, isStoryRequest } from "@/lib/dice/story-validation";
-import { getDiceStoryCount } from "@/lib/dice/daily-limit";
+import { DAILY_DICE_LIMIT, getDiceStoryCount } from "@/lib/dice/daily-limit";
 
 export async function POST(request: Request) {
   let input: unknown;
@@ -26,15 +25,15 @@ export async function POST(request: Request) {
   }
 
   try {
-    if (await getDiceStoryCount(visitorId) >= 2) {
+    if (await getDiceStoryCount(visitorId) >= DAILY_DICE_LIMIT) {
       return NextResponse.json({ error: "Daily dice limit reached" }, { status: 429 });
     }
     const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
     const response = await openai.responses.create({
       model: process.env.OPENAI_MODEL ?? "gpt-5.6-luna",
       input: [
-        { role: "system", content: storyPrompt },
-        { role: "user", content: JSON.stringify({ ...input, styleRule: storyStyleRules[input.style] }) },
+        { role: "system", content: buildStoryPrompt(input.style) },
+        { role: "user", content: JSON.stringify({ story: input.story, style: input.style }) },
       ],
       text: {
         format: {

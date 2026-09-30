@@ -1,8 +1,6 @@
 import { NextResponse } from "next/server";
 
-import { getDiceStoryCount, recordDiceStory } from "@/lib/dice/daily-limit";
-
-const DAILY_DICE_LIMIT = 2;
+import { DAILY_DICE_LIMIT, getDiceStoryCount, recordDiceStory } from "@/lib/dice/daily-limit";
 
 export async function GET(
   _request: Request,

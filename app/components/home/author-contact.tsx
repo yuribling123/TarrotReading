@@ -11,12 +11,14 @@ import {
 } from "@/components/ui/dialog";
 import { toast } from "@/components/ui/toast";
 import { messages } from "@/lib/i18n";
+import { useTheme } from "@/app/components/shared/theme-provider";
 import type { Language } from "@/lib/types";
 
 const authorEmail = "yui480145@gmail.com";
 
 export function AuthorContact({ language }: { language: Language }) {
-  const text = messages[language].authorContact;
+  const { theme } = useTheme();
+  const text = messages[theme === "dark" ? "zh" : language].authorContact;
 
   async function copyEmail() {
     try {

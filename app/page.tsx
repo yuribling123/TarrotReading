@@ -22,6 +22,7 @@ import { toast } from "@/components/ui/toast";
 import { ReadingLimitDialog } from "@/app/components/limits/reading-limit-dialog";
 import { DailyLimitDialog } from "@/app/components/limits/daily-limit-dialog";
 import { DiceDailyLimitDialog } from "@/app/components/dice/dice-daily-limit-dialog";
+import { isDiceEntryAllowed } from "@/lib/dice/entry";
 import { ShootingStars } from "./components/shared/shooting-star";
 
 //用户增加共鸣换取次数
@@ -126,14 +127,7 @@ export default function LandingPage() {
     setIsPending(true);
     try {
       const visitorId = getVisitorId();
-      const response = await fetch(`/api/dice-limit/${visitorId}`);
-      if (!response.ok) throw new Error(`Dice limit check failed: ${response.status}`);
-
-      const status: unknown = await response.json();
-      if (!status || typeof status !== "object" || !("allowed" in status) || typeof status.allowed !== "boolean") {
-        throw new Error("Invalid dice limit response");
-      }
-      if (!status.allowed) {
+      if (!await isDiceEntryAllowed(visitorId)) {
         setDiceLimitOpen(true);
         return false;
       }
@@ -142,7 +136,7 @@ export default function LandingPage() {
       return true;
     } catch (error) {
       console.error("Failed to check dice limit:", error);
-      toast.add({ title: text.dice.limitCheckFailed, timeout: 2600 });
+      toast.add({ title: "暂时无法确认今天的投骰次数，请稍后再试。", timeout: 2600 });
       return false;
     } finally {
       setIsPending(false);
@@ -186,9 +180,9 @@ export default function LandingPage() {
         <DailyZodiac />
       <QuestionForm
           language={language}
-          placeholder={theme === "dark" ? text.otherworldPlaceholder : text.questionPlaceholder}
-          hint={theme === "dark" ? text.otherworldHint : undefined}
-          submitLabel={theme === "dark" ? text.otherworldEnter : text.enter}
+          placeholder={theme === "dark" ? "写下一件你正在经历的事，尽量说得具体些..." : text.questionPlaceholder}
+          hint={theme === "dark" ? "看看平行宇宙的你会经历什么" : undefined}
+          submitLabel={theme === "dark" ? "去投骰子" : text.enter}
           onSubmit={theme === "dark" ? handleOtherworldQuestion : handleQuestion}
           destination={theme === "dark" ? "/dice" : "/select"}
           storyMode={theme === "dark"}
@@ -219,7 +213,6 @@ export default function LandingPage() {
       <DiceDailyLimitDialog
         open={diceLimitOpen}
         onOpenChange={setDiceLimitOpen}
-        labels={text.dice}
       />
 
     </>

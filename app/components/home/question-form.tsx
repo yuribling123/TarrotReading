@@ -57,7 +57,7 @@ export function QuestionForm({
     if (!submittedQuestion) {
       toast.add({
         id: "empty-question",
-        title: storyMode ? messages[language].dice.emptyStory : "Empty Question",
+        title: storyMode ? "先写下一件事或一个问题，再投星骰。" : "Empty Question",
         timeout: 1200,
       });
       return;
@@ -65,7 +65,7 @@ export function QuestionForm({
     if (!hasMinimumQuestionLength(submittedQuestion)) {
       toast.add({
         id: "question-too-short",
-        title: storyMode ? messages[language].dice.storyTooShort : messages[language].questionTooShort,
+        title: storyMode ? "请至少写五个字" : messages[language].questionTooShort,
         timeout: 1500,
       });
       return;
@@ -73,7 +73,7 @@ export function QuestionForm({
     if (submittedQuestion.length > maxQuestionLength) {
       toast.add({
         id: "question-too-long",
-        title: storyMode ? messages[language].dice.storyTooLong : "Question is too long",
+        title: storyMode ? "故事请控制在 250 字以内。" : "Question is too long",
         timeout: 1500,
       });
       return;
@@ -98,7 +98,7 @@ export function QuestionForm({
             onChange={(event) => setQuestion(event.target.value)}
             placeholder={placeholder}
             autoComplete="off"
-            lang={language}
+            lang={storyMode ? "zh" : language}
             className="
       h-40
       resize-none

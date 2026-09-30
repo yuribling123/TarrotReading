@@ -28,7 +28,7 @@ export function Navigation() {
         href="/"
         onClick={returnHome}
       >
-        {text.brand}
+        {pathname === "/dice" || theme === "dark" ? messages.zh.brand : text.brand}
       </Link>
 
       <div
@@ -68,7 +68,7 @@ export function Navigation() {
           id="theme-feature-hint"
           className="pointer-events-none absolute right-16 top-[57px] whitespace-nowrap text-[10px] tracking-wide text-[#7f5b1f]/75 sm:right-18 sm:top-1/2 sm:-translate-y-1/2"
         >
-          {text.tryDarkFeature} <span aria-hidden="true">↗</span>
+          点月亮，体验星骰故事 <span aria-hidden="true">↗</span>
         </span>
       )}
     </nav>

@@ -93,7 +93,7 @@ export function QuestionForm({
           <Textarea
             id="question"
             value={question}
-            maxLength={storyMode ? undefined : maxQuestionLength}
+            maxLength={maxQuestionLength}
             onBlur={() => window.scrollTo(0, 0)}
             onChange={(event) => setQuestion(event.target.value)}
             placeholder={placeholder}

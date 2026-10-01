@@ -30,7 +30,7 @@ export async function POST(request: Request) {
     }
     const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
     const response = await openai.responses.create({
-      model: process.env.OPENAI_MODEL ?? "gpt-5.6-luna",
+      model: process.env.OPENAI_MODEL ?? "gpt-5.6-sol",
       input: [
         { role: "system", content: buildStoryPrompt(input.style) },
         { role: "user", content: JSON.stringify({ story: input.story, style: input.style }) },

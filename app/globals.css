@@ -4,20 +4,29 @@
 
 @custom-variant dark (&:is(.dark *));
 
-@keyframes dice-title-enter {
-  from { opacity: 0; transform: translateY(8px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
 @keyframes dice-enter {
-  from { opacity: 0; transform: translateY(9px) rotate(-9deg) scale(0.88); }
-  to { opacity: 1; transform: translateY(0) rotate(0) scale(1); }
+  0% { opacity: 0; transform: translateY(7px) rotate(-7deg) scale(0.82); filter: blur(3px); }
+  65% { opacity: 1; filter: blur(0); }
+  100% { opacity: 1; transform: translateY(0) rotate(0) scale(1); filter: blur(0); }
 }
 
-@keyframes dice-button-enter {
-  from { opacity: 0; transform: translateY(7px); box-shadow: 0 0 0 rgba(247,239,227,0); }
-  70% { opacity: 1; transform: translateY(0); box-shadow: 0 0 14px rgba(247,239,227,0.14); }
-  to { opacity: 1; transform: translateY(0); box-shadow: 0 0 0 rgba(247,239,227,0); }
+@keyframes dice-star-gather {
+  0% { opacity: 0; transform: translate3d(var(--star-start-x), var(--star-start-y), 0) scale(0.5); }
+  22% { opacity: 0.9; }
+  70% { opacity: 0.75; }
+  100% { opacity: 0; transform: translate3d(0, 0, 0) scale(0.25); }
+}
+
+@keyframes dice-edge-glint {
+  0%, 12% { opacity: 0; transform: translateX(-125%); }
+  35% { opacity: 0.5; }
+  72% { opacity: 0.35; }
+  100% { opacity: 0; transform: translateX(125%); }
+}
+
+@keyframes dice-idle-stars-enter {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 @keyframes die-toss {
@@ -40,6 +49,16 @@
   100% { transform: translate3d(var(--star-drift-x), var(--star-rise), 0) scale(0.2); opacity: 0; }
 }
 
+@keyframes die-world-bloom {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes die-world-glow {
+  from { opacity: 0.7; transform: translateX(-50%) scale(0.65); }
+  to { opacity: 0; transform: translateX(-50%) scale(2.1); }
+}
+
 @keyframes story-letter-hop {
   0%, 8%, 22%, 100% { transform: translateY(0); }
   15% { transform: translateY(-5px); }
@@ -51,8 +70,13 @@
 }
 
 @keyframes story-reveal-cue {
-  0%, 38%, 68%, 100% { transform: translateX(0); }
-  52% { transform: translateX(3px); }
+  0%, 38%, 68%, 100% { transform: translateY(0); }
+  52% { transform: translateY(3px); }
+}
+
+@keyframes story-content-arrive {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes starfield-drift-left {

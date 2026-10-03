@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 
 import { diceFaceIds, diceFaceNames } from "@/lib/dice/faces";
+import { worldColors } from "@/lib/dice/world-colors";
 import { DieSymbol } from "./die-symbols";
 import type { DiceFaceId } from "@/lib/types";
 
@@ -18,6 +19,12 @@ const escapingStars = [
   "left-[calc(50%+18px)] top-[calc(50%+4px)] size-px bg-[#d7b56d] shadow-[0_0_5px_#d7b56d] [--star-drift-x:11px] [--star-rise:-40px] [animation-delay:-3.1s] [animation-duration:5.4s]",
   "left-[calc(50%-9px)] top-[calc(50%-23px)] size-px bg-[#f7efe3] shadow-[0_0_5px_#f7efe3] [--star-drift-x:-8px] [--star-rise:-28px] [animation-delay:-2.2s] [animation-duration:4.5s]",
   "left-[calc(50%+12px)] top-[calc(50%-19px)] size-0.5 bg-[#d7b56d] shadow-[0_0_6px_#d7b56d] [--star-drift-x:15px] [--star-rise:-33px] [animation-delay:-4.5s] [animation-duration:5.8s]",
+] as const;
+
+const gatheringStars = [
+  "[--star-start-x:-62px] [--star-start-y:-24px] [animation-delay:250ms]",
+  "[--star-start-x:55px] [--star-start-y:-42px] [animation-delay:370ms]",
+  "[--star-start-x:38px] [--star-start-y:30px] [animation-delay:470ms]",
 ] as const;
 
 const dieFaceGeometry: Record<DiceFaceId, { transform: string; x: number; y: number }> = {
@@ -36,6 +43,8 @@ export function StarDie({ initialFace = null, playEntrance = false, onRoll, onSe
   });
   const [selected, setSelected] = useState<DiceFaceId | null>(initialFace);
   const [isRolling, setIsRolling] = useState(false);
+  const [hasRolled, setHasRolled] = useState(false);
+  const [entranceComplete, setEntranceComplete] = useState(!playEntrance);
   const rollCount = useRef(0);
   const timeout = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -43,12 +52,22 @@ export function StarDie({ initialFace = null, playEntrance = false, onRoll, onSe
     if (timeout.current) clearTimeout(timeout.current);
   }, []);
 
+  useEffect(() => {
+    if (!playEntrance || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setEntranceComplete(true);
+      return;
+    }
+    const entranceTimeout = setTimeout(() => setEntranceComplete(true), 1630);
+    return () => clearTimeout(entranceTimeout);
+  }, [playEntrance]);
+
   function roll() {
-    if (isRolling) return;
+    if (isRolling || !entranceComplete) return;
     const faceId = diceFaceIds[Math.floor(Math.random() * diceFaceIds.length)];
     const face = dieFaceGeometry[faceId];
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     rollCount.current += 1;
+    setHasRolled(true);
     setSelected(null);
     setIsRolling(true);
     onRoll(faceId);
@@ -67,14 +86,25 @@ export function StarDie({ initialFace = null, playEntrance = false, onRoll, onSe
     <div className="group flex flex-col items-center pb-2">
       <div className="relative grid h-32 w-64 place-items-center [perspective:900px] sm:h-36">
         <div className="pointer-events-none absolute left-1/2 top-1/2 size-44 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(173,140,204,0.14),transparent_70%)]" aria-hidden="true" />
-        {escapingStars.map((className) => (
+        {selected && hasRolled && (
           <span
-            key={className}
-            className={`pointer-events-none absolute rounded-full opacity-0 animate-[die-star-escape_5s_ease-in-out_infinite] motion-reduce:animate-none motion-reduce:opacity-30 ${className}`}
+            className="pointer-events-none absolute left-1/2 top-[calc(50%+32px)] h-3 w-12 -translate-x-1/2 rounded-full animate-[die-world-glow_850ms_ease-out_both] motion-reduce:hidden"
+            style={{ background: `radial-gradient(ellipse at center, ${worldColors[selected].glow}, transparent 75%)` }}
             aria-hidden="true"
           />
+        )}
+        {playEntrance && gatheringStars.map((className) => (
+          <span key={className} className={`pointer-events-none absolute left-1/2 top-1/2 size-0.5 rounded-full bg-[#f7efe3] shadow-[0_0_7px_#f7efe3] animate-[dice-star-gather_900ms_ease-in-out_both] motion-reduce:hidden ${className}`} aria-hidden="true" />
         ))}
-        <div className={`relative size-[var(--die-size)] [--die-size:36px] transition-transform duration-300 ease-out group-has-[button:hover]:-translate-y-[3px] sm:[--die-size:44px] ${isRolling ? "animate-[die-toss_1050ms_ease-in-out_both]" : playEntrance ? "animate-[dice-enter_750ms_520ms_cubic-bezier(0.22,1,0.36,1)_both]" : ""} motion-reduce:animate-none motion-reduce:transition-none`}>
+        <div className={`pointer-events-none absolute inset-0 ${playEntrance ? "animate-[dice-idle-stars-enter_700ms_1300ms_ease-out_both] motion-reduce:animate-none" : ""}`} aria-hidden="true">
+          {escapingStars.map((className) => (
+            <span
+              key={className}
+              className={`absolute rounded-full opacity-0 animate-[die-star-escape_5s_ease-in-out_infinite] motion-reduce:animate-none motion-reduce:opacity-30 ${className}`}
+            />
+          ))}
+        </div>
+        <div className={`relative size-[var(--die-size)] [--die-size:36px] transition-transform duration-300 ease-out group-has-[button:hover]:-translate-y-[3px] sm:[--die-size:44px] ${isRolling ? "animate-[die-toss_1050ms_ease-in-out_both]" : playEntrance ? "animate-[dice-enter_700ms_650ms_cubic-bezier(0.22,1,0.36,1)_both]" : ""} motion-reduce:animate-none motion-reduce:transition-none`}>
           <div
             className="absolute inset-0 [transform-style:preserve-3d] transition-transform duration-1000 ease-[cubic-bezier(0.18,0.72,0.18,1)] motion-reduce:transition-none"
             style={{ transform: `rotateX(${rotation.x}deg) rotateY(${rotation.y}deg)` }}
@@ -92,6 +122,13 @@ export function StarDie({ initialFace = null, playEntrance = false, onRoll, onSe
                 <div className="pointer-events-none absolute inset-1 bg-[radial-gradient(circle_at_25%_30%,rgba(204,184,224,0.10),transparent_38%),radial-gradient(circle_at_77%_72%,rgba(129,107,159,0.11),transparent_33%)]" aria-hidden="true" />
                 <div className="pointer-events-none absolute left-[2%] top-[2%] size-[14%] bg-[#e7d9ed]/8 [clip-path:polygon(50%_0,100%_50%,0_100%)]" aria-hidden="true" />
                 <div className="pointer-events-none absolute bottom-[2%] right-[2%] size-[14%] bg-[#1e1929]/18 [clip-path:polygon(100%_0,100%_100%,0_50%)]" aria-hidden="true" />
+                {selected === faceId && (
+                  <div
+                    className={`pointer-events-none absolute inset-0 opacity-100 ${hasRolled ? "animate-[die-world-bloom_700ms_180ms_ease-out_both] motion-reduce:animate-none" : ""}`}
+                    style={{ background: `radial-gradient(circle at 50% 52%, ${worldColors[faceId].glow}, transparent 72%)` }}
+                    aria-hidden="true"
+                  />
+                )}
                 {isRolling && (
                   <div className="pointer-events-none absolute inset-0 opacity-40" aria-hidden="true">
                     <span className="absolute left-[22%] top-[28%] size-1 rounded-full bg-white shadow-[0_0_8px_white] animate-[die-dust_750ms_ease-in-out_infinite_alternate]" />
@@ -99,24 +136,25 @@ export function StarDie({ initialFace = null, playEntrance = false, onRoll, onSe
                     <span className="absolute bottom-[24%] left-[38%] size-0.5 rounded-full bg-white shadow-[0_0_7px_white] animate-[die-dust_800ms_ease-in-out_infinite_alternate]" />
                   </div>
                 )}
-                <DieSymbol face={faceId} />
+                <DieSymbol face={faceId} activeColor={selected === faceId ? worldColors[faceId].light : undefined} />
               </div>
             ))}
           </div>
+          {playEntrance && <span className="pointer-events-none absolute inset-0 overflow-hidden [clip-path:polygon(9%_0,91%_0,100%_9%,100%_91%,91%_100%,9%_100%,0_91%,0_9%)] motion-reduce:hidden" aria-hidden="true"><span className="absolute inset-0 bg-[linear-gradient(105deg,transparent_37%,rgba(255,246,223,0.6)_50%,transparent_63%)] animate-[dice-edge-glint_580ms_1050ms_ease-in-out_both]" /></span>}
         </div>
         <div className={`pointer-events-none absolute left-1/2 top-[calc(50%+32px)] h-1 w-9 -translate-x-1/2 rounded-full bg-[#8d77ad]/20 blur-sm transition-transform duration-700 ${isRolling ? "scale-75" : "scale-100"}`} aria-hidden="true" />
       </div>
 
       {selected && (
-        <p className="mt-2 text-center text-xs tracking-[0.08em] text-[#f7efe3]" aria-live="polite">
+        <p className="mt-2 text-center text-xs tracking-[0.08em]" style={{ color: worldColors[selected].label }} aria-live="polite">
           {`平行世界：${diceFaceNames[selected]}`}
         </p>
       )}
       {!selected && <button
         type="button"
         onClick={roll}
-        disabled={isRolling}
-        className={`mt-1 rounded-full border border-[#f7efe3] px-5 py-3 text-sm font-medium text-[#f7efe3] transition-[background-color,border-color,box-shadow] hover:shadow-[0_0_20px_rgba(173,140,204,0.14)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#f7efe3] disabled:cursor-wait disabled:opacity-60 ${playEntrance ? "animate-[dice-button-enter_650ms_1150ms_ease-out_both] motion-reduce:animate-none" : ""}`}
+        disabled={isRolling || !entranceComplete}
+        className="mt-1 rounded-full border border-[#f7efe3] px-5 py-3 text-sm font-medium text-[#f7efe3] transition-[background-color,border-color,box-shadow] hover:shadow-[0_0_20px_rgba(173,140,204,0.14)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#f7efe3] disabled:cursor-wait"
       >
         {isRolling ? "星星正在选择…" : "去另一个宇宙"}
       </button>}

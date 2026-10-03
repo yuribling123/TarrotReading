@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { ChevronDown } from "lucide-react";
 
 import { useReadingSession } from "@/app/components/reading/reading-session-provider";
 import { DiceDailyLimitDialog } from "./dice-daily-limit-dialog";
@@ -24,8 +25,8 @@ export function DiceExperience() {
 
   return (
     <div className="mx-auto max-w-2xl text-center">
-      <h1 className={`mb-1 text-sm! leading-snug! tracking-[0.2em] text-[#e5dbeb] sm:text-base! ${entering ? "animate-[dice-title-enter_550ms_100ms_ease-out_both] motion-reduce:animate-none" : ""}`}>星星的岔路口</h1>
-      <p className={`pt-3 pb-3 text-sm leading-6 text-[#cfc4d3]/60 ${entering ? "animate-[dice-title-enter_550ms_320ms_ease-out_both] motion-reduce:animate-none" : ""}`}>看看另一个你，会遇见怎样的剧情</p>
+      <h1 className="mb-1 text-sm! leading-snug! tracking-[0.2em] text-[#e5dbeb] sm:text-base!">星星的岔路口</h1>
+      <p className="pt-3 pb-3 text-sm leading-6 text-[#cfc4d3]/60">看看另一个你，会遇见怎样的剧情</p>
       <StarDie
         initialFace={state.face}
         playEntrance={entering}
@@ -56,21 +57,26 @@ export function DiceExperience() {
           <button className="mt-4 rounded-full border border-[#f7efe3] px-5 py-2 text-sm hover:bg-white/10" type="button" onClick={() => void retry()}>{state.phase === "error" ? "重新连接" : "重新确认"}</button>
         </div>
       )}
-      {state.settled && state.phase === "ready" && !state.revealed && (
-        <button
-          className="group relative isolate mt-8 rounded-full border border-[#cfc4d3]/70 bg-[#6e5b82]/15 px-7 py-3 text-sm font-medium text-[#cfc4d3] shadow-[0_0_18px_rgba(173,140,204,0.12)] transition-[background-color,transform] hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-[#f7efe3]"
-          type="button"
-          onClick={reveal}
-        >
-          <span className="pointer-events-none absolute -inset-1 -z-10 rounded-full border border-[#d7b56d]/45 animate-[story-reveal-glow_2.8s_ease-in-out_infinite] motion-reduce:animate-none" aria-hidden="true" />
-          揭开故事
-          <span className="ml-2 inline-block animate-[story-reveal-cue_2.8s_ease-in-out_infinite] group-hover:translate-x-1 motion-reduce:animate-none" aria-hidden="true">→</span>
-        </button>
+      {state.settled && state.phase === "ready" && (
+        <div className={`grid transition-[grid-template-rows,opacity,transform] duration-[250ms] ease-out motion-reduce:transition-none ${state.revealed ? "grid-rows-[0fr] translate-y-1 opacity-0" : "grid-rows-[1fr] opacity-100"}`} inert={state.revealed}>
+          <div className="min-h-0 overflow-hidden pb-2">
+            <button
+              className="group relative isolate mt-8 inline-flex items-center justify-center gap-2 rounded-full border border-[#cfc4d3]/70 bg-[#6e5b82]/15 px-7 py-3 text-sm font-medium text-[#cfc4d3] shadow-[0_0_18px_rgba(173,140,204,0.12)] transition-[background-color,transform] hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-[#f7efe3]"
+              type="button"
+              onClick={reveal}
+              disabled={state.revealed}
+            >
+              <span className="pointer-events-none absolute -inset-1 -z-10 rounded-full border border-[#f7efe3]/25 animate-[story-reveal-glow_2.8s_ease-in-out_infinite] motion-reduce:animate-none" aria-hidden="true" />
+              揭开故事
+              <ChevronDown className="size-4 shrink-0 animate-[story-reveal-cue_2.8s_ease-in-out_infinite] group-hover:translate-y-0.5 motion-reduce:animate-none" aria-hidden="true" />
+            </button>
+          </div>
+        </div>
       )}
       {state.settled && state.phase === "ready" && state.result && (
-        <div className={`grid transition-[grid-template-rows] duration-[1700ms] ease-[cubic-bezier(0.45,0,0.2,1)] motion-reduce:transition-none ${state.revealed ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}>
+        <div className={`grid transition-[grid-template-rows] duration-[1700ms] ease-[cubic-bezier(0.45,0,0.2,1)] motion-reduce:transition-none ${state.revealed ? "grid-rows-[1fr] delay-[150ms] motion-reduce:delay-0" : "grid-rows-[0fr]"}`}>
           <div className="min-h-0 overflow-hidden" inert={!state.revealed}>
-            <DiceStoryResult result={state.result} face={state.face} hasLeftStar={state.starLeft} onStarLeft={markStarLeft} />
+            <DiceStoryResult result={state.result} face={state.face} revealed={state.revealed} hasLeftStar={state.starLeft} onStarLeft={markStarLeft} />
           </div>
         </div>
       )}

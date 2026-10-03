@@ -39,7 +39,7 @@ const silhouettes: Record<DiceFaceId, ReactNode> = {
   ),
 };
 
-export function DieSymbol({ face, idPrefix = "die" }: { face: DiceFaceId; idPrefix?: string }) {
+export function DieSymbol({ face, idPrefix = "die", activeColor }: { face: DiceFaceId; idPrefix?: string; activeColor?: string }) {
   const gradientId = `${idPrefix}-engraving-${face}`;
   const shadowId = `${idPrefix}-engraving-shadow-${face}`;
   const moonMaskId = `${idPrefix}-moon-crescent`;
@@ -82,6 +82,13 @@ export function DieSymbol({ face, idPrefix = "die" }: { face: DiceFaceId; idPref
       </defs>
       <g fill="#e9dcc7" transform="translate(0 1.6)">{silhouette}</g>
       <g fill={`url(#${gradientId})`} filter={`url(#${shadowId})`}>{silhouette}</g>
+      <g
+        fill={activeColor ?? "transparent"}
+        className={`transition-opacity duration-500 motion-reduce:transition-none ${activeColor ? "opacity-90" : "opacity-0"}`}
+        style={activeColor ? { filter: `drop-shadow(0 0 3px ${activeColor})` } : undefined}
+      >
+        {silhouette}
+      </g>
     </svg>
   );
 }

@@ -2,8 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 
-import { diceStoryStorageKey, readStoredDiceStory, saveStoredDiceStory } from "@/lib/dice/story-storage";
-import { isGeneratedStory } from "@/lib/dice/story-validation";
+import { recordDiceStoryCount, requestDiceStory } from "@/lib/dice/story-api-client";
+import { diceStoryStorageKey, readStoredDiceStory, saveStoredDiceStory } from "@/lib/dice/story-session-storage";
 import { getVisitorId } from "@/lib/visitor/visitor-id";
 import type { DiceFaceId, GeneratedStory, StoryRequest } from "@/lib/types";
 
@@ -54,12 +54,10 @@ export function useDiceStory(story: string, isHydrated: boolean) {
   useEffect(() => () => activeRequest.current?.abort(), []);
 
   async function finishStory(input: StoryRequest, result: GeneratedStory, visitorId: string) {
-    const response = await fetch(`/api/dice-limit/${visitorId}`, { method: "POST" });
-    if (response.status === 409) {
+    if (!await recordDiceStoryCount(visitorId)) {
       setState((current) => ({ ...current, result: null, phase: "limit" }));
       return;
     }
-    if (!response.ok) throw new Error(`Failed to record dice story: ${response.status}`);
 
     try {
       saveStoredDiceStory({ input, result });
@@ -80,19 +78,11 @@ export function useDiceStory(story: string, isHydrated: boolean) {
     let generated: GeneratedStory | null = null;
     try {
       const visitorId = getVisitorId();
-      const response = await fetch("/api/dice/story", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "X-Visitor-Id": visitorId },
-        body: JSON.stringify(input),
-        signal: controller.signal,
-      });
-      if (response.status === 429) {
+      const result = await requestDiceStory(input, visitorId, controller.signal);
+      if (!result) {
         setState((current) => ({ ...current, phase: "limit" }));
         return;
       }
-      if (!response.ok) throw new Error(`Story request failed: ${response.status}`);
-      const result: unknown = await response.json();
-      if (!isGeneratedStory(result)) throw new Error("Invalid story response");
       generated = result;
       await finishStory(input, result, visitorId);
     } catch (error) {

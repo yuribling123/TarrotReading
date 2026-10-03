@@ -2,8 +2,9 @@
 
 import { useEffect, useRef, useState } from "react";
 
-import { diceFaceNames, diceFaces, type DiceFaceId } from "@/lib/dice/faces";
+import { diceFaceIds, diceFaceNames } from "@/lib/dice/faces";
 import { DieSymbol } from "./die-symbols";
+import type { DiceFaceId } from "@/lib/types";
 
 type StarDieProps = {
   initialFace?: DiceFaceId | null;
@@ -19,9 +20,18 @@ const escapingStars = [
   "left-[calc(50%+12px)] top-[calc(50%-19px)] size-0.5 bg-[#d7b56d] shadow-[0_0_6px_#d7b56d] [--star-drift-x:15px] [--star-rise:-33px] [animation-delay:-4.5s] [animation-duration:5.8s]",
 ] as const;
 
+const dieFaceGeometry: Record<DiceFaceId, { transform: string; x: number; y: number }> = {
+  moonKingdom: { transform: "translateZ(calc(var(--die-size) / 2))", x: 0, y: 0 },
+  fatedRomance: { transform: "rotateY(90deg) translateZ(calc(var(--die-size) / 2))", x: 0, y: -90 },
+  absurdMonday: { transform: "rotateY(180deg) translateZ(calc(var(--die-size) / 2))", x: 0, y: -180 },
+  neonGlitch: { transform: "rotateY(-90deg) translateZ(calc(var(--die-size) / 2))", x: 0, y: 90 },
+  everyoneHasSecrets: { transform: "rotateX(90deg) translateZ(calc(var(--die-size) / 2))", x: -90, y: 0 },
+  improvisedStory: { transform: "rotateX(-90deg) translateZ(calc(var(--die-size) / 2))", x: 90, y: 0 },
+};
+
 export function StarDie({ initialFace = null, playEntrance = false, onRoll, onSettled }: StarDieProps) {
   const [rotation, setRotation] = useState(() => {
-    const face = diceFaces.find((item) => item.id === initialFace);
+    const face = initialFace ? dieFaceGeometry[initialFace] : null;
     return face ? { x: face.x - 14, y: face.y - 20 } : { x: -14, y: -20 };
   });
   const [selected, setSelected] = useState<DiceFaceId | null>(initialFace);
@@ -35,18 +45,19 @@ export function StarDie({ initialFace = null, playEntrance = false, onRoll, onSe
 
   function roll() {
     if (isRolling) return;
-    const face = diceFaces[Math.floor(Math.random() * diceFaces.length)];
+    const faceId = diceFaceIds[Math.floor(Math.random() * diceFaceIds.length)];
+    const face = dieFaceGeometry[faceId];
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     rollCount.current += 1;
     setSelected(null);
     setIsRolling(true);
-    onRoll(face.id);
+    onRoll(faceId);
     setRotation({
       x: (reduceMotion ? 0 : rollCount.current * 720) + face.x - 14,
       y: (reduceMotion ? 0 : rollCount.current * 720) + face.y - 20,
     });
     timeout.current = setTimeout(() => {
-      setSelected(face.id);
+      setSelected(faceId);
       setIsRolling(false);
       onSettled();
     }, reduceMotion ? 0 : 1050);
@@ -69,11 +80,11 @@ export function StarDie({ initialFace = null, playEntrance = false, onRoll, onSe
             style={{ transform: `rotateX(${rotation.x}deg) rotateY(${rotation.y}deg)` }}
             aria-hidden="true"
           >
-            {diceFaces.map((face) => (
+            {diceFaceIds.map((faceId) => (
               <div
-                key={face.id}
+                key={faceId}
                 className="absolute inset-0 grid place-items-center border border-[#e9dfc9]/35 bg-[linear-gradient(135deg,rgba(218,201,232,0.12),rgba(128,100,152,0.05)_55%,rgba(205,193,225,0.10))] [backface-visibility:hidden] [clip-path:polygon(9%_0,91%_0,100%_9%,100%_91%,91%_100%,9%_100%,0_91%,0_9%)]"
-                style={{ transform: face.transform }}
+                style={{ transform: dieFaceGeometry[faceId].transform }}
               >
                 <div className="pointer-events-none absolute left-[10%] top-0 h-px w-[44%] bg-[#fff6df]/60" aria-hidden="true" />
                 <div className="pointer-events-none absolute left-0 top-[13%] h-[26%] w-px bg-[#e4d9ec]/45" aria-hidden="true" />
@@ -88,7 +99,7 @@ export function StarDie({ initialFace = null, playEntrance = false, onRoll, onSe
                     <span className="absolute bottom-[24%] left-[38%] size-0.5 rounded-full bg-white shadow-[0_0_7px_white] animate-[die-dust_800ms_ease-in-out_infinite_alternate]" />
                   </div>
                 )}
-                <DieSymbol face={face.id} />
+                <DieSymbol face={faceId} />
               </div>
             ))}
           </div>

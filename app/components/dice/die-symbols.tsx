@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 
-import type { DiceFaceId } from "@/lib/dice/faces";
+import type { DiceFaceId } from "@/lib/types";
 
 // Each face has one solid silhouette; the shared fill gives them the same carved finish.
 const silhouettes: Record<DiceFaceId, ReactNode> = {

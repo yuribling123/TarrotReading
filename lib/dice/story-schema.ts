@@ -9,7 +9,7 @@ export const storySchema = {
       additionalProperties: false,
       required: ["scenes"],
       properties: {
-        scenes: { type: "array", minItems: 3, maxItems: 5, items: { type: "string" } },
+        scenes: { type: "array", minItems: 2, maxItems: 5, items: { type: "string" } },
       },
     },
   },

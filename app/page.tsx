@@ -22,7 +22,7 @@ import { toast } from "@/components/ui/toast";
 import { ReadingLimitDialog } from "@/app/components/limits/reading-limit-dialog";
 import { DailyLimitDialog } from "@/app/components/limits/daily-limit-dialog";
 import { DiceDailyLimitDialog } from "@/app/components/dice/dice-daily-limit-dialog";
-import { isDiceEntryAllowed } from "@/lib/dice/entry";
+import { isDiceEntryAllowed } from "@/lib/dice/entry-client";
 import { ShootingStars } from "./components/shared/shooting-star";
 
 //用户增加共鸣换取次数

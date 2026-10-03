@@ -22,7 +22,7 @@ export function DiceDailyLimitDialog({ open, onOpenChange }: DiceDailyLimitDialo
             今天的星骰已落定
           </DialogTitle>
           <DialogDescription className="pt-1 text-center text-[11px] leading-[1.7] text-[#cfc4d3]">
-            每天只能投一次星骰，明天再开启新的故事。
+            每天可以投两次星骰，明天再开启新的故事。
           </DialogDescription>
         </DialogHeader>
         <button

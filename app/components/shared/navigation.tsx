@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { messages } from "@/lib/i18n";
 import { useReadingSession } from "@/app/components/reading/reading-session-provider";
 import { useTheme } from "@/app/components/shared/theme-provider";
-import { clearStoredDiceStory } from "@/lib/dice/story-storage";
+import { clearStoredDiceStory } from "@/lib/dice/story-session-storage";
 
 export function Navigation() {
   const { language, resetReading } = useReadingSession();
